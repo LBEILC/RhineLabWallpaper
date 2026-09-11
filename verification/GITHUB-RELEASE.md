@@ -42,7 +42,7 @@ Windows 自带 `Expand-Archive`（.NET `ZipFile`，与自写 zip 实现无关）
 
 ### 可重复打包
 
-相同构建内容连续两次打包得到相同 SHA-256（`db572c4c24c349c895ef98a3f8a995e6491a427df24f1bc6c2bffc548e48ce99`），因为 zip 条目时间戳固定为常量。这使发布包可以用哈希比对，也便于确认 CI 与本地构建一致。
+相同构建内容连续两次打包得到相同 SHA-256（`db572c4c24c349c895ef98a3f8a995e6491a427df24f1bc6c2bffc548e48ce99`），因为 zip 条目时间戳固定为常量。这使发布包可以用哈希比对。跨平台不可比：Windows 检出的文本文件是 CRLF、Linux 检出是 LF，压缩前的字节不同，见下文 CI 复核。
 
 ## 修复的既有问题
 
@@ -50,10 +50,35 @@ Windows 自带 `Expand-Archive`（.NET `ZipFile`，与自写 zip 实现无关）
 
 ## CI 首次运行
 
-GitHub Actions 工作流 `.github/workflows/wallpaper-release.yml` 在推送到 `main` 后触发，构建、打包、校验并刷新滚动发布 `latest`。首次运行结果：
+GitHub Actions 工作流 `.github/workflows/wallpaper-release.yml` 在推送到 `main`（提交 `3f23d0d`）后触发，构建、打包、校验并发布：
 
-- 推送当时本机到 GitHub 的连接失败（`v2rayN` / `sing-box` 本地代理 10808 端口 TLS 握手失败，直连 api.github.com 超时），因此该次运行尚未发生；工作流文件、打包脚本与校验脚本已在本地完整跑通。
-- 恢复网络后需执行 `git push origin main`，随后用 `gh run watch`、`gh release view latest` 确认发布页附件。
+- 运行记录：<https://github.com/LBEILC/RhineLabWallpaper/actions/runs/34580950646>，job `package` 全部步骤成功，用时 37 秒。
+- 步骤依次为：`npm ci` → `check:content` → `build:wallpaper` → `check-wallpaper.mjs` → 解析标签 `latest` → 打包 → `check-wallpaper-release.mjs` → 上传 workflow artifact → 发布 GitHub Release。
+- 发布结果：<https://github.com/LBEILC/RhineLabWallpaper/releases/tag/latest>，标题 `Rhine Lab · 莱茵生命交互桌面（latest）`，非草稿、非预发布，包含两项附件：
+
+| 附件 | 大小 |
+| --- | --- |
+| `RhineLabWallpaper-latest.zip` | 35,362,748 字节 |
+| `RhineLabWallpaper-latest.zip.sha256` | 95 字节 |
+
+首次运行只出现一条 `Node.js 20 is deprecated` 注解（`checkout@v4`、`setup-node@v4`、`upload-artifact@v4` 被强制运行在 Node 24 上），已改用三个 action 的 v5 版本，功能不受影响。
+
+### 对已发布产物的独立复核
+
+用 `gh release download latest` 取回 GitHub 上的附件后：
+
+- `Get-FileHash -Algorithm SHA256` 的结果与附件 `.sha256` 内容一致（`882ae8eb…e6665`）。
+- `node scripts/check-wallpaper-release.mjs` 直接在下载到的压缩包上通过：826 个工程文件、2 个 GLB、753 个 woff2、40 份档案文本，全部 CRC 正确。
+- 解压后与本机 `release/wallpaper` 逐文件比对：826 个文件中 810 个 SHA-256 一致，包括两个 GLB、全部 753 个 woff2、`assets/index-*.js` 与 `assets/index-*.css`。差异只出现在 15 个文本文件（`index.html`、`LICENSE`、`favicon.svg`、`build-files.json` 及若干 `*.txt`/`*.json`），内容逐行相同，差别是本机检出为 CRLF、CI 检出为 LF；`build-files.json` 记录的字节数随之差出相应的换行字节数。
+- 因此 CI 与本地产物的页面代码一致；压缩包整体哈希在两平台之间不可比（压缩前的换行差异会让 zlib 输出不同），可重复性结论仅适用于同一平台的重复打包。
+
+### 推送当时的网络故障（环境记录）
+
+首次推送时本机完全无法访问 GitHub：Windows 系统代理指向 `127.0.0.1:10808`，该端口可连接但 `git`/`curl` 对所有 HTTPS 都握手失败，直连 `github.com:443` 超时，浏览器也因此打不开任何网页。排查结果：
+
+- `ping`、直连 `http://www.baidu.com` 正常，说明基础网络没问题；系统代理是唯一故障点。
+- v2rayN 7.19.5（管理员身份运行）生成的 `binConfigs/config.json` 中，节点 `subvl-v01.zarelaypro.com:57788`（VLESS + REALITY）本身可达，但它被配置为经 `dialerProxy: tun-protect-ss` 走本地 `127.0.0.1:59421`，而 59421/59422 当时并未监听——本地中转链断了，出站流量因此全部卡死。
+- 恢复后同一命令重试成功（第 7 次尝试，约 6 分钟），随后代理端口恢复正常。若再次出现“所有网页都打不开”，先重启 v2rayN 核心或换节点即可；本仓库的发布流程本身不依赖该环境。
 
 ## 限制与未验证
 
