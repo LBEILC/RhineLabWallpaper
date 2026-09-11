@@ -72,16 +72,23 @@ GitHub Actions 工作流 `.github/workflows/wallpaper-release.yml` 在推送到 
 - 解压后与本机 `release/wallpaper` 逐文件比对：826 个文件中 810 个 SHA-256 一致，包括两个 GLB、全部 753 个 woff2、`assets/index-*.js` 与 `assets/index-*.css`。差异只出现在 15 个文本文件（`index.html`、`LICENSE`、`favicon.svg`、`build-files.json` 及若干 `*.txt`/`*.json`），内容逐行相同，差别是本机检出为 CRLF、CI 检出为 LF；`build-files.json` 记录的字节数随之差出相应的换行字节数。
 - 因此 CI 与本地产物的页面代码一致；压缩包整体哈希在两平台之间不可比（压缩前的换行差异会让 zlib 输出不同），可重复性结论仅适用于同一平台的重复打包。
 
-### 本机代理故障与 TUN 模式修复（环境记录）
+### 本机代理故障与 TUN 模式（环境记录，含一条被证伪的假设）
 
-首次推送时本机完全无法访问 GitHub：Windows 系统代理指向 `127.0.0.1:10808`，该端口可连接但对所有 HTTPS 都握手失败，直连 `github.com:443` 超时，浏览器也因此打不开任何网页。排查与结论：
+首次推送时本机完全无法访问 GitHub：Windows 系统代理指向 `127.0.0.1:10808`，该端口可连接但对所有 HTTPS 都握手失败，直连 `github.com:443` 超时，浏览器也因此打不开任何网页。排查结论：
 
 - `ping`、直连 `http://www.baidu.com` 正常，基础网络没问题；故障只出现在本地代理链上。
-- 当时选中的节点 `subvl-v01.zarelaypro.com:57788` 自身已不可用：用它单独起一个 xray（绕开 v2rayN 的本地链）同样连不上。换到当前节点后，同一命令重试成功（第 7 次尝试，约 6 分钟）。
-- 随后用户反馈“一开 TUN 模式就没网”。v2rayN 7.19.5 的 TUN 由 sing-box 建立（`binConfigs/configPre.json` 中 `type: tun`、`interface_name: singbox_tun`、地址 `172.18.0.1/30`、`stack: system`、`mtu: 9000`），sing-box 把流量交给 xray 的本地中继，xray 出站再经 sing-box 的 `tun-protect-ss` 直连节点。两个中继端口每次启动随机，所以不同时刻看到的 59421/59422、52650/52651、60955/60956 是同一套链路的不同实例。
-- **根因**：`bin\sing_box\` 目录里只有 `sing-box.exe`，缺少 `wintun.dll`，TUN 网卡建不起来，整条链一开就死（`bin\xray\` 下有该 DLL，sing-box 目录没有）。把 `bin\xray\wintun.dll`（SHA-256 `e5da8447…afce`，与驱动 `oem54.inf` wintun 0.14 同版本）复制到 `bin\sing_box\` 后恢复正常。
-- 修复后实测：`singbox_tun` 网卡 Up，`0.0.0.0/0 → 172.18.0.2` 默认路由生效，sing-box 与 xray 的中继端口成对监听，DNS 正常解析 `github.com` / `www.google.com`；不设置任何代理环境变量时 `https://www.google.com` 返回 200、`https://api.github.com` 返回 403、`https://www.baidu.com` 返回 200。
-- 注意：v2rayN 更新内核时可能重新解压 `bin\sing_box\` 并覆盖该 DLL；再出现同样症状，把 `bin\xray\wintun.dll` 重新复制一份即可。本仓库的发布流程不依赖该环境。
+- **根因是当时选中的节点已失效**：`subvl-v01.zarelaypro.com:57788` 用独立 xray 实例（绕开 v2rayN 的本地链）直连同样失败。换到当前节点后，同一命令在第 7 次尝试（约 6 分钟）推送成功。用户反馈的“一开 TUN 就没网”发生在同一时间窗内，因此同样由该节点导致，而不是 TUN 配置本身。
+- v2rayN 7.19.5 的 TUN 由 sing-box 建立（`binConfigs/configPre.json` 中 `type: tun`、`interface_name: singbox_tun`、地址 `172.18.0.1/30`、`stack: system`、`mtu: 9000`），sing-box 把流量交给 xray 的本地中继，xray 出站再经 sing-box 的 `tun-protect-ss` 直连节点。两个中继端口每次启动随机，所以不同时刻看到的 59421/59422、52650/52651、60955/60956 是同一套链路的不同实例。
+- 恢复后实测：`singbox_tun` 网卡 Up，`0.0.0.0/0 → 172.18.0.2` 默认路由生效，sing-box 与 xray 的中继端口成对监听，DNS 正常解析 `github.com` / `www.google.com`；不设置任何代理环境变量时 `https://www.google.com` 返回 200、`https://api.github.com` 返回 403、`https://www.baidu.com` 返回 200。
+
+**被证伪的假设（保留记录，避免以后重复走弯路）**：排查中一度认为 `bin\sing_box\` 缺少 `wintun.dll` 才是 TUN 失败的原因，并把 `bin\xray\wintun.dll` 复制了过去，当时看起来“修好了”。后续验证推翻了它：
+
+- 官方内核包 `2dust/v2rayN-core-bin` 的目录就是 `bin\xray\` = `xray.exe` + `wintun.dll`，而 `bin\sing_box\` 只有 `sing-box.exe`（新版另加 `libcronet.dll`）、`bin\mihomo\` 只有 `mihomo.exe`；本机目录与官方一致，该文件从未被删除过（安装目录 34 个文件创建时间同为 2026-05-10 23:17:55）。
+- v2rayN 源码搜索 `wintun.dll` 无命中（只有 `RemoveTunDevice` 用 pnputil 删设备），说明它既不复制也不管理这个文件。
+- 决定性验证：把复制过去的那份改名为 `wintun.dll11`（sing-box 不可能按原名加载）并重启核心后，TUN 仍完全正常（`singbox_tun` Up，不带代理访问 google / baidu 均 200）。复制是无效改动，已删除，`bin\sing_box\` 恢复为只有 `sing-box.exe` 的官方状态。
+- 另一条反向证据是 sing-box 并未锁定该文件，且非管理员探针（只建 TUN、`auto_route` 关闭）在 DLL 存在与缺失时报错完全相同（`configure tun interface: Access is denied`），无法证明存在依赖关系。
+
+结论：这次故障的可用解释只有节点失效一条；`bin\sing_box\` 中没有 `wintun.dll` 属于官方正常布局，不必手动补文件。本仓库的发布流程不依赖该环境。
 
 ## 限制与未验证
 
