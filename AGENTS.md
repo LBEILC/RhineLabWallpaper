@@ -252,3 +252,8 @@ WE 画质下拉增加「自定义」，仅此选择且超级模式关闭时显�
 - 本地正式目录为 E:\AIProject\RhineLabWallpaper。原网页仓库独立维护；历史实验分支规则不再表示需要回合并 RhineLabUI/main。完成验证后提交、推送本仓库 main；不要自动向原网页仓库合并。
 - 继续沿用现有原生实现、视觉规范与 Blender 源资产。壁纸构建使用 npm run build:wallpaper；创意工坊更新仍保留既有 workshopid。
 - 清理时未接入的本地文件桥接试验、临时截图及外部参考素材保存在本地 backups/migration-2026-09-11，FILES.txt 记录原路径；未纳入公共发行版本。
+
+## 工作台字体打磨（2026-09-11）
+
+- 用户要求后续重点打磨工作台，展示模式保留现状。批准将两处英文眉题及页脚固定英文改为 Novecento Normal 固定矢量图形；继续采用原生实现。
+- 大时钟、倒计时、日程数字和模块编号先做对照，当前保留 MiSans，待用户选择。规范及复现见 DESIGN.md、reference/workbench-typography.html。

@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>工作台数字字体对照</title>
+<style>
+@import url('/src/fonts.css');
+*{box-sizing:border-box}body{margin:0;padding:48px;background:#e8e5e1;color:#161714;font:15px/1.7 MiSans,"Microsoft YaHei",sans-serif}main{max-width:1080px;margin:auto}h1{font-size:28px;font-weight:500;margin:0}p{color:#67675f}section{display:grid;grid-template-columns:140px 1fr 1fr;align-items:center;border-top:1px solid #aaa59a;padding:28px 0;gap:28px}.label{font-size:13px}.number{font-size:82px;font-weight:300;line-height:1.2;letter-spacing:-2px;white-space:nowrap}img{height:1em;max-width:100%;vertical-align:-.16em}.columns{padding:16px 0;font-size:12px}.small{font-size:24px}a{color:inherit}
+@media(max-width:760px){body{padding:20px}section{grid-template-columns:90px 1fr 1fr;gap:12px}.number{font-size:40px}.small{font-size:18px}}
+</style><main><h1>工作台 · 数字字体对照</h1><p>左侧为现有 MiSans，右侧为 Novecento Normal。同字号静态比较；实际工作台数字暂时保留现状。</p>
+<section class="columns"><span>位置</span><span>现有 MiSans</span><span>Novecento Normal</span></section>
+<section><span class="label">大时钟</span><span class="number">08:42</span><span class="number"><img src="workbench-typography/08-42.svg" alt="08:42"></span></section>
+<section><span class="label">专注倒计时</span><span class="number">25:00</span><span class="number"><img src="workbench-typography/25-00.svg" alt="25:00"></span></section>
+<section><span class="label">日程剩余天数</span><span class="number">128</span><span class="number"><img src="workbench-typography/128.svg" alt="128"></span></section>
+<section><span class="label">模块序号</span><span class="number small">01 / 05</span><span class="number small"><img src="workbench-typography/01-05.svg" alt="01 / 05"></span></section>
+<p>这里只比较字形。动态数字替换还需校准固定字宽、冒号和滚动衔接。</p></main></html>
+

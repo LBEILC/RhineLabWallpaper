@@ -304,3 +304,9 @@ WE 画质下拉增加「自定义」，仅此选择且超级模式关闭时显�
 后续从 MyFonts 取得正式 Webfont 后，本机使用原始 WOFF2 原生字形；既有轮廓仅作为无本地许可包或加载失败的后备。复用逐字尺寸和基线，不重新调整已确认排版。授权字体单独存放并排除公开 Git。
 
 中央访问、身份、请求、处理、授权提示采用 Novecento Sans Wide Normal，欢迎三行采用 Bold。按固定文案制作轮廓，保留原字距动画与逐字时间轴；处理提示字号 21.35px，顶部 527px，图标间距 10px（1920×1080 基准）。左上 RHINE LAB 按用户后续纠正改用 DemiBold，字号 50.75px、字距 1px，标题行固定高 48px，图形顶部偏移 1.425px；下方两行保留 MiSans 与既有位置。来源与验证见 verification/BOOT-LETTERING.md。
+
+## 工作台固定英文与数字对照（2026-09-11）
+
+用户批准先替换工作台固定英文，再比较大数字。两处眉题与页脚 SESSION AUTHORIZED、JOYCE MOORE、REINITIALIZE 使用 Novecento Normal 固定矢量文案，字距 0.065em，颜色继承当前主题。仅工作台交互阶段显示，展示模式与开场页脚保留原文字。中文、动态内容与数字继续使用既有排版。
+
+数字对照见 reference/workbench-typography.html；未经用户确认，不将对照数字应用到正式工作台。源脚本 scripts/make-workbench-lettering.py 使用与开场相同的本机授权 Normal OTF，不输出字体包或通用字符表。

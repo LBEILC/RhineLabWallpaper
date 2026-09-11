@@ -28,3 +28,9 @@ The fonts are individually licensed to the website owner. Other users must
 obtain their own license; this project's MIT license does not cover them.
 Retain the original kit's RhineLabNovecento.css copyright and license notice.
 Webfont rights are limited by the owner's license term, domain and pageviews.
+
+Workbench fixed phrase artwork (2026-09-11): RHINE LAB / DAILY TERMINAL,
+PERSONAL WORKSPACE, SESSION AUTHORIZED, JOYCE MOORE, REINITIALIZE.
+Created from the same Normal OTF source recorded in verification/boot-lettering/sources.json.
+Only fixed outlined artwork is distributed; font rights are not transferred.
+Reproduction script: scripts/make-workbench-lettering.py.

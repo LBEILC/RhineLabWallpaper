@@ -1,4 +1,5 @@
 import { rollText, patchRollingPanel } from "./workbench-rolling";
+import { workbenchLettering } from "./workbench-lettering";
 import { escapeHtml } from "./html";
 import { wallpaperHost, type WallpaperProperties } from "./wallpaper";
 import { dayKey, durationText, idleTimer, parseTarget, restoreTimer, timerLeft } from "./workbench-state";
@@ -29,9 +30,9 @@ export class Workbench {
       if (saved?.date === this.date && Array.isArray(saved.done)) this.done = saved.done.filter((s: unknown) => typeof s === "string").slice(0, 3);
     } catch { this.storageOK = false; }
     stage.insertAdjacentHTML("beforeend", `<section class="workbench" hidden aria-label="桌面工作台">
-      <div class="wb-overview"><div class="wb-time"><div class="wb-kicker">RHINE LAB / DAILY TERMINAL</div><time class="wb-clock"></time><div class="wb-date"></div></div>
+      <div class="wb-overview"><div class="wb-time"><div class="wb-kicker">${workbenchLettering('daily')}</div><time class="wb-clock"></time><div class="wb-date"></div></div>
       <section class="wb-today"><div class="wb-heading"><h2>今日事项</h2><span class="wb-task-count"></span></div><div class="wb-tasks"></div></section></div>
-      <section class="wb-module"><div class="wb-kicker">PERSONAL WORKSPACE <span class="wb-index">01 / 05</span></div><h2 class="wb-title"></h2><div class="wb-content"></div><p class="wb-storage" role="status"></p></section>
+      <section class="wb-module"><div class="wb-kicker">${workbenchLettering('workspace')} <span class="wb-index">01 / 05</span></div><h2 class="wb-title"></h2><div class="wb-content"></div><p class="wb-storage" role="status"></p></section>
       <nav class="wb-nav" aria-label="工作台功能">${names.map((n, i) => `<button data-wb-lane="${i}" aria-pressed="false"><small>0${i + 1}</small>${n}<span>↗</span></button>`).join("")}</nav>
     </section>`);
     this.root = stage.querySelector(".workbench")!;

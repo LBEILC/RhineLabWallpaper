@@ -1,5 +1,9 @@
 .workbench { position: absolute; inset: 0; z-index: 5; pointer-events: none; color: #080a08; }
 .workbench[hidden] { display: none; }
+.wb-lettering { position: relative; display: inline-block; }
+.wb-lettering > svg { display: none; height: 1em; vertical-align: -0.16em; overflow: visible; }
+[data-workbench="true"]:not([data-mode="boot"]) .wb-lettering > svg { display: inline-block; }
+[data-workbench="true"]:not([data-mode="boot"]) .wb-lettering > .wb-lettering-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .workbench [hidden] { display: none !important; }
 [data-workbench="true"][data-workbench-brand="false"]:not([data-mode="boot"]) > .brand,
 [data-workbench="true"][data-workbench-footer="false"]:not([data-mode="boot"]) > .system-footer,
