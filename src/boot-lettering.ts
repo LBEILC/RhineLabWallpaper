@@ -31,6 +31,13 @@ export async function loadBootWebfonts() {
 type PhraseKey = keyof typeof artwork;
 const ns = "http://www.w3.org/2000/svg";
 
+/**
+ * Phrases whose trailing part is host data. The outlined prefix stays in the
+ * design typeface (Novecento) and everything after it is rendered as live text
+ * in the page font, so a Chinese operator name never changes "ID CONFIRMED".
+ */
+const phrasePrefixes: Partial<Record<PhraseKey, string>> = { identity: "ID CONFIRMED : " };
+
 /** Fixed phrase reveal cells, backed by licensed webfonts or authored artwork. */
 export class BootLettering {
   private label = document.createElement("span");
@@ -39,6 +46,8 @@ export class BootLettering {
     node: HTMLSpanElement;
     letters: HTMLSpanElement[];
     weight: string;
+    prefix: string;
+    tail?: HTMLSpanElement;
   }[];
   private value: string | undefined;
 
@@ -46,6 +55,7 @@ export class BootLettering {
     this.label.className = "boot-phrase-label";
     this.phrases = keys.map((key) => {
       const art = artwork[key];
+      const prefix = phrasePrefixes[key] ?? "";
       const node = document.createElement("span");
       node.className = "boot-phrase";
       node.dataset.phrase = key;
@@ -69,7 +79,14 @@ export class BootLettering {
         node.append(cell);
         return cell;
       });
-      return { text: art.text, node, letters, weight: art.weight };
+      let tail: HTMLSpanElement | undefined;
+      if (prefix) {
+        tail = document.createElement("span");
+        tail.className = "boot-phrase-tail";
+        tail.hidden = true;
+        node.append(tail);
+      }
+      return { text: art.text, node, letters, weight: art.weight, prefix, tail };
     });
     host.classList.add("has-boot-lettering");
     host.replaceChildren(this.label, ...this.phrases.map((p) => p.node));
@@ -79,7 +96,8 @@ export class BootLettering {
 
   useWebfonts() {
     // Retain the measured cells and the reveal timeline. Only the glyph source
-    // changes: actual WOFF2 text replaces each pre-authored SVG drawing.
+    // changes: actual WOFF2 text replaces each pre-authored SVG drawing. A tail
+    // keeps using the page font, which is the point of the split.
     for (const phrase of this.phrases) {
       phrase.node.style.setProperty("--boot-webfont-family", `"Rhine Novecento ${phrase.weight}"`);
       phrase.letters.forEach((letter, i) => {
@@ -95,17 +113,30 @@ export class BootLettering {
     if (this.value === value) return;
     this.value = value;
     this.label.textContent = value;
-    const active = value ? this.phrases.find((p) => p.text.startsWith(value)) : undefined;
+    const authored = value ? this.phrases.find((p) => p.text.startsWith(value)) : undefined;
+    // A host value that keeps the authored prefix but replaces the rest reveals
+    // only the outlined prefix and appends the remaining text.
+    const tailed = !authored && value
+      ? this.phrases.find((p) => p.prefix && value.startsWith(p.prefix))
+      : undefined;
+    const active = authored ?? tailed;
     // A new, unauthored phrase remains readable until its artwork is exported.
     this.host.classList.toggle("boot-lettering-fallback", Boolean(value && !active));
     for (const phrase of this.phrases) {
       const visible = phrase === active;
       if (phrase.node.hidden === visible) phrase.node.hidden = !visible;
-      if (!visible) continue;
-      phrase.letters.forEach((letter, i) => {
-        const hidden = i >= value.length;
-        if (letter.hidden !== hidden) letter.hidden = hidden;
-      });
+      const extendsPrefix = visible && phrase === tailed;
+      if (visible) {
+        const outlined = extendsPrefix ? phrase.prefix.length : value.length;
+        phrase.letters.forEach((letter, i) => {
+          const hidden = i >= outlined;
+          if (letter.hidden !== hidden) letter.hidden = hidden;
+        });
+      }
+      if (!phrase.tail) continue;
+      const text = extendsPrefix ? value.slice(phrase.prefix.length) : "";
+      if (phrase.tail.textContent !== text) phrase.tail.textContent = text;
+      phrase.tail.hidden = !text;
     }
   }
 }

@@ -16,16 +16,19 @@ async function moduleUrl(file) {
     compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext },
   });
   let code = outputText;
-  // transpileModule preserves the original quote style, so accept both.
-  const specs = new Set([...outputText.matchAll(/from\s*["'](\.[^"']+)["']/g)].map(match => match[1]));
+  // transpileModule preserves the original quote style, so accept both, and
+  // rewrite side-effect imports (`import "./x.css"`) as well as `from` clauses.
+  const specs = new Set([...outputText.matchAll(/(?:from|import)\s*["'](\.[^"']+)["']/g)].map(match => match[1]));
   const resolved = new Map();
   for (const spec of specs) {
     const target = resolve(dirname(key), spec);
     resolved.set(spec, target.endsWith(".json")
       ? jsonModuleUrl(target)
-      : await moduleUrl(/\.ts$/.test(target) ? target : `${target}.ts`));
+      : target.endsWith(".css")
+        ? `data:text/javascript,export default undefined`
+        : await moduleUrl(/\.ts$/.test(target) ? target : `${target}.ts`));
   }
-  code = code.replace(/(from\s*)(["'])(\.[^"']+)\2/g, (match, prefix, quote, spec) => `${prefix}${quote}${resolved.get(spec)}${quote}`);
+  code = code.replace(/((?:from|import)\s*)(["'])(\.[^"']+)\2/g, (match, prefix, quote, spec) => `${prefix}${quote}${resolved.get(spec)}${quote}`);
   const url = `data:text/javascript;base64,${Buffer.from(code).toString("base64")}`;
   cache.set(key, url);
   return url;
@@ -78,6 +81,68 @@ assert.equal(bootMotion(5.9).auth, "", "Typing still starts empty before its fra
 assert.ok(bootMotion(8.6).auth.length > bootMotion(8.4).auth.length, "The reveal stays progressive");
 session.setSessionName("JOYCE MOORE");
 assert.equal(bootMotion(8.6).auth, "ID CONFIRMED : JOYCE MOORE", "Restoring the default keeps the original phrase");
+
+/* ------------------------------------------------- opening lettering --- */
+// Minimal element stub: enough for BootLettering's own DOM surface.
+class FakeNode {
+  constructor(tag) {
+    this.tagName = tag;
+    this.className = "";
+    this.dataset = {};
+    this.attributes = {};
+    this.children = [];
+    this.hidden = false;
+    this._classes = new Set();
+    this._text = "";
+    this.style = { setProperty: (name, value) => { this.style[name] = value; } };
+    this.classList = {
+      add: name => { this._classes.add(name); },
+      toggle: (name, on) => { if (on) this._classes.add(name); else this._classes.delete(name); },
+      contains: name => this._classes.has(name),
+    };
+  }
+  setAttribute(name, value) { this.attributes[name] = value; }
+  append(...nodes) { this.children.push(...nodes); }
+  replaceChildren(...nodes) { this.children = nodes; }
+  set textContent(value) { this._text = value; }
+  get textContent() { return this._text; }
+}
+globalThis.document = { createElement: tag => new FakeNode(tag), createElementNS: (namespace, tag) => new FakeNode(tag) };
+const { BootLettering } = await load("src/boot-lettering.ts");
+const readLettering = host => {
+  const label = host.children[0];
+  const shown = host.children.slice(1).filter(node => !node.hidden);
+  const phrase = shown[0];
+  const tail = phrase?.children.find(child => child.className === "boot-phrase-tail");
+  return {
+    fallback: host.classList.contains("boot-lettering-fallback"),
+    phrase: phrase?.dataset.phrase ?? null,
+    letters: phrase ? phrase.children.filter(child => child.className === "boot-phrase-letter" && !child.hidden).length : 0,
+    tail: tail && !tail.hidden ? tail.textContent : null,
+    label: label.textContent,
+  };
+};
+const host = new FakeNode("span");
+const lettering = new BootLettering(host, ["identity", "request"]);
+lettering.setText("ID CONFIRMED");
+assert.deepEqual(readLettering(host), { fallback: false, phrase: "identity", letters: 12, tail: null, label: "ID CONFIRMED" });
+lettering.setText("ID CONFIRMED : ");
+assert.deepEqual(readLettering(host), { fallback: false, phrase: "identity", letters: 15, tail: null, label: "ID CONFIRMED : " }, "The authored prefix is revealed letter by letter");
+lettering.setText("ID CONFIRMED : JOYCE MOORE");
+assert.deepEqual(readLettering(host), { fallback: false, phrase: "identity", letters: 26, tail: null, label: "ID CONFIRMED : JOYCE MOORE" }, "The default name keeps the outlined artwork end to end");
+lettering.setText("ID CONFIRMED : JOY");
+assert.equal(readLettering(host).tail, null, "A partial default name still reveals artwork letters");
+lettering.setText("ID CONFIRMED : 赫默");
+assert.deepEqual(readLettering(host), { fallback: false, phrase: "identity", letters: 15, tail: "赫默", label: "ID CONFIRMED : 赫默" }, "A Chinese name keeps the outlined prefix and only the name becomes live text");
+lettering.setText("ID CONFIRMED : KAL'TSIT <b>");
+assert.deepEqual(readLettering(host), { fallback: false, phrase: "identity", letters: 15, tail: "KAL'TSIT <b>", label: "ID CONFIRMED : KAL'TSIT <b>" }, "The tail carries host text verbatim as a text node");
+lettering.setText("ID CONFIRMED : ");
+assert.equal(readLettering(host).tail, null, "Clearing the name removes the tail again");
+lettering.setText("REQUEST RECEIVED");
+assert.deepEqual(readLettering(host), { fallback: false, phrase: "request", letters: 16, tail: null, label: "REQUEST RECEIVED" }, "Other authored phrases are unaffected");
+lettering.setText("UNKNOWN PHRASE");
+assert.deepEqual(readLettering(host), { fallback: true, phrase: null, letters: 0, tail: null, label: "UNKNOWN PHRASE" }, "Text outside every phrase still uses the readable fallback");
+assert.ok(!host.children[2].children.some(child => child.className === "boot-phrase-tail"), "Only the identity phrase carries a host tail");
 
 /* --------------------------------------------------------- auto theme --- */
 const auto = await load("src/auto-theme.ts");

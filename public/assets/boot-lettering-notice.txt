@@ -36,6 +36,8 @@ Only fixed outlined artwork is distributed; font rights are not transferred.
 Reproduction script: scripts/make-workbench-lettering.py.
 
 Operator name (2026-09-11): the login name can be changed from the Wallpaper
-Engine properties. The default JOYCE MOORE keeps the artwork above; any other
-value is rendered as live text with the bundled MiSans webfont, so no additional
-outlined artwork is generated or distributed for user-entered names.
+Engine properties. The opening keeps the outlined "ID CONFIRMED : " prefix and
+renders only the name itself, and the footer keeps its JOYCE MOORE artwork for
+the default value; any other name is live text with the bundled MiSans webfont.
+No additional outlined artwork is generated or distributed for user-entered
+names.

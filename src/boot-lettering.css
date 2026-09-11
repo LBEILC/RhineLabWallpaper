@@ -33,6 +33,22 @@
 }
 .boot-phrase-letter:last-child { margin-inline-end: 0; }
 .boot-phrase[hidden], .boot-phrase-letter[hidden] { display: none; }
+/* Host data after an outlined prefix (a Chinese operator name, for example).
+   It keeps the page font, the authored line metrics, and the .8em baseline the
+   outlined cells draw on (measured at .843em for MiSans in a 1em line box). */
+.boot-phrase-tail {
+  display: block;
+  flex: 0 0 auto;
+  height: 1em;
+  line-height: 1;
+  white-space: pre;
+  letter-spacing: 0;
+  font-family: inherit;
+  font-weight: 400;
+  font-synthesis: none;
+  transform: translateY(-0.043em);
+}
+.boot-phrase-tail[hidden] { display: none; }
 .boot-phrase svg.boot-letter-art {
   display: block;
   width: 100%;

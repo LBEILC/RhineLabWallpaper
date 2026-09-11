@@ -11,11 +11,32 @@
   },
   "openingCustom": {
     "text": "ID CONFIRMED : KAL'TSIT",
-    "fallback": true,
-    "phrase": null,
-    "letters": 0,
+    "fallback": false,
+    "phrase": "identity",
+    "letters": 15,
+    "tail": "KAL'TSIT",
+    "tailFont": "MiSans, \"Mi Sans\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif",
+    "baseline": {
+      "artwork": 17.99,
+      "live": 18
+    },
     "fontSize": "21.35px",
-    "width": 257,
+    "width": 250,
+    "opacity": "1"
+  },
+  "openingChinese": {
+    "text": "ID CONFIRMED : 赫默",
+    "fallback": false,
+    "phrase": "identity",
+    "letters": 15,
+    "tail": "赫默",
+    "tailFont": "MiSans, \"Mi Sans\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif",
+    "baseline": {
+      "artwork": 17.99,
+      "live": 18
+    },
+    "fontSize": "21.35px",
+    "width": 206,
     "opacity": "1"
   },
   "switchedToLight": {
@@ -34,7 +55,7 @@
   },
   "settings": {
     "intro": "Dr. Kal’tsit & <b>",
-    "schedule": "Wallpaper Engine 已按时间自动切换：暗色 19:04 / 亮色 17:04。此刻手动切换会在下一个时间点被自动结果覆盖。"
+    "schedule": "Wallpaper Engine 已按时间自动切换：暗色 19:13 / 亮色 17:13。此刻手动切换会在下一个时间点被自动结果覆盖。"
   },
   "cleared": {
     "text": "JOYCE MOORE",
@@ -46,6 +67,9 @@
     "fallback": false,
     "phrase": "identity",
     "letters": 26,
+    "tail": null,
+    "tailFont": null,
+    "baseline": null,
     "fontSize": "21.35px",
     "width": 314,
     "opacity": "1"

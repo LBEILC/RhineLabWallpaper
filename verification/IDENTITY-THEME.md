@@ -7,7 +7,8 @@
 - `src/session.ts`：会话姓名状态。修剪首尾空白、折叠连续空白与控制字符；空串、纯空白、非字符串回落到 `JOYCE MOORE`；上限 24 个码点（避免截断代理对）。
 - `src/auto-theme.ts`：调度纯逻辑。`enabled` 关闭时返回 `null`（保留手动配色）；两个时间相同也返回 `null`（不自动切换）；否则按本机时间判断当前是否落在暗色区间，区间可跨午夜；宿主传入越界或非法数值时按 0–23／0–59 收敛或回落到 19:00／07:00。
 - `src/boot-motion.ts`：开场身份确认行改为读取当前姓名。仍使用原片 321–339 帧的输入窗口，姓名长度只改变每字步长，时间轴与周边文案不变。
-- `src/workbench-lettering.ts`、`src/workbench.css`：默认姓名继续输出既有 Novecento 固定字形；其他姓名输出经过转义的实时文本（`.wb-lettering-custom`，字距 0.065em，超长省略）。因此自定义姓名无需重新导出字形，也不受 MyFonts 授权限制。
+- `src/boot-lettering.ts`、`src/boot-lettering.css`：身份确认短语拆成固定前缀与宿主尾部。`ID CONFIRMED : ` 继续使用既有的 Novecento 轮廓字形，只有姓名部分用页面字体（MiSans）实时文本输出，因此中文姓名不会改变前面的 ID CONFIRMED。尾部按 `-0.043em` 上移，与轮廓字形共用 1em 单元格的 0.8em 基线；默认姓名整句仍是原字形，没有尾部节点。没有任何固定轮廓的整句仍走原来的可读文本回落。
+- `src/workbench-lettering.ts`、`src/workbench.css`：页脚默认姓名继续输出既有 Novecento 固定字形；其他姓名输出经过转义的实时文本（`.wb-lettering-custom`，字距 0.065em，超长省略）。因此自定义姓名无需重新导出字形，也不受 MyFonts 授权限制。
 - `src/main.ts`：页脚姓名、设置页眉、访问记录、开场共用同一姓名状态；`apply()` 读取 `sessionname` 与调度属性；每秒一次的时间刻度检查边界，仅在计算目标变化时应用，避免同一时段内反复打断手动选择。
 - `wallpaper/project.json`：新增可折叠分组「登录身份」与 `sessionname`（textinput，默认 `JOYCE MOORE`）；「入场与画面」新增 `autotheme`（bool，默认关闭）与 `darkstarthour`／`darkstartminute`／`lightstarthour`／`lightstartminute`（slider，默认 19:00 与 07:00），后四项带 `autotheme.value == true` 条件显示。
 
@@ -19,7 +20,8 @@
 
 - 姓名：默认值、`undefined`／`null`／数字、纯空白与控制字符、连续空格折叠、40 字符截断、24 个 emoji 按码点截断、还原默认值。
 - 页脚字形：默认姓名与相同主机值仍使用字形图形；自定义姓名改用实时文本并完成 HTML 转义（`'`、`<`、`>`、`&`）；`session`／`replay` 固定文案不受影响。
-- 开场：帧 340 输出 `ID CONFIRMED : …` 全名（默认、自定义、中文、24 字符），输入起点仍为空，揭示过程保持递增。
+- 开场字形拆分（元素桩驱动 `BootLettering`）：`ID CONFIRMED : ` 逐步显示 15 个轮廓字母；中文与自定义姓名只显示这 15 个字母并把姓名放入尾部文本；默认姓名仍显示 26 个字母、无尾部；前缀被清空后尾部消失；其他固定短语与整句回落不受影响。
+- 开场时间轴：帧 340 输出 `ID CONFIRMED : …` 全名（默认、自定义、中文、24 字符），输入起点仍为空，揭示过程保持递增。
 - 调度：关闭、跨午夜、同日区间、两侧边界（含端点）、两个时间相同、越界与非数值回落、属性表默认值与 `condition`、属性 `order` 唯一且位于「入场与画面」区间。
 
 `node scripts/check-identity-theme-host.mjs`（通过）：真实 Wallpaper Engine 宿主窗口（`wallpaper64.exe`，关闭 3D 与开场，注入探针并通过回环上报）复现 640×360 实际渲染，覆盖：
@@ -27,8 +29,9 @@
 | 场景 | 结果 |
 | --- | --- |
 | 启动时调度为暗色、手动值为 light | `darkSurface=true`，手动值仍保存为 light |
-| 开场自定义姓名 | `ID CONFIRMED : KAL'TSIT`，使用文本回落，字号仍为 21.35px |
-| 开场默认姓名 | `ID CONFIRMED : JOYCE MOORE`，identity 字形，26 个字母全部显示 |
+| 开场自定义姓名 `KAL'TSIT` | identity 短语 + 15 个轮廓字母 + MiSans 尾部文本，不再是整句回落 |
+| 开场中文姓名 `赫默` | `ID CONFIRMED :` 保持轮廓字形，仅姓名用 MiSans；尾部基线与轮廓基线相差 0.01px |
+| 开场默认姓名 | `ID CONFIRMED : JOYCE MOORE`，identity 字形，26 个字母全部显示，无尾部 |
 | 运行时切到亮色区间 | `darkSurface=false` |
 | 此刻手动切暗色 | 立即变暗，未被下一次检查打断 |
 | 再跨越一次边界 | 自动结果重新覆盖手动选择 |

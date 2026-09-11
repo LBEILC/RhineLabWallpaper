@@ -57,11 +57,36 @@ const opening = async () => {
   await wait(120);
   const auth = document.querySelector('#auth-message');
   const phrase = auth.querySelector('.boot-phrase:not([hidden])');
+  const cells = phrase ? [...phrase.querySelectorAll('.boot-phrase-letter:not([hidden])')] : [];
+  const tail = auth.querySelector('.boot-phrase-tail:not([hidden])');
+  const stage = document.querySelector('#stage');
+  const scale = stage.getBoundingClientRect().width / stage.offsetWidth || 1;
+  // The outlined cells draw on a 0.8em baseline inside their 1em box; a
+  // zero-width inline-block measures where live text actually sits.
+  let baseline = null;
+  if (tail && cells.length) {
+    const probe = document.createElement('span');
+    probe.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline';
+    tail.append(probe);
+    const cellRect = cells[cells.length - 1].getBoundingClientRect();
+    const tailRect = tail.getBoundingClientRect();
+    const probeRect = probe.getBoundingClientRect();
+    baseline = {
+      artwork: +(((cellRect.top + cellRect.height * 0.8) - tailRect.top) / scale).toFixed(2),
+      live: +((probeRect.bottom - tailRect.top) / scale).toFixed(2),
+    };
+    probe.remove();
+  }
   const state = {
-    text: auth.textContent,
+    // The clipped label carries the whole line; the phrase nodes are aria-hidden
+    // drawings, and a live tail repeats only the part it renders.
+    text: auth.querySelector('.boot-phrase-label').textContent,
     fallback: auth.classList.contains('boot-lettering-fallback'),
     phrase: phrase ? phrase.dataset.phrase : null,
-    letters: phrase ? phrase.querySelectorAll('.boot-phrase-letter:not([hidden])').length : 0,
+    letters: cells.length,
+    tail: tail ? tail.textContent : null,
+    tailFont: tail ? getComputedStyle(tail).fontFamily : null,
+    baseline,
     fontSize: getComputedStyle(auth).fontSize,
     // Layout width in stage pixels: the host window scales the whole stage.
     width: auth.offsetWidth,
@@ -88,6 +113,11 @@ const timer = setInterval(async () => {
     const host = window.rhine.stats().wallpaper.properties;
     results.startup = { name: readName(), dark: dark(), manual: host.colortheme.value, autotheme: host.autotheme.value };
     results.openingCustom = await opening();
+    // The user-facing case: a Chinese operator name must not restyle the
+    // authored "ID CONFIRMED :" prefix.
+    push({ sessionname: { value: '赫默' } });
+    await wait(250);
+    results.openingChinese = await opening();
 
     push(scheduleFor('light'));
     await wait(400);
@@ -170,14 +200,26 @@ try {
   assert.equal(data.startup.manual, "light", "The manual value stays stored as the base");
   assert.equal(data.startup.autotheme, true);
   assert.equal(data.openingCustom.text, "ID CONFIRMED : KAL'TSIT", "The opening types the host name");
-  assert.equal(data.openingCustom.fallback, true, "An unauthored name uses the readable text fallback");
-  assert.equal(data.openingCustom.phrase, null, "No fixed phrase artwork is claimed for a custom name");
-  assert.equal(data.openingCustom.fontSize, "21.35px", "The fallback keeps the identity line metrics");
+  assert.equal(data.openingCustom.fallback, false, "A custom name no longer restyles the whole line");
+  assert.equal(data.openingCustom.phrase, "identity", "The authored identity phrase stays in charge");
+  assert.equal(data.openingCustom.letters, 15, "Only the outlined 'ID CONFIRMED : ' prefix is drawn");
+  assert.equal(data.openingCustom.tail, "KAL'TSIT", "The name itself is live text after the prefix");
+  assert.match(data.openingCustom.tailFont, /MiSans/, "The tail uses the page font");
+  assert.equal(data.openingCustom.fontSize, "21.35px", "The mixed line keeps the identity metrics");
   assert.ok(data.openingCustom.width > 150 && data.openingCustom.opacity === "1", `opening line measured ${data.openingCustom.width}px at opacity ${data.openingCustom.opacity}`);
+  assert.equal(data.openingChinese.text, "ID CONFIRMED : 赫默");
+  assert.equal(data.openingChinese.fallback, false, "A Chinese name also keeps the outlined prefix");
+  assert.equal(data.openingChinese.phrase, "identity");
+  assert.equal(data.openingChinese.letters, 15);
+  assert.equal(data.openingChinese.tail, "赫默");
+  assert.match(data.openingChinese.tailFont, /MiSans/);
+  const baselineGap = data.openingChinese.baseline ? data.openingChinese.baseline.artwork - data.openingChinese.baseline.live : null;
+  assert.ok(baselineGap !== null && Math.abs(baselineGap) <= 0.35, `tail baseline sits ${baselineGap}px from the outlined baseline`);
   assert.equal(data.openingDefault.text, "ID CONFIRMED : JOYCE MOORE");
   assert.equal(data.openingDefault.fallback, false, "The default name still renders the shipped phrase artwork");
   assert.equal(data.openingDefault.phrase, "identity");
   assert.equal(data.openingDefault.letters, 26, "Every authored letter of the default phrase is revealed");
+  assert.equal(data.openingDefault.tail, null, "The default name shows no live tail");
   assert.ok(data.openingDefault.width > 150, `default phrase measured ${data.openingDefault.width}px`);
   assert.equal(data.switchedToLight.dark, false, "Crossing into the light window switches at runtime");
   assert.equal(data.manualDuringSchedule.dark, true, "A manual colour applies at once, without being fought by the next tick");
