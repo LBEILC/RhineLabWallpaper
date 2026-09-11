@@ -25,7 +25,8 @@ function nameArtwork(text: string) {
     if (!glyph) continue;
     if (index++) x += nameTracking;
     if (glyph.path)
-      glyphs.push(`<g transform="translate(${(x * nameGlyphUnits).toFixed(2)} 0)"><path d="${glyph.path}"/></g>`);
+      // currentColor keeps the name on the theme ink instead of SVG black.
+      glyphs.push(`<g transform="translate(${(x * nameGlyphUnits).toFixed(2)} 0)" fill="currentColor"><path d="${glyph.path}"/></g>`);
     x += glyph.width;
   }
   if (!glyphs.length) return "";

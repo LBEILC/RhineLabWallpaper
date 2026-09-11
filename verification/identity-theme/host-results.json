@@ -17,7 +17,10 @@
     "live": null,
     "liveFont": null,
     "archiveText": "KAL'TSIT",
-    "alignment": null
+    "alignment": null,
+    "ink": "rgb(224, 227, 220)",
+    "glyphFill": "rgb(224, 227, 220)",
+    "fixedFill": null
   },
   "openingCustom": {
     "text": "ID CONFIRMED : KAL'TSIT",
@@ -26,6 +29,8 @@
     "letters": 15,
     "glyphs": 8,
     "drawn": 8,
+    "glyphFill": "rgb(224, 227, 220)",
+    "ink": "rgb(224, 227, 220)",
     "live": null,
     "liveFont": null,
     "alignment": {
@@ -46,7 +51,10 @@
     "live": "赫默",
     "liveFont": "MiSans",
     "archiveText": null,
-    "alignment": null
+    "alignment": null,
+    "ink": "rgb(224, 227, 220)",
+    "glyphFill": null,
+    "fixedFill": null
   },
   "openingChinese": {
     "text": "ID CONFIRMED : 赫默",
@@ -55,6 +63,8 @@
     "letters": 15,
     "glyphs": 0,
     "drawn": 0,
+    "glyphFill": null,
+    "ink": "rgb(224, 227, 220)",
     "live": "赫默",
     "liveFont": "MiSans",
     "alignment": null,
@@ -73,6 +83,8 @@
     "letters": 15,
     "glyphs": 9,
     "drawn": 8,
+    "glyphFill": null,
+    "ink": "rgb(224, 227, 220)",
     "live": "赫默",
     "liveFont": "MiSans",
     "alignment": {
@@ -110,11 +122,14 @@
     "live": null,
     "liveFont": null,
     "archiveText": "Dr. Kal’tsit & <b>",
-    "alignment": null
+    "alignment": null,
+    "ink": "rgb(120, 119, 110)",
+    "glyphFill": "rgb(120, 119, 110)",
+    "fixedFill": null
   },
   "settings": {
     "intro": "Dr. Kal’tsit & <b>",
-    "schedule": "Wallpaper Engine 已按时间自动切换：暗色 19:26 / 亮色 17:26。此刻手动切换会在下一个时间点被自动结果覆盖。"
+    "schedule": "Wallpaper Engine 已按时间自动切换：暗色 19:37 / 亮色 17:37。此刻手动切换会在下一个时间点被自动结果覆盖。"
   },
   "cleared": {
     "text": "JOYCE MOORE",
@@ -129,7 +144,10 @@
     "live": null,
     "liveFont": null,
     "archiveText": "JOYCE MOORE",
-    "alignment": null
+    "alignment": null,
+    "ink": "rgb(120, 119, 110)",
+    "glyphFill": null,
+    "fixedFill": "rgb(120, 119, 110)"
   },
   "openingDefault": {
     "text": "ID CONFIRMED : JOYCE MOORE",
@@ -138,6 +156,8 @@
     "letters": 26,
     "glyphs": 0,
     "drawn": 0,
+    "glyphFill": null,
+    "ink": "rgb(8, 10, 8)",
     "live": null,
     "liveFont": null,
     "alignment": null,

@@ -14,7 +14,7 @@
   white-space: pre;
   letter-spacing: .065em;
 }
-.wb-lettering > svg { display: none; height: 1em; vertical-align: -0.16em; overflow: visible; }
+.wb-lettering > svg { display: none; height: 1em; vertical-align: -0.16em; overflow: visible; fill: currentColor; }
 [data-workbench="true"]:not([data-mode="boot"]) .wb-lettering > svg { display: inline-block; }
 [data-workbench="true"]:not([data-mode="boot"]) .wb-lettering > .wb-lettering-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .workbench [hidden] { display: none !important; }

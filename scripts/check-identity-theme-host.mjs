@@ -79,6 +79,10 @@ const readFooter = () => {
     liveFont: live ? getComputedStyle(live).fontFamily.split(',')[0].replace(/"/g, '') : null,
     archiveText: text ? text.textContent : null,
     alignment,
+    // The artwork must follow the theme ink, never the SVG default black.
+    ink: getComputedStyle(host).color,
+    glyphFill: art?.querySelector('path') ? getComputedStyle(art.querySelector('path')).fill : null,
+    fixedFill: host.querySelector('.wb-lettering > svg:not(.wb-name-art) path') ? getComputedStyle(host.querySelector('.wb-lettering > svg:not(.wb-name-art) path')).fill : null,
   };
 };
 const dark = () => document.documentElement.dataset.darkSurface === 'true';
@@ -132,6 +136,8 @@ const opening = async () => {
     letters: prefix.length,
     glyphs: glyphs.length,
     drawn: glyphs.filter(cell => cell.querySelector('svg path')).length,
+    glyphFill: glyphs.length && glyphs[0].querySelector('path') ? getComputedStyle(glyphs[0].querySelector('path')).fill : null,
+    ink: getComputedStyle(auth).color,
     live: live ? live.textContent : null,
     liveFont: live ? getComputedStyle(live).fontFamily.split(',')[0].replace(/"/g, '') : null,
     alignment,
@@ -267,6 +273,7 @@ try {
   assert.equal(data.footerLatin.artVisible, true, "The footer shows the artwork instead of the page font");
   assert.equal(data.footerLatin.fixedArt, 0, "A host name does not reuse the authored JOYCE MOORE drawing");
   assert.equal(data.footerLatin.live, null, "An English name needs no live text");
+  assert.equal(data.footerLatin.glyphFill, data.footerLatin.ink, "Outlined names follow the theme ink, not SVG black");
   assert.ok(Math.abs(data.footerLatin.artWidth - artworkWidth("KAL'TSIT", 0.065)) < 0.001, `footer artwork width ${data.footerLatin.artWidth}em`);
   assert.equal(data.footerLatin.archiveText, "KAL'TSIT", "The plain-text form stays available for the archive footer");
   // Opening, English name.
@@ -277,6 +284,7 @@ try {
   assert.equal(data.openingCustom.glyphs, 8, "The English name is drawn from the outlined glyphs");
   assert.equal(data.openingCustom.drawn, 8, "Every glyph cell carries an outlined path");
   assert.equal(data.openingCustom.live, null, "No page-font text is used for an English name");
+  assert.equal(data.openingCustom.glyphFill, data.openingCustom.ink, "Opening name glyphs follow the identity line colour");
   assert.ok(Math.abs(data.openingCustom.alignment.top) < 0.05, `name glyphs share the prefix cell top (${data.openingCustom.alignment.top}px)`);
   assert.equal(data.openingCustom.alignment.height, data.openingCustom.alignment.prefixHeight, "Name glyph cells keep the 1em cell");
   assert.ok(data.openingCustom.fontSize === "21.35px", "The mixed line keeps the identity metrics");
@@ -313,6 +321,7 @@ try {
   assert.equal(data.scheduleReasserted.dark, false, "The next boundary re-asserts the scheduled theme");
   assert.deepEqual(data.renamed, { text: "Dr. Kal\u2019tsit & <b>", art: true, live: false }, "Renaming applies live and keeps the outlined form");
   assert.equal(data.footerRenamed.artGroups, 15, "Punctuation and mixed case are outlined too, spaces excepted");
+  assert.equal(data.footerRenamed.glyphFill, data.footerRenamed.ink, "The light theme repaints outlined names as well");
   assert.ok(Math.abs(data.footerRenamed.artWidth - artworkWidth("Dr. Kal\u2019tsit & <b>", 0.065)) < 0.001, `renamed footer width ${data.footerRenamed.artWidth}em`);
   assert.equal(data.footerRenamed.archiveText, "Dr. Kal\u2019tsit & <b>", "Host text is escaped in the plain-text form as well");
   assert.equal(data.settings.intro, "Dr. Kal\u2019tsit & <b>", "The settings surface shows the current identity");
@@ -320,6 +329,7 @@ try {
   assert.deepEqual(data.cleared, { text: "JOYCE MOORE", art: true, live: false }, "An empty host value restores the shipped name and artwork");
   assert.equal(data.footerDefault.artGroups, 0, "The default name returns to its single authored path");
   assert.equal(data.footerDefault.fixedArt, 1);
+  assert.equal(data.footerDefault.fixedFill, data.footerDefault.ink, "The authored artwork keeps its theme colour too");
   assert.equal(data.scheduleOff.dark, true, "Turning the schedule off returns the manual colour");
   await mkdir("verification/identity-theme", { recursive: true });
   await writeFile("verification/identity-theme/host-results.json", `${JSON.stringify(data, null, 2)}\n`);

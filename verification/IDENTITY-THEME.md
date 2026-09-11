@@ -9,7 +9,7 @@
 - `src/boot-motion.ts`：开场身份确认行改为读取当前姓名。仍使用原片 321–339 帧的输入窗口，姓名长度只改变每字步长，时间轴与周边文案不变。
 - `src/name-glyphs.ts`、`src/name-glyph-art.json`：姓名用的拉丁字符轮廓集（167 个字符：可打印 ASCII、Latin-1 字母、姓名常用符号），由 `scripts/make-name-glyphs.py` 用同一份授权 Normal OTF 逐字导出。只含轮廓路径与步进宽度，不含字体二进制、字形名、度量或字距表。运行时的 `nameRuns()` 把姓名切成「轮廓字形段」与「实时文本段」。
 - `src/boot-lettering.ts`、`src/boot-lettering.css`：身份确认短语拆成固定前缀与宿主姓名。`ID CONFIRMED : ` 继续使用既有 Novecento 轮廓字形；姓名的拉丁字符改用同一套轮廓字形（同一 1em 单元格与 0.8em 基线，因此与前缀完全对齐），中文等非拉丁字符保留 MiSans 实时文本（按 −0.043em 对齐轮廓基线）。默认姓名整句仍是原图形，没有尾部节点；没有固定轮廓的整句仍走原来的可读文本回落。
-- `src/workbench-lettering.ts`、`src/workbench.css`：页脚默认姓名继续使用既有固定字形；自定义姓名按同样的规则分段——拉丁段输出 `.wb-lettering`（可访问文本 + 轮廓字形 SVG，字距 0.065em），非拉丁段输出 `.wb-name-live`（MiSans，两种模式都可见）。工作台模式下英文姓名因此与原页脚同字形。
+- `src/workbench-lettering.ts`、`src/workbench.css`：页脚默认姓名继续使用既有固定字形；自定义姓名按同样的规则分段——拉丁段输出 `.wb-lettering`（可访问文本 + 轮廓字形 SVG，字距 0.065em），非拉丁段输出 `.wb-name-live`（MiSans，两种模式都可见）。工作台模式下英文姓名因此与原页脚同字形。动态轮廓的 `<g>` 与 `.wb-lettering > svg` 都显式使用 `fill: currentColor`：SVG 默认填充是黑色，若缺少该声明，暗色主题下姓名会变成黑色（见下方 2026-09-11 修正）。
 - `src/main.ts`：页脚姓名、设置页眉、访问记录、开场共用同一姓名状态；`apply()` 读取 `sessionname` 与调度属性；每秒一次的时间刻度检查边界，仅在计算目标变化时应用，避免同一时段内反复打断手动选择。
 - `wallpaper/project.json`：新增可折叠分组「登录身份」与 `sessionname`（textinput，默认 `JOYCE MOORE`）；「入场与画面」新增 `autotheme`（bool，默认关闭）与 `darkstarthour`／`darkstartminute`／`lightstarthour`／`lightstartminute`（slider，默认 19:00 与 07:00），后四项带 `autotheme.value == true` 条件显示。
 
@@ -31,7 +31,8 @@
 | 场景 | 结果 |
 | --- | --- |
 | 启动时调度为暗色、手动值为 light | `darkSurface=true`，手动值仍保存为 light |
-| 页脚英文姓名 `KAL'TSIT` | 8 个轮廓字形组、总宽 4.68em（与字距资源计算一致）、不使用 MiSans，纯文本形式仍可读 |
+| 页脚英文姓名 `KAL'TSIT` | 8 个轮廓字形组、总宽 4.68em（与字距资源计算一致）、不使用 MiSans，纯文本形式仍可读；填充色等于主题前景色 |
+| 页脚浅色主题重命名 | 15 个轮廓组，填充色随浅色主题变为 `rgb(120, 119, 110)`；原固定图形同样跟随 |
 | 开场英文姓名 `KAL'TSIT` | 15 个前缀字母 + 8 个轮廓姓名单元格，单元格顶部与前缀相差 0px、高度同为 21.344px |
 | 页脚中文姓名 `赫默` | 无轮廓组，MiSans 实时文本 |
 | 开场中文姓名 `赫默` | `ID CONFIRMED :` 保持轮廓字形，仅姓名 MiSans；实时文本基线与轮廓基线相差 0.01px |
@@ -45,6 +46,14 @@
 | 关闭自动切换后手动配色 | 手动暗色生效 |
 
 结果保存在 `verification/identity-theme/host-results.json`；脚本结束会删除宿主临时工程目录。
+
+## 2026-09-11 修正：动态姓名轮廓的填充色
+
+用户反馈右下角页脚姓名颜色变了。实测：主题前景色为 `rgb(224, 227, 220)`（暗色）时，动态姓名的路径填充为 `rgb(0, 0, 0)` —— 固定文案的 `<path>` 自带 `fill="currentColor"`，而新加入的逐字轮廓只写了 `<path d>`，SVG 默认填充是黑色，于是暗色主题下姓名变成近黑。
+
+修正：动态轮廓的 `<g>` 补上 `fill="currentColor"`，并在 `.wb-lettering > svg` 上补一条 `fill: currentColor` 兜底。修正后实测：暗色 `footerLatin` 名称填充 `rgb(224, 227, 220)`、浅色 `footerRenamed` 填充 `rgb(120, 119, 110)`、原固定图形 `rgb(120, 119, 110)`、开场身份行 `rgb(224, 227, 220)`，均与各自主题前景色一致。宿主检查新增上述四项填充色断言，避免再次回归。
+
+同一截图中的红蓝彩边来自「HUD 与画面质感 → 全局屏幕效果 → 边缘色散」：该效果用 `feDisplacementMap` 对整块舞台做 R/B 通道位移，位移量在画面最外侧约 2% 才升到最大，所以右下角的时间与斜杠最明显。它不是本次改动引入的，把「边缘色散」设为 0 或关闭「全局屏幕效果」即可去除。
 
 ## 限制与未验证项
 
