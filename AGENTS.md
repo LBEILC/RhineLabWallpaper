@@ -240,3 +240,10 @@ WE 画质下拉增加「自定义」，仅此选择且超级模式关闭时显�
 - 用户撤回额外白底的可读性方案：删除页脚新增底色与外扩阴影，仅调整底部导航、待办、提示及按钮的文字颜色；原玻璃背景和模糊参数保留。
 
 - 2026-09-11：用户要求开启 HUD 时开场同样应用曲面与鼠标追踪，覆盖此前开场无 UI 视差的限制。Logo、验证文字、圆环和欢迎画面按当帧原始动作叠加投影，品牌与 Powered 共用同一曲面；切换阶段保留深度与指针跟随状态。磨砂底仍仅交互阶段启用。见 verification/BOOT-HUD.md。
+
+## 独立壁纸仓库（2026-09-11）
+
+- 用户批准从 RhineLabUI 的 codex/wallpaper-engine 分支拆分为公共仓库 https://github.com/LBEILC/RhineLabWallpaper，保留完整历史；本仓库 main 为壁纸开发主分支。
+- 本地正式目录为 E:\AIProject\RhineLabWallpaper。原网页仓库独立维护；历史实验分支规则不再表示需要回合并 RhineLabUI/main。完成验证后提交、推送本仓库 main；不要自动向原网页仓库合并。
+- 继续沿用现有原生实现、视觉规范与 Blender 源资产。壁纸构建使用 npm run build:wallpaper；创意工坊更新仍保留既有 workshopid。
+- 清理时未接入的本地文件桥接试验、临时截图及外部参考素材保存在本地 backups/migration-2026-09-11，FILES.txt 记录原路径；未纳入公共发行版本。

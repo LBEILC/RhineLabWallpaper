@@ -1,4 +1,10 @@
-# RHINE LAB · ANALYSIS OS
+# Rhine Lab · 莱茵生命交互桌面
+
+**Wallpaper Engine 交互壁纸的独立源码仓库。**
+
+[创意工坊订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3799142774) · [壁纸开发说明](docs/WALLPAPER-ENGINE.md) · [原网页项目](https://github.com/LBEILC/RhineLabUI)
+
+本项目从 RhineLabUI 的 `codex/wallpaper-engine` 分支迁移，保留完整提交历史。壁纸后续开发在本仓库的 `main` 分支进行；下方在线体验为原项目的网页版本。
 
 **把莱茵生命的终端，做成可以操作的三维界面。**
 
@@ -16,9 +22,9 @@ iPhone 可用 Safari 打开在线版，通过“分享 → 添加到主屏幕”
 
 [快速运行](#快速运行) · [界面与动效](#界面与动效) · [操作说明](#操作说明) · [源码与 Blender 工程下载](https://pan.quark.cn/s/463285897234) · [参考原 PV](https://www.bilibili.com/video/BV1rr4y1b7sz/)
 
-## Wallpaper Engine 壁纸分支
+## Wallpaper Engine 交互桌面
 
-当前分支 **`codex/wallpaper-engine`** 用于将莱茵生命三维终端扩展为 Wallpaper Engine 交互桌面壁纸。网页正式版继续由 `main` 维护，本分支单独开发和发布壁纸功能。
+本仓库使用 **`main`** 维护 Wallpaper Engine 交互桌面。网页正式版继续在 [RhineLabUI](https://github.com/LBEILC/RhineLabUI) 维护；[原壁纸分支](https://github.com/LBEILC/RhineLabUI/tree/codex/wallpaper-engine) 保留迁移记录。
 
 **[在 Steam 创意工坊订阅壁纸 → Rhine Lab · 莱茵生命交互桌面](https://steamcommunity.com/sharedfiles/filedetails/?id=3799142774)**
 
@@ -33,8 +39,9 @@ iPhone 可用 Safari 打开在线版，通过“分享 → 添加到主屏幕”
 使用壁纸请通过上方创意工坊链接订阅，在 Wallpaper Engine 中应用并调整属性。需要自行构建时：
 
 ```sh
-git switch codex/wallpaper-engine
-npm install
+git clone https://github.com/LBEILC/RhineLabWallpaper.git
+cd RhineLabWallpaper
+npm ci
 npm run build:wallpaper
 ```
 
@@ -135,8 +142,8 @@ GIF 不含声音。可单独[试听原创配乐「观测室」](public/audio/obs
 ### 获取项目
 
 ```sh
-git clone https://github.com/LBEILC/RhineLabUI.git
-cd RhineLabUI
+git clone https://github.com/LBEILC/RhineLabWallpaper.git
+cd RhineLabWallpaper
 ```
 
 也可以从 GitHub 的 **Code → Download ZIP** 下载当前源码，或获取[夸克项目包](https://pan.quark.cn/s/463285897234)。夸克包是 **2026-09-09 的打包快照**，包含源码、运行模型与 Blender 源工程；后续更新以本仓库为准。
