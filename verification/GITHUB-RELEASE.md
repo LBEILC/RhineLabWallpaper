@@ -61,7 +61,7 @@ GitHub Actions 工作流 `.github/workflows/wallpaper-release.yml` 在推送到 
 | `RhineLabWallpaper-latest.zip` | 35,362,748 字节 |
 | `RhineLabWallpaper-latest.zip.sha256` | 95 字节 |
 
-首次运行只出现一条 `Node.js 20 is deprecated` 注解（`checkout@v4`、`setup-node@v4`、`upload-artifact@v4` 被强制运行在 Node 24 上），已改用三个 action 的 v5 版本，功能不受影响。
+首次运行只出现一条 `Node.js 20 is deprecated` 注解（`checkout@v4`、`setup-node@v4`、`upload-artifact@v4` 被强制运行在 Node 24 上）。跟进提交 `e591ac8` 改用 v5 后复跑（运行记录 <https://github.com/LBEILC/RhineLabWallpaper/actions/runs/34581132615>，30 秒成功），只剩 `upload-artifact@v5` 仍声明 `node20`，因此该项进一步改为 `actions/upload-artifact@v6`（`action.yml` 声明 `node24`）；`checkout@v5` 与 `setup-node@v5` 已无警告。
 
 ### 对已发布产物的独立复核
 
