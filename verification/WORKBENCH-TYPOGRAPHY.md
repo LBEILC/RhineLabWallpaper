@@ -11,3 +11,6 @@
 
 重新生成固定文案需 Pillow 与 fonttools 4.59.2：
 `python scripts/make-workbench-lettering.py --font <licensed-Normal.otf>`
+
+
+2026-09-11 数字试用结论：用户比较实际壁纸后选择恢复 MiSans。已撤回 Novecento 动态数字接入，保留工作台固定英文眉题与页脚图形；数字沿用原有字体、字重、字距及滚动实现。
