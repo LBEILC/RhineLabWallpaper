@@ -1,5 +1,11 @@
 .workbench { position: absolute; inset: 0; z-index: 5; pointer-events: none; color: #080a08; }
 .workbench[hidden] { display: none; }
+.wb-clock,
+.wb-timer-digits,
+.wb-muted [data-wb-roll],
+#stage[data-workbench="true"] #clock {
+  font-feature-settings: "ss01" 1;
+}
 .wb-lettering { position: relative; display: inline-block; }
 .wb-lettering > svg { display: none; height: 1em; vertical-align: -0.16em; overflow: visible; }
 [data-workbench="true"]:not([data-mode="boot"]) .wb-lettering > svg { display: inline-block; }
