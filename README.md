@@ -2,7 +2,7 @@
 
 **Wallpaper Engine 交互壁纸的独立源码仓库。**
 
-[创意工坊订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3799142774) · [壁纸开发说明](docs/WALLPAPER-ENGINE.md) · [原网页项目](https://github.com/LBEILC/RhineLabUI)
+[创意工坊订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3799142774) · [GitHub 构建包](docs/GITHUB-RELEASE.md) · [壁纸开发说明](docs/WALLPAPER-ENGINE.md) · [原网页项目](https://github.com/LBEILC/RhineLabUI)
 
 本项目从 RhineLabUI 的 `codex/wallpaper-engine` 分支迁移，保留完整提交历史。壁纸后续开发在本仓库的 `main` 分支进行；下方在线体验为原项目的网页版本。
 
@@ -28,6 +28,12 @@ iPhone 可用 Safari 打开在线版，通过“分享 → 添加到主屏幕”
 
 **[在 Steam 创意工坊订阅壁纸 → Rhine Lab · 莱茵生命交互桌面](https://steamcommunity.com/sharedfiles/filedetails/?id=3799142774)**
 
+如果创意工坊条目暂时无法订阅（Steam 反垃圾内容检查期间，条目页会显示“此物品与 Wallpaper Engine：壁纸引擎 不兼容”），可以从 GitHub 下载构建包并在本地加载，功能与工坊版一致：
+
+**[下载最新构建 → GitHub Releases](https://github.com/LBEILC/RhineLabWallpaper/releases/latest)** · [本地安装说明](docs/GITHUB-RELEASE.md)
+
+每次推送到 `main` 都会自动重新构建并刷新该发布页，产出 `RhineLabWallpaper-latest.zip` 与 `.sha256` 校验文件。解压得到的 `RhineLabWallpaper` 文件夹放入 Wallpaper Engine 的 `projects\myprojects\`，在“已安装”里选择并应用即可；创意工坊更新仍保留原 workshopid。
+
 ![Wallpaper Engine 工作台预览](wallpaper/preview.gif)
 
 - **两种工作模式**：三维档案展示与桌面工作台，可显示时间日期、今日事项、日程倒计时、系统媒体信息和专注计时。
@@ -36,7 +42,7 @@ iPhone 可用 Safari 打开在线版，通过“分享 → 添加到主屏幕”
 - **自定义图片**：关闭 3D 后可显示自行选择的壁纸，支持调整上下遮罩范围，设为 0 即关闭；时钟和媒体信息复用滚动数字与文字效果。
 - **宿主适配**：接入 WE 属性、音频响应、媒体信息、帧率及暂停通知，壁纸资源本地打包，壁纸构建不启用 PWA。
 
-使用壁纸请通过上方创意工坊链接订阅，在 Wallpaper Engine 中应用并调整属性。需要自行构建时：
+使用壁纸请优先通过上方创意工坊链接订阅；条目暂时不可订阅时，使用 GitHub Releases 的构建包。需要自己构建时：
 
 ```sh
 git clone https://github.com/LBEILC/RhineLabWallpaper.git
@@ -45,7 +51,7 @@ npm ci
 npm run build:wallpaper
 ```
 
-输出目录为 `release/wallpaper`，在 Wallpaper Engine 编辑器中打开其中的 `index.html`。系统媒体信息取决于播放器支持及 WE 媒体集成设置。更多细节见 [壁纸使用与开发说明](docs/WALLPAPER-ENGINE.md) 和 [创意工坊发布说明](docs/WORKSHOP-PUBLISH.md)。
+输出目录为 `release/wallpaper`，在 Wallpaper Engine 编辑器中打开其中的 `index.html`。`npm run release:wallpaper` 会额外打包出可直接解压的 zip 并校验内容。系统媒体信息取决于播放器支持及 WE 媒体集成设置。更多细节见 [壁纸使用与开发说明](docs/WALLPAPER-ENGINE.md)、[GitHub 构建包与本地加载](docs/GITHUB-RELEASE.md) 和 [创意工坊发布说明](docs/WORKSHOP-PUBLISH.md)。
 
 以下为项目共用的网页与三维档案功能介绍。
 

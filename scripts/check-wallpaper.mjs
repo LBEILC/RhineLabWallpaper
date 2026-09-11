@@ -5,8 +5,10 @@ import ts from "typescript";
 
 const events = [];
 const hostWindow = { dispatchEvent: event => events.push(event) };
+// The host script distinguishes an HTTP preview from a file-based wallpaper;
+// the VM must provide `location` (and `performance` for later host callbacks).
 vm.runInNewContext(readFileSync("wallpaper/host.js", "utf8"), {
-  window: hostWindow, Event, CustomEvent,
+  window: hostWindow, Event, CustomEvent, location: { protocol: "file:" }, performance,
 });
 const listener = hostWindow.wallpaperPropertyListener;
 listener.applyUserProperties({ sound: { value: false } });

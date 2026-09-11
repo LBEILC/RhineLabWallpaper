@@ -15,6 +15,10 @@
     "export:archives": "node scripts/export-records.mjs",
     "build": "tsc && vite build && node scripts/build-pwa.mjs",
     "build:wallpaper": "node scripts/patch-rolling-number.mjs && node scripts/export-records.mjs && tsc && vite build --mode wallpaper --outDir release/wallpaper && node scripts/build-wallpaper.mjs",
+    "pack:wallpaper": "node scripts/package-wallpaper.mjs",
+    "check:wallpaper-release": "node scripts/check-wallpaper-release.mjs",
+    "release:wallpaper": "npm run build:wallpaper && npm run pack:wallpaper && npm run check:wallpaper-release",
+    "sync:description": "node scripts/sync-workshop-description.mjs",
     "format": "prettier --write src scripts index.html package.json tsconfig.json",
     "preview": "vite preview --host 127.0.0.1"
   },
@@ -29,4 +33,3 @@
     "vite": "^7.3.1"
   }
 }
-

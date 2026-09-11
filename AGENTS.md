@@ -263,4 +263,13 @@ WE 画质下拉增加「自定义」，仅此选择且超级模式关闭时显�
 
 ## 工坊简介持续维护
 
-用户于 2026-09-11 要求：每次更新都重新整理一份完整工坊简介，并同步 docs/WORKSHOP-DESCRIPTION.txt、wallpaper/project.json 的 description 与本机正式 WE 工程。简介顶部仅保留最新 10 条面向用户的更新，按日期及更新顺序倒序；不把已撤回试验当作正式功能。完整日志维护在 docs/CHANGELOG.md，旧条目不得因简介截短而删除。简介保留“更多更新日志请前往 GitHub 查看”及该文件的 GitHub 链接。工坊发布仍由用户操作，保留 workshopid。
+用户于 2026-09-11 要求：每次更新都重新整理一份完整工坊简介，并同步 docs/WORKSHOP-DESCRIPTION.txt、wallpaper/project.json 的 description 与本机正式 WE 工程。简介顶部仅保留最新 10 条面向用户的更新，按日期及更新顺序倒序；不把已撤回试验当作正式功能。完整日志维护在 docs/CHANGELOG.md，旧条目不得因简介截短而删除。简介保留“更多更新日志请前往 GitHub 查看”及该文件的 GitHub 链接。工坊发布仍由用户操作，保留 workshopid。同步步骤已脚本化：`npm run sync:description` 写入 wallpaper/project.json，附加本机正式工程路径即可一并更新。
+
+## GitHub 构建包发布（2026-09-11）
+
+- 用户反馈创意工坊条目页出现“此物品与 Wallpaper Engine：壁纸引擎 不兼容”。Wallpaper Engine 官方说明这是反垃圾内容检查的临时标记，作者无需处理、通常几小时解除；条目仍可订阅，不得因此重建条目。用户要求不再只依赖创意工坊：每次构建后在 GitHub 发 Release，供人下载后放进 Wallpaper Engine 的 myprojects 本地加载。
+- 推送 main 由 `.github/workflows/wallpaper-release.yml` 重新构建并就地刷新滚动发布 `latest`；推送 `v*` 标签创建永久版本发布；手动运行可指定标签补发。发布使用仓库 `GITHUB_TOKEN`，需要 Actions 读写权限。
+- 本地等价流程：`npm run release:wallpaper` → `release/RhineLabWallpaper-<标签>.zip`（顶层 `RhineLabWallpaper` 工程目录 + 根目录 `INSTALL.txt`）、同名 `.sha256` 与 `release/release-notes.md`。
+- `scripts/zip-utils.mjs` 为仅依赖 node:zlib 的 zip 实现，固定时间戳保证相同输入产生相同字节；`scripts/check-wallpaper-release.mjs` 校验每个条目 CRC、工程结构、相对路径、档案文本数量与 `build-files.json` 清单。
+- 打包必须排除仅供本机使用的 MyFonts 授权字体（`public/fonts/novecento`），脚本发现即失败；这些文字使用仓库内置固定字形图形，与工坊版显示一致。`release/` 不进入 Git。
+- 用户侧下载、安装、更新与校验见 docs/GITHUB-RELEASE.md；本轮本地与 CI 验证见 verification/GITHUB-RELEASE.md。

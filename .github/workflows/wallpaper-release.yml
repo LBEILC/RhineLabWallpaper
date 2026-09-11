@@ -1,0 +1,96 @@
+name: Wallpaper release
+
+# Every push to main rebuilds the wallpaper and refreshes the rolling "latest"
+# release, so people who cannot use the Steam Workshop item can always download
+# a ready-to-load package. Version tags create permanent releases.
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to create/refresh (default: latest)"
+        required: false
+        default: latest
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wallpaper-release
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate archive content
+        run: npm run check:content
+
+      - name: Build wallpaper
+        run: npm run build:wallpaper
+
+      - name: Check wallpaper host behaviour
+        run: node scripts/check-wallpaper.mjs
+
+      - name: Resolve release tag
+        id: tag
+        run: |
+          tag="${{ github.ref_type == 'tag' && github.ref_name || inputs.tag }}"
+          if [ -z "$tag" ]; then tag=latest; fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "Releasing as: $tag"
+
+      - name: Package release archive
+        run: node scripts/package-wallpaper.mjs --tag "${{ steps.tag.outputs.tag }}"
+
+      - name: Verify release archive
+        run: node scripts/check-wallpaper-release.mjs "release/RhineLabWallpaper-${{ steps.tag.outputs.tag }}.zip"
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: RhineLabWallpaper-${{ steps.tag.outputs.tag }}
+          path: |
+            release/RhineLabWallpaper-*.zip
+            release/RhineLabWallpaper-*.zip.sha256
+          if-no-files-found: error
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          set -euo pipefail
+          files=(release/RhineLabWallpaper-*.zip release/RhineLabWallpaper-*.zip.sha256)
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "${files[@]}" --clobber
+            gh release edit "$TAG" --title "Rhine Lab · 莱茵生命交互桌面（$TAG）" --notes-file release/release-notes.md
+          else
+            title="Rhine Lab · 莱茵生命交互桌面（$TAG）"
+            if [ "$TAG" != latest ]; then
+              gh release create "$TAG" --verify-tag --title "$title" --notes-file release/release-notes.md "${files[@]}"
+            else
+              gh release create latest --title "$title" --notes-file release/release-notes.md "${files[@]}"
+            fi
+          fi
+          gh release view "$TAG" --json tagName,name,assets,url --jq '{tag: .tagName, name: .name, url: .url, assets: [.assets[].name]}'
+
+      - name: Job summary
+        run: |
+          {
+            echo "### Wallpaper release \`${{ steps.tag.outputs.tag }}\`"
+            echo
+            cat release/release-notes.md
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -259,3 +259,15 @@ scripts/patch-rolling-number.mjs 将字形宽高改为本地 computed style 尺�
 ### 开场 HUD
 
 开启「HUD 与画面质感」中的曲面效果后，前段开场也应用相同曲面纵深与鼠标追踪。关闭追踪保留静态曲面，关闭 HUD 恢复原开场；减少动态效果时停止追踪。无需新增开关。原始开场位移、缩放与笔画时间轴继续运行，进入工作台时延续 HUD 状态。
+
+## GitHub 构建包与自动发布（2026-09-11）
+
+Steam 创意工坊条目在反垃圾内容检查期间会被标记为“与 Wallpaper Engine 不兼容”，Wallpaper Engine 官方说明这属于自动检查状态，通常几小时内自行解除，作者无需处理（[排错文档](https://help.wallpaperengine.io/zh/interface/exclude.html)）。为了不再依赖单一渠道，仓库新增独立构建包发布。
+
+- `scripts/package-wallpaper.mjs` 把 `release/wallpaper` 打包成 `release/RhineLabWallpaper-<标签>.zip`，压缩包内为顶层 `RhineLabWallpaper` 工程目录和根目录的 `INSTALL.txt`；同时写出 `.sha256` 与 `release/release-notes.md`。压缩使用自带的 `scripts/zip-utils.mjs`，不引入新依赖，固定时间戳使相同输入产生相同字节。
+- `scripts/check-wallpaper-release.mjs` 读取压缩包，校验每个条目的 CRC、工程结构（`project.json`/`index.html`/`LICENSE`/预览）、相对资源路径、档案文本数量，并比对 `build-files.json` 清单；发现 `novecento` 授权字体会直接失败。
+- `.github/workflows/wallpaper-release.yml` 在推送到 `main` 时重建并刷新滚动发布 `latest`（就地更新说明与资源），推送 `v*` 标签时创建永久版本发布，也支持手动指定标签补发。
+- 打包脚本会拒绝本机 MyFonts 授权字体，因此无论本地还是 CI 生成的包都只包含可再分发资源；这四处 Novecento 文字使用仓库内置的固定字形图形，与工坊版显示一致。
+- 简介维护的同步步骤已经脚本化：`npm run sync:description` 把 `docs/WORKSHOP-DESCRIPTION.txt` 写入 `wallpaper/project.json`，并可附加本机正式工程的 `project.json` 路径。
+
+用户侧的下载、安装、更新与校验步骤见 [GitHub 构建包与本地加载](GITHUB-RELEASE.md)，本轮本地与 CI 验证见 verification/GITHUB-RELEASE.md。

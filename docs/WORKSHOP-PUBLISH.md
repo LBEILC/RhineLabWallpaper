@@ -47,11 +47,23 @@ GIF 是无声的。预览封面不能完整表现所有细节，订阅后的壁�
 
 工坊上传不等于源码备份。保留源码仓库和发布工程，两者都有用途。
 
+## 条目被标记为“不兼容”
+
+条目页出现 **“此物品与 Wallpaper Engine：壁纸引擎 不兼容”** 时，通常是 Steam 反垃圾内容检查的临时状态，不是工程或类型问题。Wallpaper Engine 官方说明：这由自动垃圾内容检查触发，不需要作者做任何操作，通常几小时内通过即可（[官方说明](https://help.wallpaperengine.io/zh/interface/exclude.html)）。
+
+- 该提示不等于条目失效：条目页仍会显示订阅按钮，其他用户可以正常订阅。
+- 不要为此重建或重新上传条目，重复条目会丢失原有订阅者与 workshopid。
+- 同时保留 GitHub 构建包渠道，方便在检查期间或不想使用创意工坊的用户：见 [GitHub 构建包与本地加载](GITHUB-RELEASE.md)。推送 `main` 后会自动刷新 `latest` 发布。
+
 ## 可复制的发布描述
 
 完整简介保存在 [WORKSHOP-DESCRIPTION.txt](WORKSHOP-DESCRIPTION.txt)，并同步到正式工程的 description。更新日志放在最前面，按日期从新到旧，同一天按更新顺序从新到旧排列，后接功能介绍。日期依据开发记录整理，不代表当天每一项都单独发布过工坊版本。以后每次更新都重新整理完整简介，顶部保留最新 10 条面向用户的变化，完整历史移至 docs/CHANGELOG.md。
 
-若发布窗口未自动带出新简介，将该文本文件的完整内容粘贴到描述栏，再发布更新。
+若发布窗口未自动带出新简介，将该文本文件的完整内容粘贴到描述栏，再发布更新。同步可执行 `npm run sync:description`，它会写入 `wallpaper/project.json`；本机正式工程另加路径参数：
+
+```powershell
+node scripts/sync-workshop-description.mjs "D:\Game\Steam\steamapps\common\wallpaper_engine\projects\myprojects\rhine-lab-workshop\project.json"
+```
 
 ### 简介维护规则（2026-09-11 更新）
 
