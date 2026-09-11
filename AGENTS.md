@@ -273,3 +273,10 @@ WE 画质下拉增加「自定义」，仅此选择且超级模式关闭时显�
 - `scripts/zip-utils.mjs` 为仅依赖 node:zlib 的 zip 实现，固定时间戳保证相同输入产生相同字节；`scripts/check-wallpaper-release.mjs` 校验每个条目 CRC、工程结构、相对路径、档案文本数量与 `build-files.json` 清单。
 - 打包必须排除仅供本机使用的 MyFonts 授权字体（`public/fonts/novecento`），脚本发现即失败；这些文字使用仓库内置固定字形图形，与工坊版显示一致。`release/` 不进入 Git。
 - 用户侧下载、安装、更新与校验见 docs/GITHUB-RELEASE.md；本轮本地与 CI 验证见 verification/GITHUB-RELEASE.md。
+
+## 登录身份与自动明暗切换（2026-09-11）
+
+- 用户要求在 WE 设置中新增两项：可修改的登录人姓名（默认保持现有设置），以及可自定义切换时间的深色／浅色自动切换。
+- 姓名使用 WE「登录身份」文本属性，默认 `JOYCE MOORE`；开场身份确认行、页脚、设置页眉与访问记录共用。默认姓名保留既有 Novecento 固定字形，其他姓名改用 MiSans 实时文本；留空回落默认值，上限 24 个码点。
+- 自动切换使用「入场与画面」中的开关与四个时／分滑杆（默认 19:00 与 07:00），按本机时间判断，可跨午夜；两个时间相同表示不自动切换。到点复用既有逐张变色过渡，手动切换在下一次跨越时间点时被自动结果覆盖，关闭开关即回到手动配色。
+- 实现与验证见 verification/IDENTITY-THEME.md；纯逻辑检查 `scripts/check-identity-theme.mjs`，真实 WE 宿主检查 `scripts/check-identity-theme-host.mjs`。

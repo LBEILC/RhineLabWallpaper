@@ -7,6 +7,17 @@
   font-feature-settings: "ss01" 1;
 }
 .wb-lettering { position: relative; display: inline-block; }
+/* A host-provided login name has no authored glyph artwork; keep it live text
+   with the same tracking as the fixed phrases. */
+.wb-lettering-custom {
+  display: inline-block;
+  max-width: 26ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: -0.16em;
+  letter-spacing: .065em;
+}
 .wb-lettering > svg { display: none; height: 1em; vertical-align: -0.16em; overflow: visible; }
 [data-workbench="true"]:not([data-mode="boot"]) .wb-lettering > svg { display: inline-block; }
 [data-workbench="true"]:not([data-mode="boot"]) .wb-lettering > .wb-lettering-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

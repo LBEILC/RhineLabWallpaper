@@ -19,6 +19,6 @@ export function paintTheme(amount: number) {
     root.style.setProperty(`--theme-${name}-rgb`, value);
   }
 }
-export function themeSettingsMarkup(dark: boolean) {
-  return `<div class="theme-settings"><div><strong>界面配色</strong><span>玻璃阵列随配色逐张过渡</span></div><div class="theme-choices" role="group" aria-label="界面配色"><button data-color-theme="light" aria-pressed="${!dark}">亮色</button><button data-color-theme="dark" aria-pressed="${dark}">暗色</button></div></div>`;
+export function themeSettingsMarkup(dark: boolean, schedule?: string | null) {
+  return `<div class="theme-settings"><div><strong>界面配色</strong><span>玻璃阵列随配色逐张过渡</span>${schedule ? `<span class="theme-schedule">Wallpaper Engine 已按时间自动切换：${schedule}。此刻手动切换会在下一个时间点被自动结果覆盖。</span>` : ""}</div><div class="theme-choices" role="group" aria-label="界面配色"><button data-color-theme="light" aria-pressed="${!dark}">亮色</button><button data-color-theme="dark" aria-pressed="${dark}">暗色</button></div></div>`;
 }

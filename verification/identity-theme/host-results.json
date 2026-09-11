@@ -1,0 +1,56 @@
+{
+  "startup": {
+    "name": {
+      "text": "KAL'TSIT",
+      "live": true,
+      "artwork": false
+    },
+    "dark": true,
+    "manual": "light",
+    "autotheme": true
+  },
+  "openingCustom": {
+    "text": "ID CONFIRMED : KAL'TSIT",
+    "fallback": true,
+    "phrase": null,
+    "letters": 0,
+    "fontSize": "21.35px",
+    "width": 257,
+    "opacity": "1"
+  },
+  "switchedToLight": {
+    "dark": false
+  },
+  "manualDuringSchedule": {
+    "dark": true
+  },
+  "scheduleReasserted": {
+    "dark": false
+  },
+  "renamed": {
+    "text": "Dr. Kal’tsit & <b>",
+    "live": true,
+    "artwork": false
+  },
+  "settings": {
+    "intro": "Dr. Kal’tsit & <b>",
+    "schedule": "Wallpaper Engine 已按时间自动切换：暗色 19:04 / 亮色 17:04。此刻手动切换会在下一个时间点被自动结果覆盖。"
+  },
+  "cleared": {
+    "text": "JOYCE MOORE",
+    "live": false,
+    "artwork": true
+  },
+  "openingDefault": {
+    "text": "ID CONFIRMED : JOYCE MOORE",
+    "fallback": false,
+    "phrase": "identity",
+    "letters": 26,
+    "fontSize": "21.35px",
+    "width": 314,
+    "opacity": "1"
+  },
+  "scheduleOff": {
+    "dark": true
+  }
+}

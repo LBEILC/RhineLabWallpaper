@@ -40,6 +40,15 @@ let workbench: Workbench | undefined;
 import { ArchivePlayground } from "./archive-playground";
 import { ARRAY_OPENING_END, openingShowsDetail } from "./wallpaper-opening";
 import { paintTheme, themeSettingsMarkup } from "./theme-ui";
+import { sessionName, setSessionName } from "./session";
+import {
+  autoThemeFromProperties,
+  autoThemeSchedule,
+  autoThemeTarget,
+  defaultAutoTheme,
+  type AutoThemeConfig,
+  type ColorTheme,
+} from "./auto-theme";
 let playground: ArchivePlayground | undefined;
 import { WallpaperEffects } from "./wallpaper-effects";
 import { WallpaperBackground } from "./wallpaper-background";
@@ -83,7 +92,7 @@ $("#stage").innerHTML = `
     <article id="detail-content" class="detail-content"></article>
   </section>
   <div class="powered">POWERED BY <b>RHINE LAB</b><i></i></div>
-  <footer class="system-footer"><span><i class="status-light"></i> ${workbenchLettering('session')}${isWallpaper ? '<button type="button" class="three-toggle" data-action="toggle-three" aria-pressed="true" title="卸载三维模型，保留 2D 界面">3D 开启</button>' : ''}</span><span>${workbenchLettering('user')} <i>／</i> <span id="clock">00:00:00</span></span><button data-action="replay" title="重播启动流程">${workbenchLettering('replay')} ↗</button></footer>
+  <footer class="system-footer"><span><i class="status-light"></i> ${workbenchLettering('session')}${isWallpaper ? '<button type="button" class="three-toggle" data-action="toggle-three" aria-pressed="true" title="卸载三维模型，保留 2D 界面">3D 开启</button>' : ''}</span><span><span id="session-name">${workbenchLettering('user')}</span> <i>／</i> <span id="clock">00:00:00</span></span><button data-action="replay" title="重播启动流程">${workbenchLettering('replay')} ↗</button></footer>
   <div id="pwa-update-notice" class="pwa-update-notice" role="status" hidden><span>新版本已就绪</span><button data-pwa-action="update">更新并重启 ↻</button></div>
   <div id="modal-root"></div><div id="toast" class="toast" role="status"></div>
   <div id="loading" class="loading"><div class="loading-mark">${logo}</div><span>CONNECTING TO INTERNAL DATABASE</span><i></i></div>
@@ -274,6 +283,31 @@ function savePrefs() {
   hoverCode.update({ animated: !prefs.reduced && mode === "archive" });
   $("#stage").classList.toggle("reduce-motion", prefs.reduced);
   syncWallpaperBackground();
+}
+// Scheduled light/dark switching is host-only; the manual pick stays the base
+// value used while it is disabled. The decision is edge-triggered so a manual
+// choice between two boundaries is not fought by the next tick.
+let autoTheme: AutoThemeConfig = defaultAutoTheme;
+let autoThemeDecision: ColorTheme | null = null;
+function autoThemeEnabled() { return isWallpaper && autoTheme.enabled; }
+function setColorTheme(theme: ColorTheme) {
+  if (prefs.colorTheme === theme) return;
+  prefs.colorTheme = theme;
+  savePrefs();
+}
+function syncAutoTheme() {
+  if (!isWallpaper) return;
+  const target = autoThemeTarget(autoTheme, new Date());
+  if (target === null) { autoThemeDecision = null; return; }
+  if (target === autoThemeDecision) return;
+  autoThemeDecision = target;
+  setColorTheme(target);
+}
+function syncSessionName() {
+  const footer = document.querySelector("#session-name");
+  if (footer) footer.innerHTML = workbenchLettering("user", sessionName());
+  const intro = document.querySelector("#settings-intro-name");
+  if (intro) intro.textContent = sessionName();
 }
 let previousLayout = "";
 function fit() {
@@ -542,7 +576,7 @@ function setTab(tab: string, sound = true) {
             .slice(0, 4)
             .map(
               (entry) =>
-                `<div class="log-row"><span>${entry.time}</span><span>JOYCE MOORE</span><b>READ AUTHORIZED</b></div>`,
+                `<div class="log-row"><span>${entry.time}</span><span>${escapeHtml(sessionName())}</span><b>READ AUTHORIZED</b></div>`,
             )
             .join(
               "",
@@ -659,7 +693,7 @@ function motionSettingsMarkup() {
     : "当前使用完整动效。"}</p>${prefs.reduced ? '<button data-action="enable-motion">启用完整动效并重播 ↻</button>' : ""}</div>`;
 }
 function settingsMarkup() {
-  return `<h2>SYSTEM SETTINGS<small>终端偏好设置</small></h2><p class="settings-intro">JOYCE MOORE <span>·</span> SESSION AUTHORIZED</p>${isWallpaper ? '<p class="wallpaper-settings-note">每次启动都会读取 Wallpaper Engine 中的设置。在此修改仅对当前运行生效，无法持久保存；如需保留，请在 Wallpaper Engine 的壁纸属性中调整。</p>' : ""}<div class="settings-list">${themeSettingsMarkup(prefs.colorTheme === "dark")}${workbench?.settingsMarkup() ?? ""}${audioSettingsMarkup(prefs)}<label><div><strong>REDUCED MOTION</strong><span>跳过开机动画，简化选档、镜头和文字动效</span></div><input type="checkbox" data-pref="reduced" ${prefs.reduced ? "checked" : ""}/><i class="toggle"></i></label></div>${motionSettingsMarkup()}${qualityMarkup(prefs.rendering)}${pwaSettingsMarkup()}<div class="settings-shortcuts">${isWallpaper ? '<span>DESKTOP CONTROLS</span><p>拖动阵列或点击界面按钮浏览档案。桌面模式下，方向键与滚轮可能无法传入壁纸。</p>' : '<span>KEYBOARD CONTROLS</span><p><kbd>←</kbd><kbd>→</kbd> 切列 <kbd>↑</kbd><kbd>↓</kbd> 选档 <kbd>ENTER</kbd> 读取 <kbd>/</kbd> 检索 <kbd>ESC</kbd> 返回</p>'}</div><div class="settings-bottom">${!isWallpaper && document.fullscreenEnabled ? '<button data-action="fullscreen">FULLSCREEN <span>↗</span></button>' : ''}<button data-action="restart">REINITIALIZE SYSTEM <span>↻</span></button></div><div class="modal-bottom"><span>ANALYSIS OS / 1.0 · 使用 MiSans 字体（小米） <a href="${assetUrl("fonts/MiSans-license.pdf")}" target="_blank" rel="noopener">字体许可</a></span><span>POWERED BY RHINE LAB</span></div>`;
+  return `<h2>SYSTEM SETTINGS<small>终端偏好设置</small></h2><p class="settings-intro"><span id="settings-intro-name">${escapeHtml(sessionName())}</span> <span>·</span> SESSION AUTHORIZED</p>${isWallpaper ? '<p class="wallpaper-settings-note">每次启动都会读取 Wallpaper Engine 中的设置。在此修改仅对当前运行生效，无法持久保存；如需保留，请在 Wallpaper Engine 的壁纸属性中调整。</p>' : ""}<div class="settings-list">${themeSettingsMarkup(prefs.colorTheme === "dark", autoThemeEnabled() ? autoThemeSchedule(autoTheme) : null)}${workbench?.settingsMarkup() ?? ""}${audioSettingsMarkup(prefs)}<label><div><strong>REDUCED MOTION</strong><span>跳过开机动画，简化选档、镜头和文字动效</span></div><input type="checkbox" data-pref="reduced" ${prefs.reduced ? "checked" : ""}/><i class="toggle"></i></label></div>${motionSettingsMarkup()}${qualityMarkup(prefs.rendering)}${pwaSettingsMarkup()}<div class="settings-shortcuts">${isWallpaper ? '<span>DESKTOP CONTROLS</span><p>拖动阵列或点击界面按钮浏览档案。桌面模式下，方向键与滚轮可能无法传入壁纸。</p>' : '<span>KEYBOARD CONTROLS</span><p><kbd>←</kbd><kbd>→</kbd> 切列 <kbd>↑</kbd><kbd>↓</kbd> 选档 <kbd>ENTER</kbd> 读取 <kbd>/</kbd> 检索 <kbd>ESC</kbd> 返回</p>'}</div><div class="settings-bottom">${!isWallpaper && document.fullscreenEnabled ? '<button data-action="fullscreen">FULLSCREEN <span>↗</span></button>' : ''}<button data-action="restart">REINITIALIZE SYSTEM <span>↻</span></button></div><div class="modal-bottom"><span>ANALYSIS OS / 1.0 · 使用 MiSans 字体（小米） <a href="${assetUrl("fonts/MiSans-license.pdf")}" target="_blank" rel="noopener">字体许可</a></span><span>POWERED BY RHINE LAB</span></div>`;
 }
 
 document.addEventListener("input", (e) => {
@@ -976,6 +1010,8 @@ function frame(ms: number) {
   if (Math.floor(time) !== lastTime) {
     lastTime = Math.floor(time);
     updateFooterClock(new Date(), !prefs.reduced);
+    // Boundary checks are cheap and share the once-per-second schedule tick.
+    syncAutoTheme();
   }
   frameCount++;
   if (ms - frameStart > 1000) {
@@ -1162,8 +1198,11 @@ function syncWallpaperBackground(retry = false) {
 }
 if (isWallpaper) {
   const apply = (properties: WallpaperProperties) => {
+    const merged = { ...wallpaperHost()?.properties, ...properties };
     const theme = properties.colortheme?.value;
     if (theme === "light" || theme === "dark") prefs.colorTheme = theme;
+    setSessionName(merged.sessionname?.value);
+    autoTheme = autoThemeFromProperties(merged);
     scene?.setArchiveCoverage(properties.archivecoverage?.value === "extra" || wallpaperHost()?.properties.archivecoverage?.value === "extra");
     for (const key of ["sound", "music", "reduced"] as const)
       if (typeof properties[key]?.value === "boolean") prefs[key] = properties[key].value as boolean;
@@ -1175,6 +1214,9 @@ if (isWallpaper) {
     if (Object.keys(properties).some(key => key === "renderquality" || key.startsWith("quality")))
       prefs.rendering = wallpaperQuality(qualityProperties, prefs.rendering);
     savePrefs();
+    // The schedule re-asserts only when it actually crosses into a new theme.
+    syncSessionName();
+    syncAutoTheme();
     if (properties.customwallpaperfile || properties.customwallpaper?.value === true) syncWallpaperBackground(true);
     if (properties.boot?.value === false && started && mode === "boot") setMode("archive");
     // Keep an already-open settings surface in sync without replacing focused controls.
