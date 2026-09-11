@@ -7,8 +7,9 @@
 - `src/session.ts`：会话姓名状态。修剪首尾空白、折叠连续空白与控制字符；空串、纯空白、非字符串回落到 `JOYCE MOORE`；上限 24 个码点（避免截断代理对）。
 - `src/auto-theme.ts`：调度纯逻辑。`enabled` 关闭时返回 `null`（保留手动配色）；两个时间相同也返回 `null`（不自动切换）；否则按本机时间判断当前是否落在暗色区间，区间可跨午夜；宿主传入越界或非法数值时按 0–23／0–59 收敛或回落到 19:00／07:00。
 - `src/boot-motion.ts`：开场身份确认行改为读取当前姓名。仍使用原片 321–339 帧的输入窗口，姓名长度只改变每字步长，时间轴与周边文案不变。
-- `src/boot-lettering.ts`、`src/boot-lettering.css`：身份确认短语拆成固定前缀与宿主尾部。`ID CONFIRMED : ` 继续使用既有的 Novecento 轮廓字形，只有姓名部分用页面字体（MiSans）实时文本输出，因此中文姓名不会改变前面的 ID CONFIRMED。尾部按 `-0.043em` 上移，与轮廓字形共用 1em 单元格的 0.8em 基线；默认姓名整句仍是原字形，没有尾部节点。没有任何固定轮廓的整句仍走原来的可读文本回落。
-- `src/workbench-lettering.ts`、`src/workbench.css`：页脚默认姓名继续输出既有 Novecento 固定字形；其他姓名输出经过转义的实时文本（`.wb-lettering-custom`，字距 0.065em，超长省略）。因此自定义姓名无需重新导出字形，也不受 MyFonts 授权限制。
+- `src/name-glyphs.ts`、`src/name-glyph-art.json`：姓名用的拉丁字符轮廓集（167 个字符：可打印 ASCII、Latin-1 字母、姓名常用符号），由 `scripts/make-name-glyphs.py` 用同一份授权 Normal OTF 逐字导出。只含轮廓路径与步进宽度，不含字体二进制、字形名、度量或字距表。运行时的 `nameRuns()` 把姓名切成「轮廓字形段」与「实时文本段」。
+- `src/boot-lettering.ts`、`src/boot-lettering.css`：身份确认短语拆成固定前缀与宿主姓名。`ID CONFIRMED : ` 继续使用既有 Novecento 轮廓字形；姓名的拉丁字符改用同一套轮廓字形（同一 1em 单元格与 0.8em 基线，因此与前缀完全对齐），中文等非拉丁字符保留 MiSans 实时文本（按 −0.043em 对齐轮廓基线）。默认姓名整句仍是原图形，没有尾部节点；没有固定轮廓的整句仍走原来的可读文本回落。
+- `src/workbench-lettering.ts`、`src/workbench.css`：页脚默认姓名继续使用既有固定字形；自定义姓名按同样的规则分段——拉丁段输出 `.wb-lettering`（可访问文本 + 轮廓字形 SVG，字距 0.065em），非拉丁段输出 `.wb-name-live`（MiSans，两种模式都可见）。工作台模式下英文姓名因此与原页脚同字形。
 - `src/main.ts`：页脚姓名、设置页眉、访问记录、开场共用同一姓名状态；`apply()` 读取 `sessionname` 与调度属性；每秒一次的时间刻度检查边界，仅在计算目标变化时应用，避免同一时段内反复打断手动选择。
 - `wallpaper/project.json`：新增可折叠分组「登录身份」与 `sessionname`（textinput，默认 `JOYCE MOORE`）；「入场与画面」新增 `autotheme`（bool，默认关闭）与 `darkstarthour`／`darkstartminute`／`lightstarthour`／`lightstartminute`（slider，默认 19:00 与 07:00），后四项带 `autotheme.value == true` 条件显示。
 
@@ -19,8 +20,9 @@
 `node scripts/check-identity-theme.mjs`（通过）：
 
 - 姓名：默认值、`undefined`／`null`／数字、纯空白与控制字符、连续空格折叠、40 字符截断、24 个 emoji 按码点截断、还原默认值。
-- 页脚字形：默认姓名与相同主机值仍使用字形图形；自定义姓名改用实时文本并完成 HTML 转义（`'`、`<`、`>`、`&`）；`session`／`replay` 固定文案不受影响。
-- 开场字形拆分（元素桩驱动 `BootLettering`）：`ID CONFIRMED : ` 逐步显示 15 个轮廓字母；中文与自定义姓名只显示这 15 个字母并把姓名放入尾部文本；默认姓名仍显示 26 个字母、无尾部；前缀被清空后尾部消失；其他固定短语与整句回落不受影响。
+- 字形资源：167 个字符覆盖断言；中文不在导出范围内；身份确认句的 26 个字符与既有固定文案的路径、步进宽度逐项一致；姓名资源记录的 SHA-256 与 `sources.json` 的 Normal 来源一致。
+- 页脚字形：默认姓名与相同主机值仍使用固定图形；英文姓名输出 `.wb-lettering` + 轮廓 `<g transform>` 字形并转义主机文本；中文姓名输出 `.wb-name-live`；混排保持输入顺序；`session`／`replay` 固定文案不受影响。
+- 开场分段（元素桩驱动 `BootLettering`）：`ID CONFIRMED : ` 逐步显示 15 个轮廓字母；英文姓名（`KAL'TSIT`、`Dr. Kal'tsit`）追加对应数量的轮廓单元格，宽度取自字形资源；中文姓名追加 `.boot-phrase-live`；混排同时出现两种；清空后尾部消失；其他固定短语与整句回落不受影响。
 - 开场时间轴：帧 340 输出 `ID CONFIRMED : …` 全名（默认、自定义、中文、24 字符），输入起点仍为空，揭示过程保持递增。
 - 调度：关闭、跨午夜、同日区间、两侧边界（含端点）、两个时间相同、越界与非数值回落、属性表默认值与 `condition`、属性 `order` 唯一且位于「入场与画面」区间。
 
@@ -29,14 +31,17 @@
 | 场景 | 结果 |
 | --- | --- |
 | 启动时调度为暗色、手动值为 light | `darkSurface=true`，手动值仍保存为 light |
-| 开场自定义姓名 `KAL'TSIT` | identity 短语 + 15 个轮廓字母 + MiSans 尾部文本，不再是整句回落 |
-| 开场中文姓名 `赫默` | `ID CONFIRMED :` 保持轮廓字形，仅姓名用 MiSans；尾部基线与轮廓基线相差 0.01px |
-| 开场默认姓名 | `ID CONFIRMED : JOYCE MOORE`，identity 字形，26 个字母全部显示，无尾部 |
+| 页脚英文姓名 `KAL'TSIT` | 8 个轮廓字形组、总宽 4.68em（与字距资源计算一致）、不使用 MiSans，纯文本形式仍可读 |
+| 开场英文姓名 `KAL'TSIT` | 15 个前缀字母 + 8 个轮廓姓名单元格，单元格顶部与前缀相差 0px、高度同为 21.344px |
+| 页脚中文姓名 `赫默` | 无轮廓组，MiSans 实时文本 |
+| 开场中文姓名 `赫默` | `ID CONFIRMED :` 保持轮廓字形，仅姓名 MiSans；实时文本基线与轮廓基线相差 0.01px |
+| 开场混排 `赫默 KAL’TSIT` | 拉丁段 9 个单元格（空格保留步进、无路径）、中文段实时文本，两类基线同时对齐 |
+| 开场默认姓名 | `ID CONFIRMED : JOYCE MOORE`，identity 图形，26 个字母全部显示，无宿主尾部 |
+| 页脚 `Dr. Kal’tsit & <b>` | 15 个轮廓组（3 个空格无路径），宽度 9.603em 与计算一致，转义文本正确 |
+| 姓名清空 | 回落 `JOYCE MOORE` 并恢复固定图形（1 条路径、0 个轮廓组） |
 | 运行时切到亮色区间 | `darkSurface=false` |
 | 此刻手动切暗色 | 立即变暗，未被下一次检查打断 |
 | 再跨越一次边界 | 自动结果重新覆盖手动选择 |
-| 运行时改名（含 `&` 与 `<b>`） | 页脚与设置页眉显示原始文本，未注入标签 |
-| 姓名清空 | 回落 `JOYCE MOORE` 与字形图形 |
 | 关闭自动切换后手动配色 | 手动暗色生效 |
 
 结果保存在 `verification/identity-theme/host-results.json`；脚本结束会删除宿主临时工程目录。
@@ -46,3 +51,5 @@
 - 调度使用系统本地时间；宿主未提供时区或计划任务接口，因此夏令时跳变按系统时钟自然跟随。
 - 自动化只覆盖 640×360 宿主窗口与关闭 3D 的场景；3D 开启时的逐张变色过渡沿用既有 `verification/THEME.md` 结论，本次未重新截取暗色阵列画面。
 - 姓名上限 24 个码点是为单行身份行与页脚预留；更长姓名会被截断而不是换行。
+- 拉丁轮廓集不含字距对，动态姓名按步进宽度排列；覆盖范围是 ASCII、Latin-1 字母与常用符号，其他文字（含 CJK、西里尔、希腊）继续使用 MiSans，因此同一姓名可能出现两种字体混排。
+- 本次发行的是完整拉丁字符轮廓集（167 个字符），比原先十段固定文案更广；许可说明见 verification/BOOT-LETTERING.md「宿主姓名的拉丁字形」，创意工坊分发前建议由用户确认。

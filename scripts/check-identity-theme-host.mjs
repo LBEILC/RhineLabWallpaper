@@ -45,7 +45,41 @@ const probe = `<script>
 const results = {};
 const readName = () => {
   const host = document.querySelector('#session-name');
-  return { text: host.textContent.trim(), live: host.querySelector('.wb-lettering-custom') !== null, artwork: host.querySelector('.wb-lettering svg') !== null };
+  return {
+    text: host.textContent.trim(),
+    art: host.querySelector('svg') !== null,
+    live: host.querySelector('.wb-name-live') !== null,
+  };
+};
+const readFooter = () => {
+  const host = document.querySelector('#session-name');
+  const art = host.querySelector('svg.wb-name-art');
+  const live = host.querySelector('.wb-name-live');
+  const text = host.querySelector('.wb-lettering-text');
+  let alignment = null;
+  if (art && live) {
+    const artRect = art.getBoundingClientRect();
+    const liveRect = live.getBoundingClientRect();
+    const probe = document.createElement('span');
+    probe.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline';
+    live.append(probe);
+    const probeRect = probe.getBoundingClientRect();
+    alignment = {
+      art: +((artRect.top + artRect.height * 0.8) - liveRect.top).toFixed(2),
+      live: +(probeRect.bottom - liveRect.top).toFixed(2),
+    };
+    probe.remove();
+  }
+  return {
+    artGroups: art ? art.querySelectorAll('g').length : 0,
+    artWidth: art ? parseFloat(art.style.width) : null,
+    artVisible: art ? getComputedStyle(art).display !== 'none' : false,
+    fixedArt: host.querySelectorAll('.wb-lettering > svg:not(.wb-name-art)').length,
+    live: live ? live.textContent : null,
+    liveFont: live ? getComputedStyle(live).fontFamily.split(',')[0].replace(/"/g, '') : null,
+    archiveText: text ? text.textContent : null,
+    alignment,
+  };
 };
 const dark = () => document.documentElement.dataset.darkSurface === 'true';
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -57,35 +91,50 @@ const opening = async () => {
   await wait(120);
   const auth = document.querySelector('#auth-message');
   const phrase = auth.querySelector('.boot-phrase:not([hidden])');
-  const cells = phrase ? [...phrase.querySelectorAll('.boot-phrase-letter:not([hidden])')] : [];
-  const tail = auth.querySelector('.boot-phrase-tail:not([hidden])');
+  const children = phrase ? [...phrase.children] : [];
+  const prefix = children.filter(child => child.classList.contains('boot-phrase-letter') && !child.hidden);
+  const tail = children.find(child => child.classList.contains('boot-phrase-tail') && !child.hidden);
+  const tailChildren = tail ? [...tail.children].filter(child => !child.hidden) : [];
+  const glyphs = tailChildren.filter(child => child.classList.contains('boot-name-glyph'));
+  const live = tailChildren.find(child => child.classList.contains('boot-phrase-live'));
   const stage = document.querySelector('#stage');
   const scale = stage.getBoundingClientRect().width / stage.offsetWidth || 1;
-  // The outlined cells draw on a 0.8em baseline inside their 1em box; a
-  // zero-width inline-block measures where live text actually sits.
-  let baseline = null;
-  if (tail && cells.length) {
+  let alignment = null,
+    baseline = null;
+  if (glyphs.length && prefix.length) {
+    const cell = prefix[prefix.length - 1].getBoundingClientRect();
+    const glyph = glyphs[0].getBoundingClientRect();
+    alignment = {
+      top: +((glyph.top - cell.top) / scale).toFixed(3),
+      height: +(glyph.height / scale).toFixed(3),
+      prefixHeight: +(cell.height / scale).toFixed(3),
+    };
+  }
+  if (live && prefix.length) {
+    const cell = prefix[prefix.length - 1].getBoundingClientRect();
+    const liveRect = live.getBoundingClientRect();
     const probe = document.createElement('span');
     probe.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline';
-    tail.append(probe);
-    const cellRect = cells[cells.length - 1].getBoundingClientRect();
-    const tailRect = tail.getBoundingClientRect();
+    live.append(probe);
     const probeRect = probe.getBoundingClientRect();
     baseline = {
-      artwork: +(((cellRect.top + cellRect.height * 0.8) - tailRect.top) / scale).toFixed(2),
-      live: +((probeRect.bottom - tailRect.top) / scale).toFixed(2),
+      artwork: +(((cell.top + cell.height * 0.8) - liveRect.top) / scale).toFixed(2),
+      live: +((probeRect.bottom - liveRect.top) / scale).toFixed(2),
     };
     probe.remove();
   }
   const state = {
     // The clipped label carries the whole line; the phrase nodes are aria-hidden
-    // drawings, and a live tail repeats only the part it renders.
+    // drawings, and the host name repeats only the part it renders.
     text: auth.querySelector('.boot-phrase-label').textContent,
     fallback: auth.classList.contains('boot-lettering-fallback'),
     phrase: phrase ? phrase.dataset.phrase : null,
-    letters: cells.length,
-    tail: tail ? tail.textContent : null,
-    tailFont: tail ? getComputedStyle(tail).fontFamily : null,
+    letters: prefix.length,
+    glyphs: glyphs.length,
+    drawn: glyphs.filter(cell => cell.querySelector('svg path')).length,
+    live: live ? live.textContent : null,
+    liveFont: live ? getComputedStyle(live).fontFamily.split(',')[0].replace(/"/g, '') : null,
+    alignment,
     baseline,
     fontSize: getComputedStyle(auth).fontSize,
     // Layout width in stage pixels: the host window scales the whole stage.
@@ -112,12 +161,18 @@ const timer = setInterval(async () => {
     await wait(400);
     const host = window.rhine.stats().wallpaper.properties;
     results.startup = { name: readName(), dark: dark(), manual: host.colortheme.value, autotheme: host.autotheme.value };
+    results.footerLatin = readFooter();
     results.openingCustom = await opening();
     // The user-facing case: a Chinese operator name must not restyle the
     // authored "ID CONFIRMED :" prefix.
     push({ sessionname: { value: '赫默' } });
     await wait(250);
+    results.footerChinese = readFooter();
     results.openingChinese = await opening();
+    // A mixed name draws the Latin run and keeps the rest in the page font.
+    push({ sessionname: { value: '赫默 KAL\\u2019TSIT' } });
+    await wait(250);
+    results.openingMixed = await opening();
 
     push(scheduleFor('light'));
     await wait(400);
@@ -138,6 +193,7 @@ const timer = setInterval(async () => {
     push({ sessionname: { value: 'Dr. Kal\\u2019tsit & <b>' } });
     await wait(250);
     results.renamed = readName();
+    results.footerRenamed = readFooter();
 
     document.querySelector('[data-action="settings"]').click();
     await wait(500);
@@ -151,6 +207,7 @@ const timer = setInterval(async () => {
     push({ sessionname: { value: '   ' } });
     await wait(250);
     results.cleared = readName();
+    results.footerDefault = readFooter();
     results.openingDefault = await opening();
 
     push({ autotheme: { value: false } });
@@ -195,39 +252,74 @@ try {
   ]);
   console.log(JSON.stringify(data, null, 2));
   if (data.error) throw new Error(`Probe failed: ${data.error}`);
-  assert.deepEqual(data.startup.name, { text: "KAL'TSIT", live: true, artwork: false }, "A host name replaces the fixed phrase artwork");
+  const glyphs = JSON.parse(await readFile("src/name-glyph-art.json", "utf8")).letters;
+  const artworkWidth = (text, tracking) => {
+    let x = 0;
+    [...text].forEach((char, i) => { if (i) x += tracking; x += glyphs[char].width; });
+    return x;
+  };
+  assert.deepEqual(data.startup.name, { text: "KAL'TSIT", art: true, live: false }, "A host name keeps an artwork form in the footer");
   assert.equal(data.startup.dark, true, "The schedule decides the theme at startup, not the manual colour");
   assert.equal(data.startup.manual, "light", "The manual value stays stored as the base");
   assert.equal(data.startup.autotheme, true);
+  // Footer, English name: the same outlined typeface as the authored phrases.
+  assert.equal(data.footerLatin.artGroups, 8, "Every footer letter is drawn from the outlined glyph set");
+  assert.equal(data.footerLatin.artVisible, true, "The footer shows the artwork instead of the page font");
+  assert.equal(data.footerLatin.fixedArt, 0, "A host name does not reuse the authored JOYCE MOORE drawing");
+  assert.equal(data.footerLatin.live, null, "An English name needs no live text");
+  assert.ok(Math.abs(data.footerLatin.artWidth - artworkWidth("KAL'TSIT", 0.065)) < 0.001, `footer artwork width ${data.footerLatin.artWidth}em`);
+  assert.equal(data.footerLatin.archiveText, "KAL'TSIT", "The plain-text form stays available for the archive footer");
+  // Opening, English name.
   assert.equal(data.openingCustom.text, "ID CONFIRMED : KAL'TSIT", "The opening types the host name");
   assert.equal(data.openingCustom.fallback, false, "A custom name no longer restyles the whole line");
   assert.equal(data.openingCustom.phrase, "identity", "The authored identity phrase stays in charge");
   assert.equal(data.openingCustom.letters, 15, "Only the outlined 'ID CONFIRMED : ' prefix is drawn");
-  assert.equal(data.openingCustom.tail, "KAL'TSIT", "The name itself is live text after the prefix");
-  assert.match(data.openingCustom.tailFont, /MiSans/, "The tail uses the page font");
-  assert.equal(data.openingCustom.fontSize, "21.35px", "The mixed line keeps the identity metrics");
+  assert.equal(data.openingCustom.glyphs, 8, "The English name is drawn from the outlined glyphs");
+  assert.equal(data.openingCustom.drawn, 8, "Every glyph cell carries an outlined path");
+  assert.equal(data.openingCustom.live, null, "No page-font text is used for an English name");
+  assert.ok(Math.abs(data.openingCustom.alignment.top) < 0.05, `name glyphs share the prefix cell top (${data.openingCustom.alignment.top}px)`);
+  assert.equal(data.openingCustom.alignment.height, data.openingCustom.alignment.prefixHeight, "Name glyph cells keep the 1em cell");
+  assert.ok(data.openingCustom.fontSize === "21.35px", "The mixed line keeps the identity metrics");
   assert.ok(data.openingCustom.width > 150 && data.openingCustom.opacity === "1", `opening line measured ${data.openingCustom.width}px at opacity ${data.openingCustom.opacity}`);
+  // Footer, Chinese name: the page font is the only source.
+  assert.equal(data.footerChinese.artGroups, 0, "A Chinese name has no outlined form");
+  assert.equal(data.footerChinese.live, "赫默");
+  assert.equal(data.footerChinese.liveFont, "MiSans", "The live part uses the bundled MiSans");
+  assert.equal(data.footerChinese.archiveText, null, "A Chinese name has no separate plain-text form to switch between");
+  // Opening, Chinese name.
   assert.equal(data.openingChinese.text, "ID CONFIRMED : 赫默");
   assert.equal(data.openingChinese.fallback, false, "A Chinese name also keeps the outlined prefix");
   assert.equal(data.openingChinese.phrase, "identity");
   assert.equal(data.openingChinese.letters, 15);
-  assert.equal(data.openingChinese.tail, "赫默");
-  assert.match(data.openingChinese.tailFont, /MiSans/);
+  assert.equal(data.openingChinese.glyphs, 0);
+  assert.equal(data.openingChinese.live, "赫默");
+  assert.equal(data.openingChinese.liveFont, "MiSans");
   const baselineGap = data.openingChinese.baseline ? data.openingChinese.baseline.artwork - data.openingChinese.baseline.live : null;
-  assert.ok(baselineGap !== null && Math.abs(baselineGap) <= 0.35, `tail baseline sits ${baselineGap}px from the outlined baseline`);
+  assert.ok(baselineGap !== null && Math.abs(baselineGap) <= 0.35, `live baseline sits ${baselineGap}px from the outlined baseline`);
+  // Opening, mixed name.
+  assert.equal(data.openingMixed.text, "ID CONFIRMED : 赫默 KAL\u2019TSIT");
+  assert.equal(data.openingMixed.letters, 15);
+  assert.equal(data.openingMixed.glyphs, 9, "The Latin half is drawn, the space included");
+  assert.equal(data.openingMixed.drawn, 8, "Spaces keep their advance without a path");
+  assert.equal(data.openingMixed.live, "赫默", "The Chinese half stays live text");
   assert.equal(data.openingDefault.text, "ID CONFIRMED : JOYCE MOORE");
   assert.equal(data.openingDefault.fallback, false, "The default name still renders the shipped phrase artwork");
   assert.equal(data.openingDefault.phrase, "identity");
   assert.equal(data.openingDefault.letters, 26, "Every authored letter of the default phrase is revealed");
-  assert.equal(data.openingDefault.tail, null, "The default name shows no live tail");
+  assert.equal(data.openingDefault.glyphs, 0, "The default name shows no host tail");
   assert.ok(data.openingDefault.width > 150, `default phrase measured ${data.openingDefault.width}px`);
   assert.equal(data.switchedToLight.dark, false, "Crossing into the light window switches at runtime");
   assert.equal(data.manualDuringSchedule.dark, true, "A manual colour applies at once, without being fought by the next tick");
   assert.equal(data.scheduleReasserted.dark, false, "The next boundary re-asserts the scheduled theme");
-  assert.deepEqual(data.renamed, { text: "Dr. Kal\u2019tsit & <b>", live: true, artwork: false }, "Renaming applies live and stays plain text");
+  assert.deepEqual(data.renamed, { text: "Dr. Kal\u2019tsit & <b>", art: true, live: false }, "Renaming applies live and keeps the outlined form");
+  assert.equal(data.footerRenamed.artGroups, 15, "Punctuation and mixed case are outlined too, spaces excepted");
+  assert.ok(Math.abs(data.footerRenamed.artWidth - artworkWidth("Dr. Kal\u2019tsit & <b>", 0.065)) < 0.001, `renamed footer width ${data.footerRenamed.artWidth}em`);
+  assert.equal(data.footerRenamed.archiveText, "Dr. Kal\u2019tsit & <b>", "Host text is escaped in the plain-text form as well");
   assert.equal(data.settings.intro, "Dr. Kal\u2019tsit & <b>", "The settings surface shows the current identity");
   assert.ok(data.settings.schedule.startsWith("Wallpaper Engine 已按时间自动切换：暗色 ") && data.settings.schedule.endsWith("。"), `settings note: ${data.settings.schedule}`);
-  assert.deepEqual(data.cleared, { text: "JOYCE MOORE", live: false, artwork: true }, "An empty host value restores the shipped name and artwork");
+  assert.deepEqual(data.cleared, { text: "JOYCE MOORE", art: true, live: false }, "An empty host value restores the shipped name and artwork");
+  assert.equal(data.footerDefault.artGroups, 0, "The default name returns to its single authored path");
+  assert.equal(data.footerDefault.fixedArt, 1);
   assert.equal(data.scheduleOff.dark, true, "Turning the schedule off returns the manual colour");
   await mkdir("verification/identity-theme", { recursive: true });
   await writeFile("verification/identity-theme/host-results.json", `${JSON.stringify(data, null, 2)}\n`);

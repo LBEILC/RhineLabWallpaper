@@ -7,15 +7,11 @@
   font-feature-settings: "ss01" 1;
 }
 .wb-lettering { position: relative; display: inline-block; }
-/* A host-provided login name has no authored glyph artwork; keep it live text
-   with the same tracking as the fixed phrases. */
-.wb-lettering-custom {
+/* A host-provided login name draws Latin characters from the shipped glyph
+   artwork; unsupported characters stay live text with the same tracking. */
+.wb-name-live {
   display: inline-block;
-  max-width: 26ch;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  vertical-align: -0.16em;
+  white-space: pre;
   letter-spacing: .065em;
 }
 .wb-lettering > svg { display: none; height: 1em; vertical-align: -0.16em; overflow: visible; }

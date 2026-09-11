@@ -1,6 +1,7 @@
 import artwork from "./boot-lettering-art.json";
 import "./boot-lettering.css";
 import { assetUrl } from "./asset-url";
+import { nameGlyph, nameGlyphUnits, nameRuns } from "./name-glyphs";
 
 declare const __RHINE_NOVECENTO__: boolean;
 const letterings = new Set<BootLettering>();
@@ -33,10 +34,37 @@ const ns = "http://www.w3.org/2000/svg";
 
 /**
  * Phrases whose trailing part is host data. The outlined prefix stays in the
- * design typeface (Novecento) and everything after it is rendered as live text
- * in the page font, so a Chinese operator name never changes "ID CONFIRMED".
+ * design typeface (Novecento) and everything after it is drawn from the shipped
+ * Latin glyph artwork, so a Chinese or English operator name never changes
+ * "ID CONFIRMED".
  */
 const phrasePrefixes: Partial<Record<PhraseKey, string>> = { identity: "ID CONFIRMED : " };
+
+/** One outlined character cell, drawn on the same .8em baseline as a phrase. */
+function glyphCell(char: string): HTMLSpanElement {
+  const glyph = nameGlyph(char);
+  const cell = document.createElement("span");
+  cell.className = "boot-phrase-letter boot-name-glyph";
+  cell.style.width = `${glyph?.width ?? 0}em`;
+  if (glyph?.path) {
+    const svg = document.createElementNS(ns, "svg");
+    svg.classList.add("boot-letter-art");
+    svg.setAttribute("viewBox", `0 0 ${glyph.width * nameGlyphUnits} ${nameGlyphUnits}`);
+    svg.setAttribute("focusable", "false");
+    const path = document.createElementNS(ns, "path");
+    path.setAttribute("d", glyph.path);
+    svg.append(path);
+    cell.append(svg);
+  }
+  return cell;
+}
+
+function liveRun(text: string): HTMLSpanElement {
+  const node = document.createElement("span");
+  node.className = "boot-phrase-live";
+  node.textContent = text;
+  return node;
+}
 
 /** Fixed phrase reveal cells, backed by licensed webfonts or authored artwork. */
 export class BootLettering {
@@ -96,8 +124,8 @@ export class BootLettering {
 
   useWebfonts() {
     // Retain the measured cells and the reveal timeline. Only the glyph source
-    // changes: actual WOFF2 text replaces each pre-authored SVG drawing. A tail
-    // keeps using the page font, which is the point of the split.
+    // changes: actual WOFF2 text replaces each pre-authored SVG drawing. Host
+    // names keep the shipped outlines so the distributed build matches.
     for (const phrase of this.phrases) {
       phrase.node.style.setProperty("--boot-webfont-family", `"Rhine Novecento ${phrase.weight}"`);
       phrase.letters.forEach((letter, i) => {
@@ -109,13 +137,26 @@ export class BootLettering {
     this.host.dataset.letteringRenderer = "webfont";
   }
 
+  /** Latin characters become outlined cells; anything else stays live text. */
+  private renderTail(tail: HTMLElement, text: string) {
+    if (tail.dataset.name === text) return;
+    tail.dataset.name = text;
+    tail.replaceChildren(
+      ...nameRuns(text).flatMap((run) =>
+        run.artwork
+          ? Array.from(run.text, (char) => glyphCell(char))
+          : [liveRun(run.text)],
+      ),
+    );
+  }
+
   setText(value: string) {
     if (this.value === value) return;
     this.value = value;
     this.label.textContent = value;
     const authored = value ? this.phrases.find((p) => p.text.startsWith(value)) : undefined;
     // A host value that keeps the authored prefix but replaces the rest reveals
-    // only the outlined prefix and appends the remaining text.
+    // only the outlined prefix and appends the remaining name.
     const tailed = !authored && value
       ? this.phrases.find((p) => p.prefix && value.startsWith(p.prefix))
       : undefined;
@@ -135,7 +176,7 @@ export class BootLettering {
       }
       if (!phrase.tail) continue;
       const text = extendsPrefix ? value.slice(phrase.prefix.length) : "";
-      if (phrase.tail.textContent !== text) phrase.tail.textContent = text;
+      this.renderTail(phrase.tail, text);
       phrase.tail.hidden = !text;
     }
   }

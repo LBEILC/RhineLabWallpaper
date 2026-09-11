@@ -12,13 +12,13 @@
 
 Normal 与 DemiBold 来自作者的 DaFont 免费包；用户已明确同意其许可。Bold 来自用户既有 MyFonts 桌面字体包。源文件版本与 SHA-256 见 `boot-lettering/sources.json`。本地比较材料位于 `.tools/font-comparison/`，字体不纳入 Git 或发行包。
 
-根据两个来源许可中将字母作为轮廓图形导入的条款，项目仅发行十段预先制作的固定文字图形，不嵌入 OTF 或 Webfont。`scripts/make-boot-lettering.py` 需要使用者自行提供获许可的本地字体，并安装 Pillow、fonttools 4.59.2。执行示例：
+根据两个来源许可中将字母作为轮廓图形导入的条款，项目仅发行预先制作的轮廓图形，不嵌入 OTF 或 Webfont。`scripts/make-boot-lettering.py` 需要使用者自行提供获许可的本地字体，并安装 Pillow、fonttools 4.59.2。执行示例：
 
 ```powershell
 python scripts/make-boot-lettering.py --fonts .tools/font-comparison/fonts
 ```
 
-生成 `src/boot-lettering-art.json`（29,698 字节），保留逐字显现所需的图形分段，不提供任意文字排版或通用字库。来源声明随发行包保存在 `assets/boot-lettering-notice.txt`。
+生成 `src/boot-lettering-art.json`（29,698 字节），保留逐字显现所需的图形分段，不提供任意文字排版或通用字库。来源声明随发行包保存在 `assets/boot-lettering-notice.txt`。宿主姓名所需的拉丁字符集是另一份文件，见下文「宿主姓名的拉丁字形」。
 
 ## 实现与验证
 
@@ -53,3 +53,19 @@ python scripts/make-boot-lettering.py --fonts .tools/font-comparison/fonts
 Vite 检查本地三种字体是否齐备；齐备时开场准备阶段加载三种原生 FontFace，成功后用真实文字替换 SVG 字形。保留原有逐字容器宽度和字距，以避免位置、声音触发和动画变化。官方字体行度量为 1021/-179，1em 行高下基线为 0.921em；字形上移 0.121em 对齐既有 0.8em 基线。缺少字体包或网络失败时保留原图形，8 秒超时不阻断启动。
 
 浏览器实际通过 15 项检查：原有文字／品牌／扫描／欢迎回归通过，确认三种 WOFF2 均已加载、所有文字改用真实字体且不保留文字 SVG 路径。网页与壁纸构建均通过；PWA 资源表包含三种 WOFF2。公开 Git 仅提交接入逻辑和声明，不包含授权字体。新环境未安装字体包时仍使用此前图形。
+
+## 宿主姓名的拉丁字形（2026-09-11）
+
+登录人姓名由 WE 属性提供，长度与内容不可预知，因此固定文案图形无法覆盖。用户要求英文姓名也保持原字体后，新增 `scripts/make-name-glyphs.py`，用与固定文案相同的 Normal OTF 逐字导出轮廓：
+
+```powershell
+python scripts/make-name-glyphs.py --font "<本地授权路径>/Novecentosanswide-Normal.otf"
+```
+
+- 覆盖可打印 ASCII（0x20–0x7E）、Latin-1 字母（À–ÿ，不含 × ÷）与姓名常用符号（°、·、–、—、‘、’、“、”、•、…），共 167 个字符，输出 `src/name-glyph-art.json`（40,047 字节）。
+- 只输出逐字轮廓路径与步进宽度：不含字体二进制、字形名、度量表或字距表，空格只保留步进宽度。脚本先比对 `boot-lettering/sources.json` 记录的 SHA-256，字体不一致时拒绝生成；本次记录写入 `boot-lettering/name-glyphs.json`。
+- 覆盖范围内的字符与既有固定文案使用同一变换与基线（1em 单元格内 0.8em），26 个身份确认句字符的路径与宽度与 `boot-lettering-art.json` 完全一致（逐字节比对通过）。因此英文姓名与 `ID CONFIRMED` 属于同一字形，不再是 MiSans。
+- 非拉丁字符（中文等）不在导出范围内，运行时保留 MiSans 实时文本；同一姓名可以混排（例：「赫默 KAL’TSIT」的拉丁段为轮廓字形，中文段为实时文本）。
+- 动态姓名不套用字距对（kerning pair），只按步进宽度排列；固定文案图形仍带有句内字距。行内字距沿用既有变量：开场 −0.00909em、页脚 0.065em。
+
+许可说明：此处与固定文案同属「将字母作为轮廓图形导入」的用法，仍不发行字体文件。相比十段固定文案，本次发行的是完整拉丁字符轮廓集，若用于创意工坊分发，建议由用户确认与 DaFont／MyFonts 条款的关系；`verification/IDENTITY-THEME.md` 记录同样的提示。

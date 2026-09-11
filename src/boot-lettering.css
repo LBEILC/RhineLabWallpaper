@@ -33,10 +33,16 @@
 }
 .boot-phrase-letter:last-child { margin-inline-end: 0; }
 .boot-phrase[hidden], .boot-phrase-letter[hidden] { display: none; }
-/* Host data after an outlined prefix (a Chinese operator name, for example).
-   It keeps the page font, the authored line metrics, and the .8em baseline the
-   outlined cells draw on (measured at .843em for MiSans in a 1em line box). */
+/* Host data after an outlined prefix: Latin characters reuse the outlined
+   cells, anything else stays live text in the page font, aligned to the same
+   baseline the cells draw on (.843em in a 1em line box, so -0.043em). */
 .boot-phrase-tail {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: stretch;
+  height: 1em;
+}
+.boot-phrase-live {
   display: block;
   flex: 0 0 auto;
   height: 1em;
