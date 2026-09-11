@@ -72,13 +72,16 @@ GitHub Actions 工作流 `.github/workflows/wallpaper-release.yml` 在推送到 
 - 解压后与本机 `release/wallpaper` 逐文件比对：826 个文件中 810 个 SHA-256 一致，包括两个 GLB、全部 753 个 woff2、`assets/index-*.js` 与 `assets/index-*.css`。差异只出现在 15 个文本文件（`index.html`、`LICENSE`、`favicon.svg`、`build-files.json` 及若干 `*.txt`/`*.json`），内容逐行相同，差别是本机检出为 CRLF、CI 检出为 LF；`build-files.json` 记录的字节数随之差出相应的换行字节数。
 - 因此 CI 与本地产物的页面代码一致；压缩包整体哈希在两平台之间不可比（压缩前的换行差异会让 zlib 输出不同），可重复性结论仅适用于同一平台的重复打包。
 
-### 推送当时的网络故障（环境记录）
+### 本机代理故障与 TUN 模式修复（环境记录）
 
-首次推送时本机完全无法访问 GitHub：Windows 系统代理指向 `127.0.0.1:10808`，该端口可连接但 `git`/`curl` 对所有 HTTPS 都握手失败，直连 `github.com:443` 超时，浏览器也因此打不开任何网页。排查结果：
+首次推送时本机完全无法访问 GitHub：Windows 系统代理指向 `127.0.0.1:10808`，该端口可连接但对所有 HTTPS 都握手失败，直连 `github.com:443` 超时，浏览器也因此打不开任何网页。排查与结论：
 
-- `ping`、直连 `http://www.baidu.com` 正常，说明基础网络没问题；系统代理是唯一故障点。
-- v2rayN 7.19.5（管理员身份运行）生成的 `binConfigs/config.json` 中，节点 `subvl-v01.zarelaypro.com:57788`（VLESS + REALITY）本身可达，但它被配置为经 `dialerProxy: tun-protect-ss` 走本地 `127.0.0.1:59421`，而 59421/59422 当时并未监听——本地中转链断了，出站流量因此全部卡死。
-- 恢复后同一命令重试成功（第 7 次尝试，约 6 分钟），随后代理端口恢复正常。若再次出现“所有网页都打不开”，先重启 v2rayN 核心或换节点即可；本仓库的发布流程本身不依赖该环境。
+- `ping`、直连 `http://www.baidu.com` 正常，基础网络没问题；故障只出现在本地代理链上。
+- 当时选中的节点 `subvl-v01.zarelaypro.com:57788` 自身已不可用：用它单独起一个 xray（绕开 v2rayN 的本地链）同样连不上。换到当前节点后，同一命令重试成功（第 7 次尝试，约 6 分钟）。
+- 随后用户反馈“一开 TUN 模式就没网”。v2rayN 7.19.5 的 TUN 由 sing-box 建立（`binConfigs/configPre.json` 中 `type: tun`、`interface_name: singbox_tun`、地址 `172.18.0.1/30`、`stack: system`、`mtu: 9000`），sing-box 把流量交给 xray 的本地中继，xray 出站再经 sing-box 的 `tun-protect-ss` 直连节点。两个中继端口每次启动随机，所以不同时刻看到的 59421/59422、52650/52651、60955/60956 是同一套链路的不同实例。
+- **根因**：`bin\sing_box\` 目录里只有 `sing-box.exe`，缺少 `wintun.dll`，TUN 网卡建不起来，整条链一开就死（`bin\xray\` 下有该 DLL，sing-box 目录没有）。把 `bin\xray\wintun.dll`（SHA-256 `e5da8447…afce`，与驱动 `oem54.inf` wintun 0.14 同版本）复制到 `bin\sing_box\` 后恢复正常。
+- 修复后实测：`singbox_tun` 网卡 Up，`0.0.0.0/0 → 172.18.0.2` 默认路由生效，sing-box 与 xray 的中继端口成对监听，DNS 正常解析 `github.com` / `www.google.com`；不设置任何代理环境变量时 `https://www.google.com` 返回 200、`https://api.github.com` 返回 403、`https://www.baidu.com` 返回 200。
+- 注意：v2rayN 更新内核时可能重新解压 `bin\sing_box\` 并覆盖该 DLL；再出现同样症状，把 `bin\xray\wintun.dll` 重新复制一份即可。本仓库的发布流程不依赖该环境。
 
 ## 限制与未验证
 
