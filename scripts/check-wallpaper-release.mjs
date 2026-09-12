@@ -6,6 +6,7 @@
 // relative asset URLs, the absence of individually licensed fonts and the file list
 // recorded by the build.
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFile, readdir, stat } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { readZip } from "./zip-utils.mjs";
@@ -120,11 +121,14 @@ assert.deepEqual(
 );
 
 const modelFiles = packaged.filter((name) => name.endsWith(".glb"));
-assert.equal(
-  modelFiles.length,
-  2,
-  `Expected two GLB models, found ${modelFiles.length}`,
-);
+const modelNames = ["archive-cassette", "archive-assembly", "archive-precision-medium", "archive-precision-low"];
+assert.equal(modelFiles.length, modelNames.length, "Ship all four models without unversioned duplicates");
+for (const name of modelNames) {
+  const matching = modelFiles.filter(file => new RegExp(`^assets/${name}\\.[a-f0-9]{16}\\.glb$`).test(file));
+  assert.equal(matching.length, 1, `Missing or duplicate model: ${name}`);
+  const hash = createHash("sha256").update(read(`${FOLDER}/${matching[0]}`)).digest("hex").slice(0, 16);
+  assert.equal(matching[0], `assets/${name}.${hash}.glb`, "Model URL matches packaged bytes");
+}
 const fontFiles = packaged.filter((name) => name.endsWith(".woff2"));
 assert.ok(
   fontFiles.length > 500,

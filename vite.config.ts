@@ -4,7 +4,7 @@ import { createHash } from "node:crypto";
 
 // Keep Blender's stable source/export paths, while production URLs identify
 // exact bytes and can be cached without revalidation across deployments.
-const models = ["archive-cassette", "archive-assembly"].map(name => {
+const models = ["archive-cassette", "archive-assembly", "archive-precision-medium", "archive-precision-low"].map(name => {
   const source = readFileSync(`public/assets/${name}.glb`);
   const hash = createHash("sha256").update(source).digest("hex").slice(0,16);
   return { key:`assets/${name}.glb`, fileName:`assets/${name}.${hash}.glb`, source };

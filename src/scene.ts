@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { ModelPrecisionController, type ModelPrecision } from "./model-precision";
 import { ArchiveVisibility } from "./archive-visibility";
 import { InstanceUpdates } from "./instance-updates";
 import { RenderState } from "./render-state";
@@ -56,6 +57,15 @@ const ease = (t: number) => {
   return t * t * t * (t * (t * 6 - 15) + 10);
 };
 export class ArchiveScene {
+  private precisionChoice: ModelPrecision = "high";
+  private precision = new ModelPrecisionController(
+    () => ({ arrays: this.instances, models: [this.model, ...this.outgoing.map(item => item.group)], theme: this.themeAttribute }),
+    () => { this.renderState.invalidate(); },
+  );
+  async setModelPrecision(tier: ModelPrecision) {
+    this.precisionChoice = tier;
+    if (this.loaded) await this.precision.apply(tier);
+  }
   private inputEvents = new AbortController();
   private presence = 1;
   private presenceTarget = 1;
@@ -71,6 +81,7 @@ export class ArchiveScene {
   }
   revealImmediately() { this.reveal = this.targetReveal; }
   dispose() {
+    this.precision.dispose();
     this.inputEvents.abort();
     this.cancelPointer();
     disposeThreeTree(this.scene);
@@ -1769,6 +1780,10 @@ export class ArchiveScene {
       renderedFrames: this.renderedFrames,
       reusedFrames: this.reusedFrames,
       superPerformance: this.superPerformance,
+      modelPrecision: this.precision.current,
+      modelPrecisionRequested: this.precisionChoice,
+      arrayModelTriangles: this.instances.reduce((sum, mesh) => sum + (mesh.geometry.index?.count ?? mesh.geometry.attributes.position.count) / 3, 0),
+      selectedModelTriangles: this.model.children.reduce((sum, object) => sum + (object instanceof THREE.Mesh ? (object.geometry.index?.count ?? object.geometry.attributes.position.count) / 3 : 0), 0),
       presentation: this.presence,
       triangles: this.renderer.info.render.triangles,
       archiveCount: this.drawnCells.length,

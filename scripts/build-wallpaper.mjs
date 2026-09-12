@@ -6,7 +6,7 @@ const project = JSON.parse(await readFile("wallpaper/project.json", "utf8"));
 if (project.general?.supportsaudioprocessing !== true || Object.hasOwn(project, "supportsaudioprocessing"))
   throw new Error("Wallpaper audio requires general.supportsaudioprocessing=true");
 // Only trim generated output, never the source public directory.
-for (const name of ["update.html", "update.js", "manifest.webmanifest", "audio/observatory-preview.mp3", "assets/archive-cassette.glb", "assets/archive-assembly.glb"]) {
+for (const name of ["update.html", "update.js", "manifest.webmanifest", "audio/observatory-preview.mp3", "assets/archive-cassette.glb", "assets/archive-assembly.glb", "assets/archive-precision-medium.glb", "assets/archive-precision-low.glb"]) {
   const target = resolve(root, name);
   if (!target.startsWith(root + sep)) throw new Error("Output path escapes wallpaper directory");
   await rm(target, { force: true });

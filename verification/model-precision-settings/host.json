@@ -1,0 +1,6389 @@
+{
+  "initial": {
+    "decryption": {
+      "time": -1,
+      "intervals": [],
+      "markers": 0,
+      "point": 0,
+      "label": 0,
+      "labelValue": 0,
+      "clarity": 0,
+      "phase": "waiting"
+    },
+    "topLeft": [
+      58,
+      176
+    ],
+    "topRight": [
+      229,
+      89
+    ],
+    "labelTopLeft": [
+      94,
+      191
+    ],
+    "labelBottomLeft": [
+      94,
+      215
+    ],
+    "modelPosition": [
+      0,
+      -2.1874,
+      -7.0357
+    ],
+    "cameraPosition": [
+      -73.8279,
+      38.0935,
+      48.8936
+    ],
+    "fieldOfView": 5.453036286150327,
+    "loaded": true,
+    "drawCalls": 48,
+    "renderedFrames": 1,
+    "reusedFrames": 0,
+    "superPerformance": false,
+    "modelPrecision": "medium",
+    "modelPrecisionRequested": "medium",
+    "arrayModelTriangles": 2072,
+    "selectedModelTriangles": 82348,
+    "presentation": 1,
+    "triangles": 1850035,
+    "archiveCount": 389,
+    "archiveCandidates": 524,
+    "archiveCulled": 135,
+    "archiveCapacity": 576,
+    "archiveCoverage": "standard",
+    "returningFiles": 0,
+    "selectionPhase": "wave",
+    "pendingPulse": null,
+    "pulses": [
+      {
+        "lane": 2,
+        "row": 12,
+        "time": 0
+      },
+      {
+        "lane": 2,
+        "row": 12,
+        "time": 0
+      }
+    ],
+    "referenceTime": 34.15,
+    "selectedSlot": 76,
+    "selectedLane": 2,
+    "selectedCell": {
+      "lane": 2,
+      "row": 12
+    },
+    "hoverCell": null,
+    "hoverLifts": {},
+    "dragTrack": null,
+    "archiveMomentum": null,
+    "holdingArchive": false,
+    "dragProjection": {
+      "lane": {
+        "x": -351.86698814008724,
+        "y": 188.6132937904479
+      },
+      "row": {
+        "x": -56.46204772923401,
+        "y": -14.88738148124901
+      }
+    },
+    "dragMapping": null,
+    "coordinateOrigin": {
+      "lane": 0,
+      "row": 0
+    },
+    "poolBounds": {
+      "minLane": -3,
+      "maxLane": 9,
+      "minRow": -26,
+      "maxRow": 58
+    },
+    "laneFocus": 2,
+    "columnCamera": 0,
+    "rotation": 0,
+    "clearance": -3.4776416510245225,
+    "canInspect": false,
+    "returnPhase": "lowering",
+    "extraction": 0.209,
+    "appearance": 0.541,
+    "cameraDetail": 0,
+    "idleGain": 0,
+    "flatten": 0,
+    "spectrumActivity": 0,
+    "selectedIndexDim": 0,
+    "returningIndexDims": [],
+    "cameraDistance": 95.36791873221328,
+    "cameraNear": 5,
+    "cameraFar": 300,
+    "fogNear": 100.36791873221328,
+    "fogFar": 120.36791873221328,
+    "returningAppearance": [],
+    "rail": 0,
+    "threeState": "on",
+    "fps": 0,
+    "mode": "archive",
+    "ready": true,
+    "startup": "started",
+    "motion": {
+      "reduced": true,
+      "systemReduced": false
+    },
+    "bootTime": null,
+    "selected": "X-001",
+    "saved": [],
+    "audio": {
+      "state": "locked",
+      "scene": "archive",
+      "tracks": 0,
+      "voices": 0,
+      "loaded": false,
+      "playedKeys": 0,
+      "error": "",
+      "preferences": {
+        "sound": false,
+        "music": false,
+        "soundVolume": 0.55,
+        "musicVolume": 0.5
+      }
+    },
+    "wallpaper": {
+      "properties": {
+        "_d0": {
+          "order": 0,
+          "type": "divider"
+        },
+        "alignmentfliph": {
+          "icon": "fa-exchange",
+          "order": -12,
+          "text": "ui_browse_properties_alignment_flip_horizontally",
+          "type": "bool",
+          "value": false
+        },
+        "archivecoverage": {
+          "options": [
+            {
+              "label": "自动 · 标准余量",
+              "value": "standard"
+            },
+            {
+              "label": "自动 · 额外余量",
+              "value": "extra"
+            }
+          ],
+          "order": 105,
+          "text": "阵列覆盖余量",
+          "type": "combo",
+          "value": "standard"
+        },
+        "audioprocessing": {
+          "icon": "fa-microphone",
+          "order": -21,
+          "text": "ui_browse_properties_audio_recording",
+          "type": "bool",
+          "value": true
+        },
+        "audioreactive": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 132,
+          "text": "开启音乐律动（跟随系统音频）",
+          "type": "bool",
+          "value": true
+        },
+        "autotheme": {
+          "order": 104,
+          "text": "按时间自动切换明暗（手动切换会在下一个时间点被覆盖）",
+          "type": "bool",
+          "value": false
+        },
+        "boot": {
+          "order": 102,
+          "text": "启动时播放开场（下次加载生效）",
+          "type": "bool",
+          "value": false
+        },
+        "breakminutes": {
+          "condition": "desktopmode.value == 'workbench'",
+          "max": 60,
+          "min": 1,
+          "order": 125,
+          "precision": 0,
+          "step": 1,
+          "text": "休息时长（分钟，下次开始生效）",
+          "type": "slider",
+          "value": 5
+        },
+        "colortheme": {
+          "options": [
+            {
+              "label": "亮色 · 磨砂白",
+              "value": "light"
+            },
+            {
+              "label": "暗色 · 石墨灰",
+              "value": "dark"
+            }
+          ],
+          "order": 104,
+          "text": "界面配色",
+          "type": "combo",
+          "value": "light"
+        },
+        "customwallpaper": {
+          "order": 106,
+          "text": "关闭 3D 后显示自定义壁纸",
+          "type": "bool",
+          "value": false
+        },
+        "customwallpaperfile": {
+          "condition": "customwallpaper.value == true",
+          "order": 106,
+          "text": "自定义壁纸图片",
+          "type": "file",
+          "value": ""
+        },
+        "customwallpapermask": {
+          "condition": "customwallpaper.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 106,
+          "step": 1,
+          "text": "上下遮罩范围（0 为关闭）",
+          "type": "slider",
+          "value": 100
+        },
+        "darkstarthour": {
+          "condition": "autotheme.value == true",
+          "max": 23,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为暗色 · 时（0-23）",
+          "type": "slider",
+          "value": 19
+        },
+        "darkstartminute": {
+          "condition": "autotheme.value == true",
+          "max": 59,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为暗色 · 分",
+          "type": "slider",
+          "value": 0
+        },
+        "desktopmode": {
+          "options": [
+            {
+              "label": "桌面工作台",
+              "value": "workbench"
+            },
+            {
+              "label": "档案展示",
+              "value": "archive"
+            }
+          ],
+          "order": 100,
+          "text": "工作模式",
+          "type": "combo",
+          "value": "archive"
+        },
+        "enableevent": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 159,
+          "text": "启用重要日程",
+          "type": "bool",
+          "value": true
+        },
+        "enablefocus": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 161,
+          "text": "启用专注计时",
+          "type": "bool",
+          "value": true
+        },
+        "enablemedia": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 160,
+          "text": "启用正在播放",
+          "type": "bool",
+          "value": true
+        },
+        "enabletasks": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 158,
+          "text": "启用今日事项",
+          "type": "bool",
+          "value": true
+        },
+        "enabletime": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 157,
+          "text": "启用时间日期",
+          "type": "bool",
+          "value": true
+        },
+        "eventdate": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 123,
+          "text": "目标日期（YYYY-MM-DD，可加 HH:mm，本地时间）",
+          "type": "textinput",
+          "value": ""
+        },
+        "eventname": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 122,
+          "text": "重要日程名称",
+          "type": "textinput",
+          "value": ""
+        },
+        "focusminutes": {
+          "condition": "desktopmode.value == 'workbench'",
+          "max": 120,
+          "min": 1,
+          "order": 124,
+          "precision": 0,
+          "step": 1,
+          "text": "专注时长（分钟，下次开始生效）",
+          "type": "slider",
+          "value": 25
+        },
+        "gamepace": {
+          "condition": "desktopmode.value == 'workbench' && showgame.value == true",
+          "options": [
+            {
+              "label": "舒缓",
+              "value": "gentle"
+            },
+            {
+              "label": "标准",
+              "value": "normal"
+            },
+            {
+              "label": "快速",
+              "value": "quick"
+            }
+          ],
+          "order": 138,
+          "text": "波纹接力节奏（下一目标生效）",
+          "type": "combo",
+          "value": "normal"
+        },
+        "groupaudio": {
+          "order": 126,
+          "text": "声音",
+          "type": "group"
+        },
+        "groupcapabilities": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 156,
+          "text": "工作台 · 可用功能",
+          "type": "group"
+        },
+        "groupcontent": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 118,
+          "text": "工作台 · 事项与日程",
+          "type": "group"
+        },
+        "groupgame": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 136,
+          "text": "工作台 · 波纹接力",
+          "type": "group"
+        },
+        "groupidentity": {
+          "order": 100,
+          "text": "登录身份",
+          "type": "group"
+        },
+        "groupopening": {
+          "order": 101,
+          "text": "入场与画面",
+          "type": "group"
+        },
+        "groupreactive": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 131,
+          "text": "工作台 · 音乐律动",
+          "type": "group"
+        },
+        "groupuimargins": {
+          "order": 151,
+          "text": "界面边距 · 正值内收 / 负值外扩",
+          "type": "group"
+        },
+        "groupvisualeffects": {
+          "order": 140,
+          "text": "HUD 与画面质感",
+          "type": "group"
+        },
+        "groupworkbench": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 108,
+          "text": "工作台 · 界面显示",
+          "type": "group"
+        },
+        "huddepth": {
+          "condition": "hudparallax.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 142,
+          "step": 1,
+          "text": "曲面纵深",
+          "type": "slider",
+          "value": 20
+        },
+        "hudparallax": {
+          "order": 141,
+          "text": "UI 鼠标视差",
+          "type": "bool",
+          "value": false
+        },
+        "hudtracking": {
+          "condition": "hudparallax.value == true",
+          "order": 143,
+          "text": "鼠标追踪",
+          "type": "bool",
+          "value": true
+        },
+        "idlebreathing": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 117,
+          "text": "静止时呼吸（始终归齐时也生效）",
+          "type": "bool",
+          "value": true
+        },
+        "lightstarthour": {
+          "condition": "autotheme.value == true",
+          "max": 23,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为亮色 · 时（0-23）",
+          "type": "slider",
+          "value": 7
+        },
+        "lightstartminute": {
+          "condition": "autotheme.value == true",
+          "max": 59,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为亮色 · 分",
+          "type": "slider",
+          "value": 0
+        },
+        "load3donstartup": {
+          "order": 102,
+          "text": "启动时加载 3D（下次加载生效）",
+          "type": "bool",
+          "value": true
+        },
+        "modelprecision": {
+          "value": "high"
+        },
+        "music": {
+          "order": 129,
+          "text": "背景音乐",
+          "type": "bool",
+          "value": false
+        },
+        "musicvolume": {
+          "condition": "music.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 130,
+          "precision": 0,
+          "step": 1,
+          "text": "音乐音量",
+          "type": "slider",
+          "value": 50
+        },
+        "openingdetail": {
+          "condition": "boot.value == true",
+          "options": [
+            {
+              "label": "随工作模式（工作台跳过，展示模式播放）",
+              "value": "auto"
+            },
+            {
+              "label": "展示详情",
+              "value": "show"
+            },
+            {
+              "label": "跳过详情，停留在阵列",
+              "value": "skip"
+            }
+          ],
+          "order": 103,
+          "text": "入场时展示档案详情（下次开场生效）",
+          "type": "combo",
+          "value": "auto"
+        },
+        "qualityanisotropy": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "1×",
+              "value": "1"
+            },
+            {
+              "label": "2×",
+              "value": "2"
+            },
+            {
+              "label": "4×",
+              "value": "4"
+            },
+            {
+              "label": "8×",
+              "value": "8"
+            },
+            {
+              "label": "16×",
+              "value": "16"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 纹理过滤",
+          "type": "combo",
+          "value": "16"
+        },
+        "qualityantialias": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "原始",
+              "value": "off"
+            },
+            {
+              "label": "SMAA",
+              "value": "smaa"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 抗锯齿",
+          "type": "combo",
+          "value": "off"
+        },
+        "qualityaoresolution": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "50%",
+              "value": "0.5"
+            },
+            {
+              "label": "75%",
+              "value": "0.75"
+            },
+            {
+              "label": "100%",
+              "value": "1"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 遮蔽分辨率",
+          "type": "combo",
+          "value": "1"
+        },
+        "qualityaosamples": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "关闭",
+              "value": "0"
+            },
+            {
+              "label": "16 采样",
+              "value": "16"
+            },
+            {
+              "label": "32 采样",
+              "value": "32"
+            },
+            {
+              "label": "64 采样",
+              "value": "64"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 环境遮蔽采样",
+          "type": "combo",
+          "value": "32"
+        },
+        "qualitydepthoffield": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "max": 150,
+          "min": 0,
+          "order": 106,
+          "step": 5,
+          "text": "自定义 · 景深强度（%）",
+          "type": "slider",
+          "value": 100
+        },
+        "qualitypixelratio": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "1×",
+              "value": "1"
+            },
+            {
+              "label": "1.5×",
+              "value": "1.5"
+            },
+            {
+              "label": "2×",
+              "value": "2"
+            },
+            {
+              "label": "3×",
+              "value": "3"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 像素密度上限",
+          "type": "combo",
+          "value": "1.5"
+        },
+        "qualityscale": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "max": 200,
+          "min": 50,
+          "order": 106,
+          "step": 5,
+          "text": "自定义 · 三维渲染比例（%）",
+          "type": "slider",
+          "value": 100
+        },
+        "qualityshadows": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "关闭",
+              "value": "0"
+            },
+            {
+              "label": "1024",
+              "value": "1024"
+            },
+            {
+              "label": "2048",
+              "value": "2048"
+            },
+            {
+              "label": "4096",
+              "value": "4096"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 阴影分辨率",
+          "type": "combo",
+          "value": "2048"
+        },
+        "qualitytransmission": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "25%",
+              "value": "0.25"
+            },
+            {
+              "label": "50%",
+              "value": "0.5"
+            },
+            {
+              "label": "75%",
+              "value": "0.75"
+            },
+            {
+              "label": "100%",
+              "value": "1"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 透明材质分辨率",
+          "type": "combo",
+          "value": "1"
+        },
+        "reactiveintensity": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "max": 200,
+          "min": 0,
+          "order": 134,
+          "precision": 0,
+          "step": 1,
+          "text": "音乐律动强度",
+          "type": "slider",
+          "value": 100
+        },
+        "reactivemute": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "order": 135,
+          "text": "音乐律动开启时停用壁纸配乐",
+          "type": "bool",
+          "value": true
+        },
+        "reduced": {
+          "value": true
+        },
+        "renderquality": {
+          "condition": "superperformance.value == false",
+          "options": [
+            {
+              "label": "性能",
+              "value": "performance"
+            },
+            {
+              "label": "原始",
+              "value": "original"
+            },
+            {
+              "label": "高",
+              "value": "high"
+            },
+            {
+              "label": "极高",
+              "value": "ultra"
+            },
+            {
+              "label": "自定义",
+              "value": "custom"
+            }
+          ],
+          "order": 106,
+          "text": "画质",
+          "type": "combo",
+          "value": "performance"
+        },
+        "rhythmstyle": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "options": [
+            {
+              "label": "原版 · 多层起伏",
+              "value": "legacy"
+            },
+            {
+              "label": "方案 A · 左低中中右高频谱",
+              "value": "wave"
+            },
+            {
+              "label": "方案 B · 连续层叠流波",
+              "value": "lift"
+            }
+          ],
+          "order": 133,
+          "text": "音乐律动方案",
+          "type": "combo",
+          "value": "legacy"
+        },
+        "schemecolor": {
+          "icon": "fa-palette",
+          "order": -20,
+          "text": "ui_browse_properties_scheme_color",
+          "type": "color",
+          "value": "0.5 0.5 0.5"
+        },
+        "screenfinish": {
+          "order": 144,
+          "text": "全局屏幕效果",
+          "type": "bool",
+          "value": false
+        },
+        "screenfringe": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 147,
+          "step": 1,
+          "text": "边缘色散",
+          "type": "slider",
+          "value": 20
+        },
+        "screengrain": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 145,
+          "step": 1,
+          "text": "细颗粒",
+          "type": "slider",
+          "value": 20
+        },
+        "screengrainsize": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 146,
+          "step": 1,
+          "text": "颗粒尺寸",
+          "type": "slider",
+          "value": 20
+        },
+        "screenvignette": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 148,
+          "step": 1,
+          "text": "暗角",
+          "type": "slider",
+          "value": 20
+        },
+        "selectedindexaccent": {
+          "condition": "colortheme.value == 'dark'",
+          "order": 104,
+          "text": "暗色模式仅选中档案标签使用强调色",
+          "type": "bool",
+          "value": false
+        },
+        "selectionstyle": {
+          "condition": "desktopmode.value == 'workbench'",
+          "options": [
+            {
+              "label": "保持原样",
+              "value": "original"
+            },
+            {
+              "label": "仅音乐律动时归齐",
+              "value": "music-flat"
+            },
+            {
+              "label": "始终归齐",
+              "value": "flat"
+            }
+          ],
+          "order": 116,
+          "text": "选中档案高度",
+          "type": "combo",
+          "value": "music-flat"
+        },
+        "sessionname": {
+          "order": 100,
+          "text": "登录人姓名（开场身份确认、页脚与访问记录，最多 24 字符）",
+          "type": "textinput",
+          "value": "JOYCE MOORE"
+        },
+        "showbrand": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 113,
+          "text": "显示品牌文字",
+          "type": "bool",
+          "value": true
+        },
+        "showclock": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 109,
+          "text": "显示时钟与日期",
+          "type": "bool",
+          "value": true
+        },
+        "showfooter": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 114,
+          "text": "显示页脚信息",
+          "type": "bool",
+          "value": true
+        },
+        "showgame": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 137,
+          "text": "显示游戏入口",
+          "type": "bool",
+          "value": true
+        },
+        "showmodule": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 111,
+          "text": "显示右侧功能内容",
+          "type": "bool",
+          "value": true
+        },
+        "shownavigation": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 112,
+          "text": "显示底部功能导航",
+          "type": "bool",
+          "value": true
+        },
+        "showsettings": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 115,
+          "text": "显示设置入口",
+          "type": "bool",
+          "value": true
+        },
+        "showtasks": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 110,
+          "text": "显示今日事项",
+          "type": "bool",
+          "value": true
+        },
+        "sound": {
+          "order": 127,
+          "text": "交互音效",
+          "type": "bool",
+          "value": false
+        },
+        "soundvolume": {
+          "value": 23
+        },
+        "superperformance": {
+          "value": false
+        },
+        "task1": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 119,
+          "text": "今日事项 1",
+          "type": "textinput",
+          "value": ""
+        },
+        "task2": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 120,
+          "text": "今日事项 2",
+          "type": "textinput",
+          "value": ""
+        },
+        "task3": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 121,
+          "text": "今日事项 3",
+          "type": "textinput",
+          "value": ""
+        },
+        "uifrost": {
+          "order": 149,
+          "text": "文字与按钮磨砂底",
+          "type": "bool",
+          "value": false
+        },
+        "uifroststrength": {
+          "condition": "uifrost.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 150,
+          "step": 1,
+          "text": "磨砂强度",
+          "type": "slider",
+          "value": 55
+        },
+        "uimarginbottom": {
+          "max": 300,
+          "min": -300,
+          "order": 153,
+          "step": 1,
+          "text": "下边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimarginleft": {
+          "max": 300,
+          "min": -300,
+          "order": 154,
+          "step": 1,
+          "text": "左边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimarginright": {
+          "max": 300,
+          "min": -300,
+          "order": 155,
+          "step": 1,
+          "text": "右边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimargintop": {
+          "max": 300,
+          "min": -300,
+          "order": 152,
+          "step": 1,
+          "text": "上边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "wec_brs": {
+          "condition": "wec_e.value",
+          "icon": "fa-sun",
+          "max": 100,
+          "min": 0,
+          "order": -7,
+          "text": "ui_browse_properties_brightness",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_con": {
+          "condition": "wec_e.value",
+          "icon": "fa-adjust",
+          "max": 100,
+          "min": 0,
+          "order": -6,
+          "text": "ui_browse_properties_contrast",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_e": {
+          "order": -8,
+          "text": "ui_browse_properties_show_color_options",
+          "type": "bool",
+          "value": false
+        },
+        "wec_hue": {
+          "condition": "wec_e.value",
+          "icon": "fa-palette",
+          "max": 100,
+          "min": 0,
+          "order": -4,
+          "text": "ui_browse_properties_hue_shift",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_sa": {
+          "condition": "wec_e.value",
+          "icon": "fa-tint",
+          "max": 100,
+          "min": 0,
+          "order": -5,
+          "text": "ui_browse_properties_saturation",
+          "type": "slider",
+          "value": 50
+        }
+      },
+      "fps": 30,
+      "paused": false
+    }
+  },
+  "high": {
+    "decryption": {
+      "time": -1,
+      "intervals": [],
+      "markers": 0,
+      "point": 0,
+      "label": 0,
+      "labelValue": 0,
+      "clarity": 0,
+      "phase": "waiting"
+    },
+    "topLeft": [
+      285,
+      192
+    ],
+    "topRight": [
+      452,
+      104
+    ],
+    "labelTopLeft": [
+      321,
+      208
+    ],
+    "labelBottomLeft": [
+      321,
+      235
+    ],
+    "modelPosition": [
+      0,
+      -1.9992,
+      -2.1955
+    ],
+    "cameraPosition": [
+      -95.3177,
+      42.0196,
+      59.3219
+    ],
+    "fieldOfView": 4.158288191978094,
+    "loaded": true,
+    "drawCalls": 48,
+    "renderedFrames": 4,
+    "reusedFrames": 0,
+    "superPerformance": false,
+    "modelPrecision": "high",
+    "modelPrecisionRequested": "high",
+    "arrayModelTriangles": 4200,
+    "selectedModelTriangles": 82348,
+    "presentation": 1,
+    "triangles": 3436915,
+    "archiveCount": 381,
+    "archiveCandidates": 524,
+    "archiveCulled": 143,
+    "archiveCapacity": 576,
+    "archiveCoverage": "standard",
+    "returningFiles": 0,
+    "selectionPhase": "settled",
+    "pendingPulse": null,
+    "pulses": [],
+    "referenceTime": 34.3,
+    "selectedSlot": 76,
+    "selectedLane": 2,
+    "selectedCell": {
+      "lane": 2,
+      "row": 12
+    },
+    "hoverCell": null,
+    "hoverLifts": {},
+    "dragTrack": null,
+    "archiveMomentum": null,
+    "holdingArchive": false,
+    "dragProjection": {
+      "lane": {
+        "x": -172.84514174270583,
+        "y": 94.52957422029779
+      },
+      "row": {
+        "x": -32.057278537153906,
+        "y": -7.023516083104642
+      }
+    },
+    "dragMapping": null,
+    "coordinateOrigin": {
+      "lane": 0,
+      "row": 0
+    },
+    "poolBounds": {
+      "minLane": -4,
+      "maxLane": 9,
+      "minRow": -31,
+      "maxRow": 53
+    },
+    "laneFocus": 2,
+    "columnCamera": 0,
+    "rotation": 0,
+    "clearance": -3.2894083355188073,
+    "canInspect": false,
+    "returnPhase": "lowering",
+    "extraction": 0.397,
+    "appearance": 1,
+    "cameraDetail": 0,
+    "idleGain": 0,
+    "flatten": 0,
+    "spectrumActivity": 0,
+    "selectedIndexDim": 0,
+    "returningIndexDims": [],
+    "cameraDistance": 118.8260021833703,
+    "cameraNear": 5,
+    "cameraFar": 300,
+    "fogNear": 123.8260021833703,
+    "fogFar": 143.8260021833703,
+    "returningAppearance": [],
+    "rail": 0,
+    "threeState": "on",
+    "fps": 0,
+    "mode": "archive",
+    "ready": true,
+    "startup": "started",
+    "motion": {
+      "reduced": true,
+      "systemReduced": false
+    },
+    "bootTime": null,
+    "selected": "X-001",
+    "saved": [],
+    "audio": {
+      "state": "locked",
+      "scene": "archive",
+      "tracks": 0,
+      "voices": 0,
+      "loaded": false,
+      "playedKeys": 0,
+      "error": "",
+      "preferences": {
+        "sound": false,
+        "music": false,
+        "soundVolume": 0.55,
+        "musicVolume": 0.5
+      }
+    },
+    "wallpaper": {
+      "properties": {
+        "_d0": {
+          "order": 0,
+          "type": "divider"
+        },
+        "alignmentfliph": {
+          "icon": "fa-exchange",
+          "order": -12,
+          "text": "ui_browse_properties_alignment_flip_horizontally",
+          "type": "bool",
+          "value": false
+        },
+        "archivecoverage": {
+          "options": [
+            {
+              "label": "自动 · 标准余量",
+              "value": "standard"
+            },
+            {
+              "label": "自动 · 额外余量",
+              "value": "extra"
+            }
+          ],
+          "order": 105,
+          "text": "阵列覆盖余量",
+          "type": "combo",
+          "value": "standard"
+        },
+        "audioprocessing": {
+          "icon": "fa-microphone",
+          "order": -21,
+          "text": "ui_browse_properties_audio_recording",
+          "type": "bool",
+          "value": true
+        },
+        "audioreactive": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 132,
+          "text": "开启音乐律动（跟随系统音频）",
+          "type": "bool",
+          "value": true
+        },
+        "autotheme": {
+          "order": 104,
+          "text": "按时间自动切换明暗（手动切换会在下一个时间点被覆盖）",
+          "type": "bool",
+          "value": false
+        },
+        "boot": {
+          "order": 102,
+          "text": "启动时播放开场（下次加载生效）",
+          "type": "bool",
+          "value": false
+        },
+        "breakminutes": {
+          "condition": "desktopmode.value == 'workbench'",
+          "max": 60,
+          "min": 1,
+          "order": 125,
+          "precision": 0,
+          "step": 1,
+          "text": "休息时长（分钟，下次开始生效）",
+          "type": "slider",
+          "value": 5
+        },
+        "colortheme": {
+          "options": [
+            {
+              "label": "亮色 · 磨砂白",
+              "value": "light"
+            },
+            {
+              "label": "暗色 · 石墨灰",
+              "value": "dark"
+            }
+          ],
+          "order": 104,
+          "text": "界面配色",
+          "type": "combo",
+          "value": "light"
+        },
+        "customwallpaper": {
+          "order": 106,
+          "text": "关闭 3D 后显示自定义壁纸",
+          "type": "bool",
+          "value": false
+        },
+        "customwallpaperfile": {
+          "condition": "customwallpaper.value == true",
+          "order": 106,
+          "text": "自定义壁纸图片",
+          "type": "file",
+          "value": ""
+        },
+        "customwallpapermask": {
+          "condition": "customwallpaper.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 106,
+          "step": 1,
+          "text": "上下遮罩范围（0 为关闭）",
+          "type": "slider",
+          "value": 100
+        },
+        "darkstarthour": {
+          "condition": "autotheme.value == true",
+          "max": 23,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为暗色 · 时（0-23）",
+          "type": "slider",
+          "value": 19
+        },
+        "darkstartminute": {
+          "condition": "autotheme.value == true",
+          "max": 59,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为暗色 · 分",
+          "type": "slider",
+          "value": 0
+        },
+        "desktopmode": {
+          "options": [
+            {
+              "label": "桌面工作台",
+              "value": "workbench"
+            },
+            {
+              "label": "档案展示",
+              "value": "archive"
+            }
+          ],
+          "order": 100,
+          "text": "工作模式",
+          "type": "combo",
+          "value": "archive"
+        },
+        "enableevent": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 159,
+          "text": "启用重要日程",
+          "type": "bool",
+          "value": true
+        },
+        "enablefocus": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 161,
+          "text": "启用专注计时",
+          "type": "bool",
+          "value": true
+        },
+        "enablemedia": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 160,
+          "text": "启用正在播放",
+          "type": "bool",
+          "value": true
+        },
+        "enabletasks": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 158,
+          "text": "启用今日事项",
+          "type": "bool",
+          "value": true
+        },
+        "enabletime": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 157,
+          "text": "启用时间日期",
+          "type": "bool",
+          "value": true
+        },
+        "eventdate": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 123,
+          "text": "目标日期（YYYY-MM-DD，可加 HH:mm，本地时间）",
+          "type": "textinput",
+          "value": ""
+        },
+        "eventname": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 122,
+          "text": "重要日程名称",
+          "type": "textinput",
+          "value": ""
+        },
+        "focusminutes": {
+          "condition": "desktopmode.value == 'workbench'",
+          "max": 120,
+          "min": 1,
+          "order": 124,
+          "precision": 0,
+          "step": 1,
+          "text": "专注时长（分钟，下次开始生效）",
+          "type": "slider",
+          "value": 25
+        },
+        "gamepace": {
+          "condition": "desktopmode.value == 'workbench' && showgame.value == true",
+          "options": [
+            {
+              "label": "舒缓",
+              "value": "gentle"
+            },
+            {
+              "label": "标准",
+              "value": "normal"
+            },
+            {
+              "label": "快速",
+              "value": "quick"
+            }
+          ],
+          "order": 138,
+          "text": "波纹接力节奏（下一目标生效）",
+          "type": "combo",
+          "value": "normal"
+        },
+        "groupaudio": {
+          "order": 126,
+          "text": "声音",
+          "type": "group"
+        },
+        "groupcapabilities": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 156,
+          "text": "工作台 · 可用功能",
+          "type": "group"
+        },
+        "groupcontent": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 118,
+          "text": "工作台 · 事项与日程",
+          "type": "group"
+        },
+        "groupgame": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 136,
+          "text": "工作台 · 波纹接力",
+          "type": "group"
+        },
+        "groupidentity": {
+          "order": 100,
+          "text": "登录身份",
+          "type": "group"
+        },
+        "groupopening": {
+          "order": 101,
+          "text": "入场与画面",
+          "type": "group"
+        },
+        "groupreactive": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 131,
+          "text": "工作台 · 音乐律动",
+          "type": "group"
+        },
+        "groupuimargins": {
+          "order": 151,
+          "text": "界面边距 · 正值内收 / 负值外扩",
+          "type": "group"
+        },
+        "groupvisualeffects": {
+          "order": 140,
+          "text": "HUD 与画面质感",
+          "type": "group"
+        },
+        "groupworkbench": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 108,
+          "text": "工作台 · 界面显示",
+          "type": "group"
+        },
+        "huddepth": {
+          "condition": "hudparallax.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 142,
+          "step": 1,
+          "text": "曲面纵深",
+          "type": "slider",
+          "value": 20
+        },
+        "hudparallax": {
+          "order": 141,
+          "text": "UI 鼠标视差",
+          "type": "bool",
+          "value": false
+        },
+        "hudtracking": {
+          "condition": "hudparallax.value == true",
+          "order": 143,
+          "text": "鼠标追踪",
+          "type": "bool",
+          "value": true
+        },
+        "idlebreathing": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 117,
+          "text": "静止时呼吸（始终归齐时也生效）",
+          "type": "bool",
+          "value": true
+        },
+        "lightstarthour": {
+          "condition": "autotheme.value == true",
+          "max": 23,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为亮色 · 时（0-23）",
+          "type": "slider",
+          "value": 7
+        },
+        "lightstartminute": {
+          "condition": "autotheme.value == true",
+          "max": 59,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为亮色 · 分",
+          "type": "slider",
+          "value": 0
+        },
+        "load3donstartup": {
+          "order": 102,
+          "text": "启动时加载 3D（下次加载生效）",
+          "type": "bool",
+          "value": true
+        },
+        "modelprecision": {
+          "value": "high"
+        },
+        "music": {
+          "order": 129,
+          "text": "背景音乐",
+          "type": "bool",
+          "value": false
+        },
+        "musicvolume": {
+          "condition": "music.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 130,
+          "precision": 0,
+          "step": 1,
+          "text": "音乐音量",
+          "type": "slider",
+          "value": 50
+        },
+        "openingdetail": {
+          "condition": "boot.value == true",
+          "options": [
+            {
+              "label": "随工作模式（工作台跳过，展示模式播放）",
+              "value": "auto"
+            },
+            {
+              "label": "展示详情",
+              "value": "show"
+            },
+            {
+              "label": "跳过详情，停留在阵列",
+              "value": "skip"
+            }
+          ],
+          "order": 103,
+          "text": "入场时展示档案详情（下次开场生效）",
+          "type": "combo",
+          "value": "auto"
+        },
+        "qualityanisotropy": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "1×",
+              "value": "1"
+            },
+            {
+              "label": "2×",
+              "value": "2"
+            },
+            {
+              "label": "4×",
+              "value": "4"
+            },
+            {
+              "label": "8×",
+              "value": "8"
+            },
+            {
+              "label": "16×",
+              "value": "16"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 纹理过滤",
+          "type": "combo",
+          "value": "16"
+        },
+        "qualityantialias": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "原始",
+              "value": "off"
+            },
+            {
+              "label": "SMAA",
+              "value": "smaa"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 抗锯齿",
+          "type": "combo",
+          "value": "off"
+        },
+        "qualityaoresolution": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "50%",
+              "value": "0.5"
+            },
+            {
+              "label": "75%",
+              "value": "0.75"
+            },
+            {
+              "label": "100%",
+              "value": "1"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 遮蔽分辨率",
+          "type": "combo",
+          "value": "1"
+        },
+        "qualityaosamples": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "关闭",
+              "value": "0"
+            },
+            {
+              "label": "16 采样",
+              "value": "16"
+            },
+            {
+              "label": "32 采样",
+              "value": "32"
+            },
+            {
+              "label": "64 采样",
+              "value": "64"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 环境遮蔽采样",
+          "type": "combo",
+          "value": "32"
+        },
+        "qualitydepthoffield": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "max": 150,
+          "min": 0,
+          "order": 106,
+          "step": 5,
+          "text": "自定义 · 景深强度（%）",
+          "type": "slider",
+          "value": 100
+        },
+        "qualitypixelratio": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "1×",
+              "value": "1"
+            },
+            {
+              "label": "1.5×",
+              "value": "1.5"
+            },
+            {
+              "label": "2×",
+              "value": "2"
+            },
+            {
+              "label": "3×",
+              "value": "3"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 像素密度上限",
+          "type": "combo",
+          "value": "1.5"
+        },
+        "qualityscale": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "max": 200,
+          "min": 50,
+          "order": 106,
+          "step": 5,
+          "text": "自定义 · 三维渲染比例（%）",
+          "type": "slider",
+          "value": 100
+        },
+        "qualityshadows": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "关闭",
+              "value": "0"
+            },
+            {
+              "label": "1024",
+              "value": "1024"
+            },
+            {
+              "label": "2048",
+              "value": "2048"
+            },
+            {
+              "label": "4096",
+              "value": "4096"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 阴影分辨率",
+          "type": "combo",
+          "value": "2048"
+        },
+        "qualitytransmission": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "25%",
+              "value": "0.25"
+            },
+            {
+              "label": "50%",
+              "value": "0.5"
+            },
+            {
+              "label": "75%",
+              "value": "0.75"
+            },
+            {
+              "label": "100%",
+              "value": "1"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 透明材质分辨率",
+          "type": "combo",
+          "value": "1"
+        },
+        "reactiveintensity": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "max": 200,
+          "min": 0,
+          "order": 134,
+          "precision": 0,
+          "step": 1,
+          "text": "音乐律动强度",
+          "type": "slider",
+          "value": 100
+        },
+        "reactivemute": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "order": 135,
+          "text": "音乐律动开启时停用壁纸配乐",
+          "type": "bool",
+          "value": true
+        },
+        "reduced": {
+          "value": true
+        },
+        "renderquality": {
+          "condition": "superperformance.value == false",
+          "options": [
+            {
+              "label": "性能",
+              "value": "performance"
+            },
+            {
+              "label": "原始",
+              "value": "original"
+            },
+            {
+              "label": "高",
+              "value": "high"
+            },
+            {
+              "label": "极高",
+              "value": "ultra"
+            },
+            {
+              "label": "自定义",
+              "value": "custom"
+            }
+          ],
+          "order": 106,
+          "text": "画质",
+          "type": "combo",
+          "value": "performance"
+        },
+        "rhythmstyle": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "options": [
+            {
+              "label": "原版 · 多层起伏",
+              "value": "legacy"
+            },
+            {
+              "label": "方案 A · 左低中中右高频谱",
+              "value": "wave"
+            },
+            {
+              "label": "方案 B · 连续层叠流波",
+              "value": "lift"
+            }
+          ],
+          "order": 133,
+          "text": "音乐律动方案",
+          "type": "combo",
+          "value": "legacy"
+        },
+        "schemecolor": {
+          "icon": "fa-palette",
+          "order": -20,
+          "text": "ui_browse_properties_scheme_color",
+          "type": "color",
+          "value": "0.5 0.5 0.5"
+        },
+        "screenfinish": {
+          "order": 144,
+          "text": "全局屏幕效果",
+          "type": "bool",
+          "value": false
+        },
+        "screenfringe": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 147,
+          "step": 1,
+          "text": "边缘色散",
+          "type": "slider",
+          "value": 20
+        },
+        "screengrain": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 145,
+          "step": 1,
+          "text": "细颗粒",
+          "type": "slider",
+          "value": 20
+        },
+        "screengrainsize": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 146,
+          "step": 1,
+          "text": "颗粒尺寸",
+          "type": "slider",
+          "value": 20
+        },
+        "screenvignette": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 148,
+          "step": 1,
+          "text": "暗角",
+          "type": "slider",
+          "value": 20
+        },
+        "selectedindexaccent": {
+          "condition": "colortheme.value == 'dark'",
+          "order": 104,
+          "text": "暗色模式仅选中档案标签使用强调色",
+          "type": "bool",
+          "value": false
+        },
+        "selectionstyle": {
+          "condition": "desktopmode.value == 'workbench'",
+          "options": [
+            {
+              "label": "保持原样",
+              "value": "original"
+            },
+            {
+              "label": "仅音乐律动时归齐",
+              "value": "music-flat"
+            },
+            {
+              "label": "始终归齐",
+              "value": "flat"
+            }
+          ],
+          "order": 116,
+          "text": "选中档案高度",
+          "type": "combo",
+          "value": "music-flat"
+        },
+        "sessionname": {
+          "order": 100,
+          "text": "登录人姓名（开场身份确认、页脚与访问记录，最多 24 字符）",
+          "type": "textinput",
+          "value": "JOYCE MOORE"
+        },
+        "showbrand": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 113,
+          "text": "显示品牌文字",
+          "type": "bool",
+          "value": true
+        },
+        "showclock": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 109,
+          "text": "显示时钟与日期",
+          "type": "bool",
+          "value": true
+        },
+        "showfooter": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 114,
+          "text": "显示页脚信息",
+          "type": "bool",
+          "value": true
+        },
+        "showgame": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 137,
+          "text": "显示游戏入口",
+          "type": "bool",
+          "value": true
+        },
+        "showmodule": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 111,
+          "text": "显示右侧功能内容",
+          "type": "bool",
+          "value": true
+        },
+        "shownavigation": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 112,
+          "text": "显示底部功能导航",
+          "type": "bool",
+          "value": true
+        },
+        "showsettings": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 115,
+          "text": "显示设置入口",
+          "type": "bool",
+          "value": true
+        },
+        "showtasks": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 110,
+          "text": "显示今日事项",
+          "type": "bool",
+          "value": true
+        },
+        "sound": {
+          "order": 127,
+          "text": "交互音效",
+          "type": "bool",
+          "value": false
+        },
+        "soundvolume": {
+          "value": 23
+        },
+        "superperformance": {
+          "value": false
+        },
+        "task1": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 119,
+          "text": "今日事项 1",
+          "type": "textinput",
+          "value": ""
+        },
+        "task2": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 120,
+          "text": "今日事项 2",
+          "type": "textinput",
+          "value": ""
+        },
+        "task3": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 121,
+          "text": "今日事项 3",
+          "type": "textinput",
+          "value": ""
+        },
+        "uifrost": {
+          "order": 149,
+          "text": "文字与按钮磨砂底",
+          "type": "bool",
+          "value": false
+        },
+        "uifroststrength": {
+          "condition": "uifrost.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 150,
+          "step": 1,
+          "text": "磨砂强度",
+          "type": "slider",
+          "value": 55
+        },
+        "uimarginbottom": {
+          "max": 300,
+          "min": -300,
+          "order": 153,
+          "step": 1,
+          "text": "下边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimarginleft": {
+          "max": 300,
+          "min": -300,
+          "order": 154,
+          "step": 1,
+          "text": "左边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimarginright": {
+          "max": 300,
+          "min": -300,
+          "order": 155,
+          "step": 1,
+          "text": "右边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimargintop": {
+          "max": 300,
+          "min": -300,
+          "order": 152,
+          "step": 1,
+          "text": "上边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "wec_brs": {
+          "condition": "wec_e.value",
+          "icon": "fa-sun",
+          "max": 100,
+          "min": 0,
+          "order": -7,
+          "text": "ui_browse_properties_brightness",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_con": {
+          "condition": "wec_e.value",
+          "icon": "fa-adjust",
+          "max": 100,
+          "min": 0,
+          "order": -6,
+          "text": "ui_browse_properties_contrast",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_e": {
+          "order": -8,
+          "text": "ui_browse_properties_show_color_options",
+          "type": "bool",
+          "value": false
+        },
+        "wec_hue": {
+          "condition": "wec_e.value",
+          "icon": "fa-palette",
+          "max": 100,
+          "min": 0,
+          "order": -4,
+          "text": "ui_browse_properties_hue_shift",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_sa": {
+          "condition": "wec_e.value",
+          "icon": "fa-tint",
+          "max": 100,
+          "min": 0,
+          "order": -5,
+          "text": "ui_browse_properties_saturation",
+          "type": "slider",
+          "value": 50
+        }
+      },
+      "fps": 30,
+      "paused": false
+    }
+  },
+  "low": {
+    "decryption": {
+      "time": -1,
+      "intervals": [],
+      "markers": 0,
+      "point": 0,
+      "label": 0,
+      "labelValue": 0,
+      "clarity": 0,
+      "phase": "waiting"
+    },
+    "topLeft": [
+      258,
+      144
+    ],
+    "topRight": [
+      450,
+      47
+    ],
+    "labelTopLeft": [
+      300,
+      164
+    ],
+    "labelBottomLeft": [
+      300,
+      196
+    ],
+    "modelPosition": [
+      0,
+      -1.9963,
+      -2.17
+    ],
+    "cameraPosition": [
+      -114.5565,
+      45.5345,
+      68.6579
+    ],
+    "fieldOfView": 2.9991583129127664,
+    "loaded": true,
+    "drawCalls": 48,
+    "renderedFrames": 195,
+    "reusedFrames": 2,
+    "superPerformance": false,
+    "modelPrecision": "low",
+    "modelPrecisionRequested": "low",
+    "arrayModelTriangles": 1554,
+    "selectedModelTriangles": 21869,
+    "presentation": 1,
+    "triangles": 1088761,
+    "archiveCount": 317,
+    "archiveCandidates": 458,
+    "archiveCulled": 141,
+    "archiveCapacity": 576,
+    "archiveCoverage": "standard",
+    "returningFiles": 0,
+    "selectionPhase": "settled",
+    "pendingPulse": null,
+    "pulses": [],
+    "referenceTime": 40.74,
+    "selectedSlot": 76,
+    "selectedLane": 2,
+    "selectedCell": {
+      "lane": 2,
+      "row": 12
+    },
+    "hoverCell": null,
+    "hoverLifts": {},
+    "dragTrack": null,
+    "archiveMomentum": null,
+    "holdingArchive": false,
+    "dragProjection": {
+      "lane": {
+        "x": -197.95859177351522,
+        "y": 103.86445975919176
+      },
+      "row": {
+        "x": -38.280111991028924,
+        "y": -7.4393360146339855
+      }
+    },
+    "dragMapping": null,
+    "coordinateOrigin": {
+      "lane": 0,
+      "row": 0
+    },
+    "poolBounds": {
+      "minLane": -4,
+      "maxLane": 9,
+      "minRow": -28,
+      "maxRow": 51
+    },
+    "laneFocus": 2,
+    "columnCamera": 0,
+    "rotation": 0,
+    "clearance": -3.286490313229033,
+    "canInspect": false,
+    "returnPhase": "lowering",
+    "extraction": 0.4,
+    "appearance": 1,
+    "cameraDetail": 0,
+    "idleGain": 0,
+    "flatten": 0,
+    "spectrumActivity": 0,
+    "selectedIndexDim": 0,
+    "returningIndexDims": [],
+    "cameraDistance": 139.99999999999977,
+    "cameraNear": 5,
+    "cameraFar": 300,
+    "fogNear": 144.99999999999977,
+    "fogFar": 164.99999999999977,
+    "returningAppearance": [],
+    "rail": 0,
+    "threeState": "on",
+    "fps": 30,
+    "mode": "archive",
+    "ready": true,
+    "startup": "started",
+    "motion": {
+      "reduced": true,
+      "systemReduced": false
+    },
+    "bootTime": null,
+    "selected": "X-001",
+    "saved": [],
+    "audio": {
+      "state": "locked",
+      "scene": "archive",
+      "tracks": 0,
+      "voices": 0,
+      "loaded": false,
+      "playedKeys": 0,
+      "error": "",
+      "preferences": {
+        "sound": false,
+        "music": false,
+        "soundVolume": 0.55,
+        "musicVolume": 0.5
+      }
+    },
+    "wallpaper": {
+      "properties": {
+        "_d0": {
+          "order": 0,
+          "type": "divider"
+        },
+        "alignmentfliph": {
+          "icon": "fa-exchange",
+          "order": -12,
+          "text": "ui_browse_properties_alignment_flip_horizontally",
+          "type": "bool",
+          "value": false
+        },
+        "archivecoverage": {
+          "options": [
+            {
+              "label": "自动 · 标准余量",
+              "value": "standard"
+            },
+            {
+              "label": "自动 · 额外余量",
+              "value": "extra"
+            }
+          ],
+          "order": 105,
+          "text": "阵列覆盖余量",
+          "type": "combo",
+          "value": "standard"
+        },
+        "audioprocessing": {
+          "icon": "fa-microphone",
+          "order": -21,
+          "text": "ui_browse_properties_audio_recording",
+          "type": "bool",
+          "value": true
+        },
+        "audioreactive": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 132,
+          "text": "开启音乐律动（跟随系统音频）",
+          "type": "bool",
+          "value": true
+        },
+        "autotheme": {
+          "order": 104,
+          "text": "按时间自动切换明暗（手动切换会在下一个时间点被覆盖）",
+          "type": "bool",
+          "value": false
+        },
+        "boot": {
+          "order": 102,
+          "text": "启动时播放开场（下次加载生效）",
+          "type": "bool",
+          "value": false
+        },
+        "breakminutes": {
+          "condition": "desktopmode.value == 'workbench'",
+          "max": 60,
+          "min": 1,
+          "order": 125,
+          "precision": 0,
+          "step": 1,
+          "text": "休息时长（分钟，下次开始生效）",
+          "type": "slider",
+          "value": 5
+        },
+        "colortheme": {
+          "options": [
+            {
+              "label": "亮色 · 磨砂白",
+              "value": "light"
+            },
+            {
+              "label": "暗色 · 石墨灰",
+              "value": "dark"
+            }
+          ],
+          "order": 104,
+          "text": "界面配色",
+          "type": "combo",
+          "value": "light"
+        },
+        "customwallpaper": {
+          "order": 106,
+          "text": "关闭 3D 后显示自定义壁纸",
+          "type": "bool",
+          "value": false
+        },
+        "customwallpaperfile": {
+          "condition": "customwallpaper.value == true",
+          "order": 106,
+          "text": "自定义壁纸图片",
+          "type": "file",
+          "value": ""
+        },
+        "customwallpapermask": {
+          "condition": "customwallpaper.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 106,
+          "step": 1,
+          "text": "上下遮罩范围（0 为关闭）",
+          "type": "slider",
+          "value": 100
+        },
+        "darkstarthour": {
+          "condition": "autotheme.value == true",
+          "max": 23,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为暗色 · 时（0-23）",
+          "type": "slider",
+          "value": 19
+        },
+        "darkstartminute": {
+          "condition": "autotheme.value == true",
+          "max": 59,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为暗色 · 分",
+          "type": "slider",
+          "value": 0
+        },
+        "desktopmode": {
+          "options": [
+            {
+              "label": "桌面工作台",
+              "value": "workbench"
+            },
+            {
+              "label": "档案展示",
+              "value": "archive"
+            }
+          ],
+          "order": 100,
+          "text": "工作模式",
+          "type": "combo",
+          "value": "archive"
+        },
+        "enableevent": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 159,
+          "text": "启用重要日程",
+          "type": "bool",
+          "value": true
+        },
+        "enablefocus": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 161,
+          "text": "启用专注计时",
+          "type": "bool",
+          "value": true
+        },
+        "enablemedia": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 160,
+          "text": "启用正在播放",
+          "type": "bool",
+          "value": true
+        },
+        "enabletasks": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 158,
+          "text": "启用今日事项",
+          "type": "bool",
+          "value": true
+        },
+        "enabletime": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 157,
+          "text": "启用时间日期",
+          "type": "bool",
+          "value": true
+        },
+        "eventdate": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 123,
+          "text": "目标日期（YYYY-MM-DD，可加 HH:mm，本地时间）",
+          "type": "textinput",
+          "value": ""
+        },
+        "eventname": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 122,
+          "text": "重要日程名称",
+          "type": "textinput",
+          "value": ""
+        },
+        "focusminutes": {
+          "condition": "desktopmode.value == 'workbench'",
+          "max": 120,
+          "min": 1,
+          "order": 124,
+          "precision": 0,
+          "step": 1,
+          "text": "专注时长（分钟，下次开始生效）",
+          "type": "slider",
+          "value": 25
+        },
+        "gamepace": {
+          "condition": "desktopmode.value == 'workbench' && showgame.value == true",
+          "options": [
+            {
+              "label": "舒缓",
+              "value": "gentle"
+            },
+            {
+              "label": "标准",
+              "value": "normal"
+            },
+            {
+              "label": "快速",
+              "value": "quick"
+            }
+          ],
+          "order": 138,
+          "text": "波纹接力节奏（下一目标生效）",
+          "type": "combo",
+          "value": "normal"
+        },
+        "groupaudio": {
+          "order": 126,
+          "text": "声音",
+          "type": "group"
+        },
+        "groupcapabilities": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 156,
+          "text": "工作台 · 可用功能",
+          "type": "group"
+        },
+        "groupcontent": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 118,
+          "text": "工作台 · 事项与日程",
+          "type": "group"
+        },
+        "groupgame": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 136,
+          "text": "工作台 · 波纹接力",
+          "type": "group"
+        },
+        "groupidentity": {
+          "order": 100,
+          "text": "登录身份",
+          "type": "group"
+        },
+        "groupopening": {
+          "order": 101,
+          "text": "入场与画面",
+          "type": "group"
+        },
+        "groupreactive": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 131,
+          "text": "工作台 · 音乐律动",
+          "type": "group"
+        },
+        "groupuimargins": {
+          "order": 151,
+          "text": "界面边距 · 正值内收 / 负值外扩",
+          "type": "group"
+        },
+        "groupvisualeffects": {
+          "order": 140,
+          "text": "HUD 与画面质感",
+          "type": "group"
+        },
+        "groupworkbench": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 108,
+          "text": "工作台 · 界面显示",
+          "type": "group"
+        },
+        "huddepth": {
+          "condition": "hudparallax.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 142,
+          "step": 1,
+          "text": "曲面纵深",
+          "type": "slider",
+          "value": 20
+        },
+        "hudparallax": {
+          "order": 141,
+          "text": "UI 鼠标视差",
+          "type": "bool",
+          "value": false
+        },
+        "hudtracking": {
+          "condition": "hudparallax.value == true",
+          "order": 143,
+          "text": "鼠标追踪",
+          "type": "bool",
+          "value": true
+        },
+        "idlebreathing": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 117,
+          "text": "静止时呼吸（始终归齐时也生效）",
+          "type": "bool",
+          "value": true
+        },
+        "lightstarthour": {
+          "condition": "autotheme.value == true",
+          "max": 23,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为亮色 · 时（0-23）",
+          "type": "slider",
+          "value": 7
+        },
+        "lightstartminute": {
+          "condition": "autotheme.value == true",
+          "max": 59,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为亮色 · 分",
+          "type": "slider",
+          "value": 0
+        },
+        "load3donstartup": {
+          "order": 102,
+          "text": "启动时加载 3D（下次加载生效）",
+          "type": "bool",
+          "value": true
+        },
+        "modelprecision": {
+          "value": "high"
+        },
+        "music": {
+          "order": 129,
+          "text": "背景音乐",
+          "type": "bool",
+          "value": false
+        },
+        "musicvolume": {
+          "condition": "music.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 130,
+          "precision": 0,
+          "step": 1,
+          "text": "音乐音量",
+          "type": "slider",
+          "value": 50
+        },
+        "openingdetail": {
+          "condition": "boot.value == true",
+          "options": [
+            {
+              "label": "随工作模式（工作台跳过，展示模式播放）",
+              "value": "auto"
+            },
+            {
+              "label": "展示详情",
+              "value": "show"
+            },
+            {
+              "label": "跳过详情，停留在阵列",
+              "value": "skip"
+            }
+          ],
+          "order": 103,
+          "text": "入场时展示档案详情（下次开场生效）",
+          "type": "combo",
+          "value": "auto"
+        },
+        "qualityanisotropy": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "1×",
+              "value": "1"
+            },
+            {
+              "label": "2×",
+              "value": "2"
+            },
+            {
+              "label": "4×",
+              "value": "4"
+            },
+            {
+              "label": "8×",
+              "value": "8"
+            },
+            {
+              "label": "16×",
+              "value": "16"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 纹理过滤",
+          "type": "combo",
+          "value": "16"
+        },
+        "qualityantialias": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "原始",
+              "value": "off"
+            },
+            {
+              "label": "SMAA",
+              "value": "smaa"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 抗锯齿",
+          "type": "combo",
+          "value": "off"
+        },
+        "qualityaoresolution": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "50%",
+              "value": "0.5"
+            },
+            {
+              "label": "75%",
+              "value": "0.75"
+            },
+            {
+              "label": "100%",
+              "value": "1"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 遮蔽分辨率",
+          "type": "combo",
+          "value": "1"
+        },
+        "qualityaosamples": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "关闭",
+              "value": "0"
+            },
+            {
+              "label": "16 采样",
+              "value": "16"
+            },
+            {
+              "label": "32 采样",
+              "value": "32"
+            },
+            {
+              "label": "64 采样",
+              "value": "64"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 环境遮蔽采样",
+          "type": "combo",
+          "value": "32"
+        },
+        "qualitydepthoffield": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "max": 150,
+          "min": 0,
+          "order": 106,
+          "step": 5,
+          "text": "自定义 · 景深强度（%）",
+          "type": "slider",
+          "value": 100
+        },
+        "qualitypixelratio": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "1×",
+              "value": "1"
+            },
+            {
+              "label": "1.5×",
+              "value": "1.5"
+            },
+            {
+              "label": "2×",
+              "value": "2"
+            },
+            {
+              "label": "3×",
+              "value": "3"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 像素密度上限",
+          "type": "combo",
+          "value": "1.5"
+        },
+        "qualityscale": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "max": 200,
+          "min": 50,
+          "order": 106,
+          "step": 5,
+          "text": "自定义 · 三维渲染比例（%）",
+          "type": "slider",
+          "value": 100
+        },
+        "qualityshadows": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "关闭",
+              "value": "0"
+            },
+            {
+              "label": "1024",
+              "value": "1024"
+            },
+            {
+              "label": "2048",
+              "value": "2048"
+            },
+            {
+              "label": "4096",
+              "value": "4096"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 阴影分辨率",
+          "type": "combo",
+          "value": "2048"
+        },
+        "qualitytransmission": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "25%",
+              "value": "0.25"
+            },
+            {
+              "label": "50%",
+              "value": "0.5"
+            },
+            {
+              "label": "75%",
+              "value": "0.75"
+            },
+            {
+              "label": "100%",
+              "value": "1"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 透明材质分辨率",
+          "type": "combo",
+          "value": "1"
+        },
+        "reactiveintensity": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "max": 200,
+          "min": 0,
+          "order": 134,
+          "precision": 0,
+          "step": 1,
+          "text": "音乐律动强度",
+          "type": "slider",
+          "value": 100
+        },
+        "reactivemute": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "order": 135,
+          "text": "音乐律动开启时停用壁纸配乐",
+          "type": "bool",
+          "value": true
+        },
+        "reduced": {
+          "value": true
+        },
+        "renderquality": {
+          "condition": "superperformance.value == false",
+          "options": [
+            {
+              "label": "性能",
+              "value": "performance"
+            },
+            {
+              "label": "原始",
+              "value": "original"
+            },
+            {
+              "label": "高",
+              "value": "high"
+            },
+            {
+              "label": "极高",
+              "value": "ultra"
+            },
+            {
+              "label": "自定义",
+              "value": "custom"
+            }
+          ],
+          "order": 106,
+          "text": "画质",
+          "type": "combo",
+          "value": "performance"
+        },
+        "rhythmstyle": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "options": [
+            {
+              "label": "原版 · 多层起伏",
+              "value": "legacy"
+            },
+            {
+              "label": "方案 A · 左低中中右高频谱",
+              "value": "wave"
+            },
+            {
+              "label": "方案 B · 连续层叠流波",
+              "value": "lift"
+            }
+          ],
+          "order": 133,
+          "text": "音乐律动方案",
+          "type": "combo",
+          "value": "legacy"
+        },
+        "schemecolor": {
+          "icon": "fa-palette",
+          "order": -20,
+          "text": "ui_browse_properties_scheme_color",
+          "type": "color",
+          "value": "0.5 0.5 0.5"
+        },
+        "screenfinish": {
+          "order": 144,
+          "text": "全局屏幕效果",
+          "type": "bool",
+          "value": false
+        },
+        "screenfringe": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 147,
+          "step": 1,
+          "text": "边缘色散",
+          "type": "slider",
+          "value": 20
+        },
+        "screengrain": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 145,
+          "step": 1,
+          "text": "细颗粒",
+          "type": "slider",
+          "value": 20
+        },
+        "screengrainsize": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 146,
+          "step": 1,
+          "text": "颗粒尺寸",
+          "type": "slider",
+          "value": 20
+        },
+        "screenvignette": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 148,
+          "step": 1,
+          "text": "暗角",
+          "type": "slider",
+          "value": 20
+        },
+        "selectedindexaccent": {
+          "condition": "colortheme.value == 'dark'",
+          "order": 104,
+          "text": "暗色模式仅选中档案标签使用强调色",
+          "type": "bool",
+          "value": false
+        },
+        "selectionstyle": {
+          "condition": "desktopmode.value == 'workbench'",
+          "options": [
+            {
+              "label": "保持原样",
+              "value": "original"
+            },
+            {
+              "label": "仅音乐律动时归齐",
+              "value": "music-flat"
+            },
+            {
+              "label": "始终归齐",
+              "value": "flat"
+            }
+          ],
+          "order": 116,
+          "text": "选中档案高度",
+          "type": "combo",
+          "value": "music-flat"
+        },
+        "sessionname": {
+          "order": 100,
+          "text": "登录人姓名（开场身份确认、页脚与访问记录，最多 24 字符）",
+          "type": "textinput",
+          "value": "JOYCE MOORE"
+        },
+        "showbrand": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 113,
+          "text": "显示品牌文字",
+          "type": "bool",
+          "value": true
+        },
+        "showclock": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 109,
+          "text": "显示时钟与日期",
+          "type": "bool",
+          "value": true
+        },
+        "showfooter": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 114,
+          "text": "显示页脚信息",
+          "type": "bool",
+          "value": true
+        },
+        "showgame": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 137,
+          "text": "显示游戏入口",
+          "type": "bool",
+          "value": true
+        },
+        "showmodule": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 111,
+          "text": "显示右侧功能内容",
+          "type": "bool",
+          "value": true
+        },
+        "shownavigation": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 112,
+          "text": "显示底部功能导航",
+          "type": "bool",
+          "value": true
+        },
+        "showsettings": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 115,
+          "text": "显示设置入口",
+          "type": "bool",
+          "value": true
+        },
+        "showtasks": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 110,
+          "text": "显示今日事项",
+          "type": "bool",
+          "value": true
+        },
+        "sound": {
+          "order": 127,
+          "text": "交互音效",
+          "type": "bool",
+          "value": false
+        },
+        "soundvolume": {
+          "value": 23
+        },
+        "superperformance": {
+          "value": false
+        },
+        "task1": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 119,
+          "text": "今日事项 1",
+          "type": "textinput",
+          "value": ""
+        },
+        "task2": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 120,
+          "text": "今日事项 2",
+          "type": "textinput",
+          "value": ""
+        },
+        "task3": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 121,
+          "text": "今日事项 3",
+          "type": "textinput",
+          "value": ""
+        },
+        "uifrost": {
+          "order": 149,
+          "text": "文字与按钮磨砂底",
+          "type": "bool",
+          "value": false
+        },
+        "uifroststrength": {
+          "condition": "uifrost.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 150,
+          "step": 1,
+          "text": "磨砂强度",
+          "type": "slider",
+          "value": 55
+        },
+        "uimarginbottom": {
+          "max": 300,
+          "min": -300,
+          "order": 153,
+          "step": 1,
+          "text": "下边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimarginleft": {
+          "max": 300,
+          "min": -300,
+          "order": 154,
+          "step": 1,
+          "text": "左边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimarginright": {
+          "max": 300,
+          "min": -300,
+          "order": 155,
+          "step": 1,
+          "text": "右边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimargintop": {
+          "max": 300,
+          "min": -300,
+          "order": 152,
+          "step": 1,
+          "text": "上边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "wec_brs": {
+          "condition": "wec_e.value",
+          "icon": "fa-sun",
+          "max": 100,
+          "min": 0,
+          "order": -7,
+          "text": "ui_browse_properties_brightness",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_con": {
+          "condition": "wec_e.value",
+          "icon": "fa-adjust",
+          "max": 100,
+          "min": 0,
+          "order": -6,
+          "text": "ui_browse_properties_contrast",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_e": {
+          "order": -8,
+          "text": "ui_browse_properties_show_color_options",
+          "type": "bool",
+          "value": false
+        },
+        "wec_hue": {
+          "condition": "wec_e.value",
+          "icon": "fa-palette",
+          "max": 100,
+          "min": 0,
+          "order": -4,
+          "text": "ui_browse_properties_hue_shift",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_sa": {
+          "condition": "wec_e.value",
+          "icon": "fa-tint",
+          "max": 100,
+          "min": 0,
+          "order": -5,
+          "text": "ui_browse_properties_saturation",
+          "type": "slider",
+          "value": 50
+        }
+      },
+      "fps": 30,
+      "paused": false
+    }
+  },
+  "reload": {
+    "decryption": {
+      "time": -1,
+      "intervals": [],
+      "markers": 0,
+      "point": 0,
+      "label": 0,
+      "labelValue": 0,
+      "clarity": 0,
+      "phase": "waiting"
+    },
+    "topLeft": [
+      291,
+      216
+    ],
+    "topRight": [
+      455,
+      127
+    ],
+    "labelTopLeft": [
+      326,
+      231
+    ],
+    "labelBottomLeft": [
+      326,
+      257
+    ],
+    "modelPosition": [
+      0,
+      -2.0506,
+      -2.17
+    ],
+    "cameraPosition": [
+      -82.8371,
+      39.7394,
+      53.2654
+    ],
+    "fieldOfView": 4.910240400031848,
+    "loaded": true,
+    "drawCalls": 48,
+    "renderedFrames": 2,
+    "reusedFrames": 0,
+    "superPerformance": false,
+    "modelPrecision": "medium",
+    "modelPrecisionRequested": "medium",
+    "arrayModelTriangles": 2072,
+    "selectedModelTriangles": 82348,
+    "presentation": 1,
+    "triangles": 1876027,
+    "archiveCount": 395,
+    "archiveCandidates": 534,
+    "archiveCulled": 139,
+    "archiveCapacity": 576,
+    "archiveCoverage": "standard",
+    "returningFiles": 0,
+    "selectionPhase": "settled",
+    "pendingPulse": null,
+    "pulses": [],
+    "referenceTime": 34.2,
+    "selectedSlot": 76,
+    "selectedLane": 2,
+    "selectedCell": {
+      "lane": 2,
+      "row": 12
+    },
+    "hoverCell": null,
+    "hoverLifts": {},
+    "dragTrack": null,
+    "archiveMomentum": null,
+    "holdingArchive": false,
+    "dragProjection": {
+      "lane": {
+        "x": -169.0768574557282,
+        "y": 95.44631538231467
+      },
+      "row": {
+        "x": -30.275594695722642,
+        "y": -7.32042097014958
+      }
+    },
+    "dragMapping": null,
+    "coordinateOrigin": {
+      "lane": 0,
+      "row": 0
+    },
+    "poolBounds": {
+      "minLane": -3,
+      "maxLane": 9,
+      "minRow": -33,
+      "maxRow": 50
+    },
+    "laneFocus": 2,
+    "columnCamera": 0,
+    "rotation": 0,
+    "clearance": -3.3408456033892064,
+    "canInspect": false,
+    "returnPhase": "lowering",
+    "extraction": 0.346,
+    "appearance": 0.98,
+    "cameraDetail": 0,
+    "idleGain": 0,
+    "flatten": 0,
+    "spectrumActivity": 0,
+    "selectedIndexDim": 0,
+    "returningIndexDims": [],
+    "cameraDistance": 105.16920005611999,
+    "cameraNear": 5,
+    "cameraFar": 300,
+    "fogNear": 110.16920005611999,
+    "fogFar": 130.16920005612,
+    "returningAppearance": [],
+    "rail": 0,
+    "threeState": "on",
+    "fps": 1,
+    "mode": "archive",
+    "ready": true,
+    "startup": "started",
+    "motion": {
+      "reduced": true,
+      "systemReduced": false
+    },
+    "bootTime": null,
+    "selected": "X-001",
+    "saved": [],
+    "audio": {
+      "state": "locked",
+      "scene": "archive",
+      "tracks": 0,
+      "voices": 0,
+      "loaded": false,
+      "playedKeys": 0,
+      "error": "",
+      "preferences": {
+        "sound": false,
+        "music": false,
+        "soundVolume": 0.23,
+        "musicVolume": 0.5
+      }
+    },
+    "wallpaper": {
+      "properties": {
+        "_d0": {
+          "order": 0,
+          "type": "divider"
+        },
+        "alignmentfliph": {
+          "icon": "fa-exchange",
+          "order": -12,
+          "text": "ui_browse_properties_alignment_flip_horizontally",
+          "type": "bool",
+          "value": false
+        },
+        "archivecoverage": {
+          "options": [
+            {
+              "label": "自动 · 标准余量",
+              "value": "standard"
+            },
+            {
+              "label": "自动 · 额外余量",
+              "value": "extra"
+            }
+          ],
+          "order": 105,
+          "text": "阵列覆盖余量",
+          "type": "combo",
+          "value": "standard"
+        },
+        "audioprocessing": {
+          "icon": "fa-microphone",
+          "order": -21,
+          "text": "ui_browse_properties_audio_recording",
+          "type": "bool",
+          "value": true
+        },
+        "audioreactive": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 132,
+          "text": "开启音乐律动（跟随系统音频）",
+          "type": "bool",
+          "value": true
+        },
+        "autotheme": {
+          "order": 104,
+          "text": "按时间自动切换明暗（手动切换会在下一个时间点被覆盖）",
+          "type": "bool",
+          "value": false
+        },
+        "boot": {
+          "order": 102,
+          "text": "启动时播放开场（下次加载生效）",
+          "type": "bool",
+          "value": false
+        },
+        "breakminutes": {
+          "condition": "desktopmode.value == 'workbench'",
+          "max": 60,
+          "min": 1,
+          "order": 125,
+          "precision": 0,
+          "step": 1,
+          "text": "休息时长（分钟，下次开始生效）",
+          "type": "slider",
+          "value": 5
+        },
+        "colortheme": {
+          "options": [
+            {
+              "label": "亮色 · 磨砂白",
+              "value": "light"
+            },
+            {
+              "label": "暗色 · 石墨灰",
+              "value": "dark"
+            }
+          ],
+          "order": 104,
+          "text": "界面配色",
+          "type": "combo",
+          "value": "light"
+        },
+        "customwallpaper": {
+          "order": 106,
+          "text": "关闭 3D 后显示自定义壁纸",
+          "type": "bool",
+          "value": false
+        },
+        "customwallpaperfile": {
+          "condition": "customwallpaper.value == true",
+          "order": 106,
+          "text": "自定义壁纸图片",
+          "type": "file",
+          "value": ""
+        },
+        "customwallpapermask": {
+          "condition": "customwallpaper.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 106,
+          "step": 1,
+          "text": "上下遮罩范围（0 为关闭）",
+          "type": "slider",
+          "value": 100
+        },
+        "darkstarthour": {
+          "condition": "autotheme.value == true",
+          "max": 23,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为暗色 · 时（0-23）",
+          "type": "slider",
+          "value": 19
+        },
+        "darkstartminute": {
+          "condition": "autotheme.value == true",
+          "max": 59,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为暗色 · 分",
+          "type": "slider",
+          "value": 0
+        },
+        "desktopmode": {
+          "options": [
+            {
+              "label": "桌面工作台",
+              "value": "workbench"
+            },
+            {
+              "label": "档案展示",
+              "value": "archive"
+            }
+          ],
+          "order": 100,
+          "text": "工作模式",
+          "type": "combo",
+          "value": "archive"
+        },
+        "enableevent": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 159,
+          "text": "启用重要日程",
+          "type": "bool",
+          "value": true
+        },
+        "enablefocus": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 161,
+          "text": "启用专注计时",
+          "type": "bool",
+          "value": true
+        },
+        "enablemedia": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 160,
+          "text": "启用正在播放",
+          "type": "bool",
+          "value": true
+        },
+        "enabletasks": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 158,
+          "text": "启用今日事项",
+          "type": "bool",
+          "value": true
+        },
+        "enabletime": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 157,
+          "text": "启用时间日期",
+          "type": "bool",
+          "value": true
+        },
+        "eventdate": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 123,
+          "text": "目标日期（YYYY-MM-DD，可加 HH:mm，本地时间）",
+          "type": "textinput",
+          "value": ""
+        },
+        "eventname": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 122,
+          "text": "重要日程名称",
+          "type": "textinput",
+          "value": ""
+        },
+        "focusminutes": {
+          "condition": "desktopmode.value == 'workbench'",
+          "max": 120,
+          "min": 1,
+          "order": 124,
+          "precision": 0,
+          "step": 1,
+          "text": "专注时长（分钟，下次开始生效）",
+          "type": "slider",
+          "value": 25
+        },
+        "gamepace": {
+          "condition": "desktopmode.value == 'workbench' && showgame.value == true",
+          "options": [
+            {
+              "label": "舒缓",
+              "value": "gentle"
+            },
+            {
+              "label": "标准",
+              "value": "normal"
+            },
+            {
+              "label": "快速",
+              "value": "quick"
+            }
+          ],
+          "order": 138,
+          "text": "波纹接力节奏（下一目标生效）",
+          "type": "combo",
+          "value": "normal"
+        },
+        "groupaudio": {
+          "order": 126,
+          "text": "声音",
+          "type": "group"
+        },
+        "groupcapabilities": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 156,
+          "text": "工作台 · 可用功能",
+          "type": "group"
+        },
+        "groupcontent": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 118,
+          "text": "工作台 · 事项与日程",
+          "type": "group"
+        },
+        "groupgame": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 136,
+          "text": "工作台 · 波纹接力",
+          "type": "group"
+        },
+        "groupidentity": {
+          "order": 100,
+          "text": "登录身份",
+          "type": "group"
+        },
+        "groupopening": {
+          "order": 101,
+          "text": "入场与画面",
+          "type": "group"
+        },
+        "groupreactive": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 131,
+          "text": "工作台 · 音乐律动",
+          "type": "group"
+        },
+        "groupuimargins": {
+          "order": 151,
+          "text": "界面边距 · 正值内收 / 负值外扩",
+          "type": "group"
+        },
+        "groupvisualeffects": {
+          "order": 140,
+          "text": "HUD 与画面质感",
+          "type": "group"
+        },
+        "groupworkbench": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 108,
+          "text": "工作台 · 界面显示",
+          "type": "group"
+        },
+        "huddepth": {
+          "condition": "hudparallax.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 142,
+          "step": 1,
+          "text": "曲面纵深",
+          "type": "slider",
+          "value": 20
+        },
+        "hudparallax": {
+          "order": 141,
+          "text": "UI 鼠标视差",
+          "type": "bool",
+          "value": false
+        },
+        "hudtracking": {
+          "condition": "hudparallax.value == true",
+          "order": 143,
+          "text": "鼠标追踪",
+          "type": "bool",
+          "value": true
+        },
+        "idlebreathing": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 117,
+          "text": "静止时呼吸（始终归齐时也生效）",
+          "type": "bool",
+          "value": true
+        },
+        "lightstarthour": {
+          "condition": "autotheme.value == true",
+          "max": 23,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为亮色 · 时（0-23）",
+          "type": "slider",
+          "value": 7
+        },
+        "lightstartminute": {
+          "condition": "autotheme.value == true",
+          "max": 59,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为亮色 · 分",
+          "type": "slider",
+          "value": 0
+        },
+        "load3donstartup": {
+          "order": 102,
+          "text": "启动时加载 3D（下次加载生效）",
+          "type": "bool",
+          "value": true
+        },
+        "modelprecision": {
+          "value": "high"
+        },
+        "music": {
+          "order": 129,
+          "text": "背景音乐",
+          "type": "bool",
+          "value": false
+        },
+        "musicvolume": {
+          "condition": "music.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 130,
+          "precision": 0,
+          "step": 1,
+          "text": "音乐音量",
+          "type": "slider",
+          "value": 50
+        },
+        "openingdetail": {
+          "condition": "boot.value == true",
+          "options": [
+            {
+              "label": "随工作模式（工作台跳过，展示模式播放）",
+              "value": "auto"
+            },
+            {
+              "label": "展示详情",
+              "value": "show"
+            },
+            {
+              "label": "跳过详情，停留在阵列",
+              "value": "skip"
+            }
+          ],
+          "order": 103,
+          "text": "入场时展示档案详情（下次开场生效）",
+          "type": "combo",
+          "value": "auto"
+        },
+        "qualityanisotropy": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "1×",
+              "value": "1"
+            },
+            {
+              "label": "2×",
+              "value": "2"
+            },
+            {
+              "label": "4×",
+              "value": "4"
+            },
+            {
+              "label": "8×",
+              "value": "8"
+            },
+            {
+              "label": "16×",
+              "value": "16"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 纹理过滤",
+          "type": "combo",
+          "value": "16"
+        },
+        "qualityantialias": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "原始",
+              "value": "off"
+            },
+            {
+              "label": "SMAA",
+              "value": "smaa"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 抗锯齿",
+          "type": "combo",
+          "value": "off"
+        },
+        "qualityaoresolution": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "50%",
+              "value": "0.5"
+            },
+            {
+              "label": "75%",
+              "value": "0.75"
+            },
+            {
+              "label": "100%",
+              "value": "1"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 遮蔽分辨率",
+          "type": "combo",
+          "value": "1"
+        },
+        "qualityaosamples": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "关闭",
+              "value": "0"
+            },
+            {
+              "label": "16 采样",
+              "value": "16"
+            },
+            {
+              "label": "32 采样",
+              "value": "32"
+            },
+            {
+              "label": "64 采样",
+              "value": "64"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 环境遮蔽采样",
+          "type": "combo",
+          "value": "32"
+        },
+        "qualitydepthoffield": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "max": 150,
+          "min": 0,
+          "order": 106,
+          "step": 5,
+          "text": "自定义 · 景深强度（%）",
+          "type": "slider",
+          "value": 100
+        },
+        "qualitypixelratio": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "1×",
+              "value": "1"
+            },
+            {
+              "label": "1.5×",
+              "value": "1.5"
+            },
+            {
+              "label": "2×",
+              "value": "2"
+            },
+            {
+              "label": "3×",
+              "value": "3"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 像素密度上限",
+          "type": "combo",
+          "value": "1.5"
+        },
+        "qualityscale": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "max": 200,
+          "min": 50,
+          "order": 106,
+          "step": 5,
+          "text": "自定义 · 三维渲染比例（%）",
+          "type": "slider",
+          "value": 100
+        },
+        "qualityshadows": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "关闭",
+              "value": "0"
+            },
+            {
+              "label": "1024",
+              "value": "1024"
+            },
+            {
+              "label": "2048",
+              "value": "2048"
+            },
+            {
+              "label": "4096",
+              "value": "4096"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 阴影分辨率",
+          "type": "combo",
+          "value": "2048"
+        },
+        "qualitytransmission": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "25%",
+              "value": "0.25"
+            },
+            {
+              "label": "50%",
+              "value": "0.5"
+            },
+            {
+              "label": "75%",
+              "value": "0.75"
+            },
+            {
+              "label": "100%",
+              "value": "1"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 透明材质分辨率",
+          "type": "combo",
+          "value": "1"
+        },
+        "reactiveintensity": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "max": 200,
+          "min": 0,
+          "order": 134,
+          "precision": 0,
+          "step": 1,
+          "text": "音乐律动强度",
+          "type": "slider",
+          "value": 100
+        },
+        "reactivemute": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "order": 135,
+          "text": "音乐律动开启时停用壁纸配乐",
+          "type": "bool",
+          "value": true
+        },
+        "reduced": {
+          "value": true
+        },
+        "renderquality": {
+          "condition": "superperformance.value == false",
+          "options": [
+            {
+              "label": "性能",
+              "value": "performance"
+            },
+            {
+              "label": "原始",
+              "value": "original"
+            },
+            {
+              "label": "高",
+              "value": "high"
+            },
+            {
+              "label": "极高",
+              "value": "ultra"
+            },
+            {
+              "label": "自定义",
+              "value": "custom"
+            }
+          ],
+          "order": 106,
+          "text": "画质",
+          "type": "combo",
+          "value": "performance"
+        },
+        "rhythmstyle": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "options": [
+            {
+              "label": "原版 · 多层起伏",
+              "value": "legacy"
+            },
+            {
+              "label": "方案 A · 左低中中右高频谱",
+              "value": "wave"
+            },
+            {
+              "label": "方案 B · 连续层叠流波",
+              "value": "lift"
+            }
+          ],
+          "order": 133,
+          "text": "音乐律动方案",
+          "type": "combo",
+          "value": "legacy"
+        },
+        "schemecolor": {
+          "icon": "fa-palette",
+          "order": -20,
+          "text": "ui_browse_properties_scheme_color",
+          "type": "color",
+          "value": "0.5 0.5 0.5"
+        },
+        "screenfinish": {
+          "order": 144,
+          "text": "全局屏幕效果",
+          "type": "bool",
+          "value": false
+        },
+        "screenfringe": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 147,
+          "step": 1,
+          "text": "边缘色散",
+          "type": "slider",
+          "value": 20
+        },
+        "screengrain": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 145,
+          "step": 1,
+          "text": "细颗粒",
+          "type": "slider",
+          "value": 20
+        },
+        "screengrainsize": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 146,
+          "step": 1,
+          "text": "颗粒尺寸",
+          "type": "slider",
+          "value": 20
+        },
+        "screenvignette": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 148,
+          "step": 1,
+          "text": "暗角",
+          "type": "slider",
+          "value": 20
+        },
+        "selectedindexaccent": {
+          "condition": "colortheme.value == 'dark'",
+          "order": 104,
+          "text": "暗色模式仅选中档案标签使用强调色",
+          "type": "bool",
+          "value": false
+        },
+        "selectionstyle": {
+          "condition": "desktopmode.value == 'workbench'",
+          "options": [
+            {
+              "label": "保持原样",
+              "value": "original"
+            },
+            {
+              "label": "仅音乐律动时归齐",
+              "value": "music-flat"
+            },
+            {
+              "label": "始终归齐",
+              "value": "flat"
+            }
+          ],
+          "order": 116,
+          "text": "选中档案高度",
+          "type": "combo",
+          "value": "music-flat"
+        },
+        "sessionname": {
+          "order": 100,
+          "text": "登录人姓名（开场身份确认、页脚与访问记录，最多 24 字符）",
+          "type": "textinput",
+          "value": "JOYCE MOORE"
+        },
+        "showbrand": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 113,
+          "text": "显示品牌文字",
+          "type": "bool",
+          "value": true
+        },
+        "showclock": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 109,
+          "text": "显示时钟与日期",
+          "type": "bool",
+          "value": true
+        },
+        "showfooter": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 114,
+          "text": "显示页脚信息",
+          "type": "bool",
+          "value": true
+        },
+        "showgame": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 137,
+          "text": "显示游戏入口",
+          "type": "bool",
+          "value": true
+        },
+        "showmodule": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 111,
+          "text": "显示右侧功能内容",
+          "type": "bool",
+          "value": true
+        },
+        "shownavigation": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 112,
+          "text": "显示底部功能导航",
+          "type": "bool",
+          "value": true
+        },
+        "showsettings": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 115,
+          "text": "显示设置入口",
+          "type": "bool",
+          "value": true
+        },
+        "showtasks": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 110,
+          "text": "显示今日事项",
+          "type": "bool",
+          "value": true
+        },
+        "sound": {
+          "order": 127,
+          "text": "交互音效",
+          "type": "bool",
+          "value": false
+        },
+        "soundvolume": {
+          "value": 23
+        },
+        "superperformance": {
+          "value": false
+        },
+        "task1": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 119,
+          "text": "今日事项 1",
+          "type": "textinput",
+          "value": ""
+        },
+        "task2": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 120,
+          "text": "今日事项 2",
+          "type": "textinput",
+          "value": ""
+        },
+        "task3": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 121,
+          "text": "今日事项 3",
+          "type": "textinput",
+          "value": ""
+        },
+        "uifrost": {
+          "order": 149,
+          "text": "文字与按钮磨砂底",
+          "type": "bool",
+          "value": false
+        },
+        "uifroststrength": {
+          "condition": "uifrost.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 150,
+          "step": 1,
+          "text": "磨砂强度",
+          "type": "slider",
+          "value": 55
+        },
+        "uimarginbottom": {
+          "max": 300,
+          "min": -300,
+          "order": 153,
+          "step": 1,
+          "text": "下边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimarginleft": {
+          "max": 300,
+          "min": -300,
+          "order": 154,
+          "step": 1,
+          "text": "左边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimarginright": {
+          "max": 300,
+          "min": -300,
+          "order": 155,
+          "step": 1,
+          "text": "右边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimargintop": {
+          "max": 300,
+          "min": -300,
+          "order": 152,
+          "step": 1,
+          "text": "上边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "wec_brs": {
+          "condition": "wec_e.value",
+          "icon": "fa-sun",
+          "max": 100,
+          "min": 0,
+          "order": -7,
+          "text": "ui_browse_properties_brightness",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_con": {
+          "condition": "wec_e.value",
+          "icon": "fa-adjust",
+          "max": 100,
+          "min": 0,
+          "order": -6,
+          "text": "ui_browse_properties_contrast",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_e": {
+          "order": -8,
+          "text": "ui_browse_properties_show_color_options",
+          "type": "bool",
+          "value": false
+        },
+        "wec_hue": {
+          "condition": "wec_e.value",
+          "icon": "fa-palette",
+          "max": 100,
+          "min": 0,
+          "order": -4,
+          "text": "ui_browse_properties_hue_shift",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_sa": {
+          "condition": "wec_e.value",
+          "icon": "fa-tint",
+          "max": 100,
+          "min": 0,
+          "order": -5,
+          "text": "ui_browse_properties_saturation",
+          "type": "slider",
+          "value": 50
+        }
+      },
+      "fps": 30,
+      "paused": false
+    }
+  },
+  "returning": {
+    "decryption": {
+      "time": -1,
+      "intervals": [],
+      "markers": 0,
+      "point": 0,
+      "label": 0,
+      "labelValue": 0,
+      "clarity": 0,
+      "phase": "waiting"
+    },
+    "topLeft": [
+      238,
+      158
+    ],
+    "topRight": [
+      428,
+      61
+    ],
+    "labelTopLeft": [
+      279,
+      178
+    ],
+    "labelBottomLeft": [
+      279,
+      209
+    ],
+    "modelPosition": [
+      -0.5967,
+      -1.9728,
+      -2.17
+    ],
+    "cameraPosition": [
+      -113.4862,
+      45.339,
+      68.1385
+    ],
+    "fieldOfView": 3.0636428137853793,
+    "loaded": true,
+    "drawCalls": 116,
+    "renderedFrames": 22,
+    "reusedFrames": 0,
+    "superPerformance": false,
+    "modelPrecision": "low",
+    "modelPrecisionRequested": "low",
+    "arrayModelTriangles": 1554,
+    "selectedModelTriangles": 21869,
+    "presentation": 1,
+    "triangles": 1189793,
+    "archiveCount": 321,
+    "archiveCandidates": 462,
+    "archiveCulled": 141,
+    "archiveCapacity": 576,
+    "archiveCoverage": "standard",
+    "returningFiles": 2,
+    "selectionPhase": "wave",
+    "pendingPulse": null,
+    "pulses": [
+      {
+        "lane": 1,
+        "row": 12,
+        "time": 21.109
+      }
+    ],
+    "referenceTime": 34.88,
+    "selectedSlot": 44,
+    "selectedLane": 1,
+    "selectedCell": {
+      "lane": 1,
+      "row": 12
+    },
+    "hoverCell": null,
+    "hoverLifts": {},
+    "dragTrack": null,
+    "archiveMomentum": null,
+    "holdingArchive": false,
+    "dragProjection": {
+      "lane": {
+        "x": -197.0559579449571,
+        "y": 103.5677037369894
+      },
+      "row": {
+        "x": -37.85142633120009,
+        "y": -7.431016386150548
+      }
+    },
+    "dragMapping": null,
+    "coordinateOrigin": {
+      "lane": 0,
+      "row": 0
+    },
+    "poolBounds": {
+      "minLane": -5,
+      "maxLane": 8,
+      "minRow": -28,
+      "maxRow": 52
+    },
+    "laneFocus": 1.052357108134623,
+    "columnCamera": -4.603260895002543,
+    "rotation": 0,
+    "clearance": -3.852682165293667,
+    "canInspect": false,
+    "returnPhase": "lowering",
+    "extraction": 0.082,
+    "appearance": 0.062,
+    "cameraDetail": 0,
+    "idleGain": 0.08954085262464795,
+    "flatten": 0,
+    "spectrumActivity": 0,
+    "selectedIndexDim": 0,
+    "returningIndexDims": [
+      {
+        "cell": {
+          "lane": 2,
+          "row": 12
+        },
+        "dim": 0
+      },
+      {
+        "cell": {
+          "lane": 0,
+          "row": 12
+        },
+        "dim": 0
+      }
+    ],
+    "cameraDistance": 138.81910511400605,
+    "cameraNear": 5,
+    "cameraFar": 300,
+    "fogNear": 143.81910511400605,
+    "fogFar": 163.81910511400605,
+    "returningAppearance": [
+      {
+        "slot": 76,
+        "cell": {
+          "lane": 2,
+          "row": 12
+        },
+        "lift": 0.14693881263991698,
+        "quality": 0.2627005755330798,
+        "rotation": 0,
+        "worldY": -2.934220724157971,
+        "phase": "lowering"
+      },
+      {
+        "slot": 12,
+        "cell": {
+          "lane": 0,
+          "row": 12
+        },
+        "lift": 0.15015304525390344,
+        "quality": 0.27583830365124345,
+        "rotation": 0,
+        "worldY": -3.0367160877812864,
+        "phase": "lowering"
+      }
+    ],
+    "rail": 0,
+    "threeState": "on",
+    "fps": 4,
+    "mode": "archive",
+    "ready": true,
+    "startup": "started",
+    "motion": {
+      "reduced": false,
+      "systemReduced": false
+    },
+    "bootTime": null,
+    "selected": "X-003",
+    "saved": [],
+    "audio": {
+      "state": "locked",
+      "scene": "archive",
+      "tracks": 0,
+      "voices": 0,
+      "loaded": false,
+      "playedKeys": 0,
+      "error": "",
+      "preferences": {
+        "sound": false,
+        "music": false,
+        "soundVolume": 0.23,
+        "musicVolume": 0.5
+      }
+    },
+    "wallpaper": {
+      "properties": {
+        "_d0": {
+          "order": 0,
+          "type": "divider"
+        },
+        "alignmentfliph": {
+          "icon": "fa-exchange",
+          "order": -12,
+          "text": "ui_browse_properties_alignment_flip_horizontally",
+          "type": "bool",
+          "value": false
+        },
+        "archivecoverage": {
+          "options": [
+            {
+              "label": "自动 · 标准余量",
+              "value": "standard"
+            },
+            {
+              "label": "自动 · 额外余量",
+              "value": "extra"
+            }
+          ],
+          "order": 105,
+          "text": "阵列覆盖余量",
+          "type": "combo",
+          "value": "standard"
+        },
+        "audioprocessing": {
+          "icon": "fa-microphone",
+          "order": -21,
+          "text": "ui_browse_properties_audio_recording",
+          "type": "bool",
+          "value": true
+        },
+        "audioreactive": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 132,
+          "text": "开启音乐律动（跟随系统音频）",
+          "type": "bool",
+          "value": true
+        },
+        "autotheme": {
+          "order": 104,
+          "text": "按时间自动切换明暗（手动切换会在下一个时间点被覆盖）",
+          "type": "bool",
+          "value": false
+        },
+        "boot": {
+          "order": 102,
+          "text": "启动时播放开场（下次加载生效）",
+          "type": "bool",
+          "value": false
+        },
+        "breakminutes": {
+          "condition": "desktopmode.value == 'workbench'",
+          "max": 60,
+          "min": 1,
+          "order": 125,
+          "precision": 0,
+          "step": 1,
+          "text": "休息时长（分钟，下次开始生效）",
+          "type": "slider",
+          "value": 5
+        },
+        "colortheme": {
+          "options": [
+            {
+              "label": "亮色 · 磨砂白",
+              "value": "light"
+            },
+            {
+              "label": "暗色 · 石墨灰",
+              "value": "dark"
+            }
+          ],
+          "order": 104,
+          "text": "界面配色",
+          "type": "combo",
+          "value": "light"
+        },
+        "customwallpaper": {
+          "order": 106,
+          "text": "关闭 3D 后显示自定义壁纸",
+          "type": "bool",
+          "value": false
+        },
+        "customwallpaperfile": {
+          "condition": "customwallpaper.value == true",
+          "order": 106,
+          "text": "自定义壁纸图片",
+          "type": "file",
+          "value": ""
+        },
+        "customwallpapermask": {
+          "condition": "customwallpaper.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 106,
+          "step": 1,
+          "text": "上下遮罩范围（0 为关闭）",
+          "type": "slider",
+          "value": 100
+        },
+        "darkstarthour": {
+          "condition": "autotheme.value == true",
+          "max": 23,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为暗色 · 时（0-23）",
+          "type": "slider",
+          "value": 19
+        },
+        "darkstartminute": {
+          "condition": "autotheme.value == true",
+          "max": 59,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为暗色 · 分",
+          "type": "slider",
+          "value": 0
+        },
+        "desktopmode": {
+          "options": [
+            {
+              "label": "桌面工作台",
+              "value": "workbench"
+            },
+            {
+              "label": "档案展示",
+              "value": "archive"
+            }
+          ],
+          "order": 100,
+          "text": "工作模式",
+          "type": "combo",
+          "value": "archive"
+        },
+        "enableevent": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 159,
+          "text": "启用重要日程",
+          "type": "bool",
+          "value": true
+        },
+        "enablefocus": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 161,
+          "text": "启用专注计时",
+          "type": "bool",
+          "value": true
+        },
+        "enablemedia": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 160,
+          "text": "启用正在播放",
+          "type": "bool",
+          "value": true
+        },
+        "enabletasks": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 158,
+          "text": "启用今日事项",
+          "type": "bool",
+          "value": true
+        },
+        "enabletime": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 157,
+          "text": "启用时间日期",
+          "type": "bool",
+          "value": true
+        },
+        "eventdate": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 123,
+          "text": "目标日期（YYYY-MM-DD，可加 HH:mm，本地时间）",
+          "type": "textinput",
+          "value": ""
+        },
+        "eventname": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 122,
+          "text": "重要日程名称",
+          "type": "textinput",
+          "value": ""
+        },
+        "focusminutes": {
+          "condition": "desktopmode.value == 'workbench'",
+          "max": 120,
+          "min": 1,
+          "order": 124,
+          "precision": 0,
+          "step": 1,
+          "text": "专注时长（分钟，下次开始生效）",
+          "type": "slider",
+          "value": 25
+        },
+        "gamepace": {
+          "condition": "desktopmode.value == 'workbench' && showgame.value == true",
+          "options": [
+            {
+              "label": "舒缓",
+              "value": "gentle"
+            },
+            {
+              "label": "标准",
+              "value": "normal"
+            },
+            {
+              "label": "快速",
+              "value": "quick"
+            }
+          ],
+          "order": 138,
+          "text": "波纹接力节奏（下一目标生效）",
+          "type": "combo",
+          "value": "normal"
+        },
+        "groupaudio": {
+          "order": 126,
+          "text": "声音",
+          "type": "group"
+        },
+        "groupcapabilities": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 156,
+          "text": "工作台 · 可用功能",
+          "type": "group"
+        },
+        "groupcontent": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 118,
+          "text": "工作台 · 事项与日程",
+          "type": "group"
+        },
+        "groupgame": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 136,
+          "text": "工作台 · 波纹接力",
+          "type": "group"
+        },
+        "groupidentity": {
+          "order": 100,
+          "text": "登录身份",
+          "type": "group"
+        },
+        "groupopening": {
+          "order": 101,
+          "text": "入场与画面",
+          "type": "group"
+        },
+        "groupreactive": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 131,
+          "text": "工作台 · 音乐律动",
+          "type": "group"
+        },
+        "groupuimargins": {
+          "order": 151,
+          "text": "界面边距 · 正值内收 / 负值外扩",
+          "type": "group"
+        },
+        "groupvisualeffects": {
+          "order": 140,
+          "text": "HUD 与画面质感",
+          "type": "group"
+        },
+        "groupworkbench": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 108,
+          "text": "工作台 · 界面显示",
+          "type": "group"
+        },
+        "huddepth": {
+          "condition": "hudparallax.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 142,
+          "step": 1,
+          "text": "曲面纵深",
+          "type": "slider",
+          "value": 20
+        },
+        "hudparallax": {
+          "order": 141,
+          "text": "UI 鼠标视差",
+          "type": "bool",
+          "value": false
+        },
+        "hudtracking": {
+          "condition": "hudparallax.value == true",
+          "order": 143,
+          "text": "鼠标追踪",
+          "type": "bool",
+          "value": true
+        },
+        "idlebreathing": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 117,
+          "text": "静止时呼吸（始终归齐时也生效）",
+          "type": "bool",
+          "value": true
+        },
+        "lightstarthour": {
+          "condition": "autotheme.value == true",
+          "max": 23,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为亮色 · 时（0-23）",
+          "type": "slider",
+          "value": 7
+        },
+        "lightstartminute": {
+          "condition": "autotheme.value == true",
+          "max": 59,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为亮色 · 分",
+          "type": "slider",
+          "value": 0
+        },
+        "load3donstartup": {
+          "order": 102,
+          "text": "启动时加载 3D（下次加载生效）",
+          "type": "bool",
+          "value": true
+        },
+        "modelprecision": {
+          "value": "high"
+        },
+        "music": {
+          "order": 129,
+          "text": "背景音乐",
+          "type": "bool",
+          "value": false
+        },
+        "musicvolume": {
+          "condition": "music.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 130,
+          "precision": 0,
+          "step": 1,
+          "text": "音乐音量",
+          "type": "slider",
+          "value": 50
+        },
+        "openingdetail": {
+          "condition": "boot.value == true",
+          "options": [
+            {
+              "label": "随工作模式（工作台跳过，展示模式播放）",
+              "value": "auto"
+            },
+            {
+              "label": "展示详情",
+              "value": "show"
+            },
+            {
+              "label": "跳过详情，停留在阵列",
+              "value": "skip"
+            }
+          ],
+          "order": 103,
+          "text": "入场时展示档案详情（下次开场生效）",
+          "type": "combo",
+          "value": "auto"
+        },
+        "qualityanisotropy": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "1×",
+              "value": "1"
+            },
+            {
+              "label": "2×",
+              "value": "2"
+            },
+            {
+              "label": "4×",
+              "value": "4"
+            },
+            {
+              "label": "8×",
+              "value": "8"
+            },
+            {
+              "label": "16×",
+              "value": "16"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 纹理过滤",
+          "type": "combo",
+          "value": "16"
+        },
+        "qualityantialias": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "原始",
+              "value": "off"
+            },
+            {
+              "label": "SMAA",
+              "value": "smaa"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 抗锯齿",
+          "type": "combo",
+          "value": "off"
+        },
+        "qualityaoresolution": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "50%",
+              "value": "0.5"
+            },
+            {
+              "label": "75%",
+              "value": "0.75"
+            },
+            {
+              "label": "100%",
+              "value": "1"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 遮蔽分辨率",
+          "type": "combo",
+          "value": "1"
+        },
+        "qualityaosamples": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "关闭",
+              "value": "0"
+            },
+            {
+              "label": "16 采样",
+              "value": "16"
+            },
+            {
+              "label": "32 采样",
+              "value": "32"
+            },
+            {
+              "label": "64 采样",
+              "value": "64"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 环境遮蔽采样",
+          "type": "combo",
+          "value": "32"
+        },
+        "qualitydepthoffield": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "max": 150,
+          "min": 0,
+          "order": 106,
+          "step": 5,
+          "text": "自定义 · 景深强度（%）",
+          "type": "slider",
+          "value": 100
+        },
+        "qualitypixelratio": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "1×",
+              "value": "1"
+            },
+            {
+              "label": "1.5×",
+              "value": "1.5"
+            },
+            {
+              "label": "2×",
+              "value": "2"
+            },
+            {
+              "label": "3×",
+              "value": "3"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 像素密度上限",
+          "type": "combo",
+          "value": "1.5"
+        },
+        "qualityscale": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "max": 200,
+          "min": 50,
+          "order": 106,
+          "step": 5,
+          "text": "自定义 · 三维渲染比例（%）",
+          "type": "slider",
+          "value": 100
+        },
+        "qualityshadows": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "关闭",
+              "value": "0"
+            },
+            {
+              "label": "1024",
+              "value": "1024"
+            },
+            {
+              "label": "2048",
+              "value": "2048"
+            },
+            {
+              "label": "4096",
+              "value": "4096"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 阴影分辨率",
+          "type": "combo",
+          "value": "2048"
+        },
+        "qualitytransmission": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "25%",
+              "value": "0.25"
+            },
+            {
+              "label": "50%",
+              "value": "0.5"
+            },
+            {
+              "label": "75%",
+              "value": "0.75"
+            },
+            {
+              "label": "100%",
+              "value": "1"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 透明材质分辨率",
+          "type": "combo",
+          "value": "1"
+        },
+        "reactiveintensity": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "max": 200,
+          "min": 0,
+          "order": 134,
+          "precision": 0,
+          "step": 1,
+          "text": "音乐律动强度",
+          "type": "slider",
+          "value": 100
+        },
+        "reactivemute": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "order": 135,
+          "text": "音乐律动开启时停用壁纸配乐",
+          "type": "bool",
+          "value": true
+        },
+        "reduced": {
+          "value": true
+        },
+        "renderquality": {
+          "condition": "superperformance.value == false",
+          "options": [
+            {
+              "label": "性能",
+              "value": "performance"
+            },
+            {
+              "label": "原始",
+              "value": "original"
+            },
+            {
+              "label": "高",
+              "value": "high"
+            },
+            {
+              "label": "极高",
+              "value": "ultra"
+            },
+            {
+              "label": "自定义",
+              "value": "custom"
+            }
+          ],
+          "order": 106,
+          "text": "画质",
+          "type": "combo",
+          "value": "performance"
+        },
+        "rhythmstyle": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "options": [
+            {
+              "label": "原版 · 多层起伏",
+              "value": "legacy"
+            },
+            {
+              "label": "方案 A · 左低中中右高频谱",
+              "value": "wave"
+            },
+            {
+              "label": "方案 B · 连续层叠流波",
+              "value": "lift"
+            }
+          ],
+          "order": 133,
+          "text": "音乐律动方案",
+          "type": "combo",
+          "value": "legacy"
+        },
+        "schemecolor": {
+          "icon": "fa-palette",
+          "order": -20,
+          "text": "ui_browse_properties_scheme_color",
+          "type": "color",
+          "value": "0.5 0.5 0.5"
+        },
+        "screenfinish": {
+          "order": 144,
+          "text": "全局屏幕效果",
+          "type": "bool",
+          "value": false
+        },
+        "screenfringe": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 147,
+          "step": 1,
+          "text": "边缘色散",
+          "type": "slider",
+          "value": 20
+        },
+        "screengrain": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 145,
+          "step": 1,
+          "text": "细颗粒",
+          "type": "slider",
+          "value": 20
+        },
+        "screengrainsize": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 146,
+          "step": 1,
+          "text": "颗粒尺寸",
+          "type": "slider",
+          "value": 20
+        },
+        "screenvignette": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 148,
+          "step": 1,
+          "text": "暗角",
+          "type": "slider",
+          "value": 20
+        },
+        "selectedindexaccent": {
+          "condition": "colortheme.value == 'dark'",
+          "order": 104,
+          "text": "暗色模式仅选中档案标签使用强调色",
+          "type": "bool",
+          "value": false
+        },
+        "selectionstyle": {
+          "condition": "desktopmode.value == 'workbench'",
+          "options": [
+            {
+              "label": "保持原样",
+              "value": "original"
+            },
+            {
+              "label": "仅音乐律动时归齐",
+              "value": "music-flat"
+            },
+            {
+              "label": "始终归齐",
+              "value": "flat"
+            }
+          ],
+          "order": 116,
+          "text": "选中档案高度",
+          "type": "combo",
+          "value": "music-flat"
+        },
+        "sessionname": {
+          "order": 100,
+          "text": "登录人姓名（开场身份确认、页脚与访问记录，最多 24 字符）",
+          "type": "textinput",
+          "value": "JOYCE MOORE"
+        },
+        "showbrand": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 113,
+          "text": "显示品牌文字",
+          "type": "bool",
+          "value": true
+        },
+        "showclock": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 109,
+          "text": "显示时钟与日期",
+          "type": "bool",
+          "value": true
+        },
+        "showfooter": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 114,
+          "text": "显示页脚信息",
+          "type": "bool",
+          "value": true
+        },
+        "showgame": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 137,
+          "text": "显示游戏入口",
+          "type": "bool",
+          "value": true
+        },
+        "showmodule": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 111,
+          "text": "显示右侧功能内容",
+          "type": "bool",
+          "value": true
+        },
+        "shownavigation": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 112,
+          "text": "显示底部功能导航",
+          "type": "bool",
+          "value": true
+        },
+        "showsettings": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 115,
+          "text": "显示设置入口",
+          "type": "bool",
+          "value": true
+        },
+        "showtasks": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 110,
+          "text": "显示今日事项",
+          "type": "bool",
+          "value": true
+        },
+        "sound": {
+          "order": 127,
+          "text": "交互音效",
+          "type": "bool",
+          "value": false
+        },
+        "soundvolume": {
+          "value": 23
+        },
+        "superperformance": {
+          "value": false
+        },
+        "task1": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 119,
+          "text": "今日事项 1",
+          "type": "textinput",
+          "value": ""
+        },
+        "task2": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 120,
+          "text": "今日事项 2",
+          "type": "textinput",
+          "value": ""
+        },
+        "task3": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 121,
+          "text": "今日事项 3",
+          "type": "textinput",
+          "value": ""
+        },
+        "uifrost": {
+          "order": 149,
+          "text": "文字与按钮磨砂底",
+          "type": "bool",
+          "value": false
+        },
+        "uifroststrength": {
+          "condition": "uifrost.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 150,
+          "step": 1,
+          "text": "磨砂强度",
+          "type": "slider",
+          "value": 55
+        },
+        "uimarginbottom": {
+          "max": 300,
+          "min": -300,
+          "order": 153,
+          "step": 1,
+          "text": "下边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimarginleft": {
+          "max": 300,
+          "min": -300,
+          "order": 154,
+          "step": 1,
+          "text": "左边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimarginright": {
+          "max": 300,
+          "min": -300,
+          "order": 155,
+          "step": 1,
+          "text": "右边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimargintop": {
+          "max": 300,
+          "min": -300,
+          "order": 152,
+          "step": 1,
+          "text": "上边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "wec_brs": {
+          "condition": "wec_e.value",
+          "icon": "fa-sun",
+          "max": 100,
+          "min": 0,
+          "order": -7,
+          "text": "ui_browse_properties_brightness",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_con": {
+          "condition": "wec_e.value",
+          "icon": "fa-adjust",
+          "max": 100,
+          "min": 0,
+          "order": -6,
+          "text": "ui_browse_properties_contrast",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_e": {
+          "order": -8,
+          "text": "ui_browse_properties_show_color_options",
+          "type": "bool",
+          "value": false
+        },
+        "wec_hue": {
+          "condition": "wec_e.value",
+          "icon": "fa-palette",
+          "max": 100,
+          "min": 0,
+          "order": -4,
+          "text": "ui_browse_properties_hue_shift",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_sa": {
+          "condition": "wec_e.value",
+          "icon": "fa-tint",
+          "max": 100,
+          "min": 0,
+          "order": -5,
+          "text": "ui_browse_properties_saturation",
+          "type": "slider",
+          "value": 50
+        }
+      },
+      "fps": 30,
+      "paused": false
+    }
+  },
+  "final": {
+    "decryption": {
+      "time": -1,
+      "intervals": [],
+      "markers": 0,
+      "point": 0,
+      "label": 0,
+      "labelValue": 0,
+      "clarity": 0,
+      "phase": "waiting"
+    },
+    "topLeft": [
+      258,
+      144
+    ],
+    "topRight": [
+      450,
+      47
+    ],
+    "labelTopLeft": [
+      300,
+      164
+    ],
+    "labelBottomLeft": [
+      300,
+      196
+    ],
+    "modelPosition": [
+      0,
+      -1.9963,
+      -2.17
+    ],
+    "cameraPosition": [
+      -114.5553,
+      45.5343,
+      68.6574
+    ],
+    "fieldOfView": 2.999227767990302,
+    "loaded": true,
+    "drawCalls": 48,
+    "renderedFrames": 63,
+    "reusedFrames": 0,
+    "superPerformance": false,
+    "modelPrecision": "high",
+    "modelPrecisionRequested": "high",
+    "arrayModelTriangles": 4200,
+    "selectedModelTriangles": 82348,
+    "presentation": 1,
+    "triangles": 2887283,
+    "archiveCount": 317,
+    "archiveCandidates": 458,
+    "archiveCulled": 141,
+    "archiveCapacity": 576,
+    "archiveCoverage": "standard",
+    "returningFiles": 0,
+    "selectionPhase": "wave",
+    "pendingPulse": null,
+    "pulses": [
+      {
+        "lane": 1,
+        "row": 12,
+        "time": 21.109
+      }
+    ],
+    "referenceTime": 36.24,
+    "selectedSlot": 44,
+    "selectedLane": 1,
+    "selectedCell": {
+      "lane": 1,
+      "row": 12
+    },
+    "hoverCell": null,
+    "hoverLifts": {},
+    "dragTrack": null,
+    "archiveMomentum": null,
+    "holdingArchive": false,
+    "dragProjection": {
+      "lane": {
+        "x": -197.95609575632653,
+        "y": 103.86333815838329
+      },
+      "row": {
+        "x": -38.279548387320105,
+        "y": -7.439269534076274
+      }
+    },
+    "dragMapping": null,
+    "coordinateOrigin": {
+      "lane": 0,
+      "row": 0
+    },
+    "poolBounds": {
+      "minLane": -5,
+      "maxLane": 8,
+      "minRow": -28,
+      "maxRow": 51
+    },
+    "laneFocus": 1,
+    "columnCamera": -5.2,
+    "rotation": 0,
+    "clearance": -3.286491808256248,
+    "canInspect": false,
+    "returnPhase": "lowering",
+    "extraction": 0.4,
+    "appearance": 1,
+    "cameraDetail": 0,
+    "idleGain": 0.0003782858981419423,
+    "flatten": 0,
+    "spectrumActivity": 0,
+    "selectedIndexDim": 0,
+    "returningIndexDims": [],
+    "cameraDistance": 139.99872792119984,
+    "cameraNear": 5,
+    "cameraFar": 300,
+    "fogNear": 144.99872792119984,
+    "fogFar": 164.99872792119984,
+    "returningAppearance": [],
+    "rail": 0,
+    "threeState": "on",
+    "fps": 30,
+    "mode": "archive",
+    "ready": true,
+    "startup": "started",
+    "motion": {
+      "reduced": true,
+      "systemReduced": false
+    },
+    "bootTime": null,
+    "selected": "X-003",
+    "saved": [],
+    "audio": {
+      "state": "locked",
+      "scene": "archive",
+      "tracks": 0,
+      "voices": 0,
+      "loaded": false,
+      "playedKeys": 0,
+      "error": "",
+      "preferences": {
+        "sound": false,
+        "music": false,
+        "soundVolume": 0.23,
+        "musicVolume": 0.5
+      }
+    },
+    "wallpaper": {
+      "properties": {
+        "_d0": {
+          "order": 0,
+          "type": "divider"
+        },
+        "alignmentfliph": {
+          "icon": "fa-exchange",
+          "order": -12,
+          "text": "ui_browse_properties_alignment_flip_horizontally",
+          "type": "bool",
+          "value": false
+        },
+        "archivecoverage": {
+          "options": [
+            {
+              "label": "自动 · 标准余量",
+              "value": "standard"
+            },
+            {
+              "label": "自动 · 额外余量",
+              "value": "extra"
+            }
+          ],
+          "order": 105,
+          "text": "阵列覆盖余量",
+          "type": "combo",
+          "value": "standard"
+        },
+        "audioprocessing": {
+          "icon": "fa-microphone",
+          "order": -21,
+          "text": "ui_browse_properties_audio_recording",
+          "type": "bool",
+          "value": true
+        },
+        "audioreactive": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 132,
+          "text": "开启音乐律动（跟随系统音频）",
+          "type": "bool",
+          "value": true
+        },
+        "autotheme": {
+          "order": 104,
+          "text": "按时间自动切换明暗（手动切换会在下一个时间点被覆盖）",
+          "type": "bool",
+          "value": false
+        },
+        "boot": {
+          "order": 102,
+          "text": "启动时播放开场（下次加载生效）",
+          "type": "bool",
+          "value": false
+        },
+        "breakminutes": {
+          "condition": "desktopmode.value == 'workbench'",
+          "max": 60,
+          "min": 1,
+          "order": 125,
+          "precision": 0,
+          "step": 1,
+          "text": "休息时长（分钟，下次开始生效）",
+          "type": "slider",
+          "value": 5
+        },
+        "colortheme": {
+          "options": [
+            {
+              "label": "亮色 · 磨砂白",
+              "value": "light"
+            },
+            {
+              "label": "暗色 · 石墨灰",
+              "value": "dark"
+            }
+          ],
+          "order": 104,
+          "text": "界面配色",
+          "type": "combo",
+          "value": "light"
+        },
+        "customwallpaper": {
+          "order": 106,
+          "text": "关闭 3D 后显示自定义壁纸",
+          "type": "bool",
+          "value": false
+        },
+        "customwallpaperfile": {
+          "condition": "customwallpaper.value == true",
+          "order": 106,
+          "text": "自定义壁纸图片",
+          "type": "file",
+          "value": ""
+        },
+        "customwallpapermask": {
+          "condition": "customwallpaper.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 106,
+          "step": 1,
+          "text": "上下遮罩范围（0 为关闭）",
+          "type": "slider",
+          "value": 100
+        },
+        "darkstarthour": {
+          "condition": "autotheme.value == true",
+          "max": 23,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为暗色 · 时（0-23）",
+          "type": "slider",
+          "value": 19
+        },
+        "darkstartminute": {
+          "condition": "autotheme.value == true",
+          "max": 59,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为暗色 · 分",
+          "type": "slider",
+          "value": 0
+        },
+        "desktopmode": {
+          "options": [
+            {
+              "label": "桌面工作台",
+              "value": "workbench"
+            },
+            {
+              "label": "档案展示",
+              "value": "archive"
+            }
+          ],
+          "order": 100,
+          "text": "工作模式",
+          "type": "combo",
+          "value": "archive"
+        },
+        "enableevent": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 159,
+          "text": "启用重要日程",
+          "type": "bool",
+          "value": true
+        },
+        "enablefocus": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 161,
+          "text": "启用专注计时",
+          "type": "bool",
+          "value": true
+        },
+        "enablemedia": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 160,
+          "text": "启用正在播放",
+          "type": "bool",
+          "value": true
+        },
+        "enabletasks": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 158,
+          "text": "启用今日事项",
+          "type": "bool",
+          "value": true
+        },
+        "enabletime": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 157,
+          "text": "启用时间日期",
+          "type": "bool",
+          "value": true
+        },
+        "eventdate": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 123,
+          "text": "目标日期（YYYY-MM-DD，可加 HH:mm，本地时间）",
+          "type": "textinput",
+          "value": ""
+        },
+        "eventname": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 122,
+          "text": "重要日程名称",
+          "type": "textinput",
+          "value": ""
+        },
+        "focusminutes": {
+          "condition": "desktopmode.value == 'workbench'",
+          "max": 120,
+          "min": 1,
+          "order": 124,
+          "precision": 0,
+          "step": 1,
+          "text": "专注时长（分钟，下次开始生效）",
+          "type": "slider",
+          "value": 25
+        },
+        "gamepace": {
+          "condition": "desktopmode.value == 'workbench' && showgame.value == true",
+          "options": [
+            {
+              "label": "舒缓",
+              "value": "gentle"
+            },
+            {
+              "label": "标准",
+              "value": "normal"
+            },
+            {
+              "label": "快速",
+              "value": "quick"
+            }
+          ],
+          "order": 138,
+          "text": "波纹接力节奏（下一目标生效）",
+          "type": "combo",
+          "value": "normal"
+        },
+        "groupaudio": {
+          "order": 126,
+          "text": "声音",
+          "type": "group"
+        },
+        "groupcapabilities": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 156,
+          "text": "工作台 · 可用功能",
+          "type": "group"
+        },
+        "groupcontent": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 118,
+          "text": "工作台 · 事项与日程",
+          "type": "group"
+        },
+        "groupgame": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 136,
+          "text": "工作台 · 波纹接力",
+          "type": "group"
+        },
+        "groupidentity": {
+          "order": 100,
+          "text": "登录身份",
+          "type": "group"
+        },
+        "groupopening": {
+          "order": 101,
+          "text": "入场与画面",
+          "type": "group"
+        },
+        "groupreactive": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 131,
+          "text": "工作台 · 音乐律动",
+          "type": "group"
+        },
+        "groupuimargins": {
+          "order": 151,
+          "text": "界面边距 · 正值内收 / 负值外扩",
+          "type": "group"
+        },
+        "groupvisualeffects": {
+          "order": 140,
+          "text": "HUD 与画面质感",
+          "type": "group"
+        },
+        "groupworkbench": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 108,
+          "text": "工作台 · 界面显示",
+          "type": "group"
+        },
+        "huddepth": {
+          "condition": "hudparallax.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 142,
+          "step": 1,
+          "text": "曲面纵深",
+          "type": "slider",
+          "value": 20
+        },
+        "hudparallax": {
+          "order": 141,
+          "text": "UI 鼠标视差",
+          "type": "bool",
+          "value": false
+        },
+        "hudtracking": {
+          "condition": "hudparallax.value == true",
+          "order": 143,
+          "text": "鼠标追踪",
+          "type": "bool",
+          "value": true
+        },
+        "idlebreathing": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 117,
+          "text": "静止时呼吸（始终归齐时也生效）",
+          "type": "bool",
+          "value": true
+        },
+        "lightstarthour": {
+          "condition": "autotheme.value == true",
+          "max": 23,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为亮色 · 时（0-23）",
+          "type": "slider",
+          "value": 7
+        },
+        "lightstartminute": {
+          "condition": "autotheme.value == true",
+          "max": 59,
+          "min": 0,
+          "order": 104,
+          "precision": 0,
+          "step": 1,
+          "text": "切换为亮色 · 分",
+          "type": "slider",
+          "value": 0
+        },
+        "load3donstartup": {
+          "order": 102,
+          "text": "启动时加载 3D（下次加载生效）",
+          "type": "bool",
+          "value": true
+        },
+        "modelprecision": {
+          "value": "high"
+        },
+        "music": {
+          "order": 129,
+          "text": "背景音乐",
+          "type": "bool",
+          "value": false
+        },
+        "musicvolume": {
+          "condition": "music.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 130,
+          "precision": 0,
+          "step": 1,
+          "text": "音乐音量",
+          "type": "slider",
+          "value": 50
+        },
+        "openingdetail": {
+          "condition": "boot.value == true",
+          "options": [
+            {
+              "label": "随工作模式（工作台跳过，展示模式播放）",
+              "value": "auto"
+            },
+            {
+              "label": "展示详情",
+              "value": "show"
+            },
+            {
+              "label": "跳过详情，停留在阵列",
+              "value": "skip"
+            }
+          ],
+          "order": 103,
+          "text": "入场时展示档案详情（下次开场生效）",
+          "type": "combo",
+          "value": "auto"
+        },
+        "qualityanisotropy": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "1×",
+              "value": "1"
+            },
+            {
+              "label": "2×",
+              "value": "2"
+            },
+            {
+              "label": "4×",
+              "value": "4"
+            },
+            {
+              "label": "8×",
+              "value": "8"
+            },
+            {
+              "label": "16×",
+              "value": "16"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 纹理过滤",
+          "type": "combo",
+          "value": "16"
+        },
+        "qualityantialias": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "原始",
+              "value": "off"
+            },
+            {
+              "label": "SMAA",
+              "value": "smaa"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 抗锯齿",
+          "type": "combo",
+          "value": "off"
+        },
+        "qualityaoresolution": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "50%",
+              "value": "0.5"
+            },
+            {
+              "label": "75%",
+              "value": "0.75"
+            },
+            {
+              "label": "100%",
+              "value": "1"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 遮蔽分辨率",
+          "type": "combo",
+          "value": "1"
+        },
+        "qualityaosamples": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "关闭",
+              "value": "0"
+            },
+            {
+              "label": "16 采样",
+              "value": "16"
+            },
+            {
+              "label": "32 采样",
+              "value": "32"
+            },
+            {
+              "label": "64 采样",
+              "value": "64"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 环境遮蔽采样",
+          "type": "combo",
+          "value": "32"
+        },
+        "qualitydepthoffield": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "max": 150,
+          "min": 0,
+          "order": 106,
+          "step": 5,
+          "text": "自定义 · 景深强度（%）",
+          "type": "slider",
+          "value": 100
+        },
+        "qualitypixelratio": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "1×",
+              "value": "1"
+            },
+            {
+              "label": "1.5×",
+              "value": "1.5"
+            },
+            {
+              "label": "2×",
+              "value": "2"
+            },
+            {
+              "label": "3×",
+              "value": "3"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 像素密度上限",
+          "type": "combo",
+          "value": "1.5"
+        },
+        "qualityscale": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "max": 200,
+          "min": 50,
+          "order": 106,
+          "step": 5,
+          "text": "自定义 · 三维渲染比例（%）",
+          "type": "slider",
+          "value": 100
+        },
+        "qualityshadows": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "关闭",
+              "value": "0"
+            },
+            {
+              "label": "1024",
+              "value": "1024"
+            },
+            {
+              "label": "2048",
+              "value": "2048"
+            },
+            {
+              "label": "4096",
+              "value": "4096"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 阴影分辨率",
+          "type": "combo",
+          "value": "2048"
+        },
+        "qualitytransmission": {
+          "condition": "renderquality.value == 'custom' && superperformance.value == false",
+          "options": [
+            {
+              "label": "25%",
+              "value": "0.25"
+            },
+            {
+              "label": "50%",
+              "value": "0.5"
+            },
+            {
+              "label": "75%",
+              "value": "0.75"
+            },
+            {
+              "label": "100%",
+              "value": "1"
+            }
+          ],
+          "order": 106,
+          "text": "自定义 · 透明材质分辨率",
+          "type": "combo",
+          "value": "1"
+        },
+        "reactiveintensity": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "max": 200,
+          "min": 0,
+          "order": 134,
+          "precision": 0,
+          "step": 1,
+          "text": "音乐律动强度",
+          "type": "slider",
+          "value": 100
+        },
+        "reactivemute": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "order": 135,
+          "text": "音乐律动开启时停用壁纸配乐",
+          "type": "bool",
+          "value": true
+        },
+        "reduced": {
+          "value": true
+        },
+        "renderquality": {
+          "condition": "superperformance.value == false",
+          "options": [
+            {
+              "label": "性能",
+              "value": "performance"
+            },
+            {
+              "label": "原始",
+              "value": "original"
+            },
+            {
+              "label": "高",
+              "value": "high"
+            },
+            {
+              "label": "极高",
+              "value": "ultra"
+            },
+            {
+              "label": "自定义",
+              "value": "custom"
+            }
+          ],
+          "order": 106,
+          "text": "画质",
+          "type": "combo",
+          "value": "performance"
+        },
+        "rhythmstyle": {
+          "condition": "desktopmode.value == 'workbench' && audioreactive.value == true",
+          "options": [
+            {
+              "label": "原版 · 多层起伏",
+              "value": "legacy"
+            },
+            {
+              "label": "方案 A · 左低中中右高频谱",
+              "value": "wave"
+            },
+            {
+              "label": "方案 B · 连续层叠流波",
+              "value": "lift"
+            }
+          ],
+          "order": 133,
+          "text": "音乐律动方案",
+          "type": "combo",
+          "value": "legacy"
+        },
+        "schemecolor": {
+          "icon": "fa-palette",
+          "order": -20,
+          "text": "ui_browse_properties_scheme_color",
+          "type": "color",
+          "value": "0.5 0.5 0.5"
+        },
+        "screenfinish": {
+          "order": 144,
+          "text": "全局屏幕效果",
+          "type": "bool",
+          "value": false
+        },
+        "screenfringe": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 147,
+          "step": 1,
+          "text": "边缘色散",
+          "type": "slider",
+          "value": 20
+        },
+        "screengrain": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 145,
+          "step": 1,
+          "text": "细颗粒",
+          "type": "slider",
+          "value": 20
+        },
+        "screengrainsize": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 146,
+          "step": 1,
+          "text": "颗粒尺寸",
+          "type": "slider",
+          "value": 20
+        },
+        "screenvignette": {
+          "condition": "screenfinish.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 148,
+          "step": 1,
+          "text": "暗角",
+          "type": "slider",
+          "value": 20
+        },
+        "selectedindexaccent": {
+          "condition": "colortheme.value == 'dark'",
+          "order": 104,
+          "text": "暗色模式仅选中档案标签使用强调色",
+          "type": "bool",
+          "value": false
+        },
+        "selectionstyle": {
+          "condition": "desktopmode.value == 'workbench'",
+          "options": [
+            {
+              "label": "保持原样",
+              "value": "original"
+            },
+            {
+              "label": "仅音乐律动时归齐",
+              "value": "music-flat"
+            },
+            {
+              "label": "始终归齐",
+              "value": "flat"
+            }
+          ],
+          "order": 116,
+          "text": "选中档案高度",
+          "type": "combo",
+          "value": "music-flat"
+        },
+        "sessionname": {
+          "order": 100,
+          "text": "登录人姓名（开场身份确认、页脚与访问记录，最多 24 字符）",
+          "type": "textinput",
+          "value": "JOYCE MOORE"
+        },
+        "showbrand": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 113,
+          "text": "显示品牌文字",
+          "type": "bool",
+          "value": true
+        },
+        "showclock": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 109,
+          "text": "显示时钟与日期",
+          "type": "bool",
+          "value": true
+        },
+        "showfooter": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 114,
+          "text": "显示页脚信息",
+          "type": "bool",
+          "value": true
+        },
+        "showgame": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 137,
+          "text": "显示游戏入口",
+          "type": "bool",
+          "value": true
+        },
+        "showmodule": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 111,
+          "text": "显示右侧功能内容",
+          "type": "bool",
+          "value": true
+        },
+        "shownavigation": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 112,
+          "text": "显示底部功能导航",
+          "type": "bool",
+          "value": true
+        },
+        "showsettings": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 115,
+          "text": "显示设置入口",
+          "type": "bool",
+          "value": true
+        },
+        "showtasks": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 110,
+          "text": "显示今日事项",
+          "type": "bool",
+          "value": true
+        },
+        "sound": {
+          "order": 127,
+          "text": "交互音效",
+          "type": "bool",
+          "value": false
+        },
+        "soundvolume": {
+          "value": 23
+        },
+        "superperformance": {
+          "value": false
+        },
+        "task1": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 119,
+          "text": "今日事项 1",
+          "type": "textinput",
+          "value": ""
+        },
+        "task2": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 120,
+          "text": "今日事项 2",
+          "type": "textinput",
+          "value": ""
+        },
+        "task3": {
+          "condition": "desktopmode.value == 'workbench'",
+          "order": 121,
+          "text": "今日事项 3",
+          "type": "textinput",
+          "value": ""
+        },
+        "uifrost": {
+          "order": 149,
+          "text": "文字与按钮磨砂底",
+          "type": "bool",
+          "value": false
+        },
+        "uifroststrength": {
+          "condition": "uifrost.value == true",
+          "max": 100,
+          "min": 0,
+          "order": 150,
+          "step": 1,
+          "text": "磨砂强度",
+          "type": "slider",
+          "value": 55
+        },
+        "uimarginbottom": {
+          "max": 300,
+          "min": -300,
+          "order": 153,
+          "step": 1,
+          "text": "下边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimarginleft": {
+          "max": 300,
+          "min": -300,
+          "order": 154,
+          "step": 1,
+          "text": "左边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimarginright": {
+          "max": 300,
+          "min": -300,
+          "order": 155,
+          "step": 1,
+          "text": "右边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "uimargintop": {
+          "max": 300,
+          "min": -300,
+          "order": 152,
+          "step": 1,
+          "text": "上边距（px）",
+          "type": "slider",
+          "value": 0
+        },
+        "wec_brs": {
+          "condition": "wec_e.value",
+          "icon": "fa-sun",
+          "max": 100,
+          "min": 0,
+          "order": -7,
+          "text": "ui_browse_properties_brightness",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_con": {
+          "condition": "wec_e.value",
+          "icon": "fa-adjust",
+          "max": 100,
+          "min": 0,
+          "order": -6,
+          "text": "ui_browse_properties_contrast",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_e": {
+          "order": -8,
+          "text": "ui_browse_properties_show_color_options",
+          "type": "bool",
+          "value": false
+        },
+        "wec_hue": {
+          "condition": "wec_e.value",
+          "icon": "fa-palette",
+          "max": 100,
+          "min": 0,
+          "order": -4,
+          "text": "ui_browse_properties_hue_shift",
+          "type": "slider",
+          "value": 50
+        },
+        "wec_sa": {
+          "condition": "wec_e.value",
+          "icon": "fa-tint",
+          "max": 100,
+          "min": 0,
+          "order": -5,
+          "text": "ui_browse_properties_saturation",
+          "type": "slider",
+          "value": 50
+        }
+      },
+      "fps": 30,
+      "paused": false
+    }
+  }
+}

@@ -1,9 +1,10 @@
 # Rhine Lab UI
 
-## 模型精度对照实验
+## 模型精度
 
-- 2026-09-12：用户授权高、中、低三档模型精度的性能试验。当前在 `codex/visual-preserving-performance` 保留独立对照页，尚未接入正式画质设置。高档原模型，中档只简化背景螺丝和边框，低档进一步简化背景及近景细节；其余画质、材质与动作一致。
-- 模型通过 Blender MCP 生成，脚本 `art/model_precision.py`，源工程 `art/model-precision.blend`。测试与限制见 `verification/MODEL-PRECISION.md`；用户尚未确认中低档最终视觉可接受性。
+- 2026-09-12：用户要求仅在独立壁纸仓库增加 WE 原生「模型精度」高／中／低选择，默认高档。中档仅简化背景螺丝和边框，低档进一步简化背景及近景细节；独立 360° 拆解查看器保留完整模型，与此前对照测试范围一致。
+- 切换即时生效并保留当前选档、镜头、材质和动态效果；与画质、超级性能模式及减少动态效果独立。3D 关闭后仍保留宿主选择，重新载入时应用；异步切换以最新请求为准，载入失败保留可用模型并允许重试。
+- 生产资源直接复用 Blender MCP 已生成的试验资产，脚本 `art/model_precision.py`、源工程 `art/model-precision.blend`；未经再次简化。原始性能测量与视觉差异见 `verification/MODEL-PRECISION.md`，正式设置与生命周期验证见 `verification/MODEL-PRECISION-SETTINGS.md`。低档会损失细小结构与高光细节，不属于无损优化。
 
 ## 保持视觉效果的性能优化
 

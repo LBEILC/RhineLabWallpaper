@@ -1,3 +1,4 @@
+import { modelPrecision } from "./model-precision";
 import { createRollingClock } from "./rolling-clock";
 import { workbenchLettering } from "./workbench-lettering";
 import { InspectionOverlay } from "./inspection-overlay";
@@ -255,6 +256,13 @@ function saveAudioPrefs() {
     localStorage.setItem("rhine-settings", JSON.stringify(prefs));
   } catch {}
   configureAudio();
+}
+function selectedModelPrecision() { return modelPrecision(wallpaperHost()?.properties.modelprecision?.value); }
+function syncModelPrecision() {
+  void scene?.setModelPrecision(selectedModelPrecision()).catch(error => {
+    console.error("Model precision could not be loaded", error);
+    notify("模型精度载入失败，保留当前模型，请重新选择档位重试。");
+  });
 }
 function superPerformanceEnabled() { return isWallpaper && wallpaperHost()?.properties.superperformance?.value === true; }
 function effectiveRenderQuality() { return superPerformanceEnabled() ? superPerformanceQuality : prefs.rendering; }
@@ -1100,10 +1108,15 @@ async function toggleThree() {
     next.renderer.domElement.style.opacity = "0";
     next.setPresentationVisible(false, true);
     await next.load();
+    await next.setModelPrecision(selectedModelPrecision()).catch(error => {
+      console.error(error);
+      notify("模型精度载入失败，暂时使用高精度，请重新选择档位重试。");
+    });
     next.setMode(mode === "detail" ? "detail" : "archive");
     bindScene(next, resumeSelection === selected ? resumeCell : undefined);
     next.revealImmediately();
     scene = next;
+    syncModelPrecision();
     scene.setTheme(prefs.colorTheme === "dark", true);
     scene.setArchiveCoverage(wallpaperHost()?.properties.archivecoverage?.value === "extra");
     savePrefs();
@@ -1138,7 +1151,13 @@ async function start() {
       document.fonts.load("600 20px MiSans", "SYNTHESIZE INFORMATION ANALYSIS OS"),
       document.fonts.load("700 20px MiSans", "RHINE LAB WELCOME TO INTERNAL DATABASE"),
     ]);
-    if (scene) bindScene(scene);
+    if (scene) {
+      await scene.setModelPrecision(selectedModelPrecision()).catch(error => {
+        console.error(error);
+        notify("模型精度载入失败，暂时使用高精度，请重新选择档位重试。");
+      });
+      bindScene(scene);
+    }
     savePrefs();
     ready = true;
     select(0);
@@ -1199,6 +1218,7 @@ function syncWallpaperBackground(retry = false) {
 if (isWallpaper) {
   const apply = (properties: WallpaperProperties) => {
     const merged = { ...wallpaperHost()?.properties, ...properties };
+    if (properties.modelprecision) syncModelPrecision();
     const theme = properties.colortheme?.value;
     if (theme === "light" || theme === "dark") prefs.colorTheme = theme;
     setSessionName(merged.sessionname?.value);
