@@ -1,0 +1,172 @@
+{
+  "startup": {
+    "name": {
+      "text": "KAL'TSIT",
+      "art": true,
+      "live": false
+    },
+    "dark": true,
+    "manual": "light",
+    "autotheme": true
+  },
+  "footerLatin": {
+    "artGroups": 8,
+    "artWidth": 4.68,
+    "artVisible": true,
+    "fixedArt": 0,
+    "live": null,
+    "liveFont": null,
+    "archiveText": "KAL'TSIT",
+    "alignment": null,
+    "ink": "rgb(224, 227, 220)",
+    "glyphFill": "rgb(224, 227, 220)",
+    "fixedFill": null
+  },
+  "openingCustom": {
+    "text": "ID CONFIRMED : KAL'TSIT",
+    "fallback": false,
+    "phrase": "identity",
+    "letters": 15,
+    "glyphs": 8,
+    "drawn": 8,
+    "glyphFill": "rgb(224, 227, 220)",
+    "ink": "rgb(224, 227, 220)",
+    "live": null,
+    "liveFont": null,
+    "alignment": {
+      "top": 0,
+      "height": 21.344,
+      "prefixHeight": 21.344
+    },
+    "baseline": null,
+    "fontSize": "21.35px",
+    "width": 252,
+    "opacity": "1"
+  },
+  "footerChinese": {
+    "artGroups": 0,
+    "artWidth": null,
+    "artVisible": false,
+    "fixedArt": 0,
+    "live": "赫默",
+    "liveFont": "MiSans",
+    "archiveText": null,
+    "alignment": null,
+    "ink": "rgb(224, 227, 220)",
+    "glyphFill": null,
+    "fixedFill": null
+  },
+  "openingChinese": {
+    "text": "ID CONFIRMED : 赫默",
+    "fallback": false,
+    "phrase": "identity",
+    "letters": 15,
+    "glyphs": 0,
+    "drawn": 0,
+    "glyphFill": null,
+    "ink": "rgb(224, 227, 220)",
+    "live": "赫默",
+    "liveFont": "MiSans",
+    "alignment": null,
+    "baseline": {
+      "artwork": 17.99,
+      "live": 18
+    },
+    "fontSize": "21.35px",
+    "width": 206,
+    "opacity": "1"
+  },
+  "openingMixed": {
+    "text": "ID CONFIRMED : 赫默 KAL’TSIT",
+    "fallback": false,
+    "phrase": "identity",
+    "letters": 15,
+    "glyphs": 9,
+    "drawn": 8,
+    "glyphFill": null,
+    "ink": "rgb(224, 227, 220)",
+    "live": "赫默",
+    "liveFont": "MiSans",
+    "alignment": {
+      "top": 0,
+      "height": 21.344,
+      "prefixHeight": 21.344
+    },
+    "baseline": {
+      "artwork": 17.99,
+      "live": 18
+    },
+    "fontSize": "21.35px",
+    "width": 301,
+    "opacity": "1"
+  },
+  "switchedToLight": {
+    "dark": false
+  },
+  "manualDuringSchedule": {
+    "dark": true
+  },
+  "scheduleReasserted": {
+    "dark": false
+  },
+  "renamed": {
+    "text": "Dr. Kal’tsit & <b>",
+    "art": true,
+    "live": false
+  },
+  "footerRenamed": {
+    "artGroups": 15,
+    "artWidth": 9.603,
+    "artVisible": true,
+    "fixedArt": 0,
+    "live": null,
+    "liveFont": null,
+    "archiveText": "Dr. Kal’tsit & <b>",
+    "alignment": null,
+    "ink": "rgb(120, 119, 110)",
+    "glyphFill": "rgb(120, 119, 110)",
+    "fixedFill": null
+  },
+  "settings": {
+    "intro": "Dr. Kal’tsit & <b>",
+    "schedule": "Wallpaper Engine 已按时间自动切换：暗色 21:19 / 亮色 19:19。此刻手动切换会在下一个时间点被自动结果覆盖。"
+  },
+  "cleared": {
+    "text": "JOYCE MOORE",
+    "art": true,
+    "live": false
+  },
+  "footerDefault": {
+    "artGroups": 0,
+    "artWidth": null,
+    "artVisible": false,
+    "fixedArt": 1,
+    "live": null,
+    "liveFont": null,
+    "archiveText": "JOYCE MOORE",
+    "alignment": null,
+    "ink": "rgb(120, 119, 110)",
+    "glyphFill": null,
+    "fixedFill": "rgb(120, 119, 110)"
+  },
+  "openingDefault": {
+    "text": "ID CONFIRMED : JOYCE MOORE",
+    "fallback": false,
+    "phrase": "identity",
+    "letters": 26,
+    "glyphs": 0,
+    "drawn": 0,
+    "glyphFill": null,
+    "ink": "rgb(8, 10, 8)",
+    "live": null,
+    "liveFont": null,
+    "alignment": null,
+    "baseline": null,
+    "fontSize": "21.35px",
+    "width": 314,
+    "opacity": "1"
+  },
+  "scheduleOff": {
+    "dark": true
+  }
+}
