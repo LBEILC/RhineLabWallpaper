@@ -22,6 +22,7 @@ export class Workbench {
   private date = dayKey(new Date());
   private storageOK = true;
   private lastSecond = -1;
+  private renderedDate = "";
   private exitAnimation?: Animation;
   private visibility: WorkbenchVisibility = defaultWorkbenchVisibility();
   constructor(private stage: HTMLElement, private onMode: () => void, private onLane: (lane: number) => void) {
@@ -31,7 +32,7 @@ export class Workbench {
       if (saved?.date === this.date && Array.isArray(saved.done)) this.done = saved.done.filter((s: unknown) => typeof s === "string").slice(0, 3);
     } catch { this.storageOK = false; }
     stage.insertAdjacentHTML("beforeend", `<section class="workbench" hidden aria-label="桌面工作台">
-      <div class="wb-overview"><div class="wb-time"><div class="wb-kicker">${workbenchLettering('daily')}</div><time class="wb-clock"></time><div class="wb-date"></div></div>
+      <div class="wb-overview"><div class="wb-time"><div class="wb-kicker">${workbenchLettering('daily')}</div><time class="wb-clock"></time><time class="wb-date"><span class="wb-date-numbers" aria-hidden="true"><span class="wb-date-year"></span><span class="wb-date-dot">.</span><span class="wb-date-monthday"></span></span><span class="wb-date-weekday" aria-hidden="true"></span></time></div>
       <section class="wb-today"><div class="wb-heading"><h2>今日事项</h2><span class="wb-task-count"></span></div><div class="wb-tasks"></div></section></div>
       <section class="wb-module"><div class="wb-kicker">${workbenchLettering('workspace')} <span class="wb-index">01 / 05</span></div><h2 class="wb-title"></h2><div class="wb-content"></div><p class="wb-storage" role="status"></p></section>
       <nav class="wb-nav" aria-label="工作台功能">${names.map((n, i) => `<button data-wb-lane="${i}" aria-pressed="false"><small>0${i + 1}</small>${n}<span>↗</span></button>`).join("")}</nav>
@@ -175,7 +176,18 @@ export class Workbench {
     this.rollDay(); this.settle(now);
     const date = new Date(now);
     rollText(this.root.querySelector<HTMLElement>(".wb-clock")!, date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }), !this.stage.classList.contains("reduce-motion"));
-    this.root.querySelector(".wb-date")!.textContent = date.toLocaleDateString(language(), { year: "numeric", month: "long", day: "numeric", weekday: "long" });
+    const dateKey = dayKey(date);
+    const dateLocale = `${dateKey}:${language()}`;
+    if (this.renderedDate !== dateLocale) {
+      const element = this.root.querySelector<HTMLTimeElement>(".wb-date")!;
+      const [year, month, day] = dateKey.split("-");
+      element.dateTime = dateKey;
+      element.setAttribute("aria-label", date.toLocaleDateString(language(), { year: "numeric", month: "long", day: "numeric", weekday: "long" }));
+      element.querySelector(".wb-date-year")!.textContent = year;
+      element.querySelector(".wb-date-monthday")!.textContent = `${month}.${day}`;
+      element.querySelector(".wb-date-weekday")!.textContent = date.toLocaleDateString(language(), { weekday: "long" });
+      this.renderedDate = dateLocale;
+    }
     if (this.lane === 0 || this.lane === 2) this.renderPanel();
     const timer = this.root.querySelector(".wb-timer-digits");
     if (timer) rollText(timer as HTMLElement, durationText(this.timer.status === "idle" ? this.minutes() * 60000 : timerLeft(this.timer, now)), !this.stage.classList.contains("reduce-motion"));

@@ -1,0 +1,58 @@
+{
+  "snapshots": [
+    {
+      "theme": "light",
+      "language": "zh-CN",
+      "text": "2026.09.14星期一"
+    },
+    {
+      "theme": "light",
+      "language": "en-US",
+      "text": "2026.09.14Monday"
+    },
+    {
+      "theme": "dark",
+      "language": "zh-CN",
+      "text": "2026.09.14星期一"
+    },
+    {
+      "theme": "dark",
+      "language": "en-US",
+      "text": "2026.09.14Monday"
+    }
+  ],
+  "widths": [
+    {
+      "viewportWidth": 320,
+      "width": 292,
+      "scroll": 292,
+      "weekday": "Wednesday"
+    },
+    {
+      "viewportWidth": 390,
+      "width": 350,
+      "scroll": 350,
+      "weekday": "Wednesday"
+    },
+    {
+      "viewportWidth": 1920,
+      "width": 400,
+      "scroll": 400,
+      "weekday": "Wednesday"
+    },
+    {
+      "viewportWidth": 2560,
+      "width": 400,
+      "scroll": 400,
+      "weekday": "Wednesday"
+    }
+  ],
+  "checks": [
+    "month rollover",
+    "year rollover",
+    "live language switch",
+    "long weekday on narrow viewports",
+    "no page errors"
+  ],
+  "passed": true
+}

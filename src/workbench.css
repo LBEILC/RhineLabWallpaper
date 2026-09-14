@@ -31,7 +31,13 @@
 .wb-overview { position: absolute; top: 24%; left: var(--edge); width: min(29%, 400px); }
 .wb-kicker { font-size: 11px; letter-spacing: 1.8px; border-top: 1px solid #aaa59a; padding-top: 12px; display: flex; justify-content: space-between; gap: 12px; }
 .wb-clock { font-size: clamp(52px, 6vw, 112px); line-height: 1.18; font-weight: 300; letter-spacing: -5px; font-variant-numeric: tabular-nums; }
-.wb-date { font-size: 14px; margin-top: 8px; }
+.wb-date { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 16px; margin-top: 8px; line-height: 24px; }
+.wb-date-numbers { display: inline-flex; align-items: baseline; white-space: nowrap; font-variant-numeric: tabular-nums; letter-spacing: .07em; }
+.wb-date-year { font-size: 13px; font-weight: 400; opacity: .72; }
+.wb-date-dot { margin: 0 3px; font-size: 13px; opacity: .45; }
+.wb-date-monthday { font-size: 18px; font-weight: 500; }
+.wb-date-weekday { display: inline-flex; align-items: center; gap: 16px; font-size: 12px; font-weight: 400; letter-spacing: .08em; white-space: nowrap; }
+.wb-date-weekday::before { content: ""; width: 1px; height: 12px; background: currentColor; opacity: .3; }
 .wb-today { margin-top: 36px; padding: 18px 0; background: none; border-top: 1px solid #aaa59a; pointer-events: auto; }
 .wb-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 .wb-heading h2 { margin: 0; font-size: 16px; font-weight: 500; }

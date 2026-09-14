@@ -303,3 +303,5 @@ WE 画质下拉增加「自定义」，仅此选择且超级模式关闭时显�
 - 实现说明见 docs/LOCALIZATION.md，验证见 verification/LOCALIZATION.md。工坊仍由用户自行上传。
 
 - 2026-09-14 修正：WE 自定义翻译会转义中文，但折叠分组以纯文本输出，导致显示 HTML 实体。分组标题改用中英双语字面文本；普通属性和下拉选项继续跟随 WE 语言。不得把分组标题重新改为 `ui_` token。宿主组件回归见 `scripts/check-we-property-labels.mjs`。
+
+- 2026-09-14：用户明确选择工作台日期改为 `2026.09.14 │ 星期一` 数字样式，年份减弱、月日强调，星期以细竖线分隔。沿用 MiSans 和原生实现；英文模式显示对应英文星期。见 DESIGN.md 与 verification/DATE-TYPOGRAPHY.md。
