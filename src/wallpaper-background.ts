@@ -1,3 +1,4 @@
+import { tr } from "./i18n";
 import type { WallpaperProperties } from "./wallpaper";
 import { wallpaperImageUrl } from "./wallpaper-image-url";
 
@@ -56,7 +57,7 @@ export class WallpaperBackground {
           if (ticket !== this.ticket) return;
           this.failed = true;
           this.image?.remove(); this.image = undefined; this.paint();
-          this.notify("自定义壁纸无法读取，请在 Wallpaper Engine 属性中重新选择图片。");
+          this.notify(tr("自定义壁纸无法读取，请在 Wallpaper Engine 属性中重新选择图片。"));
         };
         next.src = wallpaperImageUrl(path);
       }

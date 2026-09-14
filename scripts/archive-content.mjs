@@ -80,17 +80,18 @@ export function validateContent(content) {
   return content;
 }
 
-export async function loadContent() {
+export async function loadContent(language = "zh-CN") {
   return validateContent(
     JSON.parse(
       await fs.readFile(
-        new URL("../content/archives.json", import.meta.url),
+        new URL(language === "en-US" ? "../content/archives.en.json" : "../content/archives.json", import.meta.url),
         "utf8",
       ),
     ),
   );
 }
 
-export function archiveText(r) {
+export function archiveText(r, language = "zh-CN") {
+  if (language === "en-US") return `\uFEFFRHINE LAB · INTERNAL DATABASE\nFILE ${r.id} / ${r.title}\n${r.en}\n\nDepartment: ${r.department}\nCollection: ${r.date}\nRelated: ${r.lead}\nAccess: ${r.clearance}\n\n${r.abstract}\n\nResearch notes\n${r.findings.map((f, i) => `${i + 1}. ${f}`).join("\n")}\n\nLore reference: ${r.source}\nThis is an archive-style adaptation based on public lore, not original game text.\n`;
   return `\uFEFFRHINE LAB · INTERNAL DATABASE\nFILE ${r.id} / ${r.title}\n${r.en}\n\n科室：${r.department}\n编目范围：${r.date}\n相关人物：${r.lead}\n访问范围：${r.clearance}\n\n${r.abstract}\n\n研究记录\n${r.findings.map((f, i) => `${i + 1}. ${f}`).join("\n")}\n\n设定参考：${r.source}\n本文为基于公开设定的档案式改写，非游戏原文。\n`;
 }

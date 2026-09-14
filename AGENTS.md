@@ -292,3 +292,12 @@ WE 画质下拉增加「自定义」，仅此选择且超级模式关闭时显�
 - 姓名使用 WE「登录身份」文本属性，默认 `JOYCE MOORE`；开场身份确认行、页脚、设置页眉与访问记录共用。开场 `ID CONFIRMED : ` 前缀固定保留 Novecento 轮廓字形；姓名的拉丁字符改用同一套随包发行的逐字轮廓图形（`scripts/make-name-glyphs.py`，167 个字符，不含字体二进制或字距表），英文名与原字体一致；中文等非拉丁字符仍用 MiSans 实时文本，按 −0.043em 对齐轮廓基线，允许混排。动态轮廓必须带 `fill="currentColor"`（SVG 默认黑色会让暗色主题下的姓名变黑），见 verification/IDENTITY-THEME.md。留空回落默认值，上限 24 个码点。
 - 自动切换使用「入场与画面」中的开关与四个时／分滑杆（默认 19:00 与 07:00），按本机时间判断，可跨午夜；两个时间相同表示不自动切换。到点复用既有逐张变色过渡，手动切换在下一次跨越时间点时被自动结果覆盖，关闭开关即回到手动配色。
 - 实现与验证见 verification/IDENTITY-THEME.md；纯逻辑检查 `scripts/check-identity-theme.mjs`，真实 WE 宿主检查 `scripts/check-identity-theme-host.mjs`。
+
+
+## 中英文与设置统一（2026-09-14）
+
+- 用户授权在 codex/english-localization 分支完成中英文支持及移除壁纸内设置，验证通过后合并本仓库 main。继续原生实现，不启用前端或动效 Skill。
+- WE 属性顶部新增语言选择（简体中文／English），默认简体中文；宿主保存并即时生效。移除壁纸内部设置及 WE 显示设置入口选项，右下角原有重播、左下角 3D 和工作台直接操作继续保留。字体说明随软件包 THIRD-PARTY-NOTICES.txt 及原字体许可文件交付，不添加界面入口。
+- 用户追加明确：所有原有英文元素保持英文，尤其前段 2D 开场的英文设计、字体和动画。语言切换只为原中文界面、提示和档案增加英文版本，不将既有英文反向翻为中文。用户姓名、事项、日程标题与媒体信息保持原文。
+- 文案位于 content/ui.en.json，档案位于 content/archives.json 与 content/archives.en.json。保留稳定编号、顺序、分类所属和原英文眉题；中英文 TXT 一起导出。语言切换不得重建三维场景、重置选档、收藏、计时或查看器拆解。WE 属性标签使用原生 localization，跟随 WE 自身语言。
+- 实现说明见 docs/LOCALIZATION.md，验证见 verification/LOCALIZATION.md。工坊仍由用户自行上传。

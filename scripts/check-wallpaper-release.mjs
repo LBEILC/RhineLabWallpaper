@@ -92,6 +92,9 @@ if (project.preview)
     "Preview file declared in project.json is missing",
   );
 assert.ok(byName.has(`${FOLDER}/LICENSE`), "LICENSE is missing");
+assert.ok(byName.has(`${FOLDER}/THIRD-PARTY-NOTICES.txt`), "Third-party notices are missing");
+assert.ok(byName.has(`${FOLDER}/fonts/MiSans-license.pdf`), "MiSans license is missing");
+assert.equal([...byName.keys()].filter(name => name.startsWith(`${FOLDER}/archives/en/`) && name.endsWith('.txt')).length, 40, "All English archive downloads must ship");
 
 const html = read(`${FOLDER}/index.html`).toString("utf8");
 assert.ok(

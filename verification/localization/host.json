@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+  "protocol": "file:",
+  "initialLanguage": "en-US",
+  "openingText": "ID CONFIRMED : JOYCE MOORE",
+  "checks": [
+    "actual host property on startup",
+    "live language callbacks",
+    "timer/tasks preserved",
+    "settings removed",
+    "opening graphics identical across languages"
+  ]
+}

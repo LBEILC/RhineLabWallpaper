@@ -1,0 +1,4 @@
+/* Keep the existing composition; give longer English navigation labels room. */
+html[lang="en-US"] #stage:not([data-layout="portrait"]) .wb-nav button { width: 140px; }
+html[lang="en-US"] .detail-content { overflow-wrap: break-word; }
+html[lang="en-US"] .metadata dd { overflow-wrap: anywhere; }

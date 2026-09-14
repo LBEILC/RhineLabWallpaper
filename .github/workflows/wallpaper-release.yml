@@ -44,6 +44,9 @@ jobs:
       - name: Check wallpaper host behaviour
         run: node scripts/check-wallpaper.mjs
 
+      - name: Validate bilingual content and property labels
+        run: node scripts/check-localization.mjs --content-only
+
       - name: Resolve release tag
         id: tag
         run: |

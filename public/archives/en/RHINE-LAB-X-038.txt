@@ -1,0 +1,18 @@
+﻿RHINE LAB · INTERNAL DATABASE
+FILE X-038 / Limits of Observation
+LIMITS OF OBSERVATION
+
+Department: High-Altitude Research Records Team
+Collection: Cross-period compilation
+Related: Rhine Lab
+Access: REFERENCE AREA
+
+Knowledge of the sky has long been constrained by where observers can go and what evidence they can obtain. The exploration in Lone Trail brings those limits into question. Rather than naming the unknown too quickly, this volume asks how a new observation can force established explanations to be tested again.
+
+Research notes
+1. Distinguish direct observation, inference, and hypotheses still awaiting verification.
+2. When new evidence conflicts with an existing explanation, preserve the grounds for both.
+3. Record instruments and observation positions to explain the conditions that limit each conclusion.
+
+Lore reference: https://arknights.wiki.gg/wiki/Lone_Trail
+This is an archive-style adaptation based on public lore, not original game text.

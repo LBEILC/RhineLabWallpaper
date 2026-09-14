@@ -1,0 +1,18 @@
+﻿RHINE LAB · INTERNAL DATABASE
+FILE X-007 / Instrument Calibration
+INSTRUMENT CALIBRATION
+
+Department: Engineering Section
+Collection: Cross-period compilation
+Related: Mayer
+Access: REFERENCE AREA
+
+Mayer prepared and calibrated experimental apparatus for a project involving Silence, while continuing her mechanical designs at the Lutra Workshop. Instruments turn researchers' ideas into measurable signals; errors introduced at this stage can be amplified by every calculation that follows.
+
+Research notes
+1. Preserve the relationship between measurement standards, equipment condition, and raw readings.
+2. Equipment handovers must explain operating conditions and maintenance procedures.
+3. The practical knowledge held by calibration staff should form part of the project record.
+
+Lore reference: https://prts.wiki/w/梅尔
+This is an archive-style adaptation based on public lore, not original game text.
