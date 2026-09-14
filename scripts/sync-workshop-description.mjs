@@ -9,14 +9,16 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const source = "docs/WORKSHOP-DESCRIPTION.txt";
-const text = (await readFile(source, "utf8")).replace(/\s+$/, "");
+const text = (await readFile(source, "utf8")).replace(/\r\n/g, "\n").replace(/\s+$/, "");
 if (!text.includes("【Rhine Lab · 莱茵生命交互桌面】"))
   throw new Error(`${source} does not look like the Workshop description`);
 
 const bullets = text.match(/^• .+$/gm) ?? [];
 const dates = text.match(/^\d{4}\.\d{2}\.\d{2}$/gm) ?? [];
-if (!text.includes("https://github.com/LBEILC/RhineLabWallpaper"))
-  throw new Error(`${source} must link to the public changelog`);
+if (!text.includes("GitHub") || !text.includes("【Rhine Lab · Interactive Desktop】"))
+  throw new Error(`${source} must include both languages and mention GitHub for details`);
+if (/(?:https?:\/\/|www\.)[^\s]*github|github\.com\//i.test(text))
+  throw new Error(`${source} must mention GitHub without including a link`);
 
 const targets = ["wallpaper/project.json", ...process.argv.slice(2)];
 for (const target of targets) {

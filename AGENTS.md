@@ -275,7 +275,7 @@ WE 画质下拉增加「自定义」，仅此选择且超级模式关闭时显�
 
 ## 工坊简介持续维护
 
-用户于 2026-09-11 要求：每次更新都重新整理一份完整工坊简介，并同步 docs/WORKSHOP-DESCRIPTION.txt、wallpaper/project.json 的 description 与本机正式 WE 工程。简介顶部仅保留最新 10 条面向用户的更新，按日期及更新顺序倒序；不把已撤回试验当作正式功能。完整日志维护在 docs/CHANGELOG.md，旧条目不得因简介截短而删除。简介保留“更多更新日志请前往 GitHub 查看”及该文件的 GitHub 链接。工坊发布仍由用户操作，保留 workshopid。同步步骤已脚本化：`npm run sync:description` 写入 wallpaper/project.json，附加本机正式工程路径即可一并更新。
+用户于 2026-09-11 要求：每次更新都重新整理一份完整工坊简介，并同步 docs/WORKSHOP-DESCRIPTION.txt、wallpaper/project.json 的 description 与本机正式 WE 工程。简介顶部仅保留最新 10 条面向用户的更新，按日期及更新顺序倒序；不把已撤回试验当作正式功能。完整日志维护在 docs/CHANGELOG.md，旧条目不得因简介截短而删除。2026-09-14 用户更新要求：简介的功能介绍、使用说明与近期更新均采用中英双语，不放 GitHub 链接，只写“更多详情与完整更新日志请前往 GitHub 查看”及对应英文提示；此要求覆盖之前保留链接的规则。工坊发布仍由用户操作，保留 workshopid。同步步骤已脚本化：`npm run sync:description` 写入 wallpaper/project.json，附加本机正式工程路径即可一并更新。
 
 ## GitHub 构建包发布（2026-09-11）
 
