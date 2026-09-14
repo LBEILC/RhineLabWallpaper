@@ -4,7 +4,7 @@
 
 中文模式保持原有中英混排。已有英文标识、2D 开场的英文文字、Novecento 字形和时间轴不随语言改变；仅将原中文功能、提示和档案内容补齐英文本地化。用户姓名、事项、日程标题以及系统媒体信息保持用户或播放器原文。
 
-WE 属性名称的翻译跟随 **WE 软件自身的界面语言**，由 `wallpaper/project.json` 的 `general.localization` 提供；壁纸内内容由新增 `language` 属性控制。壁纸不会更改 WE 软件语言。官方说明：https://docs.wallpaperengine.io/en/web/customization/localization.html
+WE 普通属性名称和下拉选项的翻译跟随 **WE 软件自身的界面语言**，由 `wallpaper/project.json` 的 `general.localization` 提供；折叠分组标题直接显示中英双语，兼容 WE 对分组翻译的字符编码问题。壁纸内内容由新增 `language` 属性控制。壁纸不会更改 WE 软件语言。官方说明：https://docs.wallpaperengine.io/en/web/customization/localization.html
 
 ## 维护
 
@@ -26,6 +26,6 @@ Choose **Language / 语言 → English** at the top of this wallpaper's properti
 
 Existing English graphics and opening animation remain unchanged. Workspace tools, hints, the model viewer, the game and all 40 archive records have English translations. Your names, tasks, event titles and media metadata remain as supplied. Language changes preserve the active archive, saved records, focus timer and model viewer state.
 
-Property labels follow Wallpaper Engine's own interface language; the wallpaper's Language option controls its on-screen content. These are separate settings. Font notices and licenses are included in the software package rather than the wallpaper interface.
+Property labels and dropdown options follow Wallpaper Engine's own interface language. Group headings show both Chinese and English to avoid a host text-encoding issue. The wallpaper's Language option controls its on-screen content. These are separate settings. Font notices and licenses are included in the software package rather than the wallpaper interface.
 
 Validation and limitations: `verification/LOCALIZATION.md`.
