@@ -1,3 +1,4 @@
+import { tr, bindStaticTranslations } from "./i18n";
 import { RelayRound, SpectrumEnvelope } from "./archive-play-motion";
 import type { ArchiveScene } from "./scene";
 import { wallpaperHost, type WallpaperProperties } from "./wallpaper";
@@ -34,6 +35,7 @@ export class ArchivePlayground {
     this.entry = stage.querySelector(".relay-entry")!;
     this.hud = stage.querySelector(".relay-hud")!;
     this.marker = stage.querySelector(".relay-target")!;
+    [this.entry, this.hud, this.marker].forEach(element => bindStaticTranslations(element));
     this.score = this.hud.querySelector(".relay-score")!;
     this.message = this.hud.querySelector(".relay-message")!;
     this.retry = this.hud.querySelector(".relay-retry")!;
@@ -58,7 +60,7 @@ export class ArchivePlayground {
     this.closing = false;
     this.round.start(); this.previousTarget = "";
     this.score.textContent = "00";
-    this.message.textContent = "点击抬起的档案，接住下一道波纹";
+    this.message.textContent = tr("点击抬起的档案，接住下一道波纹");
     this.retry.hidden = true;
     this.bar.style.transform = "scaleX(0)";
     this.showMarker(false);
@@ -85,7 +87,7 @@ export class ArchivePlayground {
       this.updateEntry();
       this.syncInputIsolation();
       if (this.context().enabled && !this.context().paused) {
-        const target = this.entryVisible ? this.entry : this.stage.querySelector<HTMLButtonElement>(".settings-button");
+        const target = this.entryVisible ? this.entry : this.stage.querySelector<HTMLButtonElement>('[data-action="replay"]');
         target?.focus({ preventScroll: true });
       }
     });
@@ -171,7 +173,7 @@ export class ArchivePlayground {
     this.retry.hidden = !over;
     const score = String(this.round.score).padStart(2, "0");
     if (this.score.textContent !== score) this.score.textContent = score;
-    const message = over ? this.round.reason : context.paused ? "已暂停" : "点击抬起的档案，接住下一道波纹";
+    const message = over ? tr(this.round.reason) : context.paused ? tr("已暂停") : tr("点击抬起的档案，接住下一道波纹");
     if (this.message.textContent !== message) this.message.textContent = message;
     this.bar.style.transform = `scaleX(${this.round.status === "playing" ? this.round.remaining / this.round.total : 0})`;
     this.position();

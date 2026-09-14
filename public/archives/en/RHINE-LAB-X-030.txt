@@ -1,0 +1,18 @@
+﻿RHINE LAB · INTERNAL DATABASE
+FILE X-030 / Power Within Limits
+POWER WITHIN LIMITS
+
+Department: Engineering / Energy Sections
+Collection: Cross-period compilation
+Related: Engineering Section
+Access: REFERENCE AREA
+
+Engineering equipment is limited by both available energy and the conditions needed for sustained operation. Investment expands Rhine Lab's equipment development, but its results must still be tested in real environments. This volume uses power budgets to examine the tradeoffs between peak capability and long-term availability.
+
+Research notes
+1. Record the requirements of startup, sustained operation, and standby separately.
+2. Reserve resources for cooling, maintenance, and fault handling.
+3. When devices share a power supply, explain priorities and the scope of possible failures.
+
+Lore reference: https://prts.wiki/w/莱茵生命高级工程科成员
+This is an archive-style adaptation based on public lore, not original game text.

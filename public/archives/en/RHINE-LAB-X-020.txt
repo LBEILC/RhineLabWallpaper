@@ -1,0 +1,18 @@
+﻿RHINE LAB · INTERNAL DATABASE
+FILE X-020 / Soaring Dragon
+SOARING DRAGON
+
+Department: Research Equipment Development Section
+Collection: Cross-period compilation
+Related: Magallan
+Access: REFERENCE AREA
+
+Magallan's Soaring Dragon support drones use modular designs to meet different tasks. Surveying and support requirements come together on the same equipment. This volume examines the flexibility of modular systems and the environmental and operating conditions that must be checked again whenever their purpose changes.
+
+Research notes
+1. Connect module choices to task requirements and preserve the reasons for each change.
+2. Assess equipment capabilities alongside terrain, endurance, and recovery conditions.
+3. When one platform serves several purposes, distinguish the performance of its different modes.
+
+Lore reference: https://prts.wiki/w/Magallan
+This is an archive-style adaptation based on public lore, not original game text.

@@ -1,0 +1,46 @@
+Rhine Lab · Interactive Desktop — Third-party notices
+莱茵生命交互桌面 — 第三方声明
+
+This software uses MiSans fonts by Xiaomi.
+本软件使用了小米 MiSans 字体。
+Copyright © 2020-2025 Beijing Xiaomi Mobile Software Co.,Ltd. All Rights Reserved.
+The shipped font version is MiSans 4.003, packaged as misans-webfont@4.3.1.
+Copyright notices, provenance and the full font license are included in:
+  fonts/NOTICE.txt
+  fonts/MiSans-license.pdf
+  fonts/misans-webfont-4.3.1/source.json
+Official source: https://hyperos.mi.com/font/download
+
+Existing Novecento lettering is included as fixed graphic artwork.
+Individually licensed MyFonts font binaries are not included in public packages.
+
+Three.js — MIT License, Copyright © 2010-2026 three.js authors.
+https://github.com/mrdoob/three.js/blob/dev/LICENSE
+
+@kitlangton/rolling-number — MIT License, Copyright (c) 2026 Kit Langton.
+https://github.com/kitlangton/rolling-number
+
+The application source is distributed under its accompanying LICENSE.
+Arknights characters, names and setting belong to their respective owners.
+This is an unofficial fan work with no official affiliation. Archive text is an
+adaptation based on public lore, not a reproduction of the original game script.
+
+MIT License (applies to the libraries listed as MIT above)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.

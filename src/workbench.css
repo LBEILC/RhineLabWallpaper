@@ -19,8 +19,7 @@
 [data-workbench="true"]:not([data-mode="boot"]) .wb-lettering > .wb-lettering-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .workbench [hidden] { display: none !important; }
 [data-workbench="true"][data-workbench-brand="false"]:not([data-mode="boot"]) > .brand,
-[data-workbench="true"][data-workbench-footer="false"]:not([data-mode="boot"]) > .system-footer,
-[data-workbench="true"][data-workbench-settings="false"]:not([data-mode="boot"]) > .system-nav { display: none; }
+[data-workbench="true"][data-workbench-footer="false"]:not([data-mode="boot"]) > .system-footer { display: none; }
 .workbench[data-clock-visible="false"] .wb-today { margin-top: 0; }
 [data-workbench] #archive-ui { transition: opacity 260ms ease, visibility 0s; }
 [data-workbench]:not([data-mode="boot"]) > .powered { transition: opacity 260ms ease, visibility 0s; }

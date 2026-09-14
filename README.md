@@ -2,6 +2,10 @@
 
 **Wallpaper Engine 交互壁纸的独立源码仓库。**
 
+支持中英文：在 WE 壁纸属性顶部选择「语言 / Language」。壁纸内设置已移除，所有长期配置统一在 WE 属性调整；右下角保留重播。原英文开场与图形文字不变。[中英文使用与维护说明](docs/LOCALIZATION.md)
+
+**English:** Choose **Language / 语言 → English** in this wallpaper’s Wallpaper Engine properties. Configure the wallpaper there; it no longer has an internal settings dialog. Includes English workspace tools, hints and all 40 archives. [English instructions](docs/LOCALIZATION.md#english)
+
 [创意工坊订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3799142774) · [GitHub 构建包](docs/GITHUB-RELEASE.md) · [壁纸开发说明](docs/WALLPAPER-ENGINE.md) · [原网页项目](https://github.com/LBEILC/RhineLabUI)
 
 本项目从 RhineLabUI 的 `codex/wallpaper-engine` 分支迁移，保留完整提交历史。壁纸后续开发在本仓库的 `main` 分支进行；下方在线体验为原项目的网页版本。

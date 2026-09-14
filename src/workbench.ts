@@ -1,3 +1,4 @@
+import { tr, language, localeEvent, bindStaticTranslations } from "./i18n";
 import { rollText, patchRollingPanel } from "./workbench-rolling";
 import { workbenchLettering } from "./workbench-lettering";
 import { escapeHtml } from "./html";
@@ -36,6 +37,13 @@ export class Workbench {
       <nav class="wb-nav" aria-label="工作台功能">${names.map((n, i) => `<button data-wb-lane="${i}" aria-pressed="false"><small>0${i + 1}</small>${n}<span>↗</span></button>`).join("")}</nav>
     </section>`);
     this.root = stage.querySelector(".workbench")!;
+    bindStaticTranslations(this.root);
+    window.addEventListener(localeEvent, () => {
+      const task = (document.activeElement as HTMLElement)?.dataset.wbTask;
+      this.lastSecond = -1;
+      this.renderTasks(); this.renderPanel(); this.tick();
+      if (task !== undefined) this.root.querySelector<HTMLElement>(`[data-wb-task="${task}"]`)?.focus({ preventScroll: true });
+    });
     this.root.addEventListener("click", event => {
       const button = (event.target as Element).closest<HTMLButtonElement>("button");
       if (!button) return;
@@ -115,9 +123,6 @@ export class Workbench {
     this.lane = lane;
     this.renderPanel();
   }
-  settingsMarkup() {
-    return `<div class="wb-settings"><strong>工作模式</strong><div><button data-workbench-mode="workbench" aria-pressed="${this.enabled}">桌面工作台</button><button data-workbench-mode="archive" aria-pressed="${!this.enabled}">档案展示</button></div><p>事项、日程和计时时长请在 Wallpaper Engine 属性中填写。事项完成状态按天保存，计时进度单独保留。</p><p>工作台元素与设置入口的显示开关位于 Wallpaper Engine 的壁纸属性中。全部关闭后只显示档案阵列；需要恢复时从那里重新打开。隐藏专注内容不会停止计时。</p></div>`;
-  }
   private syncElements() {
     const selectors = { clock: ".wb-time", tasks: ".wb-today", module: ".wb-module", navigation: ".wb-nav" } as const;
     for (const [key, selector] of Object.entries(selectors)) this.root.querySelector<HTMLElement>(selector)!.hidden = !this.visibility[key as WorkbenchElement];
@@ -129,12 +134,11 @@ export class Workbench {
     this.root.dataset.clockVisible = String(this.visibility.clock);
     this.stage.dataset.workbenchBrand = String(!this.enabled || this.visibility.brand);
     this.stage.dataset.workbenchFooter = String(!this.enabled || this.visibility.footer);
-    this.stage.dataset.workbenchSettings = String(!this.enabled || this.visibility.settings);
   }
   private save() {
     try { localStorage.setItem(key, JSON.stringify({ date: this.date, done: this.done, timer: this.timer })); this.storageOK = true; }
     catch { this.storageOK = false; }
-    this.root.querySelector(".wb-storage")!.textContent = this.storageOK ? "" : "当前无法保存进度，重新加载后可能丢失。";
+    this.root.querySelector(".wb-storage")!.textContent = this.storageOK ? "" : tr("当前无法保存进度，重新加载后可能丢失。");
   }
   private rollDay() {
     const today = dayKey(new Date());
@@ -143,7 +147,7 @@ export class Workbench {
   private renderTasks() {
     const entries = [0, 1, 2].filter(i => this.text(`task${i + 1}`));
     this.root.querySelector(".wb-task-count")!.textContent = entries.length ? `${entries.filter(i => this.done.includes(this.taskId(i))).length} / ${entries.length}` : "";
-    this.root.querySelector(".wb-tasks")!.innerHTML = entries.length ? entries.map(i => `<button class="wb-task" data-wb-task="${i}" aria-pressed="${this.done.includes(this.taskId(i))}"><span class="wb-check" aria-hidden="true">${this.done.includes(this.taskId(i)) ? "✓" : ""}</span><span>${escapeHtml(this.text(`task${i + 1}`))}</span></button>`).join("") : '<p class="wb-muted">今天想完成什么？<br>在 Wallpaper Engine 属性中填写最多三件事。</p>';
+    this.root.querySelector(".wb-tasks")!.innerHTML = entries.length ? entries.map(i => `<button class="wb-task" data-wb-task="${i}" aria-pressed="${this.done.includes(this.taskId(i))}"><span class="wb-check" aria-hidden="true">${this.done.includes(this.taskId(i)) ? "✓" : ""}</span><span>${escapeHtml(this.text(`task${i + 1}`))}</span></button>`).join("") : tr('<p class="wb-muted">今天想完成什么？<br>在 Wallpaper Engine 属性中填写最多三件事。</p>');
   }
   private actTimer(action: string) {
     const now = Date.now();
@@ -171,7 +175,7 @@ export class Workbench {
     this.rollDay(); this.settle(now);
     const date = new Date(now);
     rollText(this.root.querySelector<HTMLElement>(".wb-clock")!, date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }), !this.stage.classList.contains("reduce-motion"));
-    this.root.querySelector(".wb-date")!.textContent = date.toLocaleDateString("zh-CN", { year: "numeric", month: "long", day: "numeric", weekday: "long" });
+    this.root.querySelector(".wb-date")!.textContent = date.toLocaleDateString(language(), { year: "numeric", month: "long", day: "numeric", weekday: "long" });
     if (this.lane === 0 || this.lane === 2) this.renderPanel();
     const timer = this.root.querySelector(".wb-timer-digits");
     if (timer) rollText(timer as HTMLElement, durationText(this.timer.status === "idle" ? this.minutes() * 60000 : timerLeft(this.timer, now)), !this.stage.classList.contains("reduce-motion"));
@@ -182,7 +186,7 @@ export class Workbench {
       this.root.querySelector(".wb-content")!.replaceChildren();
       return;
     }
-    this.root.querySelector(".wb-title")!.textContent = names[this.lane];
+    this.root.querySelector(".wb-title")!.textContent = tr(names[this.lane]);
     const available = capabilityKeys.map((_, i) => i).filter(i => this.laneEnabled(i));
     this.root.querySelector(".wb-index")!.textContent = `${String(available.indexOf(this.lane) + 1).padStart(2, "0")} / ${String(available.length).padStart(2, "0")}`;
     this.root.querySelectorAll<HTMLButtonElement>("[data-wb-lane]").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.wbLane! === this.lane)));
@@ -190,23 +194,26 @@ export class Workbench {
     if (this.lane === 0) {
       const now = new Date(), end = new Date(now.getFullYear() + 1, 0, 1).getTime(), start = new Date(now.getFullYear(), 0, 1).getTime();
       const percent = (now.getTime() - start) / (end - start) * 100;
-      html = `<div class="wb-large">${now.getFullYear()}<small>YEAR</small></div><div class="wb-rule"><i style="width:${percent}%"></i></div><p class="wb-muted">今年已走过 ${percent.toFixed(1)}%</p>`;
+      html = tr`<div class="wb-large">${now.getFullYear()}<small>YEAR</small></div><div class="wb-rule"><i style="width:${percent}%"></i></div><p class="wb-muted">今年已走过 ${percent.toFixed(1)}%</p>`;
     }
-    if (this.lane === 1) html = '<div class="wb-large">03<small>PRIORITIES</small></div><p class="wb-muted">把今天留给最重要的三件事。<br>点击左侧事项标记完成，再点一次撤销。完成状态每天重置。</p>';
+    if (this.lane === 1) html = tr('<div class="wb-large">03<small>PRIORITIES</small></div><p class="wb-muted">把今天留给最重要的三件事。<br>点击左侧事项标记完成，再点一次撤销。完成状态每天重置。</p>');
     if (this.lane === 2) {
       const text = this.text("eventdate"), target = parseTarget(text), title = this.text("eventname");
       const delta = target === null ? 0 : target - Date.now();
-      html = !text ? '<p class="wb-empty">留一个值得期待的日子。</p><p class="wb-muted">在 Wallpaper Engine 中填写日程名称与目标日期。</p>' : target === null ? '<p class="wb-empty">目标日期格式不正确</p><p class="wb-muted">请填写 YYYY-MM-DD，或 YYYY-MM-DD HH:mm。</p>' : `<p class="wb-event">${escapeHtml(title || "重要日程")}</p><div class="wb-large">${Math.ceil(Math.abs(delta) / 86400000)}<small>${delta > 0 ? "天后" : "天前"}</small></div><p class="wb-muted">${delta > 0 ? "距离目标" : "已到达目标"} · ${escapeHtml(text)}<br>${Math.floor(Math.abs(delta) / 3600000)} 小时 ${Math.floor(Math.abs(delta) / 60000) % 60} 分钟${delta > 0 ? "后" : "前"}</p>`;
+      const days = Math.ceil(Math.abs(delta) / 86400000);
+      const dayLabel = language() === "en-US"
+        ? `${days === 1 ? "DAY" : "DAYS"} ${delta > 0 ? "TO GO" : "AGO"}`
+        : delta > 0 ? "天后" : "天前";
+      html = !text ? tr('<p class="wb-empty">留一个值得期待的日子。</p><p class="wb-muted">在 Wallpaper Engine 中填写日程名称与目标日期。</p>') : target === null ? tr('<p class="wb-empty">目标日期格式不正确</p><p class="wb-muted">请填写 YYYY-MM-DD，或 YYYY-MM-DD HH:mm。</p>') : tr`<p class="wb-event">${escapeHtml(title || tr("重要日程"))}</p><div class="wb-large">${days}<small>${dayLabel}</small></div><p class="wb-muted">${delta > 0 ? tr("距离目标") : tr("已到达目标")} · ${escapeHtml(text)}<br>${Math.floor(Math.abs(delta) / 3600000)} 小时 ${Math.floor(Math.abs(delta) / 60000) % 60} 分钟${delta > 0 ? tr("后") : tr("前")}</p>`;
     }
     if (this.lane === 3) {
       const media = window.rhineWallpaperMedia ?? {}, p = media.properties, t = media.timeline;
       const cover = media.thumbnail?.thumbnail;
       const safeCover = typeof cover === "string" && /^data:image\/(png|jpeg|webp);base64,[a-z0-9+/=\s]+$/i.test(cover);
-      html = media.status?.enabled === false ? '<p class="wb-empty">媒体信息未启用</p><p class="wb-muted">请在 Wallpaper Engine 中启用媒体信息集成。</p>' : !p?.title ? '<p class="wb-empty">此刻，留一点安静。</p><p class="wb-muted">在支持系统媒体信息的播放器中播放音乐，歌曲与封面会显示在这里。</p>' : `<div class="wb-media">${safeCover ? `<img src="${escapeHtml(cover!)}" alt="专辑封面"/>` : '<div class="wb-cover" aria-hidden="true">♫</div>'}<div><small>${media.playing ? "正在播放" : "媒体已暂停或停止"}</small><h3 data-wb-roll>${escapeHtml(p.title)}</h3><p data-wb-roll>${escapeHtml(p.artist || "")}</p></div></div>${t && typeof t.duration === "number" && t.duration > 0 && Number.isFinite(t.duration) && typeof t.position === "number" && Number.isFinite(t.position) ? `<div class="wb-rule"><i style="width:${Math.max(0, Math.min(100, t.position / t.duration * 100))}%"></i></div><p class="wb-muted"><span data-wb-roll>${durationText(t.position * 1000)}</span> / <span data-wb-roll>${durationText(t.duration * 1000)}</span></p>` : ''}`;
+      html = media.status?.enabled === false ? tr('<p class="wb-empty">媒体信息未启用</p><p class="wb-muted">请在 Wallpaper Engine 中启用媒体信息集成。</p>') : !p?.title ? tr('<p class="wb-empty">此刻，留一点安静。</p><p class="wb-muted">在支持系统媒体信息的播放器中播放音乐，歌曲与封面会显示在这里。</p>') : `<div class="wb-media">${safeCover ? tr`<img src="${escapeHtml(cover!)}" alt="专辑封面"/>` : '<div class="wb-cover" aria-hidden="true">♫</div>'}<div><small>${media.playing ? tr("正在播放") : tr("媒体已暂停或停止")}</small><h3 data-wb-roll>${escapeHtml(p.title)}</h3><p data-wb-roll>${escapeHtml(p.artist || "")}</p></div></div>${t && typeof t.duration === "number" && t.duration > 0 && Number.isFinite(t.duration) && typeof t.position === "number" && Number.isFinite(t.position) ? `<div class="wb-rule"><i style="width:${Math.max(0, Math.min(100, t.position / t.duration * 100))}%"></i></div><p class="wb-muted"><span data-wb-roll>${durationText(t.position * 1000)}</span> / <span data-wb-roll>${durationText(t.duration * 1000)}</span></p>` : ''}`;
     }
-    if (this.lane === 4) html = `<div class="wb-timer-label">${this.timer.phase === "focus" ? "专注" : "休息"} · ${this.timer.status === "done" ? "已结束" : this.timer.status === "running" ? "进行中" : this.timer.status === "paused" ? "已暂停" : "准备开始"}</div><div class="wb-large wb-timer-digits" data-wb-roll>${durationText(this.timer.status === "idle" ? this.minutes() * 60000 : timerLeft(this.timer, Date.now()))}</div><div class="wb-timer-buttons"><button data-wb-timer="toggle">${this.timer.status === "running" ? "暂停" : this.timer.status === "paused" ? "继续" : "开始"}</button><button data-wb-timer="reset">重置</button><button data-wb-timer="phase">${this.timer.phase === "focus" ? "转入休息" : "开始专注"}</button></div><p class="wb-muted">${this.timer.status === "done" ? "这一段时间已完成。准备好后再开始下一段。" : "暂停壁纸或重新加载后按实际时间校正。"}<br>时长在 Wallpaper Engine 中设置。</p>`;
+    if (this.lane === 4) html = tr`<div class="wb-timer-label">${this.timer.phase === "focus" ? tr("专注") : tr("休息")} · ${this.timer.status === "done" ? tr("已结束") : this.timer.status === "running" ? tr("进行中") : this.timer.status === "paused" ? tr("已暂停") : tr("准备开始")}</div><div class="wb-large wb-timer-digits" data-wb-roll>${durationText(this.timer.status === "idle" ? this.minutes() * 60000 : timerLeft(this.timer, Date.now()))}</div><div class="wb-timer-buttons"><button data-wb-timer="toggle">${this.timer.status === "running" ? tr("暂停") : this.timer.status === "paused" ? tr("继续") : tr("开始")}</button><button data-wb-timer="reset">重置</button><button data-wb-timer="phase">${this.timer.phase === "focus" ? tr("转入休息") : tr("开始专注")}</button></div><p class="wb-muted">${this.timer.status === "done" ? tr("这一段时间已完成。准备好后再开始下一段。") : tr("暂停壁纸或重新加载后按实际时间校正。")}<br>时长在 Wallpaper Engine 中设置。</p>`;
     patchRollingPanel(this.root.querySelector<HTMLElement>(".wb-content")!, html, !this.stage.classList.contains("reduce-motion"));
-    this.root.querySelector(".wb-storage")!.textContent = this.storageOK ? "" : "当前无法保存进度，重新加载后可能丢失。";
+    this.root.querySelector(".wb-storage")!.textContent = this.storageOK ? "" : tr("当前无法保存进度，重新加载后可能丢失。");
   }
 }
-

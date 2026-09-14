@@ -1,6 +1,6 @@
 # 修改档案内容
 
-[`archives.json`](archives.json) 是页面与 TXT 下载共用的档案数据。修改内容无需编辑 TypeScript；`src/data.ts` 只保留类型和阵列位置映射。
+[`archives.json`](archives.json) 与 [`archives.en.json`](archives.en.json) 分别保存中文与英文内容，页面与 TXT 下载共用。修改内容无需编辑 TypeScript；两份文件保持相同编号、顺序、分类所属及原英文标题。`src/data.ts` 保持稳定的记录对象与阵列位置映射，按当前语言读取对应内容。
 
 ## 文件结构
 
@@ -23,7 +23,7 @@
 ## 修改与验证
 
 1. 编辑 JSON 中对应档案的字段。修改分类名称时，同时更新 `categories`、`columns` 和各档案的 `category`。
-2. 执行 `npm run export:archives`，校验数据并更新 `public/archives/` 中的下载文件。校验失败时不会写入任何下载文件。
+2. 同步修改另一语言版本。执行 `npm run export:archives`，校验两份数据并更新 `public/archives/` 和 `public/archives/en/` 中的下载文件。
 3. 执行 `npm run check:content` 检查校验规则与下载一致性，再运行 `npm run build` 验证构建。将 JSON 与更新后的 TXT 一起提交。
 4. 在 `npm run dev` 中查看标题、详情、检索和下载结果，尤其检查长标题与较长正文的实际布局。
 

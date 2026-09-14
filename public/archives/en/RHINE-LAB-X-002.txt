@@ -1,0 +1,18 @@
+﻿RHINE LAB · INTERNAL DATABASE
+FILE X-002 / Structure & Boundaries
+STRUCTURE & BOUNDARIES
+
+Department: Engineering Section
+Collection: Cross-period compilation
+Related: Engineering Section
+Access: REFERENCE AREA
+
+Turning a laboratory idea into a working facility requires practical answers about loads, maintenance, and access. Rhine Lab's engineers provide equipment for major research projects. This volume examines the boundaries of facilities: who maintains an idea once it is built, and who bears the consequences when it fails.
+
+Research notes
+1. Load-bearing structures and the Structural Section's life-science work concern different kinds of structure.
+2. Compare the maintenance space needed by experimental apparatus and long-term facilities.
+3. Provide access routes for unexpected shutdowns; records must cover more than normal operation.
+
+Lore reference: https://prts.wiki/w/莱茵生命高级工程科成员
+This is an archive-style adaptation based on public lore, not original game text.

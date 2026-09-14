@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "browser": "153.0.4234.32",
+  "checks": [
+    "host language on startup/reload",
+    "settings removed and stale actions ignored",
+    "all 40 English exports",
+    "canonical navigation",
+    "user tasks/media unchanged",
+    "timer deadline and tasks preserved",
+    "detail tab/bookmark/model canvas preserved",
+    "viewer model/explosion preserved",
+    "search/filter preserved",
+    "workspace 1920/2560/390 layouts",
+    "dark HUD",
+    "relay switching"
+  ],
+  "errors": []
+}

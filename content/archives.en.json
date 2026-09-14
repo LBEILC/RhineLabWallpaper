@@ -1,0 +1,698 @@
+{
+  "categories": [
+    "Institution",
+    "Engineering",
+    "Life sciences",
+    "Energy research",
+    "Special projects"
+  ],
+  "columns": [
+    "Engineering",
+    "Life sciences",
+    "Institution",
+    "Energy research",
+    "Special projects"
+  ],
+  "records": [
+    {
+      "id": "X-001",
+      "title": "Rhine Lab",
+      "en": "RHINE LAB, LLC.",
+      "department": "Control Section",
+      "category": "Institution",
+      "date": "Cross-period compilation",
+      "lead": "Kristen Wright / Saria",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Rhine Lab grew from a laboratory co-founded by Kristen and Saria. It brings together researchers studying life, energy, and unknown technologies, while facing pressure from funding, power, and the uses of its discoveries. Understanding the institution means reading both its experimental records and the choices made by its researchers.",
+      "findings": [
+        "Research spans several sections, and major projects often depend on collaboration across them.",
+        "The technical value of a discovery and the way it is ultimately used must be considered separately.",
+        "Cross-reference institutional history with personal records to preserve changes in perspective over time."
+      ],
+      "source": "https://arknights.wiki.gg/wiki/Rhine_Lab"
+    },
+    {
+      "id": "X-002",
+      "title": "Structure & Boundaries",
+      "en": "STRUCTURE & BOUNDARIES",
+      "department": "Engineering Section",
+      "category": "Engineering",
+      "date": "Cross-period compilation",
+      "lead": "Engineering Section",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Turning a laboratory idea into a working facility requires practical answers about loads, maintenance, and access. Rhine Lab's engineers provide equipment for major research projects. This volume examines the boundaries of facilities: who maintains an idea once it is built, and who bears the consequences when it fails.",
+      "findings": [
+        "Load-bearing structures and the Structural Section's life-science work concern different kinds of structure.",
+        "Compare the maintenance space needed by experimental apparatus and long-term facilities.",
+        "Provide access routes for unexpected shutdowns; records must cover more than normal operation."
+      ],
+      "source": "https://prts.wiki/w/莱茵生命高级工程科成员"
+    },
+    {
+      "id": "X-003",
+      "title": "The Contour of Life",
+      "en": "THE CONTOUR OF LIFE",
+      "department": "Structural Section",
+      "category": "Life sciences",
+      "date": "Cross-period compilation",
+      "lead": "Silence",
+      "clearance": "REFERENCE AREA",
+      "abstract": "At Rhine Lab, Silence conducted life-science research involving Originium before becoming a medical operator at Rhodes Island. Her experience makes the distance between a research subject and a patient tangible: a seemingly complete experiment may still leave unanswered how its subjects will live afterward.",
+      "findings": [
+        "Observe changes in tissue, function, and personal experience within the same framework.",
+        "Cross-check clinical care records against the goals and assumptions of the experimental phase.",
+        "Preserve uncertainties in research instead of hiding them behind polished conclusions."
+      ],
+      "source": "https://prts.wiki/w/赫默"
+    },
+    {
+      "id": "X-004",
+      "title": "Energy Conversion",
+      "en": "ENERGY CONVERSION",
+      "department": "Energy Section",
+      "category": "Energy research",
+      "date": "Cross-period compilation",
+      "lead": "Ferdinand Clooney",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Ferdinand is closely associated with Rhine Lab's Energy Section and the resources invested in major projects. Large energy programs are therefore both scientific work and organizational collaboration. This volume explores the relationship between efficiency, supply, and outside interests as energy research moves into practical use.",
+      "findings": [
+        "Record connections between energy sources, conversion stages, and final uses.",
+        "As scale increases, one successful experiment cannot replace validation of sustained operation.",
+        "A project's funding arrangements can also change its technical direction and the uses of its results."
+      ],
+      "source": "https://prts.wiki/w/多萝西"
+    },
+    {
+      "id": "X-005",
+      "title": "Ecological Observation",
+      "en": "ECOLOGICAL OBSERVATION",
+      "department": "Ecological Section",
+      "category": "Life sciences",
+      "date": "Cross-period compilation",
+      "lead": "Muelsyse",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Led by Muelsyse, the Ecological Section studies relationships between life and the environment and conducts joint research with Rhodes Island. Clean experimental conditions have particular significance for her. Beginning with continuous observations of water and plants, this volume asks how much laboratory stability can explain changes in the world outside.",
+      "findings": [
+        "Compare water, plant, and environmental records without treating correlation as proof of causation.",
+        "Record sampling sites and conditions, including differences that cannot be reproduced in the laboratory.",
+        "Environmental purification affects both research results and the researcher's own needs."
+      ],
+      "source": "https://prts.wiki/w/缪尔赛思"
+    },
+    {
+      "id": "X-006",
+      "title": "Laboratory Safety",
+      "en": "LABORATORY SAFETY",
+      "department": "Defense Section",
+      "category": "Institution",
+      "date": "Cross-period compilation",
+      "lead": "Saria",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Saria combines a scientific background with experience in handling exceptional incidents and once headed Rhine Lab's Defense Section. Her history suggests that laboratory safety extends beyond access controls and equipment. When project goals conflict with individual lives, someone must be able to stop the research and protect those present.",
+      "findings": [
+        "Preparation should include evacuation routes, contact responsibilities, and stop conditions.",
+        "Incident reports must identify who was affected, as well as which equipment was damaged.",
+        "Security and research staff should share necessary information so that section boundaries do not conceal risks."
+      ],
+      "source": "https://prts.wiki/w/塞雷娅"
+    },
+    {
+      "id": "X-007",
+      "title": "Instrument Calibration",
+      "en": "INSTRUMENT CALIBRATION",
+      "department": "Engineering Section",
+      "category": "Engineering",
+      "date": "Cross-period compilation",
+      "lead": "Mayer",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Mayer prepared and calibrated experimental apparatus for a project involving Silence, while continuing her mechanical designs at the Lutra Workshop. Instruments turn researchers' ideas into measurable signals; errors introduced at this stage can be amplified by every calculation that follows.",
+      "findings": [
+        "Preserve the relationship between measurement standards, equipment condition, and raw readings.",
+        "Equipment handovers must explain operating conditions and maintenance procedures.",
+        "The practical knowledge held by calibration staff should form part of the project record."
+      ],
+      "source": "https://prts.wiki/w/梅尔"
+    },
+    {
+      "id": "X-008",
+      "title": "Beyond the Horizon",
+      "en": "BEYOND THE HORIZON",
+      "department": "Control Section",
+      "category": "Special projects",
+      "date": "Cross-period compilation",
+      "lead": "Kristen Wright",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Kristen directed her research beyond Terra's sky. In Lone Trail, that pursuit turned questions about the heavens into an event involving all of Trimounts. This volume collects observations on that theme while preserving the unresolved tensions between ambition, secrecy, and cost.",
+      "findings": [
+        "Examine the pursuit of the unknown separately from the methods used to carry out a specific project.",
+        "Compare participants' judgments of the same event in light of the information available to them.",
+        "After a boundary is crossed, those left behind must still face the consequences on the ground."
+      ],
+      "source": "https://arknights.wiki.gg/wiki/Lone_Trail"
+    },
+    {
+      "id": "X-009",
+      "title": "Material Memory",
+      "en": "MATERIAL MEMORY",
+      "department": "Engineering Section",
+      "category": "Engineering",
+      "date": "Cross-period compilation",
+      "lead": "Engineering Section",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Powered armor fits materials, power, and control systems into a limited space. Rhine Lab's R-series equipment offers a way to examine these constraints. This volume studies material changes under repeated stress, asking whether a device that seems to have returned to normal still carries traces of its last use inside.",
+      "findings": [
+        "Record external appearance and internal condition separately rather than relying on visual inspection alone.",
+        "Compare the maintenance needs of replaceable parts and primary load-bearing components.",
+        "Include fatigue, wear, and repeated assembly in the same equipment history."
+      ],
+      "source": "https://prts.wiki/w/R-31重型动力装甲"
+    },
+    {
+      "id": "X-010",
+      "title": "Observer's Journal",
+      "en": "OBSERVER’S JOURNAL",
+      "department": "Scientific Investigation Section",
+      "category": "Life sciences",
+      "date": "Cross-period compilation",
+      "lead": "Magallan",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Magallan spends extended periods exploring remote regions, returning repeatedly to the icefields. A field trip may yield only a short recording or a single specimen, yet still remove a blind spot for the next researcher. This volume examines how field records gradually become knowledge that others can use.",
+      "findings": [
+        "Preserve routes, weather, and observation positions to explain the conditions in which evidence was gathered.",
+        "List unexplained phenomena as questions for comparison with later observations.",
+        "Archives should preserve wrong turns and unfinished surveys as well as successful discoveries."
+      ],
+      "source": "https://prts.wiki/w/Magallan"
+    },
+    {
+      "id": "X-011",
+      "title": "Signal & Noise",
+      "en": "SIGNAL & NOISE",
+      "department": "Data & Records Team",
+      "category": "Engineering",
+      "date": "Cross-period compilation",
+      "lead": "Ptilopsis",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Ptilopsis once maintained data at Rhine Lab and continues to assist with medical records and information at Rhodes Island. Searchable data is not automatically reliable knowledge. This volume examines the boundaries between recording, filtering, and interpretation, particularly the possibility that unusual signals may be discarded as noise.",
+      "findings": [
+        "Keep both raw records and processed results so filtering criteria can be reconsidered.",
+        "Mark missing and anomalous data explicitly instead of filling it in by default.",
+        "Interpret search results in the context in which their underlying records were created."
+      ],
+      "source": "https://prts.wiki/w/白面鸮"
+    },
+    {
+      "id": "X-012",
+      "title": "Coordinates of Tomorrow",
+      "en": "COORDINATES OF TOMORROW",
+      "department": "Control Section",
+      "category": "Special projects",
+      "date": "Cross-period compilation",
+      "lead": "Silence / Saria",
+      "clearance": "REFERENCE AREA",
+      "abstract": "After major events, Rhine Lab still has to decide where its next research should lead. The discussions of scientific ethics advanced by Silence add another measure to those decisions. This volume treats research freedom, responsibility, and cooperation as continuing questions rather than presenting the future as an answer already settled.",
+      "findings": [
+        "Compare technical goals with the specific lives they are intended to improve.",
+        "Leave room for differing positions and record where agreement has not yet been reached.",
+        "Continue tracking long-term effects on people and the environment after a project ends."
+      ],
+      "source": "https://prts.wiki/w/淬羽赫默"
+    },
+    {
+      "id": "X-013",
+      "title": "A Shared Beginning",
+      "en": "A SHARED BEGINNING",
+      "department": "Institutional History Team",
+      "category": "Institution",
+      "date": "Cross-period compilation",
+      "lead": "Kristen Wright / Saria",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Public investigations into Rhine Lab trace its early laboratory to the partnership between Kristen and Saria. The founders shared ambitions but gradually came to different judgments. This volume places the institution's beginnings beside its later choices to examine how shared ideals withstand practical pressures.",
+      "findings": [
+        "Trace development through both the early laboratory and the incorporated organization.",
+        "Distinguish retrospective accounts from information available at the time.",
+        "Founding an institution together does not imply agreement on every subsequent study."
+      ],
+      "source": "https://arknights.wiki.gg/wiki/Rhine_Lab_Research_Report"
+    },
+    {
+      "id": "X-014",
+      "title": "Between Sections",
+      "en": "BETWEEN SECTIONS",
+      "department": "Control Section",
+      "category": "Institution",
+      "date": "Cross-period compilation",
+      "lead": "Rhine Lab",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Rhine Lab's work takes place across interdependent sections responsible for research, equipment, personnel, and defense. Silence's later changes in role also connect scientific decisions with organizational responsibility. Following collaboration between sections, this volume traces how information moves through the institution and where it can be interrupted.",
+      "findings": [
+        "Distinguish formal duties from temporary working relationships formed during major projects.",
+        "Handover records should describe unresolved questions as well as completed work.",
+        "When a project crosses section boundaries, clarify who can raise objections and ask further questions."
+      ],
+      "source": "https://prts.wiki/w/淬羽赫默"
+    },
+    {
+      "id": "X-015",
+      "title": "Life in Trimounts",
+      "en": "LIFE IN TRIMOUNTS",
+      "department": "Regional Records Team",
+      "category": "Institution",
+      "date": "Cross-period compilation",
+      "lead": "Muelsyse",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Trimounts is more than the setting of scientific events: it is a city where researchers work, socialize, and live. Muelsyse's records reveal interests and experiences beyond the laboratory. This volume approaches a scientific city through everyday moments, remembering that grand research programs are always carried out by individual people.",
+      "findings": [
+        "Include living spaces as well as research spaces in a person's background.",
+        "People in different circumstances have different routes and memories within the same city.",
+        "Preserve everyday details so that a person is not reduced to a position and a list of achievements."
+      ],
+      "source": "https://prts.wiki/w/缪尔赛思"
+    },
+    {
+      "id": "X-016",
+      "title": "Patrons & Research",
+      "en": "PATRONS & RESEARCH",
+      "department": "Institutional History Team",
+      "category": "Institution",
+      "date": "Cross-period compilation",
+      "lead": "Maylander Foundation",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Rhine Lab's development is intertwined with outside supporters. Investigative records connect the institution's early growth with organizations such as the Maylander Foundation. This volume considers how support makes research possible and how accepting it can change research goals and the freedom to make decisions.",
+      "findings": [
+        "Map financial, equipment, and personnel support within the same network of project relationships.",
+        "Record possible tensions between the terms of cooperation and research objectives.",
+        "Discuss the intended uses of results before those results are formally delivered."
+      ],
+      "source": "https://arknights.wiki.gg/wiki/Rhine_Lab_Research_Report"
+    },
+    {
+      "id": "X-017",
+      "title": "Points of Contact",
+      "en": "POINTS OF CONTACT",
+      "department": "Cooperation Affairs Team",
+      "category": "Institution",
+      "date": "Cross-period compilation",
+      "lead": "Dorothy / Rhodes Island",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Dorothy joined the collaboration as the person responsible for a joint project between Rhine Lab and Rhodes Island. Institutional relationships thus took shape through specific people, records, and research tasks. This volume considers how cooperation builds trust and how clearly bounded collaboration can continue when the parties hold different positions.",
+      "findings": [
+        "State the scope of joint research and each party's responsibilities clearly.",
+        "Assigned personnel provide a channel for communication without implying complete institutional agreement.",
+        "Cooperation should allow questions to be raised, not only showcase achievements already agreed upon."
+      ],
+      "source": "https://prts.wiki/w/多萝西"
+    },
+    {
+      "id": "X-018",
+      "title": "Science & Its People",
+      "en": "SCIENCE & ITS PEOPLE",
+      "department": "Control Section",
+      "category": "Institution",
+      "date": "Cross-period compilation",
+      "lead": "Silence",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Silence initiated a joint declaration on scientific ethics in Trimounts and became involved in related ethical affairs. She brought questions encountered in laboratories and clinical care into a wider discussion. This volume explores a persistent challenge: how individual people can retain a voice as science advances.",
+      "findings": [
+        "Discuss the circumstances of research subjects, not only the benefits research might bring.",
+        "Record consent, dissent, and withdrawal as ongoing processes.",
+        "Test principles repeatedly against specific cases instead of treating written rules as the end of inquiry."
+      ],
+      "source": "https://prts.wiki/w/淬羽赫默"
+    },
+    {
+      "id": "X-019",
+      "title": "Meeboo Workbench",
+      "en": "MEEBOO WORKBENCH",
+      "department": "Lutra Workshop",
+      "category": "Engineering",
+      "date": "Cross-period compilation",
+      "lead": "Mayer",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Meeboos are machines designed and operated by Mayer, and creations to which she is deeply attached. Maintenance, naming, and the preservation of old parts gradually narrow the distance between tool and companion. From the workbench, this volume examines how a creator understands the machines she has made.",
+      "findings": [
+        "Record the parts and lessons retained through successive designs.",
+        "Include the operator's familiarity among the conditions for using equipment.",
+        "A maintenance record also tells the story of a creation gradually taking shape."
+      ],
+      "source": "https://prts.wiki/w/梅尔"
+    },
+    {
+      "id": "X-020",
+      "title": "Soaring Dragon",
+      "en": "SOARING DRAGON",
+      "department": "Research Equipment Development Section",
+      "category": "Engineering",
+      "date": "Cross-period compilation",
+      "lead": "Magallan",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Magallan's Soaring Dragon support drones use modular designs to meet different tasks. Surveying and support requirements come together on the same equipment. This volume examines the flexibility of modular systems and the environmental and operating conditions that must be checked again whenever their purpose changes.",
+      "findings": [
+        "Connect module choices to task requirements and preserve the reasons for each change.",
+        "Assess equipment capabilities alongside terrain, endurance, and recovery conditions.",
+        "When one platform serves several purposes, distinguish the performance of its different modes."
+      ],
+      "source": "https://prts.wiki/w/Magallan"
+    },
+    {
+      "id": "X-021",
+      "title": "R-Series Powered Armor",
+      "en": "R-SERIES PLATFORM",
+      "department": "Engineering Section",
+      "category": "Engineering",
+      "date": "Cross-period compilation",
+      "lead": "Engineering Section",
+      "clearance": "REFERENCE AREA",
+      "abstract": "R-series powered armor appears in experimental facilities associated with Rhine Lab, bringing engineering equipment into direct contact with armed applications. Beginning with maintenance and operating conditions, this volume examines how complex devices depend on cooperation and how research gains new identities once it leaves the workbench.",
+      "findings": [
+        "Distinguish standby, maintenance, and active operating states.",
+        "Observe operators, maintenance staff, and machinery as a connected system.",
+        "Record changes of purpose instead of explaining every later use through the original research goal."
+      ],
+      "source": "https://prts.wiki/w/R-31重型动力装甲"
+    },
+    {
+      "id": "X-022",
+      "title": "A Shifting Laboratory",
+      "en": "A SHIFTING LABORATORY",
+      "department": "Engineering Section",
+      "category": "Engineering",
+      "date": "Cross-period compilation",
+      "lead": "Trimounts Laboratory",
+      "clearance": "REFERENCE AREA",
+      "abstract": "The laboratories in Lone Trail feature gravitational conditions that affect movement, with mechanisms and movable objects changing how space can be used. This volume studies such facilities: when the floor is no longer a stable reference, routes, anchoring methods, and operating habits all need reconsideration.",
+      "findings": [
+        "Record safe positions for people and equipment before and after environmental changes.",
+        "Include the paths of moving objects in access and observation plans.",
+        "Make the conditions for using the same space under different states clearly distinguishable."
+      ],
+      "source": "https://prts.wiki/w/孤星2024"
+    },
+    {
+      "id": "X-023",
+      "title": "Ifrit: Recovery",
+      "en": "IFRIT: RECOVERY",
+      "department": "Medical Cooperation Team",
+      "category": "Life sciences",
+      "date": "Cross-period compilation",
+      "lead": "Ifrit / Silence",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Ifrit was once a patient at Rhine Lab and later received care from Silence at Rhodes Island. Her story should not end with unusual powers or experimental experiences. This volume centers recovery, learning, and everyday relationships as she gradually understands her abilities and builds a life of her own.",
+      "findings": [
+        "Record physical condition alongside everyday adjustment instead of tracking abilities alone.",
+        "Preserve her own words rather than allowing an observer's account to replace her voice.",
+        "Distinguish the effects of past events from changes taking place now."
+      ],
+      "source": "https://prts.wiki/w/Ifrit"
+    },
+    {
+      "id": "X-024",
+      "title": "Ptilopsis: Records",
+      "en": "PTILOPSIS: RECORDS",
+      "department": "Medical Data Team",
+      "category": "Life sciences",
+      "date": "Cross-period compilation",
+      "lead": "Ptilopsis",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Ptilopsis communicates in a distinctive way while continuing her medical and archival work. The form of her speech does not imply an absence of feeling. This volume examines the relationship between expression and lived experience, reminding readers to recognize the individual behind a precise recording format.",
+      "findings": [
+        "Allow for the time and conditions communication requires rather than rushing to answer for someone else.",
+        "Distinguish the form of an expression from its intent.",
+        "Reliable records depend on sustained attention to details and specific needs."
+      ],
+      "source": "https://prts.wiki/w/白面鸮"
+    },
+    {
+      "id": "X-025",
+      "title": "Care in Transit",
+      "en": "CARE IN TRANSIT",
+      "department": "Medical Cooperation Team",
+      "category": "Life sciences",
+      "date": "Cross-period compilation",
+      "lead": "Silence",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Silence's medical drone is designed to deliver treatment. It extends care to places that personnel cannot quickly reach, while remaining limited by environmental and equipment conditions. Starting from the question of how treatment arrives, this volume examines the cooperation between medical tools and clinical judgment.",
+      "findings": [
+        "Distinguish places a device can reach from tasks it can actually complete.",
+        "Record site conditions, response times, and subsequent care as a continuous sequence.",
+        "Tools extend a doctor's abilities, but the doctor must still judge when they cannot be relied upon."
+      ],
+      "source": "https://prts.wiki/w/赫默"
+    },
+    {
+      "id": "X-026",
+      "title": "Greenhouse & Home",
+      "en": "GREENHOUSE & HOME",
+      "department": "Ecological Section",
+      "category": "Life sciences",
+      "date": "Cross-period compilation",
+      "lead": "Muelsyse",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Muelsyse's identity as an elf closely connects her environmental research with her own circumstances. The greenhouse is both a research site and an expression of the search for a livable space. This volume considers preservation and change: how can an environment that can be maintained become a place where life can truly be lived?",
+      "findings": [
+        "Observe environmental needs alongside personal experience.",
+        "Distinguish preserving a specimen from sustaining a way of life.",
+        "Research can explain environmental change, but it cannot decide someone's sense of belonging for them."
+      ],
+      "source": "https://prts.wiki/w/缪尔赛思"
+    },
+    {
+      "id": "X-027",
+      "title": "Life on the Icefield",
+      "en": "LIFE ON THE ICEFIELD",
+      "department": "Scientific Investigation Section",
+      "category": "Life sciences",
+      "date": "Cross-period compilation",
+      "lead": "Magallan",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Magallan's icefield expeditions continually bring distant observations back to research institutions. In places rarely visited, specimens, terrain, and environmental conditions must be recorded together. This volume considers how to preserve field details when information is limited, so later studies can return to the place and circumstances of the original observation.",
+      "findings": [
+        "Catalog specimens together with the environments in which they were collected.",
+        "Preserve images, routes, and descriptions for observations that cannot be repeated.",
+        "Remain open to unknown phenomena while stating the limits of the supporting evidence."
+      ],
+      "source": "https://prts.wiki/w/Magallan"
+    },
+    {
+      "id": "X-028",
+      "title": "Calcification Studies",
+      "en": "CALCIFICATION STUDIES",
+      "department": "Originium Arts Records Team",
+      "category": "Energy research",
+      "date": "Cross-period compilation",
+      "lead": "Saria",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Saria's Arts involve calcium and its compounds and work in conjunction with her medical knowledge. Protection, support, and environmental effects all appear in this ability. This volume treats it as an applied research case, examining how purpose determines the use of the same technique.",
+      "findings": [
+        "Connect the expression of an ability with its purpose, recipients, and range.",
+        "Compare the precision required for protection and medical support.",
+        "Avoid measuring the value of Originium Arts solely by destructive power."
+      ],
+      "source": "https://prts.wiki/w/塞雷娅"
+    },
+    {
+      "id": "X-029",
+      "title": "Originium Workflows",
+      "en": "ORIGINIUM WORKFLOWS",
+      "department": "Equipment Development Team",
+      "category": "Energy research",
+      "date": "Cross-period compilation",
+      "lead": "Mayer",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Originium products bring energy applications into researchers' everyday work. Mayer's records mention her attention to safe processing procedures. This volume examines order at the workbench: how materials arrive, how they are processed, and how they are handled afterward all affect whether research can continue over time.",
+      "findings": [
+        "Treat material intake, processing, and recovery as a continuous process.",
+        "When modifying equipment, check whether its existing protective measures still apply.",
+        "Record practical difficulties so that the next user can understand the procedure."
+      ],
+      "source": "https://prts.wiki/w/梅尔"
+    },
+    {
+      "id": "X-030",
+      "title": "Power Within Limits",
+      "en": "POWER WITHIN LIMITS",
+      "department": "Engineering / Energy Sections",
+      "category": "Energy research",
+      "date": "Cross-period compilation",
+      "lead": "Engineering Section",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Engineering equipment is limited by both available energy and the conditions needed for sustained operation. Investment expands Rhine Lab's equipment development, but its results must still be tested in real environments. This volume uses power budgets to examine the tradeoffs between peak capability and long-term availability.",
+      "findings": [
+        "Record the requirements of startup, sustained operation, and standby separately.",
+        "Reserve resources for cooling, maintenance, and fault handling.",
+        "When devices share a power supply, explain priorities and the scope of possible failures."
+      ],
+      "source": "https://prts.wiki/w/莱茵生命高级工程科成员"
+    },
+    {
+      "id": "X-031",
+      "title": "Distant Transmission",
+      "en": "DISTANT TRANSMISSION",
+      "department": "Energy Section",
+      "category": "Energy research",
+      "date": "Cross-period compilation",
+      "lead": "Trimounts Project",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Lone Trail's focus generators are connected to energy transmission from the ground. As distance increases, transmitters, receivers, and coordination together determine system performance. This volume examines the interdependence of each link and treats interruptions, deviations, and recovery as states equally deserving of observation.",
+      "findings": [
+        "Cross-check transmission, reception, and control signals on the same timeline.",
+        "When a link fails, distinguish equipment problems from changes in external conditions.",
+        "Do not judge the entire transmission process only by the energy that arrives successfully."
+      ],
+      "source": "https://prts.wiki/w/孤星2024"
+    },
+    {
+      "id": "X-032",
+      "title": "Focus Generator",
+      "en": "FOCUS GENERATOR",
+      "department": "Joint Project Team",
+      "category": "Energy research",
+      "date": "Cross-period compilation",
+      "lead": "Kristen Wright",
+      "clearance": "REFERENCE AREA",
+      "abstract": "The focus generator is a key facility connecting large-scale engineering with the high-altitude plan in Lone Trail. It concentrates energy obtained over long distances for a particular purpose, binding facility design to project intent. This volume uses the device to examine the distance between public objectives and what participants actually know.",
+      "findings": [
+        "Catalog a device's function separately from the project's public account of it.",
+        "Track which people control and operate critical stages.",
+        "When examining one device, retain the context of the larger engineering project to which it belongs."
+      ],
+      "source": "https://prts.wiki/w/孤星2024"
+    },
+    {
+      "id": "X-033",
+      "title": "Arclight One",
+      "en": "ARCLIGHT ONE",
+      "department": "Energy Section / Joint Project Team",
+      "category": "Energy research",
+      "date": "Cross-period compilation",
+      "lead": "Ferdinand / Kristen",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Arclight One connects energy facilities, an airborne platform, and several powers in Columbia. Its technical scale prevents any single section from doing all the work alone. This volume examines differing goals within major engineering programs: the same equipment and resources can carry entirely different expectations for different participants.",
+      "findings": [
+        "Compare where scientific, military, and personal exploration goals overlap or diverge.",
+        "Understand key decisions in light of the information available to participants at the time.",
+        "Preserve the specific relationships between facilities and actions behind a project's name."
+      ],
+      "source": "https://prts.wiki/w/孤星2024"
+    },
+    {
+      "id": "X-034",
+      "title": "Resonance Devices",
+      "en": "RESONANCE DEVICES",
+      "department": "Originium Arts Section",
+      "category": "Energy research",
+      "date": "Cross-period compilation",
+      "lead": "Dorothy Franks",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Dorothy specializes in the application of Originium Arts, and her resonance devices offer one route into understanding her research. She hopes to improve others' circumstances, but good intentions do not by themselves establish whether a method is appropriate. This volume places technical performance beside research motives and preserves the questions between them.",
+      "findings": [
+        "Record observable effects separately from the researcher's hopes for a device.",
+        "An overall goal must not eclipse participants' experiences and choices.",
+        "Label unknown mechanisms clearly rather than presenting wishes as verified results."
+      ],
+      "source": "https://prts.wiki/w/多萝西"
+    },
+    {
+      "id": "X-035",
+      "title": "Site 359",
+      "en": "SITE 359",
+      "department": "Project History Team",
+      "category": "Special projects",
+      "date": "Cross-period compilation",
+      "lead": "Dorothy / Ferdinand",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Events surrounding Site 359 provide an important link between Dorothy's Vision and Lone Trail. Research inside the facility is intertwined with the circumstances of pioneers and with outside interests. This volume organizes evidence by participants and project relationships, avoiding the temptation to infer everyone's motives solely from the final outcome.",
+      "findings": [
+        "Compare the information available to researchers, subjects, and sponsors.",
+        "Examine experiments inside the site alongside resource relationships outside it.",
+        "A project's technology and personal relationships may continue after the project itself ends."
+      ],
+      "source": "https://arknights.wiki.gg/wiki/Lone_Trail"
+    },
+    {
+      "id": "X-036",
+      "title": "The Diabolic Incident",
+      "en": "THE DIABOLIC INCIDENT",
+      "department": "Historical Events Team",
+      "category": "Special projects",
+      "date": "Cross-period compilation",
+      "lead": "Ifrit / Silence / Saria",
+      "clearance": "REFERENCE AREA",
+      "abstract": "The Diabolic Incident changed the relationships between Ifrit, Silence, and Saria and exposed profound problems in Rhine Lab's research. Focusing on its consequences, this volume preserves threads of care, misunderstanding, and responsibility. The later lives of those affected are also part of the incident's record.",
+      "findings": [
+        "Cross-reference experimental records with subsequent experiences of care.",
+        "Identify gaps in the evidence instead of filling every blank with one explanation.",
+        "Consequences include changes in relationships and lives as well as damage to facilities."
+      ],
+      "source": "https://prts.wiki/w/Ifrit"
+    },
+    {
+      "id": "X-037",
+      "title": "Lone Trail",
+      "en": "LONE TRAIL",
+      "department": "High-Altitude Research Records Team",
+      "category": "Special projects",
+      "date": "Cross-period compilation",
+      "lead": "Kristen Wright",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Lone Trail takes Kristen's exploration beyond the sky and prompts those on the ground to reconsider their relationship with Rhine Lab. This volume follows the path of that event: every advance preserves some connections while also bringing farewells that cannot be undone.",
+      "findings": [
+        "Compare actions in the sky with responses on the ground in chronological order.",
+        "Preserve different characters' understandings of the same moment.",
+        "Exploration matters both for where it reaches and for the questions it allows later generations to ask."
+      ],
+      "source": "https://arknights.wiki.gg/wiki/Lone_Trail"
+    },
+    {
+      "id": "X-038",
+      "title": "Limits of Observation",
+      "en": "LIMITS OF OBSERVATION",
+      "department": "High-Altitude Research Records Team",
+      "category": "Special projects",
+      "date": "Cross-period compilation",
+      "lead": "Rhine Lab",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Knowledge of the sky has long been constrained by where observers can go and what evidence they can obtain. The exploration in Lone Trail brings those limits into question. Rather than naming the unknown too quickly, this volume asks how a new observation can force established explanations to be tested again.",
+      "findings": [
+        "Distinguish direct observation, inference, and hypotheses still awaiting verification.",
+        "When new evidence conflicts with an existing explanation, preserve the grounds for both.",
+        "Record instruments and observation positions to explain the conditions that limit each conclusion."
+      ],
+      "source": "https://arknights.wiki.gg/wiki/Lone_Trail"
+    },
+    {
+      "id": "X-039",
+      "title": "Galleria Stellaria",
+      "en": "GALLERIA STELLARIA",
+      "department": "Observatory Records Team",
+      "category": "Special projects",
+      "date": "Cross-period compilation",
+      "lead": "Kristen Wright",
+      "clearance": "REFERENCE AREA",
+      "abstract": "Galleria Stellaria is a stargazing space designed by Kristen. Its central planetarium presents celestial clues that invite further questions. It is both a facility and a reflection of its designer's personal pursuit. This volume examines how a space can carry a researcher's imagination, and how imagination can approach verifiable observation.",
+      "findings": [
+        "Record what the planetarium depicts separately from data obtained through observation.",
+        "Read the facility's arrangement alongside its designer's research goals.",
+        "A private stargazing space may connect to plans far beyond the scale of one individual."
+      ],
+      "source": "https://prts.wiki/w/孤星2024"
+    },
+    {
+      "id": "X-040",
+      "title": "Hall of Stasis",
+      "en": "HALL OF STASIS",
+      "department": "Remains Investigation Team",
+      "category": "Special projects",
+      "date": "Cross-period compilation",
+      "lead": "Investigation Team",
+      "clearance": "REFERENCE AREA",
+      "abstract": "The facilities and sealed devices left in the Hall of Stasis confront investigators with many unexplained phenomena. Incomplete information is itself a defining feature of the site. This volume preserves observations, remains, and unresolved questions, avoiding a complete history assembled from insufficient evidence.",
+      "findings": [
+        "Record observations separately from speculation about a device's purpose.",
+        "Preserve descriptions of the original state of objects that cannot be opened or explained.",
+        "Later evidence may supplement earlier records, but should not erase their original questions."
+      ],
+      "source": "https://arknights.wiki.gg/wiki/Lone_Trail/Investigation_Reports"
+    }
+  ]
+}

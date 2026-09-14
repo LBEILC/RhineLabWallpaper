@@ -1,4 +1,6 @@
-# Wallpaper Engine 本地实验
+# Wallpaper Engine 开发记录
+
+> 当前行为（2026-09-14）：所有长期设置统一在 WE 壁纸属性调整，顶部提供「语言 / Language」。壁纸内设置弹窗与「显示设置入口」已移除，右下角保留重播。字体许可随发行包保留。中英文细节见 [LOCALIZATION.md](LOCALIZATION.md)。下方旧日期的本地实验、临时设置及发布状态为历史记录，以最新条目为准。
 
 分支：`codex/wallpaper-engine`。2026-09-10 已在本机 Wallpaper Engine 的独立窗口中运行，尚未发布创意工坊、尚未应用到桌面，不合并主分支。
 
