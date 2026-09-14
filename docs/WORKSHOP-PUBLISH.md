@@ -67,4 +67,4 @@ node scripts/sync-workshop-description.mjs "D:\Game\Steam\steamapps\common\wallp
 
 ### 简介维护规则（2026-09-11 更新）
 
-每次更新都重新整理完整简介，顶部最多保留最新 10 条功能更新。完整历史维护在 `docs/CHANGELOG.md`；简介使用“更多更新日志请前往 GitHub 查看”链接到该文件。同步文本、源码 project.json 和本机正式工程的 description，保留原 workshopid；发布窗口若没有自动刷新，粘贴最新完整简介。只记录保留的实际功能，不列入已撤回的试验。
+每次更新都重新整理完整简介，顶部最多保留最新 10 条功能更新。2026-09-14 用户要求：功能介绍、使用说明与近期更新均提供中英双语，简介不放 GitHub 链接，只写“更多详情与完整更新日志请前往 GitHub 查看”及对应英文提示。完整历史继续维护在 `docs/CHANGELOG.md`。同步文本、源码 project.json 和本机正式工程的 description，保留原 workshopid；发布窗口若没有自动刷新，粘贴最新完整简介。只记录保留的实际功能，不列入已撤回的试验。
