@@ -1,6 +1,6 @@
 {
   "title": "Rhine Lab · 莱茵生命交互桌面",
-  "description": "【更新日志｜最新在前】\n\n2026.09.14\n• 新增中英文切换：在 WE 属性顶部选择「语言 / Language」，即时切换工作台、操作提示、小游戏、360° 查看器及全部 40 份档案和 TXT 导出；保留原有英文开场与美术文字，切换不重置计时、收藏和当前档案。\n• 移除壁纸内设置与「显示设置入口」选项，长期配置统一在 Wallpaper Engine 属性调整；保留右下角重播和左下角 3D 开关，字体许可随软件包交付。\n\n2026.09.12\n• 新增「模型精度」高／中／低三档：在 WE「入场与画面」中即时切换。默认高档；中档简化背景细节，低档进一步简化近景细节，360° 拆解查看器保留完整模型；与画质、超级性能模式和减少动态效果独立。\n• 优化三维阵列和开场 HUD 的性能：减少重复绘制与布局计算，静止阵列及稳定详情复用已有画面，保留现有画质、玻璃材质和动态效果。\n\n2026.09.11\n• 新增「登录身份」：在 WE 属性中自定义登录人姓名，开场身份确认、页脚、访问记录同步显示；留空恢复默认 JOYCE MOORE，最多 24 个字符。\n• 登录人姓名沿用开场原字体：ID CONFIRMED 前缀与英文、数字姓名使用同一套 Novecento 轮廓字形，中文等字符使用 MiSans，可自动混排；姓名颜色跟随当前明暗主题。\n• 新增按时间自动切换明暗：分别设置切换为暗色与亮色的时间（默认 19:00 / 07:00），支持跨午夜；到点沿用原有逐张变色过渡，手动切换会在下一个时间点被自动结果覆盖，关闭开关即回到手动配色。\n• 新增 GitHub Releases 构建包：推送 main 后自动构建，下载压缩包解压到 projects\\myprojects 即可本地加载；创意工坊条目被 Steam 反垃圾检查标记时仍可使用。\n• 优化工作台时间显示：大时钟、专注倒计时、播放器时间及页脚时钟启用 MiSans 居中冒号，保留数字滚动动画。\n• 统一工作台英文眉题与页脚标识的 Novecento 字形，保留中文内容与数字滚动排版。\n\n更多更新日志请前往 GitHub 查看：\nhttps://github.com/LBEILC/RhineLabWallpaper/blob/main/docs/CHANGELOG.md\n\n────────────────────\n\n【Rhine Lab · 莱茵生命交互桌面】\n以莱茵生命档案终端为灵感，将日常工具与玻璃档案阵列融入桌面的非官方同人交互壁纸。\n\n【桌面工作台】\n查看时间与日期，记录最多三条今日事项，追踪重要日程，使用专注计时，显示当前歌曲、封面与播放进度。各项功能和界面元素可按需开启或隐藏。\n\n【档案展示】\n拖动浏览循环档案阵列，点击读取档案内容，进入 360° 查看器旋转、缩放和拆解模型。\n\n【自定义画面】\n亮色与暗色配色（可按时间自动切换）、三种音乐律动、静止呼吸、HUD 曲面与鼠标追踪，以及可调的颗粒、色散和暗角。支持界面边距、高／中／低模型精度、自定义画质与超级性能模式，也可关闭 3D，搭配自己的图片背景使用工作台。\n\n【使用说明】\n在 Wallpaper Engine 壁纸属性顶部选择「语言 / Language → 简体中文 / English」。原有英文开场与图形文字保持原样，全部配置统一在 WE 属性调整，壁纸内不再提供设置弹窗。可在属性中切换模式、填写登录人姓名、事项与日程，调整显示内容和画面效果，并可设置自动切换明暗的时间。媒体信息取决于系统与播放器支持；音乐律动需要启用音频响应。波纹接力小游戏可手动进入。\n如果创意工坊条目暂时无法订阅（Steam 反垃圾内容检查期间会显示“不兼容”），可以从 GitHub Releases 下载构建包，解压到 Wallpaper Engine 的 projects\\myprojects 目录后本地加载，功能与工坊版一致。\n\n预览中的事项仅用于演示，实际内容由你填写。壁纸资源本地运行。角色、名称与相关世界观归原权利方所有，本作品与官方无关联。\n\n\n────────────────────\n\nRhine Lab · Interactive Desktop\n\nAn unofficial Arknights fan wallpaper inspired by the Rhine Lab archive terminal. A glass archive array shares your desktop with a clock, up to three daily tasks, an event countdown, a focus timer and system media information. Browse 40 archives, save records, export text, or inspect and explode the model in the 360° viewer.\n\nEnglish is available: choose Language / 语言 → English at the top of this wallpaper's properties in Wallpaper Engine. All persistent settings now live in that panel. Existing English opening graphics remain unchanged. Language changes preserve your active archive, saved records and focus timer; your names, tasks and media titles stay as supplied. Property labels follow Wallpaper Engine's own interface language.\n\nCustomize light/dark themes and scheduled switching, three audio response styles, idle breathing, curved HUD and mouse tracking, grain, chromatic aberration and vignette. Adjust model detail, graphics quality and margins, or turn off 3D and use your own background image. Replay the opening from the bottom-right button.\n\nSystem media features depend on your player. Audio response requires Wallpaper Engine audio recording. Ripple relay starts manually. All wallpaper resources run locally. Font notices and licenses are included in the package.\n\nChangelog and installation help:\nhttps://github.com/LBEILC/RhineLabWallpaper/blob/main/docs/LOCALIZATION.md\nhttps://github.com/LBEILC/RhineLabWallpaper/blob/main/docs/CHANGELOG.md\nDownloadable builds: https://github.com/LBEILC/RhineLabWallpaper/releases/tag/latest\n\nPreview tasks are demonstrations; you provide your own content. Arknights characters, names and setting belong to their respective owners. This work is not affiliated with the official creators.",
+  "description": "【更新日志｜最新在前】\r\n\r\n2026.09.14\n• 修复 WE 设置折叠分组显示字符编码的问题；分组标题直接显示中英双语，普通选项继续跟随 WE 界面语言，保留已有配置。\n• 新增中英文切换：在 WE 属性顶部选择「语言 / Language」，即时切换工作台、操作提示、小游戏、360° 查看器及全部 40 份档案和 TXT 导出；保留原有英文开场与美术文字，切换不重置计时、收藏和当前档案。\r\n• 移除壁纸内设置与「显示设置入口」选项，长期配置统一在 Wallpaper Engine 属性调整；保留右下角重播和左下角 3D 开关，字体许可随软件包交付。\r\n\r\n2026.09.12\r\n• 新增「模型精度」高／中／低三档：在 WE「入场与画面」中即时切换。默认高档；中档简化背景细节，低档进一步简化近景细节，360° 拆解查看器保留完整模型；与画质、超级性能模式和减少动态效果独立。\r\n• 优化三维阵列和开场 HUD 的性能：减少重复绘制与布局计算，静止阵列及稳定详情复用已有画面，保留现有画质、玻璃材质和动态效果。\r\n\r\n2026.09.11\r\n• 新增「登录身份」：在 WE 属性中自定义登录人姓名，开场身份确认、页脚、访问记录同步显示；留空恢复默认 JOYCE MOORE，最多 24 个字符。\r\n• 登录人姓名沿用开场原字体：ID CONFIRMED 前缀与英文、数字姓名使用同一套 Novecento 轮廓字形，中文等字符使用 MiSans，可自动混排；姓名颜色跟随当前明暗主题。\r\n• 新增按时间自动切换明暗：分别设置切换为暗色与亮色的时间（默认 19:00 / 07:00），支持跨午夜；到点沿用原有逐张变色过渡，手动切换会在下一个时间点被自动结果覆盖，关闭开关即回到手动配色。\r\n• 新增 GitHub Releases 构建包：推送 main 后自动构建，下载压缩包解压到 projects\\myprojects 即可本地加载；创意工坊条目被 Steam 反垃圾检查标记时仍可使用。\r\n• 优化工作台时间显示：大时钟、专注倒计时、播放器时间及页脚时钟启用 MiSans 居中冒号，保留数字滚动动画。\r\n\r\n更多更新日志请前往 GitHub 查看：\r\nhttps://github.com/LBEILC/RhineLabWallpaper/blob/main/docs/CHANGELOG.md\r\n\r\n────────────────────\r\n\r\n【Rhine Lab · 莱茵生命交互桌面】\r\n以莱茵生命档案终端为灵感，将日常工具与玻璃档案阵列融入桌面的非官方同人交互壁纸。\r\n\r\n【桌面工作台】\r\n查看时间与日期，记录最多三条今日事项，追踪重要日程，使用专注计时，显示当前歌曲、封面与播放进度。各项功能和界面元素可按需开启或隐藏。\r\n\r\n【档案展示】\r\n拖动浏览循环档案阵列，点击读取档案内容，进入 360° 查看器旋转、缩放和拆解模型。\r\n\r\n【自定义画面】\r\n亮色与暗色配色（可按时间自动切换）、三种音乐律动、静止呼吸、HUD 曲面与鼠标追踪，以及可调的颗粒、色散和暗角。支持界面边距、高／中／低模型精度、自定义画质与超级性能模式，也可关闭 3D，搭配自己的图片背景使用工作台。\r\n\r\n【使用说明】\r\n在 Wallpaper Engine 壁纸属性顶部选择「语言 / Language → 简体中文 / English」。原有英文开场与图形文字保持原样，全部配置统一在 WE 属性调整，壁纸内不再提供设置弹窗。可在属性中切换模式、填写登录人姓名、事项与日程，调整显示内容和画面效果，并可设置自动切换明暗的时间。媒体信息取决于系统与播放器支持；音乐律动需要启用音频响应。波纹接力小游戏可手动进入。\r\n如果创意工坊条目暂时无法订阅（Steam 反垃圾内容检查期间会显示“不兼容”），可以从 GitHub Releases 下载构建包，解压到 Wallpaper Engine 的 projects\\myprojects 目录后本地加载，功能与工坊版一致。\r\n\r\n预览中的事项仅用于演示，实际内容由你填写。壁纸资源本地运行。角色、名称与相关世界观归原权利方所有，本作品与官方无关联。\r\n\r\n\r\n────────────────────\r\n\r\nRhine Lab · Interactive Desktop\r\n\r\nAn unofficial Arknights fan wallpaper inspired by the Rhine Lab archive terminal. A glass archive array shares your desktop with a clock, up to three daily tasks, an event countdown, a focus timer and system media information. Browse 40 archives, save records, export text, or inspect and explode the model in the 360° viewer.\r\n\r\nEnglish is available: choose Language / 语言 → English at the top of this wallpaper's properties in Wallpaper Engine. All persistent settings now live in that panel. Existing English opening graphics remain unchanged. Language changes preserve your active archive, saved records and focus timer; your names, tasks and media titles stay as supplied. Property labels and dropdown options follow Wallpaper Engine's own interface language; group headings display both Chinese and English.\r\n\r\nCustomize light/dark themes and scheduled switching, three audio response styles, idle breathing, curved HUD and mouse tracking, grain, chromatic aberration and vignette. Adjust model detail, graphics quality and margins, or turn off 3D and use your own background image. Replay the opening from the bottom-right button.\r\n\r\nSystem media features depend on your player. Audio response requires Wallpaper Engine audio recording. Ripple relay starts manually. All wallpaper resources run locally. Font notices and licenses are included in the package.\r\n\r\nChangelog and installation help:\r\nhttps://github.com/LBEILC/RhineLabWallpaper/blob/main/docs/LOCALIZATION.md\r\nhttps://github.com/LBEILC/RhineLabWallpaper/blob/main/docs/CHANGELOG.md\r\nDownloadable builds: https://github.com/LBEILC/RhineLabWallpaper/releases/tag/latest\r\n\r\nPreview tasks are demonstrations; you provide your own content. Arknights characters, names and setting belong to their respective owners. This work is not affiliated with the official creators.",
   "type": "web",
   "file": "index.html",
   "preview": "preview.gif",
@@ -46,7 +46,7 @@
       },
       "groupidentity": {
         "order": 0.5,
-        "text": "ui_groupidentity",
+        "text": "登录身份 | Login identity",
         "type": "group"
       },
       "sessionname": {
@@ -57,7 +57,7 @@
       },
       "groupopening": {
         "order": 1,
-        "text": "ui_groupopening",
+        "text": "入场与画面 | Opening & appearance",
         "type": "group"
       },
       "boot": {
@@ -130,7 +130,7 @@
       },
       "groupworkbench": {
         "order": 8,
-        "text": "ui_groupworkbench",
+        "text": "工作台 · 界面显示 | Workspace · Visibility",
         "type": "group",
         "condition": "desktopmode.value == 'workbench'"
       },
@@ -199,7 +199,7 @@
       },
       "groupcontent": {
         "order": 18,
-        "text": "ui_groupcontent",
+        "text": "工作台 · 事项与日程 | Workspace · Tasks & events",
         "type": "group",
         "condition": "desktopmode.value == 'workbench'"
       },
@@ -269,7 +269,7 @@
       },
       "groupaudio": {
         "order": 26,
-        "text": "ui_groupaudio",
+        "text": "声音 | Audio",
         "type": "group"
       },
       "sound": {
@@ -308,7 +308,7 @@
       },
       "groupreactive": {
         "order": 31,
-        "text": "ui_groupreactive",
+        "text": "工作台 · 音乐律动 | Workspace · Audio response",
         "type": "group",
         "condition": "desktopmode.value == 'workbench'"
       },
@@ -339,7 +339,7 @@
       },
       "groupgame": {
         "order": 36,
-        "text": "ui_groupgame",
+        "text": "工作台 · 波纹接力 | Workspace · Ripple relay",
         "type": "group",
         "condition": "desktopmode.value == 'workbench'"
       },
@@ -476,7 +476,7 @@
       },
       "groupvisualeffects": {
         "order": 40,
-        "text": "ui_groupvisualeffects",
+        "text": "HUD 与画面质感 | HUD & screen effects",
         "type": "group"
       },
       "hudparallax": {
@@ -566,7 +566,7 @@
       },
       "groupuimargins": {
         "order": 51,
-        "text": "ui_groupuimargins",
+        "text": "界面边距 · 正值内收 / 负值外扩 | UI margins: + in / − out",
         "type": "group"
       },
       "uimargintop": {
@@ -607,7 +607,7 @@
       },
       "groupcapabilities": {
         "order": 56,
-        "text": "ui_groupcapabilities",
+        "text": "工作台 · 可用功能 | Workspace · Available tools",
         "type": "group",
         "condition": "desktopmode.value == 'workbench'"
       },
@@ -898,9 +898,7 @@
         "ui_desktopmode": "Workspace mode",
         "ui_desktopmode_0": "Desktop workspace",
         "ui_desktopmode_1": "Archive display",
-        "ui_groupidentity": "Login identity",
         "ui_sessionname": "Login name (opening, footer and access log; up to 24 characters)",
-        "ui_groupopening": "Opening & appearance",
         "ui_boot": "Play opening on startup (applies on next load)",
         "ui_load3donstartup": "Load 3D on startup (applies on next load)",
         "ui_openingdetail": "Show archive details during opening (applies next opening)",
@@ -914,7 +912,6 @@
         "ui_renderquality_3": "Ultra",
         "ui_renderquality_4": "Custom",
         "ui_reduced": "Reduce motion",
-        "ui_groupworkbench": "Workspace · Visibility",
         "ui_showclock": "Show time & date",
         "ui_showtasks": "Show today's tasks",
         "ui_showmodule": "Show right-side content",
@@ -925,7 +922,6 @@
         "ui_selectionstyle_0": "Original height",
         "ui_selectionstyle_1": "Align during audio response",
         "ui_selectionstyle_2": "Always aligned",
-        "ui_groupcontent": "Workspace · Tasks & events",
         "ui_idlebreathing": "Idle breathing (also works when always aligned)",
         "ui_task1": "Today's task 1",
         "ui_task2": "Today's task 2",
@@ -934,16 +930,13 @@
         "ui_eventdate": "Target date (YYYY-MM-DD, optional HH:mm; local time)",
         "ui_focusminutes": "Focus duration (minutes; applies next session)",
         "ui_breakminutes": "Break duration (minutes; applies next session)",
-        "ui_groupaudio": "Audio",
         "ui_sound": "Interaction sounds",
         "ui_soundvolume": "Sound volume",
         "ui_music": "Background music",
         "ui_musicvolume": "Music volume",
-        "ui_groupreactive": "Workspace · Audio response",
         "ui_audioreactive": "Enable audio response (system audio)",
         "ui_reactiveintensity": "Audio response intensity",
         "ui_reactivemute": "Mute wallpaper music while audio response is enabled",
-        "ui_groupgame": "Workspace · Ripple relay",
         "ui_showgame": "Show game entry",
         "ui_gamepace": "Relay pace (applies to the next target)",
         "ui_gamepace_0": "Gentle",
@@ -964,7 +957,6 @@
         "ui_archivecoverage": "Array coverage margin",
         "ui_archivecoverage_0": "Automatic · Standard margin",
         "ui_archivecoverage_1": "Automatic · Extra margin",
-        "ui_groupvisualeffects": "HUD & screen effects",
         "ui_hudparallax": "Curved UI parallax",
         "ui_huddepth": "Curvature depth",
         "ui_screenfinish": "Global screen effects",
@@ -975,12 +967,10 @@
         "ui_uifroststrength": "Frost intensity",
         "ui_hudtracking": "Mouse tracking",
         "ui_screengrainsize": "Grain size",
-        "ui_groupuimargins": "UI margins · Positive: inward / Negative: outward",
         "ui_uimargintop": "Top margin (px)",
         "ui_uimarginbottom": "Bottom margin (px)",
         "ui_uimarginleft": "Left margin (px)",
         "ui_uimarginright": "Right margin (px)",
-        "ui_groupcapabilities": "Workspace · Available tools",
         "ui_enabletime": "Enable time & date",
         "ui_enabletasks": "Enable today's tasks",
         "ui_enableevent": "Enable upcoming event",
@@ -1038,9 +1028,7 @@
         "ui_desktopmode": "工作模式",
         "ui_desktopmode_0": "桌面工作台",
         "ui_desktopmode_1": "档案展示",
-        "ui_groupidentity": "登录身份",
         "ui_sessionname": "登录人姓名（开场身份确认、页脚与访问记录，最多 24 字符）",
-        "ui_groupopening": "入场与画面",
         "ui_boot": "启动时播放开场（下次加载生效）",
         "ui_load3donstartup": "启动时加载 3D（下次加载生效）",
         "ui_openingdetail": "入场时展示档案详情（下次开场生效）",
@@ -1054,7 +1042,6 @@
         "ui_renderquality_3": "极高",
         "ui_renderquality_4": "自定义",
         "ui_reduced": "减少动态效果",
-        "ui_groupworkbench": "工作台 · 界面显示",
         "ui_showclock": "显示时钟与日期",
         "ui_showtasks": "显示今日事项",
         "ui_showmodule": "显示右侧功能内容",
@@ -1065,7 +1052,6 @@
         "ui_selectionstyle_0": "保持原样",
         "ui_selectionstyle_1": "仅音乐律动时归齐",
         "ui_selectionstyle_2": "始终归齐",
-        "ui_groupcontent": "工作台 · 事项与日程",
         "ui_idlebreathing": "静止时呼吸（始终归齐时也生效）",
         "ui_task1": "今日事项 1",
         "ui_task2": "今日事项 2",
@@ -1074,16 +1060,13 @@
         "ui_eventdate": "目标日期（YYYY-MM-DD，可加 HH:mm，本地时间）",
         "ui_focusminutes": "专注时长（分钟，下次开始生效）",
         "ui_breakminutes": "休息时长（分钟，下次开始生效）",
-        "ui_groupaudio": "声音",
         "ui_sound": "交互音效",
         "ui_soundvolume": "音效音量",
         "ui_music": "背景音乐",
         "ui_musicvolume": "音乐音量",
-        "ui_groupreactive": "工作台 · 音乐律动",
         "ui_audioreactive": "开启音乐律动（跟随系统音频）",
         "ui_reactiveintensity": "音乐律动强度",
         "ui_reactivemute": "音乐律动开启时停用壁纸配乐",
-        "ui_groupgame": "工作台 · 波纹接力",
         "ui_showgame": "显示游戏入口",
         "ui_gamepace": "波纹接力节奏（下一目标生效）",
         "ui_gamepace_0": "舒缓",
@@ -1104,7 +1087,6 @@
         "ui_archivecoverage": "阵列覆盖余量",
         "ui_archivecoverage_0": "自动 · 标准余量",
         "ui_archivecoverage_1": "自动 · 额外余量",
-        "ui_groupvisualeffects": "HUD 与画面质感",
         "ui_hudparallax": "UI 鼠标视差",
         "ui_huddepth": "曲面纵深",
         "ui_screenfinish": "全局屏幕效果",
@@ -1115,12 +1097,10 @@
         "ui_uifroststrength": "磨砂强度",
         "ui_hudtracking": "鼠标追踪",
         "ui_screengrainsize": "颗粒尺寸",
-        "ui_groupuimargins": "界面边距 · 正值内收 / 负值外扩",
         "ui_uimargintop": "上边距（px）",
         "ui_uimarginbottom": "下边距（px）",
         "ui_uimarginleft": "左边距（px）",
         "ui_uimarginright": "右边距（px）",
-        "ui_groupcapabilities": "工作台 · 可用功能",
         "ui_enabletime": "启用时间日期",
         "ui_enabletasks": "启用今日事项",
         "ui_enableevent": "启用重要日程",

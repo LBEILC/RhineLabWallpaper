@@ -1,0 +1,18 @@
+{
+  "browser": "153.0.4234.32",
+  "method": "Installed WE service, group/label/dropdown templates in Edge",
+  "results": [
+    {
+      "language": "zh-chs",
+      "checkedLabels": 155,
+      "originalBugReproduced": true,
+      "passed": true
+    },
+    {
+      "language": "en-us",
+      "checkedLabels": 155,
+      "originalBugReproduced": true,
+      "passed": true
+    }
+  ]
+}

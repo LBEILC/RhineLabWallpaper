@@ -19,9 +19,18 @@ for (const [i,r] of en.records.entries()) {
 const project=JSON.parse(await readFile('wallpaper/project.json','utf8'));
 assert.equal(project.general.properties.language.value,'zh-CN');
 assert.ok(!Object.hasOwn(project.general.properties,'showsettings'));
-for(const prop of Object.values(project.general.properties)) for(const key of [prop.text,...(prop.options??[]).map(o=>o.label)]) {
+for(const prop of Object.values(project.general.properties)) {
+ if(prop.type==='group') {
+  // WE sanitizes custom translations, then renders group headings as text.
+  // Literal bilingual headings avoid showing decimal HTML entities.
+  assert.ok(!prop.text.startsWith('ui_') && /\p{Script=Han}/u.test(prop.text) && /[A-Za-z]/.test(prop.text));
+  assert.ok(!/[<>]|&#?\w+;/.test(prop.text));
+  continue;
+ }
+ for(const key of [prop.text,...(prop.options??[]).map(o=>o.label)]) {
   assert.ok(key.startsWith('ui_'));
   for(const lang of ['zh-chs','en-us']) assert.ok(project.general.localization[lang][key],`${lang}: ${key}`);
+ }
 }
 console.log('40 bilingual records, matching navigation, English exports and host labels passed.');
 if(process.argv.includes('--content-only')) process.exit(0);

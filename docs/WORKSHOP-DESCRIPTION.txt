@@ -1,6 +1,7 @@
 【更新日志｜最新在前】
 
 2026.09.14
+• 修复 WE 设置折叠分组显示字符编码的问题；分组标题直接显示中英双语，普通选项继续跟随 WE 界面语言，保留已有配置。
 • 新增中英文切换：在 WE 属性顶部选择「语言 / Language」，即时切换工作台、操作提示、小游戏、360° 查看器及全部 40 份档案和 TXT 导出；保留原有英文开场与美术文字，切换不重置计时、收藏和当前档案。
 • 移除壁纸内设置与「显示设置入口」选项，长期配置统一在 Wallpaper Engine 属性调整；保留右下角重播和左下角 3D 开关，字体许可随软件包交付。
 
@@ -14,7 +15,6 @@
 • 新增按时间自动切换明暗：分别设置切换为暗色与亮色的时间（默认 19:00 / 07:00），支持跨午夜；到点沿用原有逐张变色过渡，手动切换会在下一个时间点被自动结果覆盖，关闭开关即回到手动配色。
 • 新增 GitHub Releases 构建包：推送 main 后自动构建，下载压缩包解压到 projects\myprojects 即可本地加载；创意工坊条目被 Steam 反垃圾检查标记时仍可使用。
 • 优化工作台时间显示：大时钟、专注倒计时、播放器时间及页脚时钟启用 MiSans 居中冒号，保留数字滚动动画。
-• 统一工作台英文眉题与页脚标识的 Novecento 字形，保留中文内容与数字滚动排版。
 
 更多更新日志请前往 GitHub 查看：
 https://github.com/LBEILC/RhineLabWallpaper/blob/main/docs/CHANGELOG.md
@@ -46,7 +46,7 @@ Rhine Lab · Interactive Desktop
 
 An unofficial Arknights fan wallpaper inspired by the Rhine Lab archive terminal. A glass archive array shares your desktop with a clock, up to three daily tasks, an event countdown, a focus timer and system media information. Browse 40 archives, save records, export text, or inspect and explode the model in the 360° viewer.
 
-English is available: choose Language / 语言 → English at the top of this wallpaper's properties in Wallpaper Engine. All persistent settings now live in that panel. Existing English opening graphics remain unchanged. Language changes preserve your active archive, saved records and focus timer; your names, tasks and media titles stay as supplied. Property labels follow Wallpaper Engine's own interface language.
+English is available: choose Language / 语言 → English at the top of this wallpaper's properties in Wallpaper Engine. All persistent settings now live in that panel. Existing English opening graphics remain unchanged. Language changes preserve your active archive, saved records and focus timer; your names, tasks and media titles stay as supplied. Property labels and dropdown options follow Wallpaper Engine's own interface language; group headings display both Chinese and English.
 
 Customize light/dark themes and scheduled switching, three audio response styles, idle breathing, curved HUD and mouse tracking, grain, chromatic aberration and vignette. Adjust model detail, graphics quality and margins, or turn off 3D and use your own background image. Replay the opening from the bottom-right button.
 

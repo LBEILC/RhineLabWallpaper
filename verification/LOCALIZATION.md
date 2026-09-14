@@ -49,3 +49,15 @@ npm run check:wallpaper-release
 ```
 
 浏览器小视口为桌面 Edge 模拟，未声称本轮通过真实手机验收。中英文翻译已逐份完成与语义复核，未经过独立母语编辑审校。工坊上传仍由用户执行。
+
+## 2026-09-14：WE 折叠分组乱码修复
+
+用户反馈分组标题显示 `&#30331;` 等十进制 HTML 实体。上轮只校验了属性翻译表完整性，没有覆盖 WE 原生分组的显示差异。
+
+读取本机 WE 的 `ui/dist/scripts/scripts.js` 与 `vendor.js` 后确认：`localeLoaderSupport.insertTranslations` 对自定义翻译调用 `$sanitize`，中文会编码为 HTML 实体。普通属性和下拉选项使用 `translate` 指令，实体会被解码；`browseruserpropertiesgroup.html` 却通过 `{{groupProperty.text|translate}}` 写入文本节点，导致实体直接显示。添加 HTML 包裹同样不能解决文本节点输出。
+
+十个分组改为直接写入中英双语标题，不经过自定义翻译表。普通属性及下拉选项继续使用本地化，所有配置值、条件与顺序保持原样。
+
+新增 `scripts/check-we-property-labels.mjs`：只读载入本机 WE 的实际翻译服务、普通标签、分组和下拉模板，在 Edge 中运行；先确认旧写法确实输出实体，再验证中英文环境各 155 项标签（包含十个分组、普通标签、下拉选择和列表选项）。结果为 `localization/property-labels.json`，分组截图为 `localization/host-groups-*.png`。这是 WE 组件级回归，不等同于自动操作用户的原生主窗口。
+
+运行需要本机 WE 和 Playwright；可通过 `WALLPAPER_ENGINE_DIR` 与 `PLAYWRIGHT_MODULE` 指定位置。CI 的 `check-localization.mjs --content-only` 同时限制分组标题必须为不含 HTML 实体的中英字面文本，防止再次误用翻译 token。

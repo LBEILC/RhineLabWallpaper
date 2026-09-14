@@ -301,3 +301,5 @@ WE 画质下拉增加「自定义」，仅此选择且超级模式关闭时显�
 - 用户追加明确：所有原有英文元素保持英文，尤其前段 2D 开场的英文设计、字体和动画。语言切换只为原中文界面、提示和档案增加英文版本，不将既有英文反向翻为中文。用户姓名、事项、日程标题与媒体信息保持原文。
 - 文案位于 content/ui.en.json，档案位于 content/archives.json 与 content/archives.en.json。保留稳定编号、顺序、分类所属和原英文眉题；中英文 TXT 一起导出。语言切换不得重建三维场景、重置选档、收藏、计时或查看器拆解。WE 属性标签使用原生 localization，跟随 WE 自身语言。
 - 实现说明见 docs/LOCALIZATION.md，验证见 verification/LOCALIZATION.md。工坊仍由用户自行上传。
+
+- 2026-09-14 修正：WE 自定义翻译会转义中文，但折叠分组以纯文本输出，导致显示 HTML 实体。分组标题改用中英双语字面文本；普通属性和下拉选项继续跟随 WE 语言。不得把分组标题重新改为 `ui_` token。宿主组件回归见 `scripts/check-we-property-labels.mjs`。
