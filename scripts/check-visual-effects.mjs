@@ -23,7 +23,7 @@ for(const [i,p] of [[0,[0,0]],[1,[400,0]],[2,[400,200]],[3,[0,200]]]) {
 }
 const events={};globalThis.window={addEventListener:(key,fn)=>events[key]=fn};globalThis.document={addEventListener(){}};
 globalThis.effectProbe={};
-const mocks=`const wallpaperHost=()=>undefined;class HudProjection{constructor(stage){this.stage=stage}invalidate(){}update(depth,pointer){globalThis.effectProbe.depth=depth;globalThis.effectProbe.pointer={...pointer};this.stage.dataset.hudDepth=String(depth>.00001)}}class ScreenFinish{update(...args){globalThis.effectProbe.screen=args}}`;
+const mocks=`const wallpaperHost=()=>undefined;class HudProjection{constructor(stage){this.stage=stage}invalidate(){}update(depth,pointer){globalThis.effectProbe.depth=depth;globalThis.effectProbe.pointer={...pointer};this.stage.dataset.hudDepth=String(depth>.00001)}}class ScreenFinish{update(...args){globalThis.effectProbe.screen=args}}class WorkbenchPosition{invalidate(){}update(){return false}}`;
 const input=readFileSync('src/wallpaper-effects.ts','utf8').replace(/^import .*;\r?\n/gm,'');
 const {WallpaperEffects,effectOptions,wallpaperInsets}=await moduleFrom(mocks+input);
 assert.deepEqual(wallpaperInsets({}),{top:0,right:0,bottom:0,left:0});

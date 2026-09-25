@@ -2,6 +2,7 @@ import { wallpaperHost, type WallpaperProperties } from "./wallpaper";
 import type { ArchiveScene } from "./scene";
 import { HudProjection } from "./hud-projection";
 import { ScreenFinish } from "./screen-finish";
+import { WorkbenchPosition } from "./workbench-position";
 import "./wallpaper-effects.css";
 import "./wallpaper-insets.css";
 
@@ -32,14 +33,18 @@ export class WallpaperEffects {
   private insetSignature = "";
   private projection: HudProjection;
   private finish: ScreenFinish;
+  private workbenchPosition: WorkbenchPosition;
   constructor(private stage: HTMLElement, private scene: () => ArchiveScene | undefined) {
     this.projection = new HudProjection(stage);
     this.finish = new ScreenFinish(stage);
+    this.workbenchPosition = new WorkbenchPosition(stage);
     Object.assign(this.props, wallpaperHost()?.properties ?? {});
     window.addEventListener("rhine-wallpaper-properties", event => {
       Object.assign(this.props, (event as CustomEvent<WallpaperProperties>).detail);
       this.projection.invalidate();
+      this.workbenchPosition.invalidate();
     });
+    window.addEventListener("rhine-workbench-layout", () => this.projection.invalidate());
     stage.addEventListener("pointermove", event => {
       if (event.pointerType === "touch") return;
       const rect = stage.getBoundingClientRect();
@@ -76,6 +81,7 @@ export class WallpaperEffects {
     this.current.x += (tx - this.current.x) * blend;
     this.current.y += (ty - this.current.y) * blend;
     this.depth += ((options.parallax ? options.depth : 0) - this.depth) * blend;
+    if (this.workbenchPosition.update(this.props)) this.projection.invalidate();
     this.projection.update(this.depth, this.current);
     this.stage.dataset.hudTracking = String(moving);
     this.stage.dataset.uiFrost = String(active && options.frost && options.frostStrength > 0);

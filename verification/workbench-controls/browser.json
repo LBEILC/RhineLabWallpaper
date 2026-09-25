@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "browser": "153.0.4234.48",
+  "checks": [
+    "independent page controls, hidden footer recovery, partial host updates and mode defaults",
+    "continuous numbering, task/timer persistence, click audio, one completion reminder, pause and mute",
+    "physical-pixel region offsets at three desktop sizes, HUD, bottom margin composition, dark and portrait footer",
+    "interrupted mode transitions, reload defaults, preserved live 3D canvas and selection",
+    "all three 300% rhythm styles under sustained simulated host audio"
+  ],
+  "errors": []
+}

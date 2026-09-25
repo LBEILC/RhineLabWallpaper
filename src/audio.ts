@@ -5,6 +5,7 @@ export type Sound =
   | "page-open"
   | "page-close"
   | "ui-tick"
+  | "focus-done"
   | "brand"
   | "text-reveal"
   | "key"
@@ -219,6 +220,13 @@ export function synthesizeSound(
       air(1500, 1200, 0.042, 0.036, 0, 0.003);
       tone(820, 820, 0.022, 0.052, 0, 0.003);
       break;
+    case "focus-done":
+      // A calm, distinct three-note completion phrase, separate from UI clicks.
+      [659.25, 880, 1318.51].forEach((frequency, i) => {
+        tone(frequency, frequency, .055 - i * .007, .55, i * .22, .012);
+        tone(frequency * 2, frequency * 2, .009, .3, i * .22, .009);
+      });
+      break;
     case "brand":
       tone(146.83, 146.83, 0.039, 0.72, 0, 0.08);
       tone(293.66, 293.66, 0.03, 0.62, 0.07, 0.07);
@@ -331,6 +339,7 @@ export class TerminalAudio {
   private suspension: Promise<void> = Promise.resolve();
   private bootMix = -1;
   private playedKeys = 0;
+  private playedSounds: Partial<Record<Sound, number>> = {};
   private entryPending = false;
   private hostPaused = false;
   setHostPaused(paused: boolean) {
@@ -591,6 +600,7 @@ export class TerminalAudio {
     this.voices = this.voices.filter((v) => v.end > now);
     if (this.voices.length >= 10) this.voices.shift()!.stop(now);
     const voice = synthesizeSound(c, this.effects!, type, now + 0.004, pan);
+    if (this.prefs.soundVolume > 0) this.playedSounds[type] = (this.playedSounds[type] ?? 0) + 1;
     this.voices.push(voice);
     if (this.prefs.soundVolume > 0) window.dispatchEvent(new CustomEvent("rhine-local-sound", {
       detail: { until: performance.now() / 1000 + Math.max(0, voice.end - now) + .2 },
@@ -645,6 +655,7 @@ export class TerminalAudio {
       ).length,
       loaded: !!this.buffers,
       playedKeys: this.playedKeys,
+      playedSounds: { ...this.playedSounds },
       error: this.error,
       preferences: { ...this.prefs },
     };

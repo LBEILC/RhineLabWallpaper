@@ -15,6 +15,9 @@
 #stage[data-ui-insets="true"]:not([data-mode="boot"]) :is(.wb-nav, .system-footer, .relay-entry) {
   translate: 0 calc(-1 * var(--ui-bottom));
 }
+#stage[data-ui-insets="true"]:not([data-mode="boot"]) .wb-nav {
+  translate: var(--wb-navigation-x, 0px) calc(var(--wb-navigation-y, 0px) - var(--ui-bottom));
+}
 #stage[data-ui-insets="true"]:not([data-mode="boot"]) > .brand {
   left: calc(var(--edge) + var(--ui-left)); top: calc(var(--ui-brand-top) + var(--ui-top));
 }

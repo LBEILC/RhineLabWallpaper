@@ -1,5 +1,13 @@
 【近期更新 / Recent updates】
 
+2026.09.25
+• 页脚新增模式切换与完整工作台按钮，临时全部打开后可恢复 WE 自定义配置；独立页脚分组控制信息、时间与两个按钮。
+  Switch modes or temporarily open the full workspace from the footer, then restore your WE settings. A dedicated Footer group controls information, the clock and both buttons.
+• 支持分别移动左侧时钟／事项、右侧功能面板和底部导航；修复部分功能关闭后的连续编号。
+  Position the left overview, right panel and bottom navigation independently. Visible tools now use consistent consecutive numbering.
+• 专注结束新增提醒音，补充按钮操作音，三种音乐律动幅度上限提高至 300%。
+  Added a focus-completion chime and button sounds, and raised the strength limit to 300% for all three audio response styles.
+
 2026.09.14
 • 优化工作台日期排版：数字日期突出月日，以细竖线分隔星期，支持中英文与明暗配色。
   Refined the date display with clearer month/day emphasis and a divider before the weekday, in both languages and themes.
@@ -45,7 +53,7 @@ Visit GitHub for more details and the full changelog.
 
 【语言与操作】
 在 WE 壁纸属性顶部选择「语言 / Language → 简体中文 / English」，即时生效并保存。原有英文开场与图形文字保持原样；你的姓名、事项、日程标题和媒体信息保留原文。
-长期配置统一在 WE 属性中调整。普通选项名称跟随 WE 自身的界面语言，折叠分组标题显示中英双语。右下角可重播开场，左下角可开关 3D；波纹接力小游戏可手动进入。
+长期配置统一在 WE 属性中调整。普通选项名称跟随 WE 自身的界面语言，折叠分组标题显示中英双语。页脚可切换模式、临时打开完整工作台，也可重播开场和开关 3D；波纹接力小游戏可手动进入。页脚快捷操作在重载后恢复 WE 默认配置。
 媒体信息取决于系统与播放器支持，音乐律动需要启用音频响应。语言切换保留当前档案、收藏与专注计时。
 
 预览中的事项仅用于演示，实际内容由你填写。壁纸资源本地运行，字体说明与许可随包提供。角色、名称与相关世界观归原权利方所有，本作品与官方无关联。
@@ -66,7 +74,7 @@ Choose light or dark themes with optional scheduled switching, three audio respo
 
 【Language and controls】
 Choose Language / 语言 → 简体中文 / English at the top of the wallpaper's properties in WE. The choice applies immediately and is saved. Existing English opening graphics stay unchanged; names, tasks, event titles and media information remain as supplied.
-Use WE's properties panel for persistent settings. Option labels follow WE's own interface language, while group headings show both languages. Replay the opening from the bottom right, toggle 3D at the bottom left, or start the ripple relay game manually.
+Use WE's properties panel for persistent settings. Option labels follow WE's own interface language, while group headings show both languages. The footer lets you switch modes, temporarily open the full workspace, replay the opening and toggle 3D. You can also start the ripple relay game manually. Temporary workspace choices reset to WE defaults on reload.
 Media information depends on your system and player. Audio response requires audio recording to be enabled in WE. Language changes preserve your active archive, favorites and focus timer.
 
 Preview tasks are demonstrations; you provide your own content. All wallpaper resources run locally, with font notices and licenses included in the package. Arknights characters, names and setting belong to their respective owners. This work is not affiliated with the official creators.

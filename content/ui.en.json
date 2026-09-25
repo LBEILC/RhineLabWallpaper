@@ -164,5 +164,11 @@
   "能量研究": "Energy research",
   "特别项目": "Special projects",
   "这道波纹停下了": "The ripple has faded",
-  "接力结束": "Relay complete"
+  "接力结束": "Relay complete",
+  "档案展示 ↗": "Archives ↗",
+  "桌面工作台 ↗": "Workspace ↗",
+  "切换到档案展示": "Switch to archive display",
+  "切换到桌面工作台": "Switch to desktop workspace",
+  "打开完整工作台 ↗": "Full workspace ↗",
+  "恢复自定义显示 ↙": "Restore layout ↙"
 }

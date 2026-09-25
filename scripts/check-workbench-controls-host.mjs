@@ -1,0 +1,74 @@
+// Isolated real Wallpaper Engine window; never replaces a desktop wallpaper.
+import {createServer} from 'node:http';
+import {spawn} from 'node:child_process';
+import {cp,mkdir,readFile,writeFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import assert from 'node:assert/strict';
+const exe=process.env.WALLPAPER_ENGINE_EXE||'D:/Game/Steam/steamapps/common/wallpaper_engine/wallpaper64.exe';
+const dir=resolve('.tools/workbench-controls-host');
+await mkdir(dir,{recursive:true});await cp('release/wallpaper',dir,{recursive:true});
+const project=JSON.parse(await readFile(`${dir}/project.json`,'utf8'));
+delete project.workshopid;delete project.workshopurl;
+const defaults={boot:false,load3donstartup:false,music:false,sound:true,soundvolume:20,reduced:true,desktopmode:'workbench',showclock:false,showtasks:false,showmodule:false,shownavigation:false,showfooter:false,showmodebutton:true,showworkbenchbutton:true,focusminutes:1};
+for(const [key,value] of Object.entries(defaults))project.general.properties[key].value=value;
+await writeFile(`${dir}/project.json`,JSON.stringify(project));
+let finish;
+const received=new Promise(resolve=>{finish=resolve;});
+const server=createServer((req,res)=>{let body='';req.on('data',chunk=>body+=chunk);req.on('end',()=>{res.setHeader('Access-Control-Allow-Origin','*');res.end('ok');if(req.method==='POST'){try{finish(JSON.parse(body));}catch{}}});});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));
+const port=server.address().port;
+async function probe(port){
+  const report={checks:[],errors:[]};
+  window.addEventListener('error',e=>report.errors.push(e.message));
+  const wait=ms=>new Promise(r=>setTimeout(r,ms));
+  const until=async fn=>{for(let i=0;i<300;i++){if(fn())return;await wait(100);}throw Error('ready timeout');};
+  const ok=(value,label)=>{if(!value)throw Error(label);report.checks.push(label);};
+  const push=async values=>{wallpaperPropertyListener.applyUserProperties(Object.fromEntries(Object.entries(values).map(([key,value])=>[key,{value}])));await wait(180);};
+  const click=async selector=>{document.querySelector(selector).click();await wait(180);};
+  const visible=selector=>{const n=document.querySelector(selector);return !!n&&!!n.getClientRects().length&&getComputedStyle(n).visibility!=='hidden';};
+  try{
+    await until(()=>window.rhine?.stats().ready&&rhine.stats().startup==='started');
+    report.userAgent=navigator.userAgent;report.viewport=[innerWidth,innerHeight];
+    ok(!visible('.wb-overview')&&visible('[data-action="toggle-workbench-expanded"]'),'hidden footer retains full-workspace entry');
+    await click('[data-action="toggle-workbench-expanded"]');
+    ok(visible('.wb-overview')&&visible('.wb-module'),'full-workspace opens from actual host defaults');
+    await push({showclock:true,enabletasks:false});
+    await click('[data-action="toggle-workbench-expanded"]');
+    ok(visible('.wb-time')&&!visible('.wb-module'),'restores latest partial host settings');
+    await push({showmodule:true,shownavigation:true,showfooter:true,showfooterclock:false,hudparallax:true,hudtracking:false,huddepth:20,wbmodulex:-60,wboverviewy:30});
+    ok(visible('#session-name')&&!visible('#clock')&&!visible('.footer-clock-separator'),'independent footer clock');
+    const numbers=[...document.querySelectorAll('.wb-nav button:not([hidden]) small')].map(n=>n.textContent);
+    ok(numbers.join(',')==='01,02,03,04','continuous visible numbering');
+    ok(parseFloat(document.querySelector('#stage').style.getPropertyValue('--wb-module-x'))<0,'host position applies with HUD');
+    await click('[data-action="toggle-workbench-mode"]');
+    ok(document.querySelector('#stage').dataset.workbench==='false','archive mode');
+    await click('[data-action="toggle-workbench-mode"]');
+    await click('[data-wb-lane="4"]');
+    const nativeNow=Date.now;let now=nativeNow();Date.now=()=>now;
+    await click('[data-wb-timer="toggle"]');now+=59000;await wait(180);now+=1500;await wait(180);
+    report.audio=rhine.stats().audio;
+    ok(report.audio.state==='running','real host audio context running');
+    ok(report.audio.playedSounds['focus-done']===1,'real host completion reminder once');
+    now+=1500;await wait(180);ok(rhine.stats().audio.playedSounds['focus-done']===1,'no duplicate reminder');
+    await click('[data-wb-timer="toggle"]');wallpaperPropertyListener.setPaused(true);now+=61000;wallpaperPropertyListener.setPaused(false);await wait(180);
+    ok(rhine.stats().audio.playedSounds['focus-done']===1,'paused completion is not replayed');
+    Date.now=nativeNow;
+    ok(report.audio.playedSounds['ui-tick']>0,'real host page-control click sound');
+    await push({language:'en-US'});
+    ok(document.querySelector('[data-action="toggle-workbench-expanded"]').textContent==='Full workspace ↗','English controls');
+    report.passed=true;
+  }catch(error){report.error=String(error?.stack||error);report.passed=false;}
+  await fetch(`http://127.0.0.1:${port}/`,{method:'POST',body:JSON.stringify(report)});
+}
+const html=await readFile(`${dir}/index.html`,'utf8');
+await writeFile(`${dir}/index.html`,html.replace('</head>',`<script>(${probe.toString()})(${port});</script></head>`));
+const location='Rhine Lab workspace controls diagnostic';
+const run=args=>new Promise((done,fail)=>{const child=spawn(exe,args,{windowsHide:true,stdio:'ignore'});child.once('error',fail);child.once('spawn',()=>{child.unref();done();});});
+let timeout;
+try{
+  await run(['-control','openWallpaper','-file',`${dir}/project.json`,'-playInWindow',location,'-width','1600','-height','900','-x','-30000','-y','-30000']);
+  const data=await Promise.race([received,new Promise((_,reject)=>{timeout=setTimeout(()=>reject(Error('No host report within 55 seconds')),55000);})]);
+  await mkdir('verification/workbench-controls',{recursive:true});
+  await writeFile('verification/workbench-controls/host.json',JSON.stringify(data,null,2));
+  assert.ok(data.passed,JSON.stringify(data));assert.deepEqual(data.errors,[]);console.log(JSON.stringify(data));
+}finally{clearTimeout(timeout);server.close();await run(['-control','closeWallpaper','-location',location]);}

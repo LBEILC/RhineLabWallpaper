@@ -10,24 +10,25 @@ for(let i=1;i<=150;i++) bands=e.update(.05,i*.05,true);
 assert.ok(bands.low<.0001&&bands.activity<.001,'Missing callbacks fade to original motion');
 e.ingest(Array(128).fill(NaN),8);bands=e.update(.1,8,true);assert.ok(Number.isFinite(bands.low));
 assert.equal(musicDisplacement(1,2,3,quietBands(),2),0);
-for(let row=-20;row<20;row++) {const n=musicDisplacement(row,3,1,{low:1,mid:1,high:1,activity:1},20);assert.ok(n>=0&&n<=1.8)}
+for(let row=-20;row<20;row++) {const n=musicDisplacement(row,3,1,{low:1,mid:1,high:1,activity:1},20);assert.ok(n>=0&&n<=2.7)}
 const r=new RelayRound();r.start();r.aim('1:2','normal');r.tick(100,true);assert.equal(r.remaining,6);assert.equal(r.hit('1:2'),true);assert.equal(r.score,1);assert.equal(r.hit('1:2'),false,'Duplicate hit cannot score twice');r.aim('1:3','normal');r.hit('wrong');assert.equal(r.status,'over');r.start();assert.equal(r.score,0);r.aim('1:2','quick');for(let i=0;i<50;i++)r.tick(.1,false);assert.equal(r.status,'over');r.stop();assert.equal(r.target,null);
-let callback;const window={dispatchEvent(){},wallpaperRegisterAudioListener:fn=>callback=fn};vm.runInNewContext(readFileSync('wallpaper/host.js','utf8'),{window,Event,CustomEvent,performance:{now:()=>2000}});assert.ok(callback);callback(Array(128).fill(4));assert.equal(window.rhineWallpaperSpectrum.samples[0],1);assert.equal(window.rhineWallpaperSpectrum.time,2);
+let callback;const window={dispatchEvent(){},wallpaperRegisterAudioListener:fn=>callback=fn};vm.runInNewContext(readFileSync('wallpaper/host.js','utf8'),{window,Event,CustomEvent,location:{protocol:'file:'},performance:{now:()=>2000}});assert.ok(callback);callback(Array(128).fill(4));assert.equal(window.rhineWallpaperSpectrum.samples[0],1);assert.equal(window.rhineWallpaperSpectrum.time,2);
 const {openingShowsDetail,ARRAY_OPENING_END}=await load('src/wallpaper-opening.ts');assert.equal(openingShowsDetail('auto',true),false);assert.equal(openingShowsDetail('auto',false),true);assert.equal(openingShowsDetail('show',true),true);assert.equal(openingShowsDetail('skip',false),false);assert.ok(ARRAY_OPENING_END<26);
 console.log('Spectrum stereo/clamping/decay, relay pause/scoring/retry/timeout, host callback and opening policy passed.');
 const project=JSON.parse(readFileSync('wallpaper/project.json','utf8')),props=project.general.properties;
 assert.equal(project.general.supportsaudioprocessing,true,'WE reads audio support from general');
 assert.equal(Object.hasOwn(project,'supportsaudioprocessing'),false,'Root-level flag is not recognized by the host');
-assert.equal(Object.values(props).filter(p=>p.type==='group').length,9);
+for(const key of ['groupworkbench','groupfooter','groupworkbenchposition','groupreactive'])assert.equal(props[key].type,'group');
 function visible(key,override={}){const context=structuredClone(props);for(const [k,v] of Object.entries(override))context[k].value=v;return !props[key].condition||vm.runInNewContext(props[key].condition,context)}
-assert.equal(visible('groupworkbench',{desktopmode:'archive'}),false);
+assert.equal(visible('groupworkbench',{desktopmode:'archive'}),true,'Page controls can open workspaces from archive defaults');
+assert.equal(visible('groupworkbench',{desktopmode:'archive',showmodebutton:false,showworkbenchbutton:false}),false);
 assert.equal(visible('reactiveintensity',{audioreactive:false}),false);
 assert.equal(visible('gamepace',{showgame:false}),false);
 assert.equal(visible('openingdetail',{boot:false}),false);
 for(const key of Object.keys(props))visible(key);
 assert.equal(visible('customwallpaperfile',{customwallpaper:false}),false);
 assert.equal(visible('customwallpaperfile',{customwallpaper:true}),true);
-console.log('Nine native groups and all display conditions passed.');
+console.log('Native workspace/footer groups and all display conditions passed.');
 
 const {RhythmMotion,rhythmDisplacement}=await load('src/archive-play-motion.ts');
 const rhythm=new RhythmMotion(); let motion;

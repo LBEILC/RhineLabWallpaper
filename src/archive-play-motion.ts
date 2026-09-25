@@ -1,4 +1,6 @@
 const clamp = (value: number, low = 0, high = 1) => Math.min(high, Math.max(low, value));
+export const MAX_REACTIVE_STRENGTH = 3;
+export const reactiveStrength = (percent: unknown) => typeof percent === "number" && Number.isFinite(percent) ? clamp(percent / 100, 0, MAX_REACTIVE_STRENGTH) : 1;
 export type MusicBands = { low: number; mid: number; high: number; activity: number };
 export const quietBands = (): MusicBands => ({ low: 0, mid: 0, high: 0, activity: 0 });
 export class SpectrumEnvelope {
@@ -44,7 +46,8 @@ export function musicDisplacement(row: number, lane: number, time: number, bands
   const bass = bands.low * .8 * (.5 + .5 * Math.sin(row * .29 - lane * .5 - time * 2.7));
   const middle = bands.mid * .48 * (.5 + .5 * Math.sin(row * .72 + lane * .9 - time * 4.3));
   const treble = bands.high * .18 * Math.pow(Math.max(0, Math.sin(row * 1.7 - lane * 2.2 - time * 6.4)), 4);
-  return clamp((bass + middle + treble) * clamp(strength, 0, 2), 0, 1.8);
+  const gain = clamp(strength, 0, MAX_REACTIVE_STRENGTH);
+  return clamp((bass + middle + treble) * gain, 0, 1.8 * Math.max(1, gain / 2));
 }
 export type RelayStatus = "idle" | "preparing" | "playing" | "over";
 export class RelayRound {
@@ -99,5 +102,5 @@ export function rhythmDisplacement(row: number, lane: number, time: number, band
     + bands.mid * .42 * (.55 + .45 * Math.sin(row * .38 - lane * .27 - time * 2.8))
     + bands.high * .28 * (.55 + .45 * Math.sin(row * .62 + lane * .4 - time * 4.1));
   return musicDisplacement(row, lane, time, bands, strength) * frame.style.legacy
-    + (frame.style.wave * wave + frame.style.lift * flow) * clamp(strength, 0, 2);
+    + (frame.style.wave * wave + frame.style.lift * flow) * clamp(strength, 0, MAX_REACTIVE_STRENGTH);
 }

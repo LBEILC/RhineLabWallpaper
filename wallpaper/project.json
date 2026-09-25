@@ -1,6 +1,6 @@
 {
   "title": "Rhine Lab · 莱茵生命交互桌面",
-  "description": "【近期更新 / Recent updates】\n\n2026.09.14\n• 优化工作台日期排版：数字日期突出月日，以细竖线分隔星期，支持中英文与明暗配色。\n  Refined the date display with clearer month/day emphasis and a divider before the weekday, in both languages and themes.\n• 修复 WE 设置分组标题乱码：分组直接显示中英双语，普通选项继续跟随 WE 界面语言，保留已有配置。\n  Fixed encoded text in WE property group headings. Groups now show both languages; other labels follow WE's interface language. Existing settings are preserved.\n• 新增中英文切换：工作台、操作提示、小游戏、360° 查看器、全部 40 份档案及 TXT 导出支持英文；保留原有英文开场与美术文字，切换不重置进度。\n  Added English for workspace tools, hints, the game, the 360° viewer, all 40 archives and TXT exports. Existing English opening graphics remain unchanged, and language changes preserve your progress.\n• 移除壁纸内设置，长期配置统一在 WE 属性调整；保留右下角重播、左下角 3D 开关，字体许可随软件包交付。\n  Moved persistent settings to WE's properties panel. Opening replay and the 3D toggle remain on the wallpaper; font notices and licenses are included in the package.\n\n2026.09.12\n• 新增高／中／低模型精度，即时切换、默认高档。中档简化背景细节，低档进一步简化近景，360° 查看器始终保留完整模型。\n  Added High, Medium and Low model detail with live switching. High is the default; lower levels simplify background and nearby details. The 360° viewer keeps the full model.\n• 优化三维阵列和开场 HUD 性能，减少重复绘制与布局计算，保留现有画质、玻璃材质和动态效果。\n  Improved archive array and opening HUD performance by reducing repeated rendering and layout work while preserving visual quality, glass materials and motion.\n\n2026.09.11\n• 新增自定义登录人姓名，开场身份确认、页脚与访问记录同步显示；留空恢复 JOYCE MOORE，最多 24 个字符。\n  Added a custom login name, shared by the opening, footer and access records. Leave it empty for JOYCE MOORE; up to 24 characters are supported.\n• 登录姓名支持原开场字形与中文混排，颜色跟随明暗主题。\n  Login names combine the original opening lettering with Chinese characters where needed, with colors matched to the theme.\n• 新增按时间自动切换明暗，默认 19:00 切为暗色、07:00 切为亮色，支持自定义时间；关闭后恢复手动配色。\n  Added scheduled theme switching, with customizable times defaulting to dark at 19:00 and light at 07:00. Disable it to return to your manual theme.\n• 提供 GitHub 构建包，可下载并解压到 Wallpaper Engine 的 projects\\myprojects 目录后本地加载。\n  Downloadable builds are available on GitHub. Extract them into Wallpaper Engine's projects\\myprojects folder to load the wallpaper locally.\n\n更多详情与完整更新日志请前往 GitHub 查看。\nVisit GitHub for more details and the full changelog.\n\n────────────────────\n\n【Rhine Lab · 莱茵生命交互桌面】\n以莱茵生命档案终端为灵感，将日常工具与玻璃档案阵列融入桌面的非官方《明日方舟》同人交互壁纸。\n\n【桌面工作台】\n查看时间与日期，记录最多三条今日事项，追踪重要日程，使用专注计时，显示当前歌曲、封面与播放进度。功能和界面元素可按需开启或隐藏。\n\n【档案展示】\n拖动浏览循环玻璃档案阵列，阅读 40 份档案、收藏记录或导出 TXT。进入 360° 查看器旋转、缩放和拆解模型。\n\n【自定义画面】\n支持亮暗配色与定时切换、三种音乐律动、静止呼吸、HUD 曲面与鼠标追踪，以及可调的颗粒、色散和暗角。可调整界面边距、模型精度、自定义画质和超级性能模式，也可关闭 3D，搭配自己的图片背景使用工作台。\n\n【语言与操作】\n在 WE 壁纸属性顶部选择「语言 / Language → 简体中文 / English」，即时生效并保存。原有英文开场与图形文字保持原样；你的姓名、事项、日程标题和媒体信息保留原文。\n长期配置统一在 WE 属性中调整。普通选项名称跟随 WE 自身的界面语言，折叠分组标题显示中英双语。右下角可重播开场，左下角可开关 3D；波纹接力小游戏可手动进入。\n媒体信息取决于系统与播放器支持，音乐律动需要启用音频响应。语言切换保留当前档案、收藏与专注计时。\n\n预览中的事项仅用于演示，实际内容由你填写。壁纸资源本地运行，字体说明与许可随包提供。角色、名称与相关世界观归原权利方所有，本作品与官方无关联。\n\n────────────────────\n\n【Rhine Lab · Interactive Desktop】\nAn unofficial Arknights fan wallpaper inspired by the Rhine Lab archive terminal, combining everyday desktop tools with an interactive glass archive array.\n\n【Desktop workspace】\nCheck the time and date, keep up to three daily tasks, track an upcoming event, run a focus timer, and view the current song, cover art and playback progress. Enable or hide individual tools and interface elements as needed.\n\n【Archive display】\nDrag through the looping glass archive array to read 40 records, save favorites or export TXT files. Open the 360° viewer to rotate, zoom and explore the model's parts.\n\n【Appearance】\nChoose light or dark themes with optional scheduled switching, three audio response styles, idle breathing, a curved HUD with mouse tracking, and adjustable grain, chromatic aberration and vignette. Adjust UI margins, model detail and graphics quality, use Super Performance Mode, or turn off 3D and pair the workspace with your own background image.\n\n【Language and controls】\nChoose Language / 语言 → 简体中文 / English at the top of the wallpaper's properties in WE. The choice applies immediately and is saved. Existing English opening graphics stay unchanged; names, tasks, event titles and media information remain as supplied.\nUse WE's properties panel for persistent settings. Option labels follow WE's own interface language, while group headings show both languages. Replay the opening from the bottom right, toggle 3D at the bottom left, or start the ripple relay game manually.\nMedia information depends on your system and player. Audio response requires audio recording to be enabled in WE. Language changes preserve your active archive, favorites and focus timer.\n\nPreview tasks are demonstrations; you provide your own content. All wallpaper resources run locally, with font notices and licenses included in the package. Arknights characters, names and setting belong to their respective owners. This work is not affiliated with the official creators.",
+  "description": "【近期更新 / Recent updates】\n\n2026.09.25\n• 页脚新增模式切换与完整工作台按钮，临时全部打开后可恢复 WE 自定义配置；独立页脚分组控制信息、时间与两个按钮。\n  Switch modes or temporarily open the full workspace from the footer, then restore your WE settings. A dedicated Footer group controls information, the clock and both buttons.\n• 支持分别移动左侧时钟／事项、右侧功能面板和底部导航；修复部分功能关闭后的连续编号。\n  Position the left overview, right panel and bottom navigation independently. Visible tools now use consistent consecutive numbering.\n• 专注结束新增提醒音，补充按钮操作音，三种音乐律动幅度上限提高至 300%。\n  Added a focus-completion chime and button sounds, and raised the strength limit to 300% for all three audio response styles.\n\n2026.09.14\n• 优化工作台日期排版：数字日期突出月日，以细竖线分隔星期，支持中英文与明暗配色。\n  Refined the date display with clearer month/day emphasis and a divider before the weekday, in both languages and themes.\n• 修复 WE 设置分组标题乱码：分组直接显示中英双语，普通选项继续跟随 WE 界面语言，保留已有配置。\n  Fixed encoded text in WE property group headings. Groups now show both languages; other labels follow WE's interface language. Existing settings are preserved.\n• 新增中英文切换：工作台、操作提示、小游戏、360° 查看器、全部 40 份档案及 TXT 导出支持英文；保留原有英文开场与美术文字，切换不重置进度。\n  Added English for workspace tools, hints, the game, the 360° viewer, all 40 archives and TXT exports. Existing English opening graphics remain unchanged, and language changes preserve your progress.\n• 移除壁纸内设置，长期配置统一在 WE 属性调整；保留右下角重播、左下角 3D 开关，字体许可随软件包交付。\n  Moved persistent settings to WE's properties panel. Opening replay and the 3D toggle remain on the wallpaper; font notices and licenses are included in the package.\n\n2026.09.12\n• 新增高／中／低模型精度，即时切换、默认高档。中档简化背景细节，低档进一步简化近景，360° 查看器始终保留完整模型。\n  Added High, Medium and Low model detail with live switching. High is the default; lower levels simplify background and nearby details. The 360° viewer keeps the full model.\n• 优化三维阵列和开场 HUD 性能，减少重复绘制与布局计算，保留现有画质、玻璃材质和动态效果。\n  Improved archive array and opening HUD performance by reducing repeated rendering and layout work while preserving visual quality, glass materials and motion.\n\n2026.09.11\n• 新增自定义登录人姓名，开场身份确认、页脚与访问记录同步显示；留空恢复 JOYCE MOORE，最多 24 个字符。\n  Added a custom login name, shared by the opening, footer and access records. Leave it empty for JOYCE MOORE; up to 24 characters are supported.\n• 登录姓名支持原开场字形与中文混排，颜色跟随明暗主题。\n  Login names combine the original opening lettering with Chinese characters where needed, with colors matched to the theme.\n• 新增按时间自动切换明暗，默认 19:00 切为暗色、07:00 切为亮色，支持自定义时间；关闭后恢复手动配色。\n  Added scheduled theme switching, with customizable times defaulting to dark at 19:00 and light at 07:00. Disable it to return to your manual theme.\n• 提供 GitHub 构建包，可下载并解压到 Wallpaper Engine 的 projects\\myprojects 目录后本地加载。\n  Downloadable builds are available on GitHub. Extract them into Wallpaper Engine's projects\\myprojects folder to load the wallpaper locally.\n\n更多详情与完整更新日志请前往 GitHub 查看。\nVisit GitHub for more details and the full changelog.\n\n────────────────────\n\n【Rhine Lab · 莱茵生命交互桌面】\n以莱茵生命档案终端为灵感，将日常工具与玻璃档案阵列融入桌面的非官方《明日方舟》同人交互壁纸。\n\n【桌面工作台】\n查看时间与日期，记录最多三条今日事项，追踪重要日程，使用专注计时，显示当前歌曲、封面与播放进度。功能和界面元素可按需开启或隐藏。\n\n【档案展示】\n拖动浏览循环玻璃档案阵列，阅读 40 份档案、收藏记录或导出 TXT。进入 360° 查看器旋转、缩放和拆解模型。\n\n【自定义画面】\n支持亮暗配色与定时切换、三种音乐律动、静止呼吸、HUD 曲面与鼠标追踪，以及可调的颗粒、色散和暗角。可调整界面边距、模型精度、自定义画质和超级性能模式，也可关闭 3D，搭配自己的图片背景使用工作台。\n\n【语言与操作】\n在 WE 壁纸属性顶部选择「语言 / Language → 简体中文 / English」，即时生效并保存。原有英文开场与图形文字保持原样；你的姓名、事项、日程标题和媒体信息保留原文。\n长期配置统一在 WE 属性中调整。普通选项名称跟随 WE 自身的界面语言，折叠分组标题显示中英双语。页脚可切换模式、临时打开完整工作台，也可重播开场和开关 3D；波纹接力小游戏可手动进入。页脚快捷操作在重载后恢复 WE 默认配置。\n媒体信息取决于系统与播放器支持，音乐律动需要启用音频响应。语言切换保留当前档案、收藏与专注计时。\n\n预览中的事项仅用于演示，实际内容由你填写。壁纸资源本地运行，字体说明与许可随包提供。角色、名称与相关世界观归原权利方所有，本作品与官方无关联。\n\n────────────────────\n\n【Rhine Lab · Interactive Desktop】\nAn unofficial Arknights fan wallpaper inspired by the Rhine Lab archive terminal, combining everyday desktop tools with an interactive glass archive array.\n\n【Desktop workspace】\nCheck the time and date, keep up to three daily tasks, track an upcoming event, run a focus timer, and view the current song, cover art and playback progress. Enable or hide individual tools and interface elements as needed.\n\n【Archive display】\nDrag through the looping glass archive array to read 40 records, save favorites or export TXT files. Open the 360° viewer to rotate, zoom and explore the model's parts.\n\n【Appearance】\nChoose light or dark themes with optional scheduled switching, three audio response styles, idle breathing, a curved HUD with mouse tracking, and adjustable grain, chromatic aberration and vignette. Adjust UI margins, model detail and graphics quality, use Super Performance Mode, or turn off 3D and pair the workspace with your own background image.\n\n【Language and controls】\nChoose Language / 语言 → 简体中文 / English at the top of the wallpaper's properties in WE. The choice applies immediately and is saved. Existing English opening graphics stay unchanged; names, tasks, event titles and media information remain as supplied.\nUse WE's properties panel for persistent settings. Option labels follow WE's own interface language, while group headings show both languages. The footer lets you switch modes, temporarily open the full workspace, replay the opening and toggle 3D. You can also start the ripple relay game manually. Temporary workspace choices reset to WE defaults on reload.\nMedia information depends on your system and player. Audio response requires audio recording to be enabled in WE. Language changes preserve your active archive, favorites and focus timer.\n\nPreview tasks are demonstrations; you provide your own content. All wallpaper resources run locally, with font notices and licenses included in the package. Arknights characters, names and setting belong to their respective owners. This work is not affiliated with the official creators.",
   "type": "web",
   "file": "index.html",
   "preview": "preview.gif",
@@ -132,49 +132,48 @@
         "order": 8,
         "text": "工作台 · 界面显示 | Workspace · Visibility",
         "type": "group",
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "showclock": {
         "order": 9,
         "text": "ui_showclock",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "showtasks": {
         "order": 10,
         "text": "ui_showtasks",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "showmodule": {
         "order": 11,
         "text": "ui_showmodule",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "shownavigation": {
         "order": 12,
         "text": "ui_shownavigation",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "showbrand": {
         "order": 13,
         "text": "ui_showbrand",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "showfooter": {
-        "order": 14,
+        "order": 17.21,
         "text": "ui_showfooter",
         "type": "bool",
-        "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "value": true
       },
       "selectionstyle": {
         "order": 16,
@@ -195,55 +194,55 @@
             "value": "flat"
           }
         ],
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "groupcontent": {
         "order": 18,
         "text": "工作台 · 事项与日程 | Workspace · Tasks & events",
         "type": "group",
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "idlebreathing": {
         "order": 17,
         "text": "ui_idlebreathing",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "task1": {
         "order": 19,
         "text": "ui_task1",
         "type": "textinput",
         "value": "",
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "task2": {
         "order": 20,
         "text": "ui_task2",
         "type": "textinput",
         "value": "",
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "task3": {
         "order": 21,
         "text": "ui_task3",
         "type": "textinput",
         "value": "",
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "eventname": {
         "order": 22,
         "text": "ui_eventname",
         "type": "textinput",
         "value": "",
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "eventdate": {
         "order": 23,
         "text": "ui_eventdate",
         "type": "textinput",
         "value": "",
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "focusminutes": {
         "order": 24,
@@ -254,7 +253,7 @@
         "max": 120,
         "step": 1,
         "precision": 0,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "breakminutes": {
         "order": 25,
@@ -265,7 +264,7 @@
         "max": 60,
         "step": 1,
         "precision": 0,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "groupaudio": {
         "order": 26,
@@ -310,14 +309,14 @@
         "order": 31,
         "text": "工作台 · 音乐律动 | Workspace · Audio response",
         "type": "group",
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "audioreactive": {
         "order": 32,
         "text": "ui_audioreactive",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "reactiveintensity": {
         "order": 34,
@@ -325,30 +324,30 @@
         "type": "slider",
         "value": 100,
         "min": 0,
-        "max": 200,
+        "max": 300,
         "step": 1,
         "precision": 0,
-        "condition": "desktopmode.value == 'workbench' && audioreactive.value == true"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true) && audioreactive.value == true"
       },
       "reactivemute": {
         "order": 35,
         "text": "ui_reactivemute",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench' && audioreactive.value == true"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true) && audioreactive.value == true"
       },
       "groupgame": {
         "order": 36,
         "text": "工作台 · 波纹接力 | Workspace · Ripple relay",
         "type": "group",
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "showgame": {
         "order": 37,
         "text": "ui_showgame",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "gamepace": {
         "order": 38,
@@ -369,7 +368,7 @@
             "value": "quick"
           }
         ],
-        "condition": "desktopmode.value == 'workbench' && showgame.value == true"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true) && showgame.value == true"
       },
       "colortheme": {
         "order": 4,
@@ -456,7 +455,7 @@
             "value": "lift"
           }
         ],
-        "condition": "desktopmode.value == 'workbench' && audioreactive.value == true"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true) && audioreactive.value == true"
       },
       "archivecoverage": {
         "order": 5,
@@ -609,42 +608,42 @@
         "order": 56,
         "text": "工作台 · 可用功能 | Workspace · Available tools",
         "type": "group",
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "enabletime": {
         "order": 57,
         "text": "ui_enabletime",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "enabletasks": {
         "order": 58,
         "text": "ui_enabletasks",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "enableevent": {
         "order": 59,
         "text": "ui_enableevent",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "enablemedia": {
         "order": 60,
         "text": "ui_enablemedia",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "enablefocus": {
         "order": 61,
         "text": "ui_enablefocus",
         "type": "bool",
         "value": true,
-        "condition": "desktopmode.value == 'workbench'"
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
       },
       "selectedindexaccent": {
         "order": 4.5,
@@ -888,6 +887,102 @@
             "value": "low"
           }
         ]
+      },
+      "groupfooter": {
+        "order": 17.2,
+        "text": "页脚 | Footer",
+        "type": "group"
+      },
+      "showfooterclock": {
+        "order": 17.22,
+        "type": "bool",
+        "value": true,
+        "condition": "showfooter.value == true",
+        "text": "ui_showfooterclock"
+      },
+      "showmodebutton": {
+        "order": 17.23,
+        "type": "bool",
+        "value": true,
+        "text": "ui_showmodebutton"
+      },
+      "showworkbenchbutton": {
+        "order": 17.24,
+        "type": "bool",
+        "value": true,
+        "text": "ui_showworkbenchbutton"
+      },
+      "groupworkbenchposition": {
+        "order": 55.2,
+        "text": "工作台 · 区域位置 | Workspace · Position",
+        "type": "group",
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)"
+      },
+      "wboverviewx": {
+        "order": 55.21,
+        "type": "slider",
+        "value": 0,
+        "min": -300,
+        "max": 300,
+        "step": 1,
+        "precision": 0,
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)",
+        "text": "ui_wboverviewx"
+      },
+      "wboverviewy": {
+        "order": 55.22,
+        "type": "slider",
+        "value": 0,
+        "min": -300,
+        "max": 300,
+        "step": 1,
+        "precision": 0,
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)",
+        "text": "ui_wboverviewy"
+      },
+      "wbmodulex": {
+        "order": 55.23,
+        "type": "slider",
+        "value": 0,
+        "min": -300,
+        "max": 300,
+        "step": 1,
+        "precision": 0,
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)",
+        "text": "ui_wbmodulex"
+      },
+      "wbmoduley": {
+        "order": 55.24,
+        "type": "slider",
+        "value": 0,
+        "min": -300,
+        "max": 300,
+        "step": 1,
+        "precision": 0,
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)",
+        "text": "ui_wbmoduley"
+      },
+      "wbnavigationx": {
+        "order": 55.25,
+        "type": "slider",
+        "value": 0,
+        "min": -300,
+        "max": 300,
+        "step": 1,
+        "precision": 0,
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)",
+        "text": "ui_wbnavigationx"
+      },
+      "wbnavigationy": {
+        "order": 55.26,
+        "type": "slider",
+        "value": 0,
+        "min": -300,
+        "max": 300,
+        "step": 1,
+        "precision": 0,
+        "condition": "(desktopmode.value == 'workbench' || showmodebutton.value == true || showworkbenchbutton.value == true)",
+        "text": "ui_wbnavigationy"
       }
     },
     "localization": {
@@ -895,7 +990,7 @@
         "ui_language": "Language / 语言",
         "ui_language_0": "简体中文",
         "ui_language_1": "English",
-        "ui_desktopmode": "Workspace mode",
+        "ui_desktopmode": "Default mode at startup",
         "ui_desktopmode_0": "Desktop workspace",
         "ui_desktopmode_1": "Archive display",
         "ui_sessionname": "Login name (opening, footer and access log; up to 24 characters)",
@@ -917,7 +1012,7 @@
         "ui_showmodule": "Show right-side content",
         "ui_shownavigation": "Show bottom navigation",
         "ui_showbrand": "Show brand lettering",
-        "ui_showfooter": "Show footer",
+        "ui_showfooter": "Show footer information (session, name and clock)",
         "ui_selectionstyle": "Selected archive height",
         "ui_selectionstyle_0": "Original height",
         "ui_selectionstyle_1": "Align during audio response",
@@ -1019,13 +1114,22 @@
         "ui_modelprecision": "Model detail (360° viewer always uses the full model)",
         "ui_modelprecision_0": "High · Original model",
         "ui_modelprecision_1": "Medium · Simplified background",
-        "ui_modelprecision_2": "Low · Simplified background and foreground"
+        "ui_modelprecision_2": "Low · Simplified background and foreground",
+        "ui_showfooterclock": "Show footer clock",
+        "ui_showmodebutton": "Show workspace / archive switch",
+        "ui_showworkbenchbutton": "Show full workspace toggle",
+        "ui_wboverviewx": "Clock and tasks · Horizontal offset (positive = right)",
+        "ui_wboverviewy": "Clock and tasks · Vertical offset (positive = down)",
+        "ui_wbmodulex": "Workspace panel · Horizontal offset (positive = right)",
+        "ui_wbmoduley": "Workspace panel · Vertical offset (positive = down)",
+        "ui_wbnavigationx": "Workspace navigation · Horizontal offset (positive = right)",
+        "ui_wbnavigationy": "Workspace navigation · Vertical offset (positive = down)"
       },
       "zh-chs": {
         "ui_language": "语言 / Language",
         "ui_language_0": "简体中文",
         "ui_language_1": "English",
-        "ui_desktopmode": "工作模式",
+        "ui_desktopmode": "启动默认模式",
         "ui_desktopmode_0": "桌面工作台",
         "ui_desktopmode_1": "档案展示",
         "ui_sessionname": "登录人姓名（开场身份确认、页脚与访问记录，最多 24 字符）",
@@ -1047,7 +1151,7 @@
         "ui_showmodule": "显示右侧功能内容",
         "ui_shownavigation": "显示底部功能导航",
         "ui_showbrand": "显示品牌文字",
-        "ui_showfooter": "显示页脚信息",
+        "ui_showfooter": "显示页脚信息（SESSION、姓名与时间）",
         "ui_selectionstyle": "选中档案高度",
         "ui_selectionstyle_0": "保持原样",
         "ui_selectionstyle_1": "仅音乐律动时归齐",
@@ -1149,7 +1253,16 @@
         "ui_modelprecision": "模型精度（360° 拆解查看器保留完整模型）",
         "ui_modelprecision_0": "高 · 原始模型",
         "ui_modelprecision_1": "中 · 简化背景细节",
-        "ui_modelprecision_2": "低 · 简化背景与近景细节"
+        "ui_modelprecision_2": "低 · 简化背景与近景细节",
+        "ui_showfooterclock": "显示页脚时间",
+        "ui_showmodebutton": "显示模式切换按钮",
+        "ui_showworkbenchbutton": "显示完整工作台按钮",
+        "ui_wboverviewx": "左侧时钟／事项 · 水平位置（正值向右）",
+        "ui_wboverviewy": "左侧时钟／事项 · 垂直位置（正值向下）",
+        "ui_wbmodulex": "右侧功能面板 · 水平位置（正值向右）",
+        "ui_wbmoduley": "右侧功能面板 · 垂直位置（正值向下）",
+        "ui_wbnavigationx": "底部功能导航 · 水平位置（正值向右）",
+        "ui_wbnavigationy": "底部功能导航 · 垂直位置（正值向下）"
       }
     }
   },

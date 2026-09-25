@@ -1,5 +1,5 @@
 import { tr, bindStaticTranslations } from "./i18n";
-import { RelayRound, SpectrumEnvelope } from "./archive-play-motion";
+import { RelayRound, SpectrumEnvelope, reactiveStrength } from "./archive-play-motion";
 import type { ArchiveScene } from "./scene";
 import { wallpaperHost, type WallpaperProperties } from "./wallpaper";
 import { SurfaceTransition } from "./ui-transitions";
@@ -139,7 +139,7 @@ export class ArchivePlayground {
     const playing = this.round.status === "playing" || this.round.status === "preparing";
     this.musicGain += ((playing ? 0 : 1) - this.musicGain) * (1 - Math.exp(-dt * 6));
     const intensity = this.props.reactiveintensity?.value;
-    const strength = typeof intensity === "number" && Number.isFinite(intensity) ? Math.max(0, Math.min(2, intensity / 100)) : 1;
+    const strength = reactiveStrength(intensity);
     const style = this.props.selectionstyle?.value ?? "music-flat";
     const rhythm = this.props.rhythmstyle?.value;
     scene?.setRhythmStyle(rhythm === "wave" || rhythm === "lift" ? rhythm : "legacy");

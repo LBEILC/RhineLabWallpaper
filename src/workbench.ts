@@ -3,19 +3,19 @@ import { rollText, patchRollingPanel } from "./workbench-rolling";
 import { workbenchLettering } from "./workbench-lettering";
 import { escapeHtml } from "./html";
 import { wallpaperHost, type WallpaperProperties } from "./wallpaper";
-import { dayKey, durationText, idleTimer, parseTarget, restoreTimer, timerLeft } from "./workbench-state";
+import { dayKey, durationText, idleTimer, parseTarget, restoreTimer, timerLeft, shouldRemindTimer } from "./workbench-state";
 import "./workbench.css";
-import { defaultWorkbenchVisibility, applyVisibilityProperties, type WorkbenchVisibility, type WorkbenchElement } from "./workbench-visibility";
+import { WorkbenchControls, type WorkbenchElement } from "./workbench-visibility";
 
 type Media = { status?: { enabled?: boolean }; properties?: { title?: string; artist?: string; albumTitle?: string }; thumbnail?: { thumbnail?: string }; timeline?: { position?: number; duration?: number }; playing?: boolean };
 declare global { interface Window { rhineWallpaperMedia?: Media; } }
 const names = ["时间日期", "今日事项", "重要日程", "正在播放", "专注计时"];
-const capabilityKeys = ["enabletime", "enabletasks", "enableevent", "enablemedia", "enablefocus"];
 const key = "rhine-workbench-v1";
 export class Workbench {
-  enabled = false;
+  private controls = new WorkbenchControls();
+  get enabled() { return this.controls.enabled; }
   private root: HTMLElement;
-  private props: WallpaperProperties = {};
+  private props = this.controls.properties;
   private lane = 0;
   private timer = idleTimer();
   private done: string[] = [];
@@ -24,8 +24,9 @@ export class Workbench {
   private lastSecond = -1;
   private renderedDate = "";
   private exitAnimation?: Animation;
-  private visibility: WorkbenchVisibility = defaultWorkbenchVisibility();
-  constructor(private stage: HTMLElement, private onMode: () => void, private onLane: (lane: number) => void) {
+  private lastTimerTick?: number;
+  constructor(private stage: HTMLElement, private onMode: () => void, private onLane: (lane: number) => void,
+    private onSound: (sound: "ui-tick" | "focus-done") => void = () => {}) {
     try {
       const saved = JSON.parse(localStorage.getItem(key) ?? "null");
       this.timer = restoreTimer(saved?.timer);
@@ -42,52 +43,91 @@ export class Workbench {
     window.addEventListener(localeEvent, () => {
       const task = (document.activeElement as HTMLElement)?.dataset.wbTask;
       this.lastSecond = -1;
-      this.renderTasks(); this.renderPanel(); this.tick();
+      this.renderTasks(); this.renderPanel(); this.syncFooter(); this.tick();
       if (task !== undefined) this.root.querySelector<HTMLElement>(`[data-wb-task="${task}"]`)?.focus({ preventScroll: true });
     });
     this.root.addEventListener("click", event => {
       const button = (event.target as Element).closest<HTMLButtonElement>("button");
-      if (!button) return;
-      if (button.dataset.wbLane !== undefined) { this.select(+button.dataset.wbLane); onLane(this.lane); }
+      if (!button || button.disabled || button.hidden || this.root.inert || !this.enabled) return;
+      if (button.dataset.wbLane !== undefined) {
+        const lane = +button.dataset.wbLane;
+        if (lane === this.lane || !this.laneEnabled(lane)) return;
+        this.select(lane); onLane(this.lane); // Selecting the archive already supplies its glass sound.
+      }
       if (button.dataset.wbTask !== undefined) {
         this.rollDay();
         const id = this.taskId(+button.dataset.wbTask);
         this.done = this.done.includes(id) ? this.done.filter(d => d !== id) : [...this.done, id];
         this.save(); this.renderTasks();
         this.root.querySelector<HTMLButtonElement>(`[data-wb-task="${button.dataset.wbTask}"]`)?.focus({ preventScroll: true });
+        this.onSound("ui-tick");
       }
-      if (button.dataset.wbTimer) this.actTimer(button.dataset.wbTimer);
+      if (button.dataset.wbTimer) { this.actTimer(button.dataset.wbTimer); this.onSound("ui-tick"); }
     });
     window.addEventListener("rhine-wallpaper-properties", event => this.apply((event as CustomEvent<WallpaperProperties>).detail));
     window.addEventListener("rhine-wallpaper-media", () => { if (this.lane === 3) this.renderPanel(); });
     window.addEventListener("resize", () => { if (this.lane === 3) this.renderPanel(); });
+    const suspendReminder = () => { this.lastTimerTick = undefined; this.settle(Date.now()); };
+    window.addEventListener("rhine-wallpaper-pause", suspendReminder);
+    document.addEventListener("visibilitychange", suspendReminder);
     this.apply(wallpaperHost()?.properties ?? {});
+    this.settle(Date.now()); // An expired timer restored from storage is never a new reminder.
   }
   private text(key: string) { const v = this.props[key]?.value; return typeof v === "string" ? v.trim().slice(0, 240) : ""; }
   private minutes(phase = this.timer.phase) { const n = this.props[phase === "focus" ? "focusminutes" : "breakminutes"]?.value; return typeof n === "number" && Number.isFinite(n) ? Math.max(1, Math.min(phase === "focus" ? 120 : 60, n)) : phase === "focus" ? 25 : 5; }
   private taskId(i: number) { return `${i}:${this.text(`task${i + 1}`)}`; }
   private apply(props: WallpaperProperties) {
-    Object.assign(this.props, props);
-    this.visibility = applyVisibilityProperties(this.visibility, props);
-    if (props.desktopmode) this.setEnabled(props.desktopmode.value === "workbench");
+    const wasEnabled = this.enabled;
+    this.controls.apply(props);
     // Early/partial host updates must not clear saved tasks before their text arrives.
     const previous = this.done.length;
     this.done = this.done.filter(id => [0, 1, 2].every(i => !props[`task${i + 1}`] || !id.startsWith(`${i}:`) || id === this.taskId(i)));
     if (previous !== this.done.length) this.save();
     if (!this.laneEnabled(this.lane)) {
-      this.lane = capabilityKeys.findIndex((_, i) => this.laneEnabled(i));
+      this.lane = this.controls.lanes[0] ?? -1;
       if (this.lane >= 0) this.onLane(this.lane);
     }
     this.renderTasks(); this.renderPanel();
-    this.syncElements();
+    this.syncControls(wasEnabled !== this.enabled);
   }
   setEnabled(value: boolean) {
-    this.enabled = value;
-    this.stage.dataset.workbench = String(value);
-    document.querySelectorAll<HTMLElement>("[data-workbench-mode]").forEach(button => button.setAttribute("aria-pressed", String((button.dataset.workbenchMode === "workbench") === value)));
-    this.onMode();
+    this.controls.setMode(value);
+    this.refreshControls();
+  }
+  toggleExpanded() {
+    this.controls.toggleExpanded();
+    this.refreshControls();
+  }
+  private refreshControls() {
+    if (!this.laneEnabled(this.lane)) this.lane = this.controls.lanes[0] ?? -1;
+    this.renderPanel();
+    this.syncControls(true);
+  }
+  private syncControls(notifyMode: boolean) {
+    this.stage.dataset.workbench = String(this.enabled);
+    this.stage.dataset.workbenchExpanded = String(this.controls.expanded);
+    if (notifyMode) this.onMode();
     this.syncVisibility();
     this.syncElements();
+    this.syncFooter();
+    window.dispatchEvent(new Event("rhine-workbench-layout"));
+  }
+  private syncFooter() {
+    const mode = this.stage.querySelector<HTMLButtonElement>('[data-action="toggle-workbench-mode"]');
+    const expanded = this.stage.querySelector<HTMLButtonElement>('[data-action="toggle-workbench-expanded"]');
+    if (mode) {
+      mode.hidden = this.props.showmodebutton?.value === false;
+      mode.textContent = this.enabled ? tr("档案展示 ↗") : tr("桌面工作台 ↗");
+      mode.title = this.enabled ? tr("切换到档案展示") : tr("切换到桌面工作台");
+    }
+    if (expanded) {
+      expanded.hidden = this.props.showworkbenchbutton?.value === false;
+      expanded.textContent = this.controls.expanded ? tr("恢复自定义显示 ↙") : tr("打开完整工作台 ↗");
+      expanded.setAttribute("aria-pressed", String(this.controls.expanded));
+    }
+    this.stage.dataset.footerInfo = String(this.controls.visibility.footer);
+    this.stage.dataset.footerClock = String(this.props.showfooterclock?.value !== false);
+    this.stage.dataset.footerShortcuts = String(this.props.showmodebutton?.value !== false || this.props.showworkbenchbutton?.value !== false);
   }
   syncVisibility() {
     const hidden = !this.enabled || this.stage.dataset.mode === "boot";
@@ -113,28 +153,34 @@ export class Workbench {
       [".wb-time", ".wb-today", ".wb-module", ".wb-nav"].forEach((selector, i) => {
         const element = this.root.querySelector<HTMLElement>(selector)!;
         element.getAnimations().forEach(a => a.cancel());
-        if (!reduced) element.animate([{ opacity: 0, translate: "0 9px" }, { opacity: 1, translate: "0 0" }],
+        const base = getComputedStyle(element).translate.split(" ").map(parseFloat);
+        const x = base[0] || 0, y = base[1] || 0;
+        if (!reduced) element.animate([{ opacity: 0, translate: `${x}px ${y + 9}px` }, { opacity: 1, translate: `${x}px ${y}px` }],
           { duration: 460, delay: 60 + i * 65, easing: "cubic-bezier(.22,.7,.2,1)", fill: "backwards" });
       });
     }
   }
-  private laneEnabled(lane: number) { return lane >= 0 && lane < names.length && this.props[capabilityKeys[lane]]?.value !== false; }
+  private laneEnabled(lane: number) { return this.controls.laneEnabled(lane); }
   select(lane: number) {
     if (!this.laneEnabled(lane)) return;
     this.lane = lane;
     this.renderPanel();
   }
   private syncElements() {
+    const visibility = this.controls.visibility;
     const selectors = { clock: ".wb-time", tasks: ".wb-today", module: ".wb-module", navigation: ".wb-nav" } as const;
-    for (const [key, selector] of Object.entries(selectors)) this.root.querySelector<HTMLElement>(selector)!.hidden = !this.visibility[key as WorkbenchElement];
-    const available = capabilityKeys.some((_, i) => this.laneEnabled(i));
-    this.root.querySelector<HTMLElement>(".wb-module")!.hidden = !this.visibility.module || !available;
-    this.root.querySelector<HTMLElement>(".wb-nav")!.hidden = !this.visibility.navigation || !available;
-    this.root.querySelectorAll<HTMLButtonElement>("[data-wb-lane]").forEach(button => { button.hidden = !this.laneEnabled(+button.dataset.wbLane!); });
-    this.root.querySelector<HTMLElement>(".wb-overview")!.hidden = !this.visibility.clock && !this.visibility.tasks;
-    this.root.dataset.clockVisible = String(this.visibility.clock);
-    this.stage.dataset.workbenchBrand = String(!this.enabled || this.visibility.brand);
-    this.stage.dataset.workbenchFooter = String(!this.enabled || this.visibility.footer);
+    for (const [key, selector] of Object.entries(selectors)) this.root.querySelector<HTMLElement>(selector)!.hidden = !visibility[key as WorkbenchElement];
+    const available = this.controls.lanes;
+    this.root.querySelector<HTMLElement>(".wb-module")!.hidden = !visibility.module || !available.length;
+    this.root.querySelector<HTMLElement>(".wb-nav")!.hidden = !visibility.navigation || !available.length;
+    this.root.querySelectorAll<HTMLButtonElement>("[data-wb-lane]").forEach(button => {
+      const index = available.indexOf(+button.dataset.wbLane!);
+      button.hidden = index < 0;
+      button.querySelector("small")!.textContent = index < 0 ? "" : String(index + 1).padStart(2, "0");
+    });
+    this.root.querySelector<HTMLElement>(".wb-overview")!.hidden = !visibility.clock && !visibility.tasks;
+    this.root.dataset.clockVisible = String(visibility.clock);
+    this.stage.dataset.workbenchBrand = String(!this.enabled || visibility.brand);
   }
   private save() {
     try { localStorage.setItem(key, JSON.stringify({ date: this.date, done: this.done, timer: this.timer })); this.storageOK = true; }
@@ -165,15 +211,17 @@ export class Workbench {
     this.save(); this.renderPanel();
     this.root.querySelector<HTMLButtonElement>(`[data-wb-timer="${action}"]`)?.focus({ preventScroll: true });
   }
-  private settle(now: number) {
+  private settle(now: number, previousTick?: number) {
     if (this.timer.status === "running" && timerLeft(this.timer, now) === 0) {
+      const remind = shouldRemindTimer(this.timer, now, previousTick);
       this.timer = { ...this.timer, status: "done", remaining: 0, deadline: 0 }; this.save(); this.renderPanel();
+      if (remind && !wallpaperHost()?.paused && !document.hidden) this.onSound("focus-done");
     }
   }
   tick(now = Date.now()) {
     if (Math.floor(now / 1000) === this.lastSecond) return;
     this.lastSecond = Math.floor(now / 1000);
-    this.rollDay(); this.settle(now);
+    this.rollDay(); this.settle(now, this.lastTimerTick); this.lastTimerTick = now;
     const date = new Date(now);
     rollText(this.root.querySelector<HTMLElement>(".wb-clock")!, date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }), !this.stage.classList.contains("reduce-motion"));
     const dateKey = dayKey(date);
@@ -199,7 +247,7 @@ export class Workbench {
       return;
     }
     this.root.querySelector(".wb-title")!.textContent = tr(names[this.lane]);
-    const available = capabilityKeys.map((_, i) => i).filter(i => this.laneEnabled(i));
+    const available = this.controls.lanes;
     this.root.querySelector(".wb-index")!.textContent = `${String(available.indexOf(this.lane) + 1).padStart(2, "0")} / ${String(available.length).padStart(2, "0")}`;
     this.root.querySelectorAll<HTMLButtonElement>("[data-wb-lane]").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.wbLane! === this.lane)));
     let html = "";

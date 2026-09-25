@@ -15,3 +15,22 @@
 .quality-cycle:disabled { opacity: .4; cursor: default; }
 
 .wallpaper-settings-note { margin: 14px 0 20px; padding: 12px 16px; border-left: 2px solid #9b8b54; background: #e7e3d9; color: #555849; font-size: 13px; line-height: 1.7; }
+
+.footer-session-info { display: inline-flex; align-items: center; gap: 10px; }
+.system-footer [hidden] { display: none !important; }
+.system-footer .footer-shortcut { white-space: nowrap; }
+.system-footer .footer-shortcut[aria-pressed="true"] { color: var(--theme-ink, #080a08); }
+#stage[data-footer-info="false"] .footer-session-info,
+#stage[data-footer-info="false"] .footer-identity,
+#stage[data-footer-clock="false"] :is(#clock, .footer-clock-separator) { display: none; }
+#stage[data-footer-info="false"] .system-footer > span:first-child { margin-right: auto; }
+#stage[data-footer-info="false"] .system-footer .three-toggle { margin-left: 0; padding-left: 0; border-left: 0; }
+@media (max-width: 700px) {
+  html[data-wallpaper="true"] #stage .system-footer { flex-wrap: wrap; gap: 6px 16px; }
+  html[data-wallpaper="true"] #stage .footer-session-info { display: none; }
+  html[data-wallpaper="true"] #stage .system-footer .three-toggle { margin: 0; padding-left: 0; border-left: 0; }
+  html[data-wallpaper="true"] #stage .system-footer .footer-shortcut { order: 2; margin: 0; flex: 1 0 40%; text-align: left; font-size: 10px; }
+  html[data-wallpaper="true"] #stage .system-footer .footer-shortcut + .footer-shortcut { text-align: right; }
+  html[data-wallpaper="true"] #stage[data-footer-shortcuts="true"] .system-footer::after { content: ""; order: 1; flex-basis: 100%; height: 0; }
+  html[data-wallpaper="true"] #stage[data-footer-shortcuts="true"]:not([data-mode="boot"]) > .workbench { bottom: 90px; }
+}

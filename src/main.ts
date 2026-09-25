@@ -96,7 +96,7 @@ $("#stage").innerHTML = `
     <article id="detail-content" class="detail-content"></article>
   </section>
   <div class="powered">POWERED BY <b>RHINE LAB</b><i></i></div>
-  <footer class="system-footer"><span><i class="status-light"></i> ${workbenchLettering('session')}${isWallpaper ? '<button type="button" class="three-toggle" data-action="toggle-three" aria-pressed="true" title="卸载三维模型，保留 2D 界面">3D 开启</button>' : ''}</span><span><span id="session-name">${workbenchLettering('user')}</span> <i>／</i> <span id="clock">00:00:00</span></span><button data-action="replay" title="重播启动流程">${workbenchLettering('replay')} ↗</button></footer>
+  <footer class="system-footer"><span><span class="footer-session-info"><i class="status-light"></i> ${workbenchLettering('session')}</span>${isWallpaper ? '<button type="button" class="three-toggle" data-action="toggle-three" aria-pressed="true" title="卸载三维模型，保留 2D 界面">3D 开启</button>' : ''}</span><span class="footer-identity"><span id="session-name">${workbenchLettering('user')}</span> <i class="footer-clock-separator">／</i> <span id="clock">00:00:00</span></span>${isWallpaper ? '<button type="button" class="footer-shortcut" data-action="toggle-workbench-mode">档案展示 ↗</button><button type="button" class="footer-shortcut" data-action="toggle-workbench-expanded" aria-pressed="false">打开完整工作台 ↗</button>' : ''}<button data-action="replay" title="重播启动流程">${workbenchLettering('replay')} ↗</button></footer>
   <div id="pwa-update-notice" class="pwa-update-notice" role="status" hidden><span>新版本已就绪</span><button data-pwa-action="update">更新并重启 ↻</button></div>
   <div id="modal-root"></div><div id="toast" class="toast" role="status"></div>
   <div id="loading" class="loading"><div class="loading-mark">${logo}</div><span>CONNECTING TO INTERNAL DATABASE</span><i></i></div>
@@ -753,7 +753,7 @@ document.addEventListener("click", (e) => {
   if (!started) return;
   if (modalClosing) return;
   const el = (e.target as Element).closest<HTMLElement>("button");
-  if (!el) return;
+  if (!el || el.matches(":disabled") || el.closest("[inert], [hidden]")) return;
   if (el.dataset.select) {
     select(Number(el.dataset.select));
     return;
@@ -784,6 +784,14 @@ document.addEventListener("click", (e) => {
     return;
   }
   const action = el.dataset.action;
+  if (action === "toggle-workbench-mode" || action === "toggle-workbench-expanded") {
+    if (!workbench || !ready || mode === "boot" || modal || viewer?.isOpen || playground?.active) return;
+    if (action === "toggle-workbench-mode") workbench.setEnabled(!workbench.enabled);
+    else workbench.toggleExpanded();
+    el.focus({ preventScroll: true });
+    audio.play("ui-tick");
+    return;
+  }
   if (action === "toggle-three") { void toggleThree(); return; }
   if (action === "sound-preview") audio.play("confirm");
   if (action === "skip") {
@@ -1099,6 +1107,7 @@ function releaseThree() {
 }
 async function toggleThree() {
   if (!isWallpaper || !ready || threeState === "loading") return;
+  audio.play("ui-tick");
   if (threeState === "closing") {
     scene?.setPresentationVisible(true, prefs.reduced);
     threeState = "on"; syncThreeButton(); return;
@@ -1320,7 +1329,7 @@ if (isWallpaper) {
     if (ready && mode !== "boot") setMode("archive");
   }, lane => {
     if (ready && !modal) select(columnMemory[lane]);
-  });
+  }, sound => audio.play(sound));
   playground = new ArchivePlayground($("#stage"), () => scene,
     () => ({ enabled: !!workbench?.enabled && mode === "archive" && ready, paused: Boolean(modal) || modalClosing || Boolean(wallpaperHost()?.paused) || document.hidden, reduced: prefs.reduced }),
     value => { musicSuppressed = value; configureAudio(); }, () => audio.play("tick"));

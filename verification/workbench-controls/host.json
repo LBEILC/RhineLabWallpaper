@@ -1,0 +1,44 @@
+{
+  "checks": [
+    "hidden footer retains full-workspace entry",
+    "full-workspace opens from actual host defaults",
+    "restores latest partial host settings",
+    "independent footer clock",
+    "continuous visible numbering",
+    "host position applies with HUD",
+    "archive mode",
+    "real host audio context running",
+    "real host completion reminder once",
+    "no duplicate reminder",
+    "paused completion is not replayed",
+    "real host page-control click sound",
+    "English controls"
+  ],
+  "errors": [],
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+  "viewport": [
+    1600,
+    900
+  ],
+  "audio": {
+    "state": "running",
+    "scene": "archive",
+    "tracks": 0,
+    "voices": 1,
+    "loaded": false,
+    "playedKeys": 0,
+    "playedSounds": {
+      "ui-tick": 5,
+      "tick": 1,
+      "focus-done": 1
+    },
+    "error": "",
+    "preferences": {
+      "sound": true,
+      "music": false,
+      "soundVolume": 0.2,
+      "musicVolume": 0.5
+    }
+  },
+  "passed": true
+}

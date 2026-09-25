@@ -13,3 +13,28 @@ export function applyVisibilityProperties(current: WorkbenchVisibility, properti
   }
   return result;
 }
+
+export const workbenchCapabilities = ["enabletime", "enabletasks", "enableevent", "enablemedia", "enablefocus"] as const;
+
+/** Host defaults and temporary page controls have separate lifetimes. */
+export class WorkbenchControls {
+  readonly properties: Record<string, { value: unknown }> = {};
+  private defaults = defaultWorkbenchVisibility();
+  private modeOverride?: boolean;
+  expanded = false;
+
+  get enabled() { return this.expanded || (this.modeOverride ?? this.properties.desktopmode?.value !== "archive"); }
+  get visibility(): WorkbenchVisibility {
+    return this.expanded ? { ...defaultWorkbenchVisibility(), footer: this.defaults.footer } : { ...this.defaults };
+  }
+  apply(properties: Record<string, { value: unknown }>) {
+    Object.assign(this.properties, properties);
+    this.defaults = applyVisibilityProperties(this.defaults, properties);
+  }
+  setMode(enabled: boolean) { this.expanded = false; this.modeOverride = enabled; }
+  toggleExpanded() { this.expanded = !this.expanded; }
+  laneEnabled(lane: number) {
+    return lane >= 0 && lane < workbenchCapabilities.length && (this.expanded || this.properties[workbenchCapabilities[lane]]?.value !== false);
+  }
+  get lanes() { return workbenchCapabilities.map((_, lane) => lane).filter(lane => this.laneEnabled(lane)); }
+}

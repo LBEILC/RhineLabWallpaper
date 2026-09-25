@@ -45,6 +45,8 @@ export class HudProjection {
     this.nodes.forEach(node => node.classList.add("hud-surface"));
     this.observer = new ResizeObserver(() => this.invalidate());
     this.observer.observe(stage);
+    const footer = stage.querySelector(".system-footer");
+    if (footer) this.observer.observe(footer);
     this.nodes.forEach(node => this.observer.observe(node));
     document.fonts.ready.then(() => this.invalidate());
     document.fonts.addEventListener('loadingdone', () => this.invalidate());

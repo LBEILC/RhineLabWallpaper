@@ -11,6 +11,11 @@ export function parseTarget(text: string): number | null {
 export function timerLeft(timer: TimerState, now: number): number {
   return timer.status === "running" ? Math.max(0, timer.deadline - now) : timer.remaining;
 }
+/** Only a deadline crossed during continuous live observation can ring. */
+export function shouldRemindTimer(timer: TimerState, now: number, previousTick: number | undefined): boolean {
+  return timer.phase === "focus" && timer.status === "running" && previousTick !== undefined
+    && previousTick < timer.deadline && now >= timer.deadline && now - previousTick <= 2500;
+}
 export function restoreTimer(value: unknown): TimerState {
   const t = value as Partial<TimerState> | null;
   if (!t || !["focus", "break"].includes(t.phase ?? "") || !["idle", "running", "paused", "done"].includes(t.status ?? "") || typeof t.remaining !== "number" || !Number.isFinite(t.remaining) || t.remaining < 0 || t.remaining > 7200000 || typeof t.deadline !== "number" || !Number.isFinite(t.deadline) || t.deadline < 0) return idleTimer();

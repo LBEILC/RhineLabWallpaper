@@ -648,7 +648,8 @@ button {
   pointer-events: none;
   transition: opacity 0.8s;
 }
-.system-footer > span {
+.system-footer > span,
+.footer-session-info {
   display: flex;
   align-items: center;
   gap: 10px;
