@@ -11,6 +11,11 @@
     "real host completion reminder once",
     "no duplicate reminder",
     "paused completion is not replayed",
+    "click sound off leaves focus reminder enabled",
+    "reminder off leaves click sounds enabled across partial updates",
+    "enabling reminder does not replay a muted completion",
+    "master sound disables both independently enabled categories",
+    "both categories resume after master sound is enabled",
     "real host page-control click sound",
     "English controls"
   ],
@@ -28,15 +33,17 @@
     "loaded": false,
     "playedKeys": 0,
     "playedSounds": {
-      "ui-tick": 5,
+      "ui-tick": 8,
       "tick": 1,
-      "focus-done": 1
+      "focus-done": 3
     },
     "error": "",
     "preferences": {
       "sound": true,
+      "clickSound": true,
+      "focusReminder": true,
       "music": false,
-      "soundVolume": 0.2,
+      "soundVolume": 0.21,
       "musicVolume": 0.5
     }
   },

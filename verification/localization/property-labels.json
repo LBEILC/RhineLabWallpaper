@@ -4,13 +4,13 @@
   "results": [
     {
       "language": "zh-chs",
-      "checkedLabels": 166,
+      "checkedLabels": 168,
       "originalBugReproduced": true,
       "passed": true
     },
     {
       "language": "en-us",
-      "checkedLabels": 166,
+      "checkedLabels": 168,
       "originalBugReproduced": true,
       "passed": true
     }

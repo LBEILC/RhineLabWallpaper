@@ -23,11 +23,11 @@ check-workbench-controls-browser.mjs 使用构建后的壁纸及注入的 WE 回
 
 ## 真实 Wallpaper Engine
 
-check-workbench-controls-host.mjs 使用独立诊断窗口，1600×900、CEF Chrome 146，13 项通过，结果 [host.json](workbench-controls/host.json)。结束后关闭诊断窗口，未切换桌面壁纸。
+check-workbench-controls-host.mjs 使用独立诊断窗口，1600×900、CEF Chrome 146，追加独立声音开关检查后共 18 项通过，结果 [host.json](workbench-controls/host.json)。结束后关闭诊断窗口，未切换桌面壁纸。
 
-验证真实宿主默认值、部分属性更新、隐藏信息后的入口、连续编号、HUD 位置、档案模式、英文按钮、提醒及暂停不补响、操作音。Web Audio 为 running，focus-done 调度一次，后续不重复，UI 点击声五次。以上确认播放链路和次数，最终听感由用户试听评价。
+验证真实宿主默认值、部分属性更新、隐藏信息后的入口、连续编号、HUD 位置、档案模式、英文按钮、提醒及暂停不补响、操作音。另验证关闭点击音不影响提醒，关闭提醒不影响点击，部分属性更新保留两个开关，重新启用提醒不补响，总开关同时静音并可恢复。Web Audio 为 running，三次应提醒的完成共调度 focus-done 三次，其余完成静音；UI 点击声八次。以上确认播放链路和次数，最终听感由用户试听评价。
 
-check-we-property-labels.mjs 使用本机 WE 属性模板检查中英文各 166 个标签，通过，见 [标签记录](localization/property-labels.json)。
+check-we-property-labels.mjs 使用本机 WE 属性模板检查中英文各 168 个标签，通过，见 [标签记录](localization/property-labels.json)。
 
 ## 使用边界
 

@@ -23,6 +23,8 @@ export type Sound =
 export type SoundScene = "boot" | "archive" | "detail" | "viewer";
 export type AudioPreferences = {
   sound: boolean;
+  clickSound?: boolean;
+  focusReminder?: boolean;
   music: boolean;
   soundVolume: number;
   musicVolume: number;
@@ -408,6 +410,8 @@ export class TerminalAudio {
   configure(prefs: AudioPreferences) {
     this.prefs = {
       sound: !!prefs.sound,
+      clickSound: prefs.clickSound !== false,
+      focusReminder: prefs.focusReminder !== false,
       music: !!prefs.music,
       soundVolume: clamp(prefs.soundVolume),
       musicVolume: clamp(prefs.musicVolume),
@@ -581,6 +585,8 @@ export class TerminalAudio {
     const c = this.context;
     if (
       !this.prefs.sound ||
+      (type === "ui-tick" && this.prefs.clickSound === false) ||
+      (type === "focus-done" && this.prefs.focusReminder === false) ||
       this.hostPaused ||
       !c ||
       c.state !== "running" ||

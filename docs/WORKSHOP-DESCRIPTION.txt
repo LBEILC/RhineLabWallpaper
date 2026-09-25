@@ -5,8 +5,8 @@
   Switch modes or temporarily open the full workspace from the footer, then restore your WE settings. A dedicated Footer group controls information, the clock and both buttons.
 • 支持分别移动左侧时钟／事项、右侧功能面板和底部导航；修复部分功能关闭后的连续编号。
   Position the left overview, right panel and bottom navigation independently. Visible tools now use consistent consecutive numbering.
-• 专注结束新增提醒音，补充按钮操作音，三种音乐律动幅度上限提高至 300%。
-  Added a focus-completion chime and button sounds, and raised the strength limit to 300% for all three audio response styles.
+• 专注结束提醒音与按钮操作音均可独立开关，三种音乐律动幅度上限提高至 300%。
+  Added separate switches for the focus-completion chime and button sounds, and raised the strength limit to 300% for all three audio response styles.
 
 2026.09.14
 • 优化工作台日期排版：数字日期突出月日，以细竖线分隔星期，支持中英文与明暗配色。

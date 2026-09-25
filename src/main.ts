@@ -161,6 +161,8 @@ const saved = new Set<string>(readLocal<string[]>("rhine-saved", []));
 const storedPrefs = readLocal<Partial<{ sound: boolean; music: boolean; soundVolume: number; musicVolume: number; reduced: boolean; quality: boolean; rendering: RenderQuality; colorTheme: "light" | "dark" }>>("rhine-settings", {});
 const prefs = {
   sound: true,
+  clickSound: true,
+  focusReminder: true,
   music: storedPrefs.sound ?? true,
   soundVolume: .55,
   musicVolume: .5,
@@ -1286,6 +1288,10 @@ if (isWallpaper) {
     scene?.setArchiveCoverage(properties.archivecoverage?.value === "extra" || wallpaperHost()?.properties.archivecoverage?.value === "extra");
     for (const key of ["sound", "music", "reduced"] as const)
       if (typeof properties[key]?.value === "boolean") prefs[key] = properties[key].value as boolean;
+    for (const key of ["clickSound", "focusReminder"] as const) {
+      const value = properties[key.toLowerCase()]?.value;
+      if (typeof value === "boolean") prefs[key] = value;
+    }
     for (const key of ["soundVolume", "musicVolume"] as const) {
       const value = properties[key.toLowerCase()]?.value;
       if (typeof value === "number" && Number.isFinite(value)) prefs[key] = Math.max(0, Math.min(1, value / 100));
