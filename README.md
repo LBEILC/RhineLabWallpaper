@@ -8,6 +8,15 @@
 
 [创意工坊订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3799142774) · [GitHub 构建包](docs/GITHUB-RELEASE.md) · [壁纸开发说明](docs/WALLPAPER-ENGINE.md) · [原网页项目](https://github.com/LBEILC/RhineLabUI)
 
+## 最近更新 · 2026.09.25
+
+- 页脚新增模式切换与「完整工作台」按钮，可按需全部打开，再恢复 WE 自定义显示；独立「页脚」分组控制信息、时间及两个按钮。
+- 左侧时钟／事项、右侧功能面板、底部导航支持分别调整位置；部分功能关闭后，导航和面板编号保持连续一致。
+- WE **「声音」→「按钮点击音效」／「专注结束提示音」**可分别开关，默认开启，即时生效，同时遵循总音效开关与音量。重新开启提示不会补响已结束的计时。
+- 三种音乐律动的幅度上限提高至 300%，默认保持 100%。
+
+[完整更新日志](docs/CHANGELOG.md) · [本次功能记录](docs/FEATURE-REQUESTS-2026-09-25.md) · [使用说明](docs/WALLPAPER-ENGINE.md)
+
 本项目从 RhineLabUI 的 `codex/wallpaper-engine` 分支迁移，保留完整提交历史。壁纸后续开发在本仓库的 `main` 分支进行；下方在线体验为原项目的网页版本。
 
 **把莱茵生命的终端，做成可以操作的三维界面。**
