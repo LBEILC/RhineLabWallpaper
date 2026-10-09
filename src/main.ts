@@ -36,6 +36,8 @@ import {
 import { TerminalAudio } from "./audio";
 import { audioSettingsMarkup } from "./audio-settings";
 import { StartupGate } from "./startup";
+import { prepareStartupFonts } from "./startup-resources";
+import { showStartupError, type StartupPhase } from "./startup-error";
 import { isWallpaper, wallpaperHost, wallpaperFrame, type WallpaperProperties } from "./wallpaper";
 import "./startup.css";
 import "./wallpaper.css";
@@ -1151,8 +1153,10 @@ async function toggleThree() {
 }
 
 async function start() {
+  let phase: StartupPhase = "host";
   try {
     if (isWallpaper) await window.rhineWallpaperPropertiesReady;
+    phase = "graphics";
     if (!isWallpaper || wallpaperHost()?.properties.load3donstartup?.value !== false) {
       scene = new ArchiveScene($("#three-scene"));
       scene.setTheme(prefs.colorTheme === "dark", true);
@@ -1161,16 +1165,20 @@ async function start() {
       threeState = "off";
       syncThreeButton();
     }
+    phase = "resources";
     await Promise.all([
       scene?.load(),
-      loadBootWebfonts(),
-      // With unicode-range faces, preload the opening's actual characters,
-      // not every font shard. Other archive text loads on demand.
-      document.fonts.load("300 20px MiSans", "ACCESS WELCOME TO INTERNAL DATABASE"),
-      document.fonts.load("400 20px MiSans", "身份信息确认请求已接收开始处理权限验证通过欢迎访问莱茵生命内部资料档案编号保密级别商业区选择档案：0123456789 JOYCE MOORE"),
-      document.fonts.load("600 20px MiSans", "SYNTHESIZE INFORMATION ANALYSIS OS"),
-      document.fonts.load("700 20px MiSans", "RHINE LAB WELCOME TO INTERNAL DATABASE"),
+      prepareStartupFonts(() => Promise.all([
+        loadBootWebfonts(),
+        // With unicode-range faces, preload the opening's actual characters,
+        // not every font shard. Other archive text loads on demand.
+        document.fonts.load("300 20px MiSans", "ACCESS WELCOME TO INTERNAL DATABASE"),
+        document.fonts.load("400 20px MiSans", "身份信息确认请求已接收开始处理权限验证通过欢迎访问莱茵生命内部资料档案编号保密级别商业区选择档案：0123456789 JOYCE MOORE"),
+        document.fonts.load("600 20px MiSans", "SYNTHESIZE INFORMATION ANALYSIS OS"),
+        document.fonts.load("700 20px MiSans", "RHINE LAB WELCOME TO INTERNAL DATABASE"),
+      ])),
     ]);
+    phase = "interface";
     if (scene) {
       await scene.setModelPrecision(selectedModelPrecision()).catch(error => {
         console.error(error);
@@ -1191,8 +1199,12 @@ async function start() {
     }
   } catch (error) {
     console.error(error);
-    $("#loading").innerHTML =
-      tr('<div class="error-state"><strong>CONNECTION INTERRUPTED</strong><p>三维档案资源未能载入。请确认浏览器已启用硬件加速，然后重新连接。</p><button onclick="location.reload()">RECONNECT →</button></div>');
+    entry?.dispose();
+    try { scene?.dispose(); } catch (cleanupError) { console.warn(cleanupError); }
+    scene = undefined;
+    threeState = "off";
+    ready = false;
+    showStartupError(loading, error, phase, isWallpaper);
   }
 }
 function completeStartup(silent: boolean) {

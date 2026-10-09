@@ -1,0 +1,52 @@
+[
+  {
+    "name": "baseline",
+    "code": null,
+    "passed": true
+  },
+  {
+    "name": "font-missing",
+    "code": null,
+    "passed": true
+  },
+  {
+    "name": "font-missing-2d",
+    "code": null,
+    "passed": true
+  },
+  {
+    "name": "font-timeout",
+    "code": null,
+    "passed": true
+  },
+  {
+    "name": "font-sync-error",
+    "code": null,
+    "passed": true
+  },
+  {
+    "name": "model-missing",
+    "code": "MODEL_RESOURCE",
+    "passed": true
+  },
+  {
+    "name": "model-corrupt",
+    "code": "MODEL_RESOURCE",
+    "passed": true
+  },
+  {
+    "name": "label-decode",
+    "code": "LABEL_RESOURCE",
+    "passed": true
+  },
+  {
+    "name": "webgl-unavailable",
+    "code": "WEBGL_INIT",
+    "passed": true
+  },
+  {
+    "name": "model-missing-en",
+    "code": "MODEL_RESOURCE",
+    "passed": true
+  }
+]

@@ -1,4 +1,5 @@
 import { tr } from "./i18n";
+import { StartupResourceError } from "./startup-resources";
 import * as THREE from "three";
 import { ModelPrecisionController, type ModelPrecision } from "./model-precision";
 import { ArchiveVisibility } from "./archive-visibility";
@@ -342,10 +343,14 @@ export class ArchiveScene {
   }
   async load(assetUrl = publicAsset("assets/archive-cassette.glb")) {
     this.labelMark.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(labelMarkSvg)}`;
-    await this.labelMark.decode();
+    await this.labelMark.decode().catch(error => {
+      throw new StartupResourceError("LABEL_RESOURCE", "archive-label.svg (embedded)", error);
+    });
     const gltf = await new GLTFLoader().loadAsync(
       assetUrl,
-    );
+    ).catch(error => {
+      throw new StartupResourceError("MODEL_RESOURCE", assetUrl, error);
+    });
     gltf.scene.updateMatrixWorld(true);
     const meshes: THREE.Mesh[] = [];
     gltf.scene.traverse((o) => {

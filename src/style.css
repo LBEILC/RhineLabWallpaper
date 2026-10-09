@@ -1428,8 +1428,21 @@ button {
   animation: loading 1.3s ease-in-out infinite;
 }
 .error-state {
-  width: 700px;
+  width: min(700px, calc(100vw - 40px));
+  max-height: calc(100dvh - 40px);
+  overflow: auto;
   text-align: center;
+}
+.startup-error-detail {
+  padding: 12px;
+  max-height: 180px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  text-align: left;
+  font: 13px/1.6 ui-monospace, Consolas, monospace;
+  border: 1px solid currentColor;
+  user-select: text;
 }
 .error-state strong {
   font-size: 29px;

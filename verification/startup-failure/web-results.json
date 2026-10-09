@@ -1,0 +1,22 @@
+[
+  {
+    "name": "baseline",
+    "code": null,
+    "passed": true
+  },
+  {
+    "name": "font-missing",
+    "code": null,
+    "passed": true
+  },
+  {
+    "name": "model-missing",
+    "code": "MODEL_RESOURCE",
+    "passed": true
+  },
+  {
+    "name": "webgl-unavailable",
+    "code": "WEBGL_INIT",
+    "passed": true
+  }
+]

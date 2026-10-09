@@ -10,6 +10,7 @@ type EntryOptions = {
 export class StartupGate {
   private state: "loading" | "waiting" | "starting" | "error" | "started" = "loading";
   private request = 0;
+  private events = new AbortController();
   private button: HTMLButtonElement;
   private silent: HTMLButtonElement;
   private status: HTMLElement;
@@ -29,7 +30,7 @@ export class StartupGate {
         options.cancel();
         this.finish(true);
       } else if (this.state === "waiting" || this.state === "error") void this.enter();
-    });
+    }, { signal: this.events.signal });
     root.addEventListener("keydown", event => {
       event.stopPropagation();
       if (event.key === "Tab") {
@@ -41,7 +42,12 @@ export class StartupGate {
       }
       // Let native buttons activate on Enter/Space, and never leak this event
       // to the terminal's Enter-to-skip handler.
-    });
+    }, { signal: this.events.signal });
+  }
+  dispose() {
+    this.request++;
+    this.events.abort();
+    this.options.cancel();
   }
   get phase() { return this.state; }
   ready() {
